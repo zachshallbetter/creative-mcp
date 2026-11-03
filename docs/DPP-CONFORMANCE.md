@@ -107,4 +107,17 @@ Each item still GRAY or pending above is tracked as an issue:
 
 ## Maintenance
 
-After changing page content, commit it, then run `python3 site/scripts/generate-discovery.py` and commit the regenerated `sitemap.xml`, `llms.txt` and `llms-full.txt`. Pushing that commit to `main` triggers the `IndexNow` workflow, which waits for Vercel to serve the new sitemap and submits the changed URLs. To submit by hand: `python3 site/scripts/indexnow.py --since <rev>` (or `--all`; add `--dry-run` to preview). When a page is added or its title changes, add or edit its entry in `CARDS` in `site/scripts/generate-social-images.py` and run that script too (it refuses to run if a public page has no card).
+After adding or editing a page, run `python3 site/scripts/apply-shell.py`. It keeps every page's shared head (theme colours, robots, Markdown alternate, no-JavaScript styles), self-contained JSON-LD, docs topic list and footer consistent. Commit the content, then run `python3 site/scripts/generate-discovery.py` and commit the regenerated `sitemap.xml` (with each page's social image), `llms.txt`, `llms-full.txt` and the per-page `.md` copies. Pushing that commit to `main` triggers the `IndexNow` workflow, which waits for Vercel to serve the new sitemap and submits the changed URLs. To submit by hand: `python3 site/scripts/indexnow.py --since <rev>` (or `--all`; add `--dry-run` to preview). When a page is added or its title changes, add or edit its entry in `CARDS` in `site/scripts/generate-social-images.py` and run that script too (it refuses to run if a public page has no card).
+
+## Page-level completeness (2026-11-03)
+
+Every public page is meant to stand on its own when shared, crawled or read in isolation:
+
+- **Description:** 110 to 160 characters, written to be read on its own; `og:description` and `twitter:description` match it.
+- **Social card:** a page-specific 1200×630 image with alt text; also listed in the image sitemap.
+- **JSON-LD:** the page node plus every node it references (site, publisher, author, the software or dataset it is about); no dangling `@id`. Content pages name their copyright holder. The feature inventory is described as a `Dataset` with one JSON download per app.
+- **Readers:** guides are wrapped in `<article>` with the breadcrumb outside it, so Safari and Firefox reader views start at the title (checked with Mozilla Readability).
+- **Without JavaScript:** content is readable and dark mode follows the system. The setup builder, checklist and feature inventory are replaced by notes that link to their written equivalents; the theme toggle and copy buttons are hidden.
+- **Machine-readable copies:** `/path.md` for every page (front matter with title, description, URL, author, modified date and copyright), served as `text/markdown` with a canonical `Link` header to the HTML page.
+- **Extra files:** `/humans.txt`, `/.well-known/security.txt` (GitHub private vulnerability reporting, enabled on all three repositories), `/robots.txt`, `/privacy.html`.
+- **Accessibility:** axe-core WCAG 2.0/2.1/2.2 A and AA rules, light and dark themes, 375 px: 0 violations on all 25 pages. Forced-colours and print styles are included.
