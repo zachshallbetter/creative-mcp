@@ -85,6 +85,7 @@ Deployed 2026-11-03 from `zachshallbetter/creative-mcp` (Vercel, Root Directory 
 | Social cards as crawlers see them | Fetched with a `facebookexternalhit` user agent: all 24 pages expose a distinct `og:image` that returns 200 and `twitter:card=summary_large_image`. |
 | Google Search Console | Domain property `creativemcp.com` verified. `sitemap.xml` submitted 2026-11-03: status **Success**, 24 URLs discovered. Search Console is linked to the GA4 web stream. |
 | Bing Webmaster Tools | `sitemap.xml` submitted 2026-11-03; status Processing. |
+| IndexNow | Key file `/b972b7f21695dfb5963f98720e14cd33.txt` at the site root. `site/scripts/indexnow.py` notifies Bing, Yandex, Naver, Seznam and the other IndexNow engines; the `IndexNow` workflow runs it on every push that changes the sitemap, after the deploy is live, with only the pages whose `lastmod` changed. |
 | GA4 on production | `page_view` reaches `G-JBJ1NMP96V` without `debug_mode`. Enhanced measurement, internal and developer traffic filters (Active), 14-month retention, 13 custom dimensions and 1 custom metric are configured. |
 | Accessibility on production | axe-core WCAG 2.2 AA: 0 violations on five key pages at 1280px and 375px. |
 | Rich Results Test | Run 2026-11-03 (see E5/E6): Article and Breadcrumbs valid; SoftwareApplication ineligible by design. |
@@ -106,4 +107,4 @@ Each item still GRAY or pending above is tracked as an issue:
 
 ## Maintenance
 
-After changing page content, commit it, then run `python3 site/scripts/generate-discovery.py` and commit the regenerated `sitemap.xml`, `llms.txt` and `llms-full.txt`. When a page is added or its title changes, add or edit its entry in `CARDS` in `site/scripts/generate-social-images.py` and run that script too (it refuses to run if a public page has no card).
+After changing page content, commit it, then run `python3 site/scripts/generate-discovery.py` and commit the regenerated `sitemap.xml`, `llms.txt` and `llms-full.txt`. Pushing that commit to `main` triggers the `IndexNow` workflow, which waits for Vercel to serve the new sitemap and submits the changed URLs. To submit by hand: `python3 site/scripts/indexnow.py --since <rev>` (or `--all`; add `--dry-run` to preview). When a page is added or its title changes, add or edit its entry in `CARDS` in `site/scripts/generate-social-images.py` and run that script too (it refuses to run if a public page has no card).

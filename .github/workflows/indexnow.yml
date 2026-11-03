@@ -1,0 +1,23 @@
+name: IndexNow
+# After a push changes the sitemap, wait for Vercel to serve it, then notify IndexNow of the changed pages.
+on:
+  push:
+    branches: [main]
+    paths: ["site/dist/sitemap.xml"]
+  workflow_dispatch:
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Submit changed pages
+        if: github.event_name == 'push'
+        run: python3 site/scripts/indexnow.py --since ${{ github.event.before }} --wait 600
+      - name: Submit every page
+        if: github.event_name == 'workflow_dispatch'
+        run: python3 site/scripts/indexnow.py --all --wait 600
