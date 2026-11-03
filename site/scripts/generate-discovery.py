@@ -204,7 +204,7 @@ def main():
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
                '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
     for path in pages:
-        lastmod = f"<lastmod>{info[path]['lastmod'][:10]}</lastmod>" if info[path]["lastmod"] else ""
+        lastmod = f"<lastmod>{info[path]['lastmod']}</lastmod>" if info[path]["lastmod"] else ""
         image = f"<image:image><image:loc>{info[path]['image']}</image:loc></image:image>" if info[path]["image"] else ""
         sitemap.append(f"  <url><loc>{info[path]['url']}</loc>{lastmod}{image}</url>")
     sitemap.append("</urlset>")
