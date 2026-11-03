@@ -12,6 +12,7 @@ It is idempotent. It manages:
 - the footer attribution line
 """
 import copy
+from datetime import datetime, timezone
 import json
 import re
 from pathlib import Path
@@ -23,6 +24,35 @@ NOINDEX = {"brand-study.html", "style-mockup.html", "404.html"}
 PERSON = f"{SITE}/about.html#zach-shallbetter"
 LD = re.compile(r'(<script type="application/ld\+json">\n)(.*?)(\n</script>)', re.S)
 YEAR = 2026
+# When each page first went live, from the commit history of the original site repository
+# (creative-mcp-site-archive). Pages added later are dated by apply-shell the first time it runs on them.
+PUBLISHED = {
+    "index.html": "2026-10-19T22:04:59-07:00",
+    "docs/architecture.html": "2026-11-03T03:30:41-08:00",
+    "privacy.html": "2026-11-03T14:32:20-08:00",
+    "about.html": "2026-11-02T17:05:54-08:00",
+    "apps.html": "2026-11-02T17:05:54-08:00",
+    "capability-atlas.html": "2026-11-02T17:05:54-08:00",
+    "docs/api.html": "2026-11-02T17:05:54-08:00",
+    "docs/cli.html": "2026-11-02T17:05:54-08:00",
+    "docs/content.html": "2026-11-02T17:05:54-08:00",
+    "docs/contributing.html": "2026-11-02T17:05:54-08:00",
+    "docs/getting-started.html": "2026-11-02T17:05:54-08:00",
+    "docs/implementations/aftereffects.html": "2026-11-02T17:05:54-08:00",
+    "docs/implementations/blender.html": "2026-11-02T17:05:54-08:00",
+    "docs/implementations/core.html": "2026-11-02T17:05:54-08:00",
+    "docs/implementations/illustrator.html": "2026-11-02T17:05:54-08:00",
+    "docs/implementations/indesign.html": "2026-11-02T17:05:54-08:00",
+    "docs/implementations/photoshop.html": "2026-11-02T17:05:54-08:00",
+    "docs/implementations/premiere.html": "2026-11-02T17:05:54-08:00",
+    "docs/implementations/suite.html": "2026-11-02T17:05:54-08:00",
+    "docs/index.html": "2026-11-02T17:05:54-08:00",
+    "features.html": "2026-11-02T17:05:54-08:00",
+    "how-it-works.html": "2026-11-02T17:05:54-08:00",
+    "projects.html": "2026-11-02T17:05:54-08:00",
+    "start.html": "2026-11-02T17:05:54-08:00",
+    "workflows.html": "2026-11-02T17:05:54-08:00",
+}
 
 THEME = ('<meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">'
          '<meta name="theme-color" content="#111417" media="(prefers-color-scheme: dark)">'
@@ -125,8 +155,14 @@ def update_graph(path, source, shared):
         if is_page or node.get("@type") == "TechArticle":
             node.setdefault("copyrightHolder", {"@id": PERSON})
             node.setdefault("copyrightYear", YEAR)
+            # First publication: dates from the site's history (PUBLISHED); a new page is published when first processed.
+            node.setdefault("datePublished", PUBLISHED.get(path) or datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds"))
     text = json.dumps(data, indent=2, ensure_ascii=False)
-    return source[: match.start(2)] + text + source[match.end(2):]
+    source = source[: match.start(2)] + text + source[match.end(2):]
+    published = next((n["datePublished"] for n in nodes if "datePublished" in n), None)
+    if published and 'content="article"' in source and "article:published_time" not in source:
+        source = source.replace('<meta property="article:modified_time"', f'<meta property="article:published_time" content="{published}"><meta property="article:modified_time"', 1)
+    return source
 
 
 def doc_tabs(path):
