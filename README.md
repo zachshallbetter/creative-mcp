@@ -8,7 +8,7 @@ Creative MCP is a series of independent, open [Model Context Protocol](https://m
 | Tool | Repository | Install |
 | --- | --- | --- |
 | **Adobe MCP**: InDesign, Illustrator, Photoshop, After Effects, Premiere Pro, plus a cross-app coordinator | [adobe-mcp](https://github.com/zachshallbetter/adobe-mcp) | `brew install zachshallbetter/tap/adobe-mcp` or `npx -y adobe-mcp-suite` |
-| **Blender MCP**: Rust MCP server and companion Blender add-on | [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) | `brew install --HEAD zachshallbetter/tap/blender-mcp` |
+| **Blender MCP**: Rust MCP server and companion Blender add-on | [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) | `brew install zachshallbetter/tap/blender-mcp` (v0.5.0) |
 
 Homebrew needs the tap first, once:
 

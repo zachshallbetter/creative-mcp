@@ -51,7 +51,7 @@
       "author": "Zach Shallbetter",
       "status": "Implemented",
       "install": {
-        "brew": { "formula": "zachshallbetter/tap/blender-mcp", "head_only": true },
+        "brew": { "formula": "zachshallbetter/tap/blender-mcp" },
         "cargo": { "git": "https://github.com/zachshallbetter/blender-mcp-rs", "package": "blender-mcp-cli" }
       },
       "requires": [],

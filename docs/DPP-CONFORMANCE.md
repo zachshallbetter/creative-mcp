@@ -72,7 +72,7 @@ Verdicts use DPP terms: SATISFIED, VIOLATED, GRAY (unresolved evidence), NOT_APP
 | Item | Verdict | Evidence |
 | --- | --- | --- |
 | Homebrew: Adobe MCP | SATISFIED | Tap https://github.com/zachshallbetter/homebrew-tap is published (2026-11-03). `brew install zachshallbetter/tap/adobe-mcp` from GitHub installs 0.3.0 and links 7 commands. `brew test` and `brew audit --strict --online` pass. Shown on the home page, How it works, Projects, Adobe MCP, the setup builder (Homebrew is the default on macOS and Linux), Getting started, CLI & configuration, the Suite and Blender guides, and `llms.txt`. The tap README credits the author, the formula homepages point to creativemcp.com, and the repo has topics. |
-| Homebrew: Blender MCP | GRAY | HEAD-only (`--HEAD`) until blender-mcp-rs has a tagged release. Before tagging, add the missing `LICENSE-MIT`/`LICENSE-APACHE` files and reconcile `VERSION` (0.4.0) with Cargo (0.5.0). The formula passes the strict online audit, and its HEAD build passed `brew test` from the locally tapped copy. |
+| Homebrew: Blender MCP | SATISFIED | blender-mcp-rs `v0.5.0` released 2026-11-03 (CI green on Linux, macOS and Windows; licence files added). `brew install zachshallbetter/tap/blender-mcp` builds the release tarball; `brew test` and the strict online audit pass. |
 | Old in-repo formula | SATISFIED | adobe-mcp PR #430 (merged 2026-11-03, `a23db8d`) deprecates `Formula/adobe-mcp-suite.rb` (0.2.1) in favour of the tap. The tap formula deliberately has no cross-tap `conflicts_with`: Homebrew 7 refuses to load an untrusted tap it references. |
 
 ## P07: post-publication checks

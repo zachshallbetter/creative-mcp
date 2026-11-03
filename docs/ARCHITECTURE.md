@@ -9,7 +9,7 @@ Creative MCP is a series of independent MCP implementations for creative softwar
 | Piece | Where | Visibility | Language | Distribution |
 | --- | --- | --- | --- | --- |
 | Adobe MCP: five app servers, Suite coordinator, shared core | github.com/zachshallbetter/adobe-mcp | Public, MIT | Node.js 18+ | npm (`adobe-mcp-*`), Homebrew `zachshallbetter/tap/adobe-mcp` |
-| Blender MCP: Rust MCP server, CLI, Blender add-on | github.com/zachshallbetter/blender-mcp-rs | Public, MIT OR Apache-2.0 | Rust | Source (`cargo install --git`), Homebrew `zachshallbetter/tap/blender-mcp` (`--HEAD` only until a tagged release) |
+| Blender MCP: Rust MCP server, CLI, Blender add-on | github.com/zachshallbetter/blender-mcp-rs | Public, MIT OR Apache-2.0 | Rust | Source (`cargo install --git`), Homebrew `zachshallbetter/tap/blender-mcp` (v0.5.0) |
 | Homebrew tap | github.com/zachshallbetter/homebrew-tap | Public | Ruby formulae | `brew tap zachshallbetter/tap` then `brew trust zachshallbetter/tap` |
 | Website, docs and catalogue (creativemcp.com) | github.com/zachshallbetter/creative-mcp (`site/`, `registry/`, `docs/`) | Public; MIT for code, content and brand reserved | Static HTML, Python scripts, JSON | Vercel (Root Directory `site`) |
 
@@ -71,7 +71,7 @@ A versioned JSON file, one entry per tool. The source is [`registry/registry.jso
       "docs": "https://creativemcp.com/docs/implementations/blender.html",
       "license": "MIT OR Apache-2.0",
       "status": "Implemented",
-      "install": { "brew": { "formula": "zachshallbetter/tap/blender-mcp", "head_only": true },
+      "install": { "brew": { "formula": "zachshallbetter/tap/blender-mcp" },
                    "cargo": { "git": "https://github.com/zachshallbetter/blender-mcp-rs", "package": "blender-mcp-cli" } },
       "servers": [{ "command": "blender-mcp", "args": ["serve"], "register_as": "blender" }],
       "post_install": ["blender-mcp addon install"],
@@ -145,5 +145,5 @@ Language: **Rust**, so the installer is a single dependency-free binary that wor
 
 - **D1: where the catalogue and installer live. Decided (2026-11-03):** the public `zachshallbetter/creative-mcp` repo holds the site (`site/`), the catalogue (`registry/`), the future installer (`cli/`) and these documents (`docs/`). The earlier private site repo, whose history contained personal data, is archived privately as `creative-mcp-site-archive`.
 - **D2: installer language.** Recommended: Rust (see section 4).
-- **D3: Blender MCP release.** Add `LICENSE-MIT` and `LICENSE-APACHE`, reconcile `VERSION` (0.4.0) with Cargo (0.5.0), then tag `v0.5.0` so Homebrew stops needing `--HEAD`.
+- **D3: Blender MCP release. Done (2026-11-03):** licence files added, `VERSION` reconciled, the Windows CI failure fixed, and `v0.5.0` tagged and released. Homebrew installs it without `--HEAD`.
 - **D4: site generation.** Once the catalogue exists, generate the Projects grid, setup builder options and `llms.txt` key facts from it rather than hand-editing HTML.

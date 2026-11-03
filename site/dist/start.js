@@ -89,9 +89,9 @@
     } else {
       kicker.textContent = "Blender MCP · " + selected.textContent + " · " + (brew ? "Homebrew" : "Cargo");
       command.textContent = (brew
-        ? brewTap + "brew install --HEAD zachshallbetter/tap/blender-mcp"
+        ? brewTap + "brew install zachshallbetter/tap/blender-mcp"
         : "cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli") + "\nblender-mcp addon install\nblender-mcp client add " + client;
-      explanation.textContent = (brew ? "Homebrew builds the CLI from the main branch (there is no tagged release yet). " : "") + "Install the CLI, install and enable its companion add-on in Blender, then register the local server with this client. Blender MCP requires Blender 4.0 or later.";
+      explanation.textContent = (brew ? "Homebrew builds the CLI from the v0.5.0 release, so you don’t need Rust installed. " : "") + "Install the CLI, install and enable its companion add-on in Blender, then register the local server with this client. Blender MCP requires Blender 4.0 or later.";
     }
     copyButton.textContent = "Copy";
   }
