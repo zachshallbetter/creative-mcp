@@ -143,7 +143,13 @@ Language: **Rust**, so the installer is a single dependency-free binary that wor
 4. Add the docs page and its card in `site/scripts/generate-social-images.py`, then run that script and `site/scripts/generate-discovery.py`.
 5. Record capability status honestly. Only Validated claims say the workflow was run in the real app.
 
-## 7. Open decisions
+## 7. Tracked work
+
+- Installer: Windows app detection ([#5](https://github.com/zachshallbetter/creative-mcp/issues/5)); `update`, `add` and `remove` ([#6](https://github.com/zachshallbetter/creative-mcp/issues/6)); Claude Code when `claude` isn't on `PATH` ([#7](https://github.com/zachshallbetter/creative-mcp/issues/7)).
+- Catalogue: verify the InDesign and Premiere Pro detection rules ([#4](https://github.com/zachshallbetter/creative-mcp/issues/4)).
+- Site: generate listings from the catalogue, decision D4 ([#8](https://github.com/zachshallbetter/creative-mcp/issues/8)).
+
+## 8. Open decisions
 
 - **D1: where the catalogue and installer live. Decided (2026-11-03):** the public `zachshallbetter/creative-mcp` repo holds the site (`site/`), the catalogue (`registry/`), the future installer (`cli/`) and these documents (`docs/`). The earlier private site repo, whose history contained personal data, is archived privately as `creative-mcp-site-archive`.
 - **D2: installer language. Decided:** Rust, shipped as creative-mcp 0.1.0.

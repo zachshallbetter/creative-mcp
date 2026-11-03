@@ -91,6 +91,19 @@ Deployed 2026-11-03 from `zachshallbetter/creative-mcp` (Vercel, Root Directory 
 | Social-network preview tools | Not run. Facebook and LinkedIn require signing in; X has no public validator. Crawler-level checks above pass. GRAY until a share is observed. |
 | Indexing, queries, AI answer panel | GRAY. Re-review at 7, 28 and 90 days and record observations, not targets. |
 
+## Open work
+
+Each item still GRAY or pending above is tracked as an issue:
+
+| Issue | Covers |
+| --- | --- |
+| [#1](https://github.com/zachshallbetter/creative-mcp/issues/1) | GA4 key events `setup_ready` and `copy_command` |
+| [#2](https://github.com/zachshallbetter/creative-mcp/issues/2) | Indexing, queries and the AI-answer panel at 7, 28 and 90 days (P07, ASI) |
+| [#3](https://github.com/zachshallbetter/creative-mcp/issues/3) | Social-network preview tools |
+| [#4](https://github.com/zachshallbetter/creative-mcp/issues/4) | Unverified InDesign and Premiere Pro detection rules |
+| [#9](https://github.com/zachshallbetter/creative-mcp/issues/9) | Content-Security-Policy (DAP headers) |
+| [#10](https://github.com/zachshallbetter/creative-mcp/issues/10) | SoftwareApplication `offers` decision (E6) |
+
 ## Maintenance
 
 After changing page content, commit it, then run `python3 site/scripts/generate-discovery.py` and commit the regenerated `sitemap.xml`, `llms.txt` and `llms-full.txt`. When a page is added or its title changes, add or edit its entry in `CARDS` in `site/scripts/generate-social-images.py` and run that script too (it refuses to run if a public page has no card).
