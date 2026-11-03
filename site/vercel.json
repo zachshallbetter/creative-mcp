@@ -39,10 +39,17 @@
       ]
     },
     {
-      "source": "/(docs/)?index.md",
+      "source": "/index.md",
       "headers": [
         { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
-        { "key": "Link", "value": "<https://creativemcp.com/$1>; rel=\"canonical\"" }
+        { "key": "Link", "value": "<https://creativemcp.com/>; rel=\"canonical\"" }
+      ]
+    },
+    {
+      "source": "/docs/index.md",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Link", "value": "<https://creativemcp.com/docs/>; rel=\"canonical\"" }
       ]
     },
     {
