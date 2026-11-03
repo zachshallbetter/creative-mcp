@@ -9,7 +9,7 @@ Key facts:
 - Capability status is reported as Documented, Implemented, Tested or Validated; those levels are distinct and a lower level never implies a higher one.
 - Created by Zach Shallbetter (https://zachshallbetter.com/).
 - Website, docs and the series catalogue (https://creativemcp.com/registry.json) are open source at https://github.com/zachshallbetter/creative-mcp.
-- Each tool has its own repository and release cycle; they share the Homebrew tap `zachshallbetter/tap`. A series installer (`creative-mcp setup`) is planned but not available yet; the catalogue is a draft that nothing reads yet.
+- Each tool has its own repository and release cycle; they share the Homebrew tap `zachshallbetter/tap`. One installer sets up the series: `brew install zachshallbetter/tap/creative-mcp` then `creative-mcp setup` (detects apps and MCP clients, installs, registers, verifies; macOS fully supported). The installer is built from the catalogue.
 
 The full text of every page below is in [llms-full.txt](https://creativemcp.com/llms-full.txt).
 
