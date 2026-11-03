@@ -21,7 +21,7 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "TechArticle",
+      "@type": "WebPage",
       "@id": "https://creativemcp.com/docs/architecture.html#webpage",
       "url": "https://creativemcp.com/docs/architecture.html",
       "name": "Architecture & distribution — Creative MCP Docs",
@@ -40,16 +40,38 @@
         "width": 1200,
         "height": 630
       },
-      "headline": "Architecture & distribution",
-      "author": {
-        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
-      },
-      "mainEntityOfPage": "https://creativemcp.com/docs/architecture.html",
       "breadcrumb": {
         "@id": "https://creativemcp.com/docs/architecture.html#breadcrumb"
       },
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
       "creator": {
         "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "mainEntity": {
+        "@id": "https://creativemcp.com/docs/architecture.html#article"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://creativemcp.com/docs/architecture.html#article",
+      "headline": "Architecture & distribution",
+      "description": "How the Creative MCP series is organized: separate repositories per tool, the Homebrew tap, the planned installer and catalogue, and conventions for adding new tools.",
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "dateModified": "2026-11-03",
+      "image": "https://creativemcp.com/assets/social/docs-architecture.jpg",
+      "isPartOf": {
+        "@id": "https://creativemcp.com/#website"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://creativemcp.com/docs/architecture.html#webpage"
       }
     },
     {

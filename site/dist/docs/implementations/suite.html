@@ -21,7 +21,7 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "TechArticle",
+      "@type": "WebPage",
       "@id": "https://creativemcp.com/docs/implementations/suite.html#webpage",
       "url": "https://creativemcp.com/docs/implementations/suite.html",
       "name": "Suite coordinator implementation — Creative MCP Docs",
@@ -40,19 +40,41 @@
         "width": 1200,
         "height": 630
       },
-      "headline": "Suite coordinator",
-      "author": {
-        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
-      },
-      "mainEntityOfPage": "https://creativemcp.com/docs/implementations/suite.html",
-      "about": {
-        "@id": "https://creativemcp.com/apps.html#adobe-mcp"
-      },
       "breadcrumb": {
         "@id": "https://creativemcp.com/docs/implementations/suite.html#breadcrumb"
       },
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
       "creator": {
         "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "mainEntity": {
+        "@id": "https://creativemcp.com/docs/implementations/suite.html#article"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://creativemcp.com/docs/implementations/suite.html#article",
+      "headline": "Suite coordinator",
+      "description": "Suite coordinator MCP implementation guide: content, connection, API conventions and configuration.",
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "dateModified": "2026-11-03",
+      "image": "https://creativemcp.com/assets/social/docs-suite.jpg",
+      "isPartOf": {
+        "@id": "https://creativemcp.com/#website"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://creativemcp.com/docs/implementations/suite.html#webpage"
+      },
+      "about": {
+        "@id": "https://creativemcp.com/apps.html#adobe-mcp"
       }
     },
     {

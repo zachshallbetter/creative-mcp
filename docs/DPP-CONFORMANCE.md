@@ -73,14 +73,22 @@ Verdicts use DPP terms: SATISFIED, VIOLATED, GRAY (unresolved evidence), NOT_APP
 | --- | --- | --- |
 | Homebrew: Adobe MCP | SATISFIED | Tap https://github.com/zachshallbetter/homebrew-tap is published (2026-11-03). `brew install zachshallbetter/tap/adobe-mcp` from GitHub installs 0.3.0 and links 7 commands. `brew test` and `brew audit --strict --online` pass. Shown on the home page, How it works, Projects, Adobe MCP, the setup builder (Homebrew is the default on macOS and Linux), Getting started, CLI & configuration, the Suite and Blender guides, and `llms.txt`. The tap README credits the author, the formula homepages point to creativemcp.com, and the repo has topics. |
 | Homebrew: Blender MCP | GRAY | HEAD-only (`--HEAD`) until blender-mcp-rs has a tagged release. Before tagging, add the missing `LICENSE-MIT`/`LICENSE-APACHE` files and reconcile `VERSION` (0.4.0) with Cargo (0.5.0). The formula passes the strict online audit, and its HEAD build passed `brew test` from the locally tapped copy. |
-| Old in-repo formula | Pending | adobe-mcp PR #430 deprecates `Formula/adobe-mcp-suite.rb` (0.2.1) in favour of the tap. The tap formula deliberately has no cross-tap `conflicts_with`: Homebrew 7 refuses to load an untrusted tap it references. |
+| Old in-repo formula | SATISFIED | adobe-mcp PR #430 (merged 2026-11-03, `a23db8d`) deprecates `Formula/adobe-mcp-suite.rb` (0.2.1) in favour of the tap. The tap formula deliberately has no cross-tap `conflicts_with`: Homebrew 7 refuses to load an untrusted tap it references. |
 
-## P07: post-publication checks (to do after deploy)
+## P07: post-publication checks
 
-1. Capture response headers and raw HTML for `/`, `/docs/`, one implementation page, `/llms.txt` and a 404.
-2. Submit `sitemap.xml` in Google Search Console and Bing Webmaster Tools; run URL Inspection on the home page.
-3. Run the Rich Results Test and a social-preview check on `/`, `/apps.html` and `/docs/implementations/blender.html`.
-4. Re-review at 7, 28 and 90 days (index coverage, queries, AI answer panel). Record the results as observations, not targets.
+Deployed 2026-11-03 from `zachshallbetter/creative-mcp` (Vercel, Root Directory `site`).
+
+| Check | Result |
+| --- | --- |
+| Response headers and status codes | Observed live: 24 sitemap URLs return 200; `/index.html` and `/docs/index.html` return 308 to their directory URLs; unknown paths return the custom 404; security headers, the 7-day asset cache and `X-Robots-Tag: noindex` on mockups are present. |
+| Social cards as crawlers see them | Fetched with a `facebookexternalhit` user agent: all 24 pages expose a distinct `og:image` that returns 200 and `twitter:card=summary_large_image`. |
+| Google Search Console | Domain property `creativemcp.com` verified. `sitemap.xml` submitted 2026-11-03: status **Success**, 24 URLs discovered. Search Console is linked to the GA4 web stream. |
+| Bing Webmaster Tools | `sitemap.xml` submitted 2026-11-03; status Processing. |
+| GA4 on production | `page_view` reaches `G-JBJ1NMP96V` without `debug_mode`. Enhanced measurement, internal and developer traffic filters (Active), 14-month retention, 13 custom dimensions and 1 custom metric are configured. |
+| Accessibility on production | axe-core WCAG 2.2 AA: 0 violations on five key pages at 1280px and 375px. |
+| Rich Results Test, social-network preview tools | Not run. GRAY until observed. |
+| Indexing, queries, AI answer panel | GRAY. Re-review at 7, 28 and 90 days and record observations, not targets. |
 
 ## Maintenance
 

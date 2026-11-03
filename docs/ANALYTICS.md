@@ -28,7 +28,9 @@ Property: Creative MCP · Web stream `web` → https://creativemcp.com · Measur
 
 All of these were confirmed sending to `google-analytics.com/g/collect` from a local preview.
 
-## Property settings to apply (Admin)
+## Property settings (applied 2026-11-03)
+
+Everything below is configured in the GA4 property except the key events, which GA only lets you star once it has received them (see the note at the end).
 
 **Data streams → web → Enhanced measurement (gear)**
 - Page views → Show advanced settings → uncheck *Page changes based on browser history events* (the atlas tabs use `history.replaceState`, which would log fake page views).
@@ -52,11 +54,11 @@ All of these were confirmed sending to `google-analytics.com/g/collect` from a l
 **Data collection** → leave Google signals **off** (no ads use; keeps data sharing minimal).
 
 **Custom definitions → Create custom dimension** (scope *Event*), one per parameter:
-`link_id`, `link_url`, `theme`, `command_id`, `implementation`, `client`, `install_method`, `search_scope`, `app`, `route`, `content_type`, `item_id`, `search_term`.
-**Create custom metric** (scope *Event*, unit Standard): `results_count`.
+`link_id`, `link_url`, `theme`, `command_id`, `implementation`, `client` (named "MCP client"), `install_method`, `search_scope`, `app`, `route` ("Automation route"), `content_type` ("Result content type"), `item_id` ("Result item") and `search_term` ("Search query", to avoid clashing with GA's built-in *Search term*).
+**Custom metric** (scope *Event*, unit Standard): `results_count` ("Search results count").
 
-**Events → Key events** → New key event: `setup_ready`, `copy_command`.
+**Events → Key events**: once `setup_ready` and `copy_command` appear under *Recent events* (within about 24 hours of their first real occurrence), star them to mark them as key events. **Not done yet.**
 
-**Product links (optional)**
-- Search Console: link once `creativemcp.com` is verified there.
+**Product links**
+- Search Console: linked (domain property `creativemcp.com` → web stream), 2026-11-03.
 - BigQuery: only if you want raw event export.
