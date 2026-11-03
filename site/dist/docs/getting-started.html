@@ -158,6 +158,12 @@ try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.docume
 
       <section class="doc-section" id="quickstart">
         <h2>Quick start</h2>
+        <p>The fastest path on a Mac: the <code>creative-mcp</code> installer finds your Adobe apps, Blender and MCP clients, and sets everything up after showing you the plan.</p>
+        <pre tabindex="0"><code>brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup</code></pre>
+        <p>To set things up by hand instead:</p>
         <ol class="steps">
           <li>Install Node.js 18 or later and the Adobe application you intend to automate.</li>
           <li>Register the matching package in your MCP client using the setup below.</li>

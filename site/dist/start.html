@@ -79,7 +79,7 @@
   <script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script>
   <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/site-tokens.css?v=14">
-  <link rel="stylesheet" href="/creative-pages.css?v=3">
+  <link rel="stylesheet" href="/creative-pages.css?v=4">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
   <script src="/analytics.js?v=2" defer></script>
 </head>
@@ -90,6 +90,10 @@
     <div class="eyebrow">A guided first connection</div>
     <h1>Start with the tools you have.</h1>
     <p class="story-lede">Choose an implementation and client to get the right setup steps. This guide stays in your browser: it never scans your computer or sends project files anywhere.</p>
+    <section class="start-installer" aria-labelledby="installer-title"><h2 id="installer-title">Fastest on a Mac: let the installer do it</h2><p>It detects your apps and MCP clients, shows the plan, then installs, registers and checks every server.</p><pre tabindex="0"><code>brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup</code></pre><p>Prefer to see each step? Use the builder below.</p></section>
     <section class="setup-wizard" aria-labelledby="setup-title">
       <div class="setup-fields">
         <div class="setup-field"><label for="implementation">1 · Choose an implementation</label><select id="implementation"><option value="adobe">Adobe MCP</option><option value="blender">Blender MCP</option></select></div>

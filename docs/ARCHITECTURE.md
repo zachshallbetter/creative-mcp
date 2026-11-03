@@ -1,6 +1,6 @@
 # Creative MCP series architecture
 
-Status: **Proposed** (2026-11-03). The catalogue exists as a draft (`registry/`); the installer is Planned and does not exist yet. Author: Zach Shallbetter.
+Status (2026-11-03): the catalogue (`registry/`) and the installer (`cli/`, v0.1.0) are **Implemented and tested**. The installer fully supports macOS only so far. Author: Zach Shallbetter.
 
 Creative MCP is a series of independent MCP implementations for creative software, presented under one brand, one website and one install path. This document records how the pieces fit today, the decisions for growing the series, and what a new tool needs to join.
 
@@ -27,7 +27,7 @@ The old in-repo formula `adobe-mcp/Formula/adobe-mcp-suite.rb` is being deprecat
 
 ## 3. The catalogue (`registry.json`), draft
 
-A versioned JSON file, one entry per tool. The source is [`registry/registry.json`](../registry/registry.json) with its [schema](../registry/registry.schema.json). `site/scripts/generate-discovery.py` publishes both at `https://creativemcp.com/registry.json`, and the `Validate registry` workflow checks every change. Nothing reads it yet. A shortened example:
+A versioned JSON file, one entry per tool. The source is [`registry/registry.json`](../registry/registry.json) with its [schema](../registry/registry.schema.json). `site/scripts/generate-discovery.py` publishes both at `https://creativemcp.com/registry.json`, and the `Validate registry` workflow checks every change. The `creative-mcp` installer builds it into its binary. A shortened example:
 
 ```json
 {
@@ -94,7 +94,9 @@ The bundle IDs above were checked on a real Mac on 2026-11-03 (Photoshop, Illust
 
 `registry/validate.py` checks the schema plus cross-references (unknown clients or apps, duplicate IDs). CI runs it on every pull request that touches `registry/`. Detection rules carry `"verified": true` only after being checked on a real machine.
 
-## 4. Planned: the `creative-mcp` installer
+## 4. The `creative-mcp` installer (v0.1.0)
+
+Implemented in [`cli/`](../cli) and shipped as `brew install zachshallbetter/tap/creative-mcp`. Shipped so far: `setup`, `detect`, `list` and `doctor`, with `--yes`, `--dry-run`, `--tools`, `--clients`, `--no-install`, `--no-verify` and `--json`. Not built yet: `update`, `add` and `remove`, and Windows app detection. The design follows.
 
 ```text
 brew install zachshallbetter/tap/creative-mcp     # later also: npm, a Windows download
@@ -144,6 +146,6 @@ Language: **Rust**, so the installer is a single dependency-free binary that wor
 ## 7. Open decisions
 
 - **D1: where the catalogue and installer live. Decided (2026-11-03):** the public `zachshallbetter/creative-mcp` repo holds the site (`site/`), the catalogue (`registry/`), the future installer (`cli/`) and these documents (`docs/`). The earlier private site repo, whose history contained personal data, is archived privately as `creative-mcp-site-archive`.
-- **D2: installer language.** Recommended: Rust (see section 4).
+- **D2: installer language. Decided:** Rust, shipped as creative-mcp 0.1.0.
 - **D3: Blender MCP release. Done (2026-11-03):** licence files added, `VERSION` reconciled, the Windows CI failure fixed, and `v0.5.0` tagged and released. Homebrew installs it without `--HEAD`.
 - **D4: site generation.** Once the catalogue exists, generate the Projects grid, setup builder options and `llms.txt` key facts from it rather than hand-editing HTML.

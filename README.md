@@ -17,15 +17,22 @@ brew tap zachshallbetter/tap
 brew trust zachshallbetter/tap   # Homebrew 7 and later
 ```
 
-Start at [creativemcp.com/start.html](https://creativemcp.com/start.html) for the exact commands for your app and MCP client.
+Or set up everything at once on a Mac. The installer detects your apps and MCP clients, shows the plan, then installs, registers and verifies:
+
+```sh
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup
+```
+
+To do it by hand, start at [creativemcp.com/start.html](https://creativemcp.com/start.html) for the exact commands for your app and MCP client.
 
 ## What's in this repository
 
 | Path | Contents |
 | --- | --- |
 | [`site/`](site) | creativemcp.com: static pages in `site/dist`, generator scripts in `site/scripts`, Vercel config |
-| [`registry/`](registry) | The series catalogue (`registry.json`), its JSON Schema and validator. Draft: nothing reads it yet. |
-| [`cli/`](cli) | The planned `creative-mcp` installer. Not started. |
+| [`registry/`](registry) | The series catalogue (`registry.json`), its JSON Schema and validator. The installer is built from it. |
+| [`cli/`](cli) | The `creative-mcp` installer (Rust): detects apps and MCP clients, installs, registers and verifies |
 | [`docs/`](docs) | [Architecture and conventions](docs/ARCHITECTURE.md), [Digital Presence Protocol conformance](docs/DPP-CONFORMANCE.md), [analytics](docs/ANALYTICS.md) |
 
 ## Working on the site
