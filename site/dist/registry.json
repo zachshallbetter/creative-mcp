@@ -20,7 +20,7 @@
       },
       "requires": ["node>=18"],
       "servers": [
-        { "command": "adobe-mcp-suite", "role": "coordinator", "register_as": "adobe" },
+        { "command": "adobe-mcp-suite", "role": "coordinator", "register_as": "adobe", "requires_apps": ["illustrator", "indesign"] },
         { "command": "adobe-mcp-indesign", "app": "indesign", "register_as": "indesign" },
         { "command": "adobe-mcp-illustrator", "app": "illustrator", "register_as": "illustrator" },
         { "command": "adobe-mcp-photoshop", "app": "photoshop", "register_as": "photoshop" },
