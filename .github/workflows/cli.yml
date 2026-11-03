@@ -1,0 +1,31 @@
+name: CLI
+on:
+  pull_request:
+    paths: ["cli/**", "registry/**"]
+  push:
+    branches: [main]
+    paths: ["cli/**", "registry/**"]
+  workflow_dispatch:
+jobs:
+  test:
+    name: Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    defaults:
+      run:
+        working-directory: cli
+    env:
+      RUSTFLAGS: "-D warnings"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - run: cargo fmt --check
+      - run: cargo clippy --all-targets -- -D warnings
+      - run: cargo test
+      - run: cargo run --quiet -- --version
+      - run: cargo run --quiet -- list --json
