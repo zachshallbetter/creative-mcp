@@ -8,7 +8,8 @@ Key facts:
 - The projects are independent. A client can load both, but moving files between Adobe apps and Blender is a user-managed handoff.
 - Capability status is reported as Documented, Implemented, Tested or Validated; those levels are distinct and a lower level never implies a higher one.
 - Created by Zach Shallbetter (https://zachshallbetter.com/).
-- Each tool has its own repository and release cycle; they share the Homebrew tap `zachshallbetter/tap`. A series installer (`creative-mcp setup`) and catalogue are planned but not available yet.
+- Website, docs and the series catalogue (https://creativemcp.com/registry.json) are open source at https://github.com/zachshallbetter/creative-mcp.
+- Each tool has its own repository and release cycle; they share the Homebrew tap `zachshallbetter/tap`. A series installer (`creative-mcp setup`) is planned but not available yet; the catalogue is a draft that nothing reads yet.
 
 ---
 
@@ -1088,7 +1089,7 @@ How the series fits together
 
 # Architecture & distribution
 
-Creative MCP is a series of independent MCP implementations created by Zach Shallbetter. Each tool lives in its own repository and release cycle. They share one website, one Homebrew tap and, as planned, one installer and catalogue.
+Creative MCP is a series of independent MCP implementations created by Zach Shallbetter. Each tool lives in its own repository and release cycle. They share one website, one Homebrew tap and one catalogue, with a series installer planned.
 
 [Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)
 
@@ -1101,6 +1102,8 @@ Each implementation is a separate project with its own language, licence and rel
 | [Adobe MCP](https://creativemcp.com/apps.html): five app servers, Suite coordinator, shared core | [adobe-mcp](https://github.com/zachshallbetter/adobe-mcp) | Node.js 18+ | Homebrew `zachshallbetter/tap/adobe-mcp`, npm `adobe-mcp-*` | MIT
 
 | [Blender MCP](https://creativemcp.com/docs/implementations/blender.html): Rust server, CLI and Blender add-on | [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) | Rust | Homebrew `zachshallbetter/tap/blender-mcp` (`--HEAD` until a tagged release), Cargo from source | MIT OR Apache-2.0
+
+| Website, docs and series catalogue | [creative-mcp](https://github.com/zachshallbetter/creative-mcp) | HTML, Python, JSON | Served at creativemcp.com | MIT for code; content and brand reserved
 
 | Homebrew tap | [homebrew-tap](https://github.com/zachshallbetter/homebrew-tap) | Ruby formulae | `brew tap zachshallbetter/tap` |
 
@@ -1119,7 +1122,7 @@ Each formula runs a real MCP `initialize` check as its test. Update with `brew u
 
 ## Planned: one installer for the series
 
-Status: Planned. The installer and catalogue described here do not exist yet. Until they ship, use the per-tool installs above or the [setup builder](https://creativemcp.com/start.html).
+Status: Planned. The installer described here does not exist yet. Until they ship, use the per-tool installs above or the [setup builder](https://creativemcp.com/start.html).
 
 A browser can't see which apps you have installed, so the series will get a small local installer that can. `creative-mcp setup` will:
 
@@ -1136,9 +1139,11 @@ brew install zachshallbetter/tap/creative-mcp   # planned
 creative-mcp setup                             # planned
 ```
 
-## Planned: one catalogue for every tool
+## One catalogue for every tool
 
-Every place that lists tools (these docs, the setup builder, [llms.txt](https://creativemcp.com/llms.txt), the installer and the tap) will read one versioned catalogue, `registry.json`. Each entry records the tool's repository, licence, author, capability status, install methods, server commands, the apps it targets and how to detect them, and the clients it supports. Adding a tool to the series then means adding one entry.
+Status: Draft. The first version of the catalogue is published at [creativemcp.com/registry.json](https://creativemcp.com/registry.json), with a [JSON Schema](https://creativemcp.com/registry.schema.json), and validated on every change in the [creative-mcp repository](https://github.com/zachshallbetter/creative-mcp/tree/main/registry). Nothing reads it yet; the pages below are still written by hand.
+
+Every place that lists tools (these docs, the setup builder, [llms.txt](https://creativemcp.com/llms.txt), the installer and the tap) will read this one versioned catalogue. Each entry records the tool's repository, licence, author, capability status, install methods, server commands, the apps it targets and how to detect them, and the clients it supports. Adding a tool to the series then means adding one entry.
 
 ## Conventions for new tools
 
@@ -1162,7 +1167,7 @@ Every place that lists tools (these docs, the setup builder, [llms.txt](https://
 
 - Create the repository with a README, licence files, contribution guide and tagged releases.
 - Publish a package and add a formula to the tap with a working test.
-- Add the catalogue entry, with detection rules checked on a real machine.
+- Add the entry to [`registry/registry.json`](https://github.com/zachshallbetter/creative-mcp/blob/main/registry/registry.json), with detection rules checked on a real machine (mark unchecked ones `"verified": false`).
 - Add the implementation guide to these docs.
 - Record capability status honestly: only Validated means the workflow ran in the real app and its result was checked.
 
@@ -1198,8 +1203,10 @@ Proposing a new tool
 
 ## Join the series with the same conventions.
 
-A new implementation gets its own repository, published package, Homebrew formula in `zachshallbetter/tap`, implementation guide and, once the catalogue ships, a catalogue entry with detection rules checked on a real machine. Names follow one pattern: `<id>-mcp` for the repository, formula and package, and `<id>-mcp-<app>` for per-app servers.
+A new implementation gets its own repository, published package, Homebrew formula in `zachshallbetter/tap`, implementation guide and, a catalogue entry with detection rules checked on a real machine. Names follow one pattern: `<id>-mcp` for the repository, formula and package, and `<id>-mcp-<app>` for per-app servers.
 [Read the architecture & conventions →](https://creativemcp.com/docs/architecture.html#adding-a-tool)
+
+Site, docs and catalogue changes go to the public [creative-mcp repository](https://github.com/zachshallbetter/creative-mcp); see its [contribution guide](https://github.com/zachshallbetter/creative-mcp/blob/main/CONTRIBUTING.md).
 
 Make the contribution reviewable
 

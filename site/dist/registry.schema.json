@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creativemcp.com/registry.schema.json",
+  "title": "Creative MCP catalogue",
+  "description": "One entry per tool in the Creative MCP series. See docs/ARCHITECTURE.md.",
+  "type": "object",
+  "required": ["schema", "series", "updated", "tools", "clients"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema": { "const": 1 },
+    "series": { "const": "creative-mcp" },
+    "author": { "type": "string" },
+    "updated": { "type": "string", "format": "date" },
+    "tools": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/tool" } },
+    "clients": { "type": "array", "items": { "$ref": "#/$defs/client" } }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "url": { "type": "string", "pattern": "^https://" },
+    "detect": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "macos": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "bundle_ids": { "type": "array", "items": { "type": "string" } },
+            "bundle_id_prefixes": { "type": "array", "items": { "type": "string" } },
+            "min_version": { "type": "string" },
+            "verified": { "type": "boolean", "description": "true only when checked on a real machine" }
+          }
+        },
+        "windows": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "globs": { "type": "array", "items": { "type": "string" } },
+            "registry_display_names": { "type": "array", "items": { "type": "string" } },
+            "verified": { "type": "boolean" }
+          }
+        },
+        "linux": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "commands": { "type": "array", "items": { "type": "string" } },
+            "desktop_files": { "type": "array", "items": { "type": "string" } },
+            "verified": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "tool": {
+      "type": "object",
+      "required": ["id", "name", "summary", "repo", "docs", "license", "author", "status", "install", "servers", "targets", "clients"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "type": "string" },
+        "summary": { "type": "string", "maxLength": 200 },
+        "repo": { "$ref": "#/$defs/url" },
+        "docs": { "$ref": "#/$defs/url" },
+        "license": { "type": "string" },
+        "author": { "type": "string" },
+        "status": { "enum": ["Planned", "Documented", "Implemented", "Tested", "Validated"] },
+        "install": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "properties": {
+            "brew": { "type": "object", "required": ["formula"], "additionalProperties": false,
+                      "properties": { "formula": { "type": "string" }, "head_only": { "type": "boolean" } } },
+            "npm": { "type": "object", "required": ["package"], "additionalProperties": false,
+                     "properties": { "package": { "type": "string" } } },
+            "cargo": { "type": "object", "required": ["package"], "additionalProperties": false,
+                       "properties": { "git": { "$ref": "#/$defs/url" }, "package": { "type": "string" } } }
+          }
+        },
+        "requires": { "type": "array", "items": { "type": "string" } },
+        "servers": {
+          "type": "array", "minItems": 1,
+          "items": { "type": "object", "required": ["command", "register_as"], "additionalProperties": false,
+                     "properties": { "command": { "type": "string" }, "args": { "type": "array", "items": { "type": "string" } },
+                                     "role": { "type": "string" }, "app": { "$ref": "#/$defs/id" }, "register_as": { "$ref": "#/$defs/id" } } }
+        },
+        "post_install": { "type": "array", "items": { "type": "string" } },
+        "targets": {
+          "type": "array", "minItems": 1,
+          "items": { "type": "object", "required": ["app", "name", "detect"], "additionalProperties": false,
+                     "properties": { "app": { "$ref": "#/$defs/id" }, "name": { "type": "string" }, "detect": { "$ref": "#/$defs/detect" } } }
+        },
+        "clients": { "type": "array", "items": { "$ref": "#/$defs/id" } }
+      }
+    },
+    "client": {
+      "type": "object",
+      "required": ["id", "name", "detect"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "type": "string" },
+        "detect": { "type": "object", "additionalProperties": false,
+                    "properties": { "commands": { "type": "array", "items": { "type": "string" } },
+                                    "files": { "type": "array", "items": { "type": "string" } } } }
+      }
+    }
+  }
+}
