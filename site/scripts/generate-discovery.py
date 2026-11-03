@@ -9,7 +9,7 @@ import html
 import re
 import shutil
 import subprocess
-from datetime import date
+from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -153,13 +153,14 @@ def git(*args):
 
 
 def last_modified(path, current_text):
-    """Date of the last commit that changed the page's visible main content (head-only edits don't count)."""
-    history = [line.split() for line in git("log", "--format=%H %cs", "--", f"dist/{path}").splitlines()]
+    """ISO 8601 timestamp (with time zone) of the last commit that changed the page's visible main content.
+    Head-only edits don't count."""
+    history = [line.split() for line in git("log", "--format=%H %cI", "--", f"dist/{path}").splitlines()]
     if not history:
         return None
     if main_text(git("show", f"{history[0][0]}:./dist/{path}"), path) != current_text:
-        print(f"warning: {path} has uncommitted content changes; using today's date")
-        return date.today().isoformat()
+        print(f"warning: {path} has uncommitted content changes; using the current time")
+        return datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
     for (commit, day), parent in zip(history, history[1:] + [None]):
         older_text = main_text(git("show", f"{parent[0]}:./dist/{path}"), path) if parent else None
         if older_text != main_text(git("show", f"{commit}:./dist/{path}"), path):
@@ -201,7 +202,7 @@ def main():
 
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for path in pages:
-        lastmod = f"<lastmod>{info[path]['lastmod']}</lastmod>" if info[path]["lastmod"] else ""
+        lastmod = f"<lastmod>{info[path]['lastmod'][:10]}</lastmod>" if info[path]["lastmod"] else ""
         sitemap.append(f"  <url><loc>{info[path]['url']}</loc>{lastmod}</url>")
     sitemap.append("</urlset>")
     (DIST / "sitemap.xml").write_text("\n".join(sitemap) + "\n")
