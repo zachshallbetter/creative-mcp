@@ -4,7 +4,7 @@
 
 Key facts:
 - Adobe MCP: five app-specific Node.js servers (Node.js 18+, macOS or Windows) plus a Suite coordinator for two documented Illustrator-to-InDesign workflows. npm: `adobe-mcp-suite`; Homebrew: `brew install zachshallbetter/tap/adobe-mcp`. Source: https://github.com/zachshallbetter/adobe-mcp (MIT).
-- Blender MCP: a Rust MCP server and CLI with a companion Blender add-on (Blender 4.0+). Homebrew: `brew install --HEAD zachshallbetter/tap/blender-mcp` (builds the main branch; no tagged release yet). Source: https://github.com/zachshallbetter/blender-mcp-rs (MIT OR Apache-2.0).
+- Blender MCP: a Rust MCP server and CLI with a companion Blender add-on (Blender 4.0+). Homebrew: `brew install zachshallbetter/tap/blender-mcp` (v0.5.0). Source: https://github.com/zachshallbetter/blender-mcp-rs (MIT OR Apache-2.0).
 - The projects are independent. A client can load both, but moving files between Adobe apps and Blender is a user-managed handoff.
 - Capability status is reported as Documented, Implemented, Tested or Validated; those levels are distinct and a lower level never implies a higher one.
 - Created by Zach Shallbetter (https://zachshallbetter.com/).
@@ -114,7 +114,7 @@ Blender MCP · Homebrew
 ```
 brew tap zachshallbetter/tap
 brew trust zachshallbetter/tap
-brew install --HEAD zachshallbetter/tap/blender-mcp
+brew install zachshallbetter/tap/blender-mcp
 ```
 
 Adobe MCP · Claude Code with npx
@@ -299,7 +299,7 @@ Or let Homebrew build it for you:
 ```
 brew tap zachshallbetter/tap
 brew trust zachshallbetter/tap
-brew install --HEAD zachshallbetter/tap/blender-mcp
+brew install zachshallbetter/tap/blender-mcp
 ```
 
 [Blender setup guide →](https://creativemcp.com/docs/implementations/blender.html)
@@ -1101,7 +1101,7 @@ Each implementation is a separate project with its own language, licence and rel
 
 | [Adobe MCP](https://creativemcp.com/apps.html): five app servers, Suite coordinator, shared core | [adobe-mcp](https://github.com/zachshallbetter/adobe-mcp) | Node.js 18+ | Homebrew `zachshallbetter/tap/adobe-mcp`, npm `adobe-mcp-*` | MIT
 
-| [Blender MCP](https://creativemcp.com/docs/implementations/blender.html): Rust server, CLI and Blender add-on | [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) | Rust | Homebrew `zachshallbetter/tap/blender-mcp` (`--HEAD` until a tagged release), Cargo from source | MIT OR Apache-2.0
+| [Blender MCP](https://creativemcp.com/docs/implementations/blender.html): Rust server, CLI and Blender add-on | [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) | Rust | Homebrew `zachshallbetter/tap/blender-mcp` (v0.5.0), Cargo from source | MIT OR Apache-2.0
 
 | Website, docs and series catalogue | [creative-mcp](https://github.com/zachshallbetter/creative-mcp) | HTML, Python, JSON | Served at creativemcp.com | MIT for code; content and brand reserved
 
@@ -1115,10 +1115,10 @@ Every tool is published through its own ecosystem first (npm for Adobe MCP, Carg
 brew tap zachshallbetter/tap
 brew trust zachshallbetter/tap        # Homebrew 7+: trust a third-party tap once
 brew install zachshallbetter/tap/adobe-mcp
-brew install --HEAD zachshallbetter/tap/blender-mcp
+brew install zachshallbetter/tap/blender-mcp
 ```
 
-Each formula runs a real MCP `initialize` check as its test. Update with `brew upgrade`. For Blender MCP, use `brew upgrade --fetch-HEAD blender-mcp` until it has tagged releases.
+Each formula runs a real MCP `initialize` check as its test. Update with `brew upgrade`.
 
 ## Planned: one installer for the series
 
@@ -1823,12 +1823,12 @@ Install the CLI from the project’s Git repository:
 cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli
 ```
 
-Or install with Homebrew. There is no tagged release yet, so the formula builds the current `main` branch (`--HEAD`) and needs no Rust setup of your own:
+Or install with Homebrew. Homebrew builds the v0.5.0 release for you, so you don’t need Rust installed:
 
 ```
 brew tap zachshallbetter/tap
 brew trust zachshallbetter/tap
-brew install --HEAD zachshallbetter/tap/blender-mcp
+brew install zachshallbetter/tap/blender-mcp
 blender-mcp addon install
 ```
 

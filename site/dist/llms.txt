@@ -4,7 +4,7 @@
 
 Key facts:
 - Adobe MCP: five app-specific Node.js servers (Node.js 18+, macOS or Windows) plus a Suite coordinator for two documented Illustrator-to-InDesign workflows. npm: `adobe-mcp-suite`; Homebrew: `brew install zachshallbetter/tap/adobe-mcp`. Source: https://github.com/zachshallbetter/adobe-mcp (MIT).
-- Blender MCP: a Rust MCP server and CLI with a companion Blender add-on (Blender 4.0+). Homebrew: `brew install --HEAD zachshallbetter/tap/blender-mcp` (builds the main branch; no tagged release yet). Source: https://github.com/zachshallbetter/blender-mcp-rs (MIT OR Apache-2.0).
+- Blender MCP: a Rust MCP server and CLI with a companion Blender add-on (Blender 4.0+). Homebrew: `brew install zachshallbetter/tap/blender-mcp` (v0.5.0). Source: https://github.com/zachshallbetter/blender-mcp-rs (MIT OR Apache-2.0).
 - The projects are independent. A client can load both, but moving files between Adobe apps and Blender is a user-managed handoff.
 - Capability status is reported as Documented, Implemented, Tested or Validated; those levels are distinct and a lower level never implies a higher one.
 - Created by Zach Shallbetter (https://zachshallbetter.com/).
