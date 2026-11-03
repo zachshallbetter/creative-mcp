@@ -1,0 +1,8 @@
+# Report security issues in Creative MCP, Adobe MCP or Blender MCP privately
+# through GitHub's private vulnerability reporting for the affected repository.
+Contact: https://github.com/zachshallbetter/creative-mcp/security/advisories/new
+Contact: https://github.com/zachshallbetter/adobe-mcp/security/advisories/new
+Contact: https://github.com/zachshallbetter/blender-mcp-rs/security/advisories/new
+Expires: 2027-11-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://creativemcp.com/.well-known/security.txt

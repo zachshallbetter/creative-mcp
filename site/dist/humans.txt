@@ -1,0 +1,25 @@
+/* TEAM */
+Creator: Zach Shallbetter
+Role: Artist, designer and creative technologist
+Site: https://zachshallbetter.com/
+GitHub: https://github.com/zachshallbetter
+LinkedIn: https://linkedin.com/in/zachshallbetter
+Location: Spokane, Washington, United States
+
+/* PROJECTS */
+Adobe MCP: https://github.com/zachshallbetter/adobe-mcp
+Blender MCP: https://github.com/zachshallbetter/blender-mcp-rs
+Creative MCP (this site, catalogue and installer): https://github.com/zachshallbetter/creative-mcp
+Homebrew tap: https://github.com/zachshallbetter/homebrew-tap
+
+/* THANKS */
+Inter typeface: Rasmus Andersson and contributors (SIL Open Font License 1.1, /assets/fonts/inter-LICENSE.txt)
+Model Context Protocol: https://modelcontextprotocol.io/
+
+/* SITE */
+Language: English
+Standards: HTML, CSS, WCAG 2.2 AA, schema.org JSON-LD, Open Graph, sitemaps.org, llms.txt, IndexNow
+Components: hand-written HTML and CSS, no framework; Google Analytics 4 (see /about.html)
+Hosting: Vercel
+Licence: code MIT; site content, brand and images © 2026 Zach Shallbetter
+Machine-readable: /sitemap.xml, /llms.txt, /llms-full.txt, /registry.json, each page as Markdown (same path, .md)

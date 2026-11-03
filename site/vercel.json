@@ -28,6 +28,17 @@
       "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
     },
     {
+      "source": "/(humans.txt|.well-known/security.txt)",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
+    {
+      "source": "/(.*)\\.md",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Link", "value": "<https://creativemcp.com/$1.html>; rel=\"canonical\"" }
+      ]
+    },
+    {
       "source": "/site.webmanifest",
       "headers": [{ "key": "Content-Type", "value": "application/manifest+json" }]
     }

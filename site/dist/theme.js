@@ -18,8 +18,10 @@
       if (label) label.textContent = dark ? "Light" : "Dark";
       if (icon) icon.textContent = dark ? "☼" : "◐";
     });
-    var themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) themeColor.setAttribute("content", dark ? "#111417" : "#f4f0e8");
+    // An explicit choice overrides the system-matched theme-color pair.
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
+      meta.setAttribute("content", dark ? "#111417" : "#f4f0e8");
+    });
   }
 
   apply(root.dataset.theme, false);

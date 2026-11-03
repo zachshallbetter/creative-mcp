@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f4f0e8"><meta name="description" content="Illustrator MCP implementation guide: content, connection, API conventions and configuration.">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#111417" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark"><meta name="description" content="Drive Illustrator from an AI agent: artboards, layers, paths, type, color, effects, symbols and export. How the MCP server connects, its conventions and setup.">
 <meta name="author" content="Zach Shallbetter">
 <link rel="author" href="https://creativemcp.com/about.html">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -8,14 +8,16 @@
 <meta name="application-name" content="Creative MCP">
 <meta name="apple-mobile-web-app-title" content="Creative MCP">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index">
-<link rel="canonical" href="https://creativemcp.com/docs/implementations/illustrator.html"><meta property="og:type" content="article"><meta property="og:title" content="Illustrator implementation — Creative MCP Docs"><meta property="og:description" content="Illustrator MCP implementation guide: content, connection, API conventions and configuration."><meta property="og:url" content="https://creativemcp.com/docs/implementations/illustrator.html"><meta property="article:author" content="https://creativemcp.com/about.html"><meta property="article:modified_time" content="2026-11-03T03:44:30-08:00"><meta property="og:site_name" content="Creative MCP"><meta property="og:locale" content="en_US">
+<link rel="alternate" type="text/markdown" href="/docs/implementations/illustrator.md" title="This page as Markdown">
+<link rel="author" type="text/plain" href="/humans.txt">
+<link rel="canonical" href="https://creativemcp.com/docs/implementations/illustrator.html"><meta property="og:type" content="article"><meta property="og:title" content="Illustrator implementation — Creative MCP Docs"><meta property="og:description" content="Drive Illustrator from an AI agent: artboards, layers, paths, type, color, effects, symbols and export. How the MCP server connects, its conventions and setup."><meta property="og:url" content="https://creativemcp.com/docs/implementations/illustrator.html"><meta property="article:author" content="https://creativemcp.com/about.html"><meta property="article:modified_time" content="2026-11-03T03:44:30-08:00"><meta property="og:site_name" content="Creative MCP"><meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://creativemcp.com/assets/social/docs-illustrator.jpg">
 <meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Creative MCP, Implementation guide: Illustrator Artboards, paths, layers, type, color and artwork export over MCP. By Zach Shallbetter.">
 <meta name="twitter:image" content="https://creativemcp.com/assets/social/docs-illustrator.jpg">
 <meta name="twitter:image:alt" content="Creative MCP, Implementation guide: Illustrator Artboards, paths, layers, type, color and artwork export over MCP. By Zach Shallbetter.">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Illustrator implementation — Creative MCP Docs"><meta name="twitter:description" content="Illustrator MCP implementation guide: content, connection, API conventions and configuration.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Illustrator implementation — Creative MCP Docs"><meta name="twitter:description" content="Drive Illustrator from an AI agent: artboards, layers, paths, type, color, effects, symbols and export. How the MCP server connects, its conventions and setup.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -25,7 +27,7 @@
       "@id": "https://creativemcp.com/docs/implementations/illustrator.html#webpage",
       "url": "https://creativemcp.com/docs/implementations/illustrator.html",
       "name": "Illustrator implementation — Creative MCP Docs",
-      "description": "Illustrator MCP implementation guide: content, connection, API conventions and configuration.",
+      "description": "Drive Illustrator from an AI agent: artboards, layers, paths, type, color, effects, symbols and export. How the MCP server connects, its conventions and setup.",
       "isPartOf": {
         "@id": "https://creativemcp.com/#website"
       },
@@ -51,13 +53,17 @@
       },
       "mainEntity": {
         "@id": "https://creativemcp.com/docs/implementations/illustrator.html#article"
-      }
+      },
+      "copyrightHolder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "copyrightYear": 2026
     },
     {
       "@type": "TechArticle",
       "@id": "https://creativemcp.com/docs/implementations/illustrator.html#article",
       "headline": "Illustrator",
-      "description": "Illustrator MCP implementation guide: content, connection, API conventions and configuration.",
+      "description": "Drive Illustrator from an AI agent: artboards, layers, paths, type, color, effects, symbols and export. How the MCP server connects, its conventions and setup.",
       "author": {
         "@id": "https://creativemcp.com/about.html#zach-shallbetter"
       },
@@ -75,7 +81,11 @@
       },
       "about": {
         "@id": "https://creativemcp.com/apps.html#adobe-mcp"
-      }
+      },
+      "copyrightHolder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "copyrightYear": 2026
     },
     {
       "@type": "BreadcrumbList",
@@ -106,23 +116,114 @@
       "@id": "https://creativemcp.com/about.html#zach-shallbetter",
       "name": "Zach Shallbetter",
       "url": "https://zachshallbetter.com/",
+      "image": "https://creativemcp.com/assets/zach-shallbetter-portrait.webp",
+      "jobTitle": [
+        "Artist",
+        "Designer",
+        "Creative Technologist"
+      ],
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Spokane, Washington, United States"
+      },
       "sameAs": [
         "https://zachshallbetter.com/",
         "https://github.com/zachshallbetter",
         "https://linkedin.com/in/zachshallbetter"
+      ],
+      "worksFor": {
+        "@id": "https://creativemcp.com/about.html#snack-studio"
+      },
+      "knowsAbout": [
+        "Creative software",
+        "Visual storytelling",
+        "Interface design",
+        "Interactive media",
+        "Computer vision",
+        "Creative production tools",
+        "Model Context Protocol"
       ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://creativemcp.com/#website",
+      "url": "https://creativemcp.com/",
+      "name": "Creative MCP",
+      "description": "Open implementations that connect creative tools to agent workflows.",
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "creator": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://creativemcp.com/#organization",
+      "name": "Creative MCP",
+      "url": "https://creativemcp.com/",
+      "description": "An open collection of local MCP implementations connecting AI agents with creative software.",
+      "founder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "sameAs": [
+        "https://github.com/zachshallbetter/creative-mcp",
+        "https://github.com/zachshallbetter/adobe-mcp",
+        "https://github.com/zachshallbetter/blender-mcp-rs"
+      ],
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://creativemcp.com/assets/icons/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://creativemcp.com/assets/social/home.jpg"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://creativemcp.com/apps.html#adobe-mcp",
+      "name": "Adobe MCP",
+      "description": "Local MCP servers that connect an MCP client to InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, with a suite coordinator for two documented cross-app workflows.",
+      "url": "https://creativemcp.com/apps.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS, Windows",
+      "softwareRequirements": "Node.js 18 or later; the Adobe desktop application you want to use",
+      "license": "https://opensource.org/license/mit",
+      "isAccessibleForFree": true,
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "sameAs": [
+        "https://github.com/zachshallbetter/adobe-mcp",
+        "https://www.npmjs.com/package/adobe-mcp-suite"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://creativemcp.com/about.html#snack-studio",
+      "name": "Snack Studio",
+      "founder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
     }
   ]
 }
 </script>
-<title>Illustrator implementation — Creative MCP Docs</title><script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script><link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/site-tokens.css?v=14"><link rel="stylesheet" href="/docs/docs.css?v=2">
+<noscript><style>.theme-toggle, button.copy, .needs-js { display: none !important; }</style></noscript><title>Illustrator implementation — Creative MCP Docs</title><script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script><link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/site-tokens.css?v=15"><link rel="stylesheet" href="/docs/docs.css?v=3">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
 <script src="/analytics.js?v=2" defer></script>
 </head><body>
-<a class="skip-link" href="#top">Skip to main content</a><header class="wrap topbar"><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><nav class="topnav" aria-label="Main navigation"><a href="/projects.html" data-event-id="nav_projects">Projects</a><a href="/how-it-works.html" data-event-id="nav_how_it_works">How it works</a><a href="/docs/" data-event-id="nav_docs" aria-current="page">Docs</a><a href="/about.html" data-event-id="nav_about">About</a><button class="theme-toggle" data-event-id="theme_toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a class="button" href="/docs/getting-started.html" data-event-id="cta_get_started"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav></header><main class="wrap doc-implementation app-illustrator" id="top" tabindex="-1"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/docs/" data-event-id="nav_docs">Docs</a> / <a href="/docs/#implementation-guides">Implementation guides</a> / <span aria-current="page">Illustrator</span></nav><div class="eyebrow">Implementation guide · Illustrator</div><h1>Illustrator</h1><p class="lede">The Illustrator MCP server works with documents, artboards, layers, vector shapes and paths, text, color, appearance, effects, symbols, patterns, images, actions, variables and export.</p><nav class="doc-tabs" aria-label="Documentation topics"><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/content.html">Content</a><a href="/docs/api.html">MCP API</a><a href="/docs/cli.html">CLI &amp; config</a><a href="/docs/architecture.html">Architecture</a><a href="/docs/implementations/indesign.html">InDesign</a><a href="/docs/implementations/illustrator.html" aria-current="page">Illustrator</a><a href="/docs/implementations/photoshop.html">Photoshop</a><a href="/docs/implementations/aftereffects.html">After Effects</a><a href="/docs/implementations/premiere.html">Premiere</a><a href="/docs/implementations/suite.html">Suite</a></nav>
+<a class="skip-link" href="#top">Skip to main content</a><header class="wrap topbar"><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><nav class="topnav" aria-label="Main navigation"><a href="/projects.html" data-event-id="nav_projects">Projects</a><a href="/how-it-works.html" data-event-id="nav_how_it_works">How it works</a><a href="/docs/" data-event-id="nav_docs" aria-current="page">Docs</a><a href="/about.html" data-event-id="nav_about">About</a><button class="theme-toggle" data-event-id="theme_toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a class="button" href="/docs/getting-started.html" data-event-id="cta_get_started"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav></header><main class="wrap doc-implementation app-illustrator" id="top" tabindex="-1"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/docs/" data-event-id="nav_docs">Docs</a> / <a href="/docs/#implementation-guides">Implementation guides</a> / <span aria-current="page">Illustrator</span></nav><article class="doc-article"><div class="eyebrow">Implementation guide · Illustrator</div><h1>Illustrator</h1><p class="lede">The Illustrator MCP server works with documents, artboards, layers, vector shapes and paths, text, color, appearance, effects, symbols, patterns, images, actions, variables and export.</p><nav class="doc-tabs" aria-label="Documentation topics"><a href="/docs/" data-event-id="nav_docs">Docs home</a><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/content.html">Content</a><a href="/docs/api.html">MCP API</a><a href="/docs/cli.html">CLI &amp; config</a><a href="/docs/architecture.html">Architecture</a><a href="/docs/implementations/indesign.html">InDesign</a><a href="/docs/implementations/illustrator.html" aria-current="page">Illustrator</a><a href="/docs/implementations/photoshop.html">Photoshop</a><a href="/docs/implementations/aftereffects.html">After Effects</a><a href="/docs/implementations/premiere.html">Premiere Pro</a><a href="/docs/implementations/suite.html">Suite</a><a href="/docs/implementations/core.html">Shared core</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a><a href="/docs/contributing.html">Contribute</a></nav>
 <section class="doc-section" id="what-this-implementation-covers"><h2>What this implementation covers</h2><p>document setup; artboards; artwork, shapes, paths and transforms; layers and selection; text and styles; color and appearance; effects, blends, brushes, patterns and symbols; images and export; actions and prepress.</p><p>For feature-level detail and evidence, see the <a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability Atlas</a>.</p></section>
 <section class="doc-section" id="connection-and-requirements"><h2>Connection and requirements</h2><div class="doc-grid"><div class="doc-card"><span class="tag">Runtime route</span><h3>How it reaches the app</h3><p>ExtendScript via AppleScript on macOS or COM through PowerShell on Windows.</p></div><div class="doc-card"><span class="tag">Prerequisites</span><h3>What you need</h3><p>Illustrator 2023 or later; Node.js 18+; macOS or Windows.</p></div></div><p><strong>Package:</strong> <code>adobe-mcp-illustrator</code>. Add it as a local stdio MCP server using <a href="/docs/cli.html">CLI &amp; client configuration</a>.</p></section>
 <section class="doc-section" id="api-and-content-conventions"><h2>API and content conventions</h2><p>Use live MCP tools/list and help for exact definitions. Check coordinate direction, artboard index and target selector before editing.</p><p>Discover the running package’s exact tool names and JSON input schemas through MCP <code>tools/list</code>. If the server provides <code>help</code>, use it to inspect a tool or category. Schemas from a different package version may not match.</p><div class="callout"><p><strong>Target and units:</strong> Geometry uses points from the active artboard’s top-left; y increases downward. Target artwork by item ids, names or selection. Color accepts named swatches or documented color strings. File paths are home-folder confined plus ILLUSTRATOR_ALLOWED_DIRS.</p></div></section>
 <section class="doc-section" id="cli-and-configuration"><h2>CLI and configuration</h2><p>This package is launched as a persistent MCP process, not as a conventional one-shot CLI. Relevant settings documented by the package include:</p><div class="callout"><p><code>ILLUSTRATOR_APP_NAME, ILLUSTRATOR_SCRIPT_TIMEOUT_MS, ILLUSTRATOR_ALLOWED_DIRS, ILLUSTRATOR_TARGET and documented shared backend settings.</code></p></div><p>Variable names and defaults are package-specific; consult the package README before changing them. File-operation permissions and bridge tokens should be configured in the client’s environment, not embedded in prompts or checked into source.</p><pre tabindex="0"><code>claude mcp add illustrator -- npx -y adobe-mcp-illustrator</code></pre><p>For client-neutral JSON configuration and source-checkout commands, see <a href="/docs/cli.html">CLI &amp; configuration</a>.</p></section>
-<section class="doc-section" id="full-reference"><h2>Full reference</h2><p>The repository README is maintained alongside this implementation and covers exact setup, tool families, package-specific behavior, limitations, security and development status.</p><ul><li><a href="https://github.com/zachshallbetter/adobe-mcp/blob/main/packages/illustrator/README.md">Illustrator package README ↗</a></li><li><a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/illustrator">Browse package source and supporting docs ↗</a></li><li><a href="/docs/api.html">MCP API conventions ↗</a></li><li><a href="/docs/cli.html">Launch and environment reference ↗</a></li></ul></section></main><footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/apps.html" data-event-id="cta_adobe_mcp">Adobe MCP</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/" data-event-id="nav_docs">Docs</a><a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer><script src="/docs/search.js?v=6" defer></script><script src="/theme.js" defer></script><script src="/events.js?v=2" defer></script>
+<section class="doc-section" id="full-reference"><h2>Full reference</h2><p>The repository README is maintained alongside this implementation and covers exact setup, tool families, package-specific behavior, limitations, security and development status.</p><ul><li><a href="https://github.com/zachshallbetter/adobe-mcp/blob/main/packages/illustrator/README.md">Illustrator package README ↗</a></li><li><a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/illustrator">Browse package source and supporting docs ↗</a></li><li><a href="/docs/api.html">MCP API conventions ↗</a></li><li><a href="/docs/cli.html">Launch and environment reference ↗</a></li></ul></section></article></main><footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a>. Code is <a href="https://github.com/zachshallbetter/creative-mcp/blob/main/LICENSE">MIT licensed</a>; site content and images © 2026 Zach Shallbetter. <a href="/privacy.html">Privacy</a> · <a href="/humans.txt">humans.txt</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/apps.html" data-event-id="cta_adobe_mcp">Adobe MCP</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/" data-event-id="nav_docs">Docs</a><a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer><script src="/docs/search.js?v=6" defer></script><script src="/theme.js" defer></script><script src="/events.js?v=2" defer></script>
 </body></html>

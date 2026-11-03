@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f4f0e8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#111417" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark">
 <meta name="description" content="Setup, configuration, workflows, troubleshooting and safety guidance for Creative MCP implementations, including Adobe MCP and Blender MCP.">
 <meta name="author" content="Zach Shallbetter">
 <link rel="author" href="https://creativemcp.com/about.html">
@@ -14,6 +14,8 @@
 <meta name="application-name" content="Creative MCP">
 <meta name="apple-mobile-web-app-title" content="Creative MCP">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index">
+<link rel="alternate" type="text/markdown" href="/docs/getting-started.md" title="This page as Markdown">
+<link rel="author" type="text/plain" href="/humans.txt">
 <link rel="canonical" href="https://creativemcp.com/docs/getting-started.html">
 <meta property="og:type" content="article"><meta property="og:title" content="Getting Started — Creative MCP Docs"><meta property="og:description" content="Setup, configuration, workflows, troubleshooting and safety guidance for Creative MCP implementations, including Adobe MCP and Blender MCP."><meta property="og:url" content="https://creativemcp.com/docs/getting-started.html"><meta property="article:author" content="https://creativemcp.com/about.html"><meta property="article:modified_time" content="2026-11-03T04:34:20-08:00"><meta property="og:site_name" content="Creative MCP"><meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://creativemcp.com/assets/social/docs-getting-started.jpg">
@@ -55,6 +57,13 @@
       },
       "mainEntity": {
         "@id": "https://creativemcp.com/docs/getting-started.html#article"
+      },
+      "copyrightHolder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "copyrightYear": 2026,
+      "breadcrumb": {
+        "@id": "https://creativemcp.com/docs/getting-started.html#breadcrumb"
       }
     },
     {
@@ -76,28 +85,119 @@
       },
       "mainEntityOfPage": {
         "@id": "https://creativemcp.com/docs/getting-started.html#webpage"
-      }
+      },
+      "copyrightHolder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "copyrightYear": 2026
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://creativemcp.com/docs/getting-started.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Docs",
+          "item": "https://creativemcp.com/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Getting started",
+          "item": "https://creativemcp.com/docs/getting-started.html"
+        }
+      ]
     },
     {
       "@type": "Person",
       "@id": "https://creativemcp.com/about.html#zach-shallbetter",
       "name": "Zach Shallbetter",
       "url": "https://zachshallbetter.com/",
+      "image": "https://creativemcp.com/assets/zach-shallbetter-portrait.webp",
+      "jobTitle": [
+        "Artist",
+        "Designer",
+        "Creative Technologist"
+      ],
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Spokane, Washington, United States"
+      },
       "sameAs": [
         "https://zachshallbetter.com/",
         "https://github.com/zachshallbetter",
         "https://linkedin.com/in/zachshallbetter"
+      ],
+      "worksFor": {
+        "@id": "https://creativemcp.com/about.html#snack-studio"
+      },
+      "knowsAbout": [
+        "Creative software",
+        "Visual storytelling",
+        "Interface design",
+        "Interactive media",
+        "Computer vision",
+        "Creative production tools",
+        "Model Context Protocol"
       ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://creativemcp.com/#website",
+      "url": "https://creativemcp.com/",
+      "name": "Creative MCP",
+      "description": "Open implementations that connect creative tools to agent workflows.",
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "creator": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://creativemcp.com/#organization",
+      "name": "Creative MCP",
+      "url": "https://creativemcp.com/",
+      "description": "An open collection of local MCP implementations connecting AI agents with creative software.",
+      "founder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "sameAs": [
+        "https://github.com/zachshallbetter/creative-mcp",
+        "https://github.com/zachshallbetter/adobe-mcp",
+        "https://github.com/zachshallbetter/blender-mcp-rs"
+      ],
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://creativemcp.com/assets/icons/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://creativemcp.com/assets/social/home.jpg"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://creativemcp.com/about.html#snack-studio",
+      "name": "Snack Studio",
+      "founder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
     }
   ]
 }
 </script>
-<title>Getting Started — Creative MCP Docs</title>
+<noscript><style>.theme-toggle, button.copy, .needs-js { display: none !important; }</style></noscript><title>Getting Started — Creative MCP Docs</title>
 <script>
 try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }
 </script>
-<link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/site-tokens.css?v=14">
-<link rel="stylesheet" href="/docs/docs.css?v=2">
+<link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/site-tokens.css?v=15">
+<link rel="stylesheet" href="/docs/docs.css?v=3">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
   <script src="/analytics.js?v=2" defer></script>
 </head>
@@ -105,7 +205,7 @@ try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.docume
 <a class="skip-link" href="#top">Skip to main content</a>
 <header class="wrap topbar"><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><nav class="topnav" aria-label="Main navigation"><a href="/projects.html" data-event-id="nav_projects">Projects</a><a href="/how-it-works.html" data-event-id="nav_how_it_works">How it works</a><a href="/docs/" data-event-id="nav_docs" aria-current="page">Docs</a><a href="/about.html" data-event-id="nav_about">About</a><button class="theme-toggle" data-event-id="theme_toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a class="button" href="/docs/getting-started.html" data-event-id="cta_get_started"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav></header>
 <main class="wrap" id="top" tabindex="-1">
-  <div class="eyebrow">Field guide · setup to first workflow</div>
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/docs/" data-event-id="nav_docs">Docs</a> / <span aria-current="page">Getting started</span></nav><div class="eyebrow">Field guide · setup to first workflow</div>
   <h1>Get set up.</h1>
   <p class="lede">Install the local servers, connect them to your MCP client, understand which Adobe app each package reaches, and troubleshoot the bridge between your model and your creative work.</p>
   <p class="doc-meta">LOCAL PROCESS · MCP OVER STDIO · macOS + WINDOWS</p>
@@ -328,7 +428,7 @@ claude mcp add illustrator -- adobe-mcp-illustrator</code></pre>
     </article>
   </div>
 </main>
-<footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/apps.html" data-event-id="cta_adobe_mcp">Adobe MCP</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/" data-event-id="nav_docs">Docs</a><a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer>
+<footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a>. Code is <a href="https://github.com/zachshallbetter/creative-mcp/blob/main/LICENSE">MIT licensed</a>; site content and images © 2026 Zach Shallbetter. <a href="/privacy.html">Privacy</a> · <a href="/humans.txt">humans.txt</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/apps.html" data-event-id="cta_adobe_mcp">Adobe MCP</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/" data-event-id="nav_docs">Docs</a><a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer>
 <script src="/docs/search.js?v=6" defer></script><script src="/theme.js" defer></script>
 <script src="/events.js?v=2" defer></script>
 </body>

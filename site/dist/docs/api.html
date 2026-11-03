@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f4f0e8"><meta name="description" content="How the Adobe MCP servers expose tools over stdio: discovery, tool metadata, calls, results, execution boundaries and where to find exact parameters.">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#111417" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark"><meta name="description" content="How the Adobe MCP servers expose tools over stdio: discovery, tool metadata, calls, results, execution boundaries and where to find exact parameters.">
 <meta name="author" content="Zach Shallbetter">
 <link rel="author" href="https://creativemcp.com/about.html">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -8,6 +8,8 @@
 <meta name="application-name" content="Creative MCP">
 <meta name="apple-mobile-web-app-title" content="Creative MCP">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index">
+<link rel="alternate" type="text/markdown" href="/docs/api.md" title="This page as Markdown">
+<link rel="author" type="text/plain" href="/humans.txt">
 <link rel="canonical" href="https://creativemcp.com/docs/api.html"><meta property="og:type" content="article"><meta property="og:title" content="MCP API reference — Creative MCP Docs"><meta property="og:description" content="How the Adobe MCP servers expose tools over stdio: discovery, tool metadata, calls, results, execution boundaries and where to find exact parameters."><meta property="og:url" content="https://creativemcp.com/docs/api.html"><meta property="article:author" content="https://creativemcp.com/about.html"><meta property="article:modified_time" content="2026-11-03T03:44:30-08:00"><meta property="og:site_name" content="Creative MCP"><meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://creativemcp.com/assets/social/docs-api.jpg">
 <meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200">
@@ -51,7 +53,11 @@
       },
       "mainEntity": {
         "@id": "https://creativemcp.com/docs/api.html#article"
-      }
+      },
+      "copyrightHolder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "copyrightYear": 2026
     },
     {
       "@type": "TechArticle",
@@ -75,7 +81,11 @@
       },
       "about": {
         "@id": "https://creativemcp.com/apps.html#adobe-mcp"
-      }
+      },
+      "copyrightHolder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "copyrightYear": 2026
     },
     {
       "@type": "BreadcrumbList",
@@ -100,21 +110,112 @@
       "@id": "https://creativemcp.com/about.html#zach-shallbetter",
       "name": "Zach Shallbetter",
       "url": "https://zachshallbetter.com/",
+      "image": "https://creativemcp.com/assets/zach-shallbetter-portrait.webp",
+      "jobTitle": [
+        "Artist",
+        "Designer",
+        "Creative Technologist"
+      ],
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Spokane, Washington, United States"
+      },
       "sameAs": [
         "https://zachshallbetter.com/",
         "https://github.com/zachshallbetter",
         "https://linkedin.com/in/zachshallbetter"
+      ],
+      "worksFor": {
+        "@id": "https://creativemcp.com/about.html#snack-studio"
+      },
+      "knowsAbout": [
+        "Creative software",
+        "Visual storytelling",
+        "Interface design",
+        "Interactive media",
+        "Computer vision",
+        "Creative production tools",
+        "Model Context Protocol"
       ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://creativemcp.com/#website",
+      "url": "https://creativemcp.com/",
+      "name": "Creative MCP",
+      "description": "Open implementations that connect creative tools to agent workflows.",
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "creator": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://creativemcp.com/#organization",
+      "name": "Creative MCP",
+      "url": "https://creativemcp.com/",
+      "description": "An open collection of local MCP implementations connecting AI agents with creative software.",
+      "founder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "sameAs": [
+        "https://github.com/zachshallbetter/creative-mcp",
+        "https://github.com/zachshallbetter/adobe-mcp",
+        "https://github.com/zachshallbetter/blender-mcp-rs"
+      ],
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://creativemcp.com/assets/icons/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://creativemcp.com/assets/social/home.jpg"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://creativemcp.com/apps.html#adobe-mcp",
+      "name": "Adobe MCP",
+      "description": "Local MCP servers that connect an MCP client to InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, with a suite coordinator for two documented cross-app workflows.",
+      "url": "https://creativemcp.com/apps.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS, Windows",
+      "softwareRequirements": "Node.js 18 or later; the Adobe desktop application you want to use",
+      "license": "https://opensource.org/license/mit",
+      "isAccessibleForFree": true,
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "sameAs": [
+        "https://github.com/zachshallbetter/adobe-mcp",
+        "https://www.npmjs.com/package/adobe-mcp-suite"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://creativemcp.com/about.html#snack-studio",
+      "name": "Snack Studio",
+      "founder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
     }
   ]
 }
 </script>
-<title>MCP API reference — Creative MCP Docs</title><script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script><link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/site-tokens.css?v=14"><link rel="stylesheet" href="/docs/docs.css?v=2">
+<noscript><style>.theme-toggle, button.copy, .needs-js { display: none !important; }</style></noscript><title>MCP API reference — Creative MCP Docs</title><script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script><link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/site-tokens.css?v=15"><link rel="stylesheet" href="/docs/docs.css?v=3">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
 <script src="/analytics.js?v=2" defer></script>
 </head><body>
-<a class="skip-link" href="#top">Skip to main content</a><header class="wrap topbar"><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><nav class="topnav" aria-label="Main navigation"><a href="/projects.html" data-event-id="nav_projects">Projects</a><a href="/how-it-works.html" data-event-id="nav_how_it_works">How it works</a><a href="/docs/" data-event-id="nav_docs" aria-current="page">Docs</a><a href="/about.html" data-event-id="nav_about">About</a><button class="theme-toggle" data-event-id="theme_toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a class="button" href="/docs/getting-started.html" data-event-id="cta_get_started"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav></header><main class="wrap" id="top" tabindex="-1"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/docs/" data-event-id="nav_docs">Docs</a> / <span aria-current="page">MCP API reference</span></nav><div class="eyebrow">Protocol surface · tool schemas</div><h1>MCP API reference</h1><p class="lede">The Adobe servers expose tools through MCP over stdio. Use the server’s advertised schema as the executable contract; this page explains discovery, calls, instructions, results and where to find exact per-tool parameters.</p><nav class="doc-tabs" aria-label="Documentation topics"><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/content.html">Content</a><a href="/docs/api.html">MCP API</a><a href="/docs/cli.html">CLI &amp; config</a><a href="/docs/architecture.html">Architecture</a><a href="/docs/implementations/indesign.html">InDesign</a><a href="/docs/implementations/illustrator.html">Illustrator</a><a href="/docs/implementations/photoshop.html">Photoshop</a><a href="/docs/implementations/aftereffects.html">After Effects</a><a href="/docs/implementations/premiere.html">Premiere</a><a href="/docs/implementations/suite.html">Suite</a></nav><section class="doc-section" id="transport-and-lifecycle"><h2>Transport and lifecycle</h2><p>The MCP client launches the configured command as a local process and communicates over standard input/output. The process stdout is protocol traffic; startup diagnostics belong on stderr. There is no public HTTP API for the desktop servers.</p><ol class="steps"><li>The client starts the server and negotiates MCP initialization.</li><li>The server returns its identity, capabilities and app-specific usage instructions.</li><li>The client discovers tool names and JSON input schemas with <code>tools/list</code>.</li><li>The client invokes a tool with <code>tools/call</code> and arguments that match the advertised schema.</li><li>The server validates inputs, performs the app operation, then returns structured text/content or an error result.</li></ol></section><section class="doc-section" id="discover-the-live-api"><h2>Discover the live API</h2><p>Do not treat a marketing summary, Atlas row or old copy of a README as the current schema. The connected server’s <code>tools/list</code> is authoritative for the tool names and inputs exposed by that running package.</p><div class="doc-grid"><div class="doc-card"><span class="tag">Discovery</span><h3><code>tools/list</code></h3><p>Returns advertised tools and their JSON input schemas. Reconnect after a package upgrade so the client refreshes its list.</p></div><div class="doc-card"><span class="tag">Detailed guidance</span><h3><code>help</code></h3><p>App servers with the help utility can describe a tool, list categories, and provide detailed usage/examples. Consult the app-specific guide for its exact formats.</p></div><div class="doc-card"><span class="tag">Execution</span><h3><code>tools/call</code></h3><p>Calls one tool using the exact tool name and schema-defined argument object. Respect enum, unit, target and path constraints.</p></div></div><pre tabindex="0"><code>Client action (conceptual):
+<a class="skip-link" href="#top">Skip to main content</a><header class="wrap topbar"><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><nav class="topnav" aria-label="Main navigation"><a href="/projects.html" data-event-id="nav_projects">Projects</a><a href="/how-it-works.html" data-event-id="nav_how_it_works">How it works</a><a href="/docs/" data-event-id="nav_docs" aria-current="page">Docs</a><a href="/about.html" data-event-id="nav_about">About</a><button class="theme-toggle" data-event-id="theme_toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a class="button" href="/docs/getting-started.html" data-event-id="cta_get_started"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav></header><main class="wrap" id="top" tabindex="-1"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/docs/" data-event-id="nav_docs">Docs</a> / <span aria-current="page">MCP API reference</span></nav><article class="doc-article"><div class="eyebrow">Protocol surface · tool schemas</div><h1>MCP API reference</h1><p class="lede">The Adobe servers expose tools through MCP over stdio. Use the server’s advertised schema as the executable contract; this page explains discovery, calls, instructions, results and where to find exact per-tool parameters.</p><nav class="doc-tabs" aria-label="Documentation topics"><a href="/docs/" data-event-id="nav_docs">Docs home</a><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/content.html">Content</a><a href="/docs/api.html" aria-current="page">MCP API</a><a href="/docs/cli.html">CLI &amp; config</a><a href="/docs/architecture.html">Architecture</a><a href="/docs/implementations/indesign.html">InDesign</a><a href="/docs/implementations/illustrator.html">Illustrator</a><a href="/docs/implementations/photoshop.html">Photoshop</a><a href="/docs/implementations/aftereffects.html">After Effects</a><a href="/docs/implementations/premiere.html">Premiere Pro</a><a href="/docs/implementations/suite.html">Suite</a><a href="/docs/implementations/core.html">Shared core</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a><a href="/docs/contributing.html">Contribute</a></nav><section class="doc-section" id="transport-and-lifecycle"><h2>Transport and lifecycle</h2><p>The MCP client launches the configured command as a local process and communicates over standard input/output. The process stdout is protocol traffic; startup diagnostics belong on stderr. There is no public HTTP API for the desktop servers.</p><ol class="steps"><li>The client starts the server and negotiates MCP initialization.</li><li>The server returns its identity, capabilities and app-specific usage instructions.</li><li>The client discovers tool names and JSON input schemas with <code>tools/list</code>.</li><li>The client invokes a tool with <code>tools/call</code> and arguments that match the advertised schema.</li><li>The server validates inputs, performs the app operation, then returns structured text/content or an error result.</li></ol></section><section class="doc-section" id="discover-the-live-api"><h2>Discover the live API</h2><p>Do not treat a marketing summary, Atlas row or old copy of a README as the current schema. The connected server’s <code>tools/list</code> is authoritative for the tool names and inputs exposed by that running package.</p><div class="doc-grid"><div class="doc-card"><span class="tag">Discovery</span><h3><code>tools/list</code></h3><p>Returns advertised tools and their JSON input schemas. Reconnect after a package upgrade so the client refreshes its list.</p></div><div class="doc-card"><span class="tag">Detailed guidance</span><h3><code>help</code></h3><p>App servers with the help utility can describe a tool, list categories, and provide detailed usage/examples. Consult the app-specific guide for its exact formats.</p></div><div class="doc-card"><span class="tag">Execution</span><h3><code>tools/call</code></h3><p>Calls one tool using the exact tool name and schema-defined argument object. Respect enum, unit, target and path constraints.</p></div></div><pre tabindex="0"><code>Client action (conceptual):
   discover tools → choose an advertised name
   call tool with arguments matching that tool's input schema
-  inspect isError and returned content before continuing</code></pre><p>Use the package tool references for full parameter tables: <a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign/docs">InDesign generated tool reference</a>, and the <a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/illustrator">Illustrator</a>, <a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/photoshop">Photoshop</a>, <a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/aftereffects">After Effects</a>, <a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/premiere">Premiere</a> and <a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/suite">Suite</a> READMEs.</p></section><section class="doc-section" id="tool-metadata-and-results"><h2>Tool metadata and results</h2><ul><li><strong>Input schema:</strong> use the exact property names, required fields, types, ranges and enum values returned by the server.</li><li><strong>Instructions:</strong> server instructions explain app conventions such as units, indices, colors, path rules, errors and safe targeting. MCP clients may pass them to the model as connection context.</li><li><strong>Annotations:</strong> supported tools may identify read-only, destructive, idempotent and open-world behavior. Treat annotations as useful metadata, not a replacement for checking the target.</li><li><strong>Errors:</strong> a failed tool may return <code>isError: true</code> with a message. Stop and interpret that result; do not assume the operation partially or fully succeeded.</li><li><strong>Stateful application:</strong> active document, selection, current sequence and UI state can change between calls. Re-read state when later steps depend on it.</li></ul><div class="callout"><p><strong>Suite API is intentionally narrow.</strong> The coordinator exposes its cross-app workflows; it does not proxy every child server’s tools. Connect an app package separately for direct application tools.</p></div></section><section class="doc-section" id="execution-boundaries"><h2>Execution boundaries</h2><p>Most app tools generate a script for ExtendScript or UXP and send it to a local Adobe app or plugin. Premiere Pro uses its UXP Bridge panel. The tool call is local computer automation with the permissions of the configured process; it is not a hosted service request. Review app-specific notes about unrestricted code-execution tools before using them.</p></section></main><footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/apps.html" data-event-id="cta_adobe_mcp">Adobe MCP</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/" data-event-id="nav_docs">Docs</a><a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer><script src="/docs/search.js?v=6" defer></script><script src="/theme.js" defer></script><script src="/events.js?v=2" defer></script>
+  inspect isError and returned content before continuing</code></pre><p>Use the package tool references for full parameter tables: <a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign/docs">InDesign generated tool reference</a>, and the <a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/illustrator">Illustrator</a>, <a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/photoshop">Photoshop</a>, <a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/aftereffects">After Effects</a>, <a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/premiere">Premiere</a> and <a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/suite">Suite</a> READMEs.</p></section><section class="doc-section" id="tool-metadata-and-results"><h2>Tool metadata and results</h2><ul><li><strong>Input schema:</strong> use the exact property names, required fields, types, ranges and enum values returned by the server.</li><li><strong>Instructions:</strong> server instructions explain app conventions such as units, indices, colors, path rules, errors and safe targeting. MCP clients may pass them to the model as connection context.</li><li><strong>Annotations:</strong> supported tools may identify read-only, destructive, idempotent and open-world behavior. Treat annotations as useful metadata, not a replacement for checking the target.</li><li><strong>Errors:</strong> a failed tool may return <code>isError: true</code> with a message. Stop and interpret that result; do not assume the operation partially or fully succeeded.</li><li><strong>Stateful application:</strong> active document, selection, current sequence and UI state can change between calls. Re-read state when later steps depend on it.</li></ul><div class="callout"><p><strong>Suite API is intentionally narrow.</strong> The coordinator exposes its cross-app workflows; it does not proxy every child server’s tools. Connect an app package separately for direct application tools.</p></div></section><section class="doc-section" id="execution-boundaries"><h2>Execution boundaries</h2><p>Most app tools generate a script for ExtendScript or UXP and send it to a local Adobe app or plugin. Premiere Pro uses its UXP Bridge panel. The tool call is local computer automation with the permissions of the configured process; it is not a hosted service request. Review app-specific notes about unrestricted code-execution tools before using them.</p></section></article></main><footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a>. Code is <a href="https://github.com/zachshallbetter/creative-mcp/blob/main/LICENSE">MIT licensed</a>; site content and images © 2026 Zach Shallbetter. <a href="/privacy.html">Privacy</a> · <a href="/humans.txt">humans.txt</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/apps.html" data-event-id="cta_adobe_mcp">Adobe MCP</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/" data-event-id="nav_docs">Docs</a><a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer><script src="/docs/search.js?v=6" defer></script><script src="/theme.js" defer></script><script src="/events.js?v=2" defer></script>
 </body></html>

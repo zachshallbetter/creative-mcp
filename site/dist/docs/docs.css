@@ -40,11 +40,6 @@ td strong { color: var(--ink); }
 .doc-index a { display: block; height: 100%; padding: 14px; border: 1px solid var(--line); border-radius: 9px; background: var(--sheet); text-decoration: none; }
 .doc-index a strong { display: block; margin-bottom: 4px; color: var(--ink); }
 .doc-index a span { color: var(--muted); font-size: 12px; }
-.breadcrumb { margin: 0 0 12px; color: var(--ink-3); font: 11px var(--mono); }
-.breadcrumb a { color: inherit; }
-.doc-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 34px; }
-.doc-tabs a { padding: 8px 12px; border: 1px solid var(--line); border-radius: 99px; background: var(--sheet); font-size: 12px; text-decoration: none; }
-.doc-tabs a:hover, .doc-tabs a[aria-current="page"] { border-color: var(--ink); color: var(--ink); }
 .doc-index a { position: relative; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
 .doc-index a:hover { transform: translateY(-2px); border-color: var(--purple); box-shadow: 0 8px 24px color-mix(in srgb, var(--purple), transparent 90%); }
 @media (max-width: 850px) { .doc-layout { grid-template-columns: 1fr; gap: 26px; } .doc-nav { position: static; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px 6px; } .doc-nav strong { grid-column: 1 / -1; } }

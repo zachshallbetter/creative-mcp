@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f0e8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#111417" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark">
   <meta name="description" content="Search the Adobe MCP feature inventory across InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, with routes, tool mapping and evidence.">
   <meta name="author" content="Zach Shallbetter">
   <link rel="author" href="https://creativemcp.com/about.html">
@@ -14,6 +14,8 @@
 <meta name="application-name" content="Creative MCP">
 <meta name="apple-mobile-web-app-title" content="Creative MCP">
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index">
+<link rel="alternate" type="text/markdown" href="/features.md" title="This page as Markdown">
+<link rel="author" type="text/plain" href="/humans.txt">
   <link rel="canonical" href="https://creativemcp.com/features.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Features — Creative MCP">
@@ -62,6 +64,13 @@
       },
       "creator": {
         "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "copyrightHolder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "copyrightYear": 2026,
+      "mainEntity": {
+        "@id": "https://creativemcp.com/capability-atlas.html#dataset"
       }
     },
     {
@@ -69,19 +78,179 @@
       "@id": "https://creativemcp.com/about.html#zach-shallbetter",
       "name": "Zach Shallbetter",
       "url": "https://zachshallbetter.com/",
+      "image": "https://creativemcp.com/assets/zach-shallbetter-portrait.webp",
+      "jobTitle": [
+        "Artist",
+        "Designer",
+        "Creative Technologist"
+      ],
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Spokane, Washington, United States"
+      },
       "sameAs": [
         "https://zachshallbetter.com/",
         "https://github.com/zachshallbetter",
         "https://linkedin.com/in/zachshallbetter"
+      ],
+      "worksFor": {
+        "@id": "https://creativemcp.com/about.html#snack-studio"
+      },
+      "knowsAbout": [
+        "Creative software",
+        "Visual storytelling",
+        "Interface design",
+        "Interactive media",
+        "Computer vision",
+        "Creative production tools",
+        "Model Context Protocol"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://creativemcp.com/#website",
+      "url": "https://creativemcp.com/",
+      "name": "Creative MCP",
+      "description": "Open implementations that connect creative tools to agent workflows.",
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "creator": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://creativemcp.com/#organization",
+      "name": "Creative MCP",
+      "url": "https://creativemcp.com/",
+      "description": "An open collection of local MCP implementations connecting AI agents with creative software.",
+      "founder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "sameAs": [
+        "https://github.com/zachshallbetter/creative-mcp",
+        "https://github.com/zachshallbetter/adobe-mcp",
+        "https://github.com/zachshallbetter/blender-mcp-rs"
+      ],
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://creativemcp.com/assets/icons/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://creativemcp.com/assets/social/home.jpg"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://creativemcp.com/apps.html#adobe-mcp",
+      "name": "Adobe MCP",
+      "description": "Local MCP servers that connect an MCP client to InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, with a suite coordinator for two documented cross-app workflows.",
+      "url": "https://creativemcp.com/apps.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS, Windows",
+      "softwareRequirements": "Node.js 18 or later; the Adobe desktop application you want to use",
+      "license": "https://opensource.org/license/mit",
+      "isAccessibleForFree": true,
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "sameAs": [
+        "https://github.com/zachshallbetter/adobe-mcp",
+        "https://www.npmjs.com/package/adobe-mcp-suite"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://creativemcp.com/about.html#snack-studio",
+      "name": "Snack Studio",
+      "founder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://creativemcp.com/capability-atlas.html#dataset",
+      "name": "Adobe application feature inventory",
+      "description": "Feature-level inventories of 12,014 documented features across InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, grouped by domain, with automation routes, MCP tool mapping and source references.",
+      "url": "https://creativemcp.com/capability-atlas.html",
+      "creator": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "copyrightHolder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "inLanguage": "en-US",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "Adobe",
+        "InDesign",
+        "Illustrator",
+        "Photoshop",
+        "After Effects",
+        "Premiere Pro",
+        "automation",
+        "scripting",
+        "Model Context Protocol"
+      ],
+      "variableMeasured": [
+        "app",
+        "domain",
+        "feature",
+        "automation route",
+        "MCP tool coverage",
+        "evidence source"
+      ],
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "name": "InDesign feature inventory (2,742 features)",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://creativemcp.com/data/indesign.json"
+        },
+        {
+          "@type": "DataDownload",
+          "name": "Illustrator feature inventory (2,540 features)",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://creativemcp.com/data/illustrator.json"
+        },
+        {
+          "@type": "DataDownload",
+          "name": "Photoshop feature inventory (2,609 features)",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://creativemcp.com/data/photoshop.json"
+        },
+        {
+          "@type": "DataDownload",
+          "name": "After Effects feature inventory (3,198 features)",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://creativemcp.com/data/aftereffects.json"
+        },
+        {
+          "@type": "DataDownload",
+          "name": "Premiere Pro feature inventory (925 features)",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://creativemcp.com/data/premiere.json"
+        }
       ]
     }
   ]
 }
 </script>
-  <title>Features — Creative MCP</title>
+  <noscript><style>.theme-toggle, button.copy, .needs-js { display: none !important; }</style></noscript><title>Features — Creative MCP</title>
   <script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script>
   <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/site-tokens.css?v=14">
+  <link rel="stylesheet" href="/site-tokens.css?v=15">
   <link rel="stylesheet" href="/features.css?v=2">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
   <script src="/analytics.js?v=2" defer></script>
@@ -95,11 +264,11 @@
     <p class="lede">Search documented capabilities by app, domain, automation route or source. A documented feature is not automatically scriptable or implemented by an MCP tool; open a record to review its evidence.</p>
     <section class="inventory" aria-labelledby="inventory-title">
       <div class="inventory-head"><strong id="inventory-title">Adobe application feature inventory</strong><p>Feature records and source references are drawn from the checked-in Atlas data. For route analysis, implementation mapping and validation methodology, continue to the <a data-event-id="cta_capability_atlas" href="/capability-atlas.html">Capability Atlas</a>.</p></div>
-      <div class="inventory-list" id="inventory-apps"></div>
+      <div class="inventory-list" id="inventory-apps"></div><noscript><p class="noscript-note">The searchable inventory needs JavaScript. The same research is in the <a href="/capability-atlas.html">Capability Atlas</a>, and the records are available as JSON for <a href="/data/indesign.json">InDesign</a>, <a href="/data/illustrator.json">Illustrator</a>, <a href="/data/photoshop.json">Photoshop</a>, <a href="/data/aftereffects.json">After Effects</a> and <a href="/data/premiere.json">Premiere Pro</a>.</p></noscript>
     </section>
     <p class="features-footer">Coverage is a research snapshot, not a guarantee that every feature is exposed by a package or validated in a live Adobe application. See each <a href="/docs/implementations/indesign.html">implementation guide</a> and the <a href="/docs/content.html">content and capability guide</a> for interpreting coverage claims.</p>
   </main>
-  <footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a data-event-id="cta_adobe_mcp" href="/apps.html">Adobe MCP</a><a data-event-id="cta_blender_mcp" href="/docs/implementations/blender.html">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a data-event-id="cta_get_started" href="/docs/getting-started.html">Getting started</a><a data-event-id="nav_docs" href="/docs/">Docs</a><a data-event-id="cta_capability_atlas" href="/capability-atlas.html">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer>
+  <footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a>. Code is <a href="https://github.com/zachshallbetter/creative-mcp/blob/main/LICENSE">MIT licensed</a>; site content and images © 2026 Zach Shallbetter. <a href="/privacy.html">Privacy</a> · <a href="/humans.txt">humans.txt</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a data-event-id="cta_adobe_mcp" href="/apps.html">Adobe MCP</a><a data-event-id="cta_blender_mcp" href="/docs/implementations/blender.html">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a data-event-id="cta_get_started" href="/docs/getting-started.html">Getting started</a><a data-event-id="nav_docs" href="/docs/">Docs</a><a data-event-id="cta_capability_atlas" href="/capability-atlas.html">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer>
   <script src="/features.js?v=2" defer></script>
   <script src="/theme.js" defer></script>
 <script src="/events.js?v=2" defer></script>

@@ -56,6 +56,8 @@ CARDS = {
                        "Adobe MCP and Blender MCP examples, with supported steps and manual handoffs clearly marked.", "magenta", []),
     "capability-atlas.html": ("capability-atlas", "Capability Atlas", "What automation can reach in <em>five Adobe apps.</em>",
                               "12,014 documented features, their automation routes, MCP coverage and the evidence behind each claim.", "adobe", ALL_ADOBE),
+    "privacy.html": ("privacy", "Privacy", "What this site <em>measures.</em>",
+                     "Google Analytics on the website only. The local tools send nothing to this site.", "brand", []),
     "docs/index.html": ("docs", "Documentation", "Find the right <em>guide.</em>",
                         "Setup, the MCP tool interface, configuration and a guide for every implementation.", "magenta", []),
     "docs/getting-started.html": ("docs-getting-started", "Docs · Getting started", "Get set <em>up.</em>",

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Regenerate dist/sitemap.xml, dist/llms.txt and dist/llms-full.txt from the published pages,
-and copy the series catalogue (../registry) into dist/.
+"""Regenerate dist/sitemap.xml, dist/llms.txt, dist/llms-full.txt and a Markdown copy of every public page
+(same path, .md), and copy the series catalogue (../registry) into dist/.
 
 Run after changing page content: python3 scripts/generate-discovery.py
 lastmod comes from each page's last git commit, so commit content changes before regenerating.
 """
 import html
+import json
 import re
 import shutil
 import subprocess
@@ -26,7 +27,7 @@ SECTIONS = [
                                "docs/implementations/photoshop.html", "docs/implementations/aftereffects.html",
                                "docs/implementations/premiere.html", "docs/implementations/suite.html",
                                "docs/implementations/core.html", "docs/implementations/blender.html"]),
-    ("Optional", ["capability-atlas.html", "features.html", "workflows.html"]),
+    ("Optional", ["capability-atlas.html", "features.html", "workflows.html", "privacy.html"]),
 ]
 
 LLMS_HEADER = """# Creative MCP
@@ -192,7 +193,7 @@ def main():
         title = re.sub(r"\s+[—–-]\s+Creative MCP( Docs)?$", "", meta(source, r"<title>(.*?)</title>"))
         text = main_text(source, path)
         info[path] = {"url": page_url(path), "title": title, "description": meta(source, r'name="description" content="([^"]*)"'),
-                      "text": text, "lastmod": last_modified(path, text)}
+                      "image": meta(source, r'property="og:image" content="([^"]*)"'), "text": text, "lastmod": last_modified(path, text)}
         # Keep the page's own modified dates (head-only, so lastmod is unaffected) in step with its content date.
         if info[path]["lastmod"]:
             synced = re.sub(r'("dateModified": ")[^"]*(")', rf'\g<1>{info[path]["lastmod"]}\g<2>', source)
@@ -200,10 +201,12 @@ def main():
             if synced != source:
                 (DIST / path).write_text(synced)
 
-    sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
+               '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
     for path in pages:
         lastmod = f"<lastmod>{info[path]['lastmod'][:10]}</lastmod>" if info[path]["lastmod"] else ""
-        sitemap.append(f"  <url><loc>{info[path]['url']}</loc>{lastmod}</url>")
+        image = f"<image:image><image:loc>{info[path]['image']}</image:loc></image:image>" if info[path]["image"] else ""
+        sitemap.append(f"  <url><loc>{info[path]['url']}</loc>{lastmod}{image}</url>")
     sitemap.append("</urlset>")
     (DIST / "sitemap.xml").write_text("\n".join(sitemap) + "\n")
 
@@ -219,7 +222,19 @@ def main():
         for p in group:
             full += ["---", "", f"Source: {info[p]['url']}", "", info[p]["text"], ""]
     (DIST / "llms-full.txt").write_text("\n".join(full))
-    print(f"Wrote sitemap.xml ({len(pages)} URLs), llms.txt and llms-full.txt ({sum(len(info[p]['text']) for p in pages):,} chars)")
+
+    # Each page on its own, for readers and agents that prefer Markdown (linked from the page's <head>).
+    for path in pages:
+        page = info[path]
+        front = [f"title: {json.dumps(page['title'], ensure_ascii=False)}",
+                 f"description: {json.dumps(page['description'], ensure_ascii=False)}",
+                 f"url: {page['url']}", "author: Zach Shallbetter (https://creativemcp.com/about.html)"]
+        if page["lastmod"]:
+            front.append(f"modified: {page['lastmod']}")
+        front += ["site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)",
+                  f"copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)"]
+        (DIST / (path[: -len(".html")] + ".md")).write_text("---\n" + "\n".join(front) + "\n---\n\n" + page["text"].strip() + "\n")
+    print(f"Wrote sitemap.xml ({len(pages)} URLs), {len(pages)} Markdown pages, llms.txt and llms-full.txt ({sum(len(info[p]['text']) for p in pages):,} chars)")
 
 
 if __name__ == "__main__":

@@ -1,4 +1,8 @@
+# Creative MCP: every public page may be crawled, indexed and used by search and AI crawlers.
 User-agent: *
 Allow: /
 
 Sitemap: https://creativemcp.com/sitemap.xml
+
+# Also available: /llms.txt (curated index), /llms-full.txt (full text),
+# each page as Markdown at the same path with .md, and /humans.txt.
