@@ -1,0 +1,85 @@
+/* Shared documentation layout. */
+main.wrap { padding-block: 54px 88px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; }
+h1 { max-width: 850px; margin: 18px 0; font-size: clamp(48px, 7vw, 84px); line-height: .96; letter-spacing: -.075em; }
+h2 { margin: 0 0 16px; font-size: clamp(30px, 4vw, 48px); line-height: 1; letter-spacing: -.06em; }
+h3 { margin: 0 0 9px; font-size: 18px; letter-spacing: -.035em; }
+p, li { color: var(--muted); font-size: 14px; line-height: 1.7; }
+.lede { max-width: 760px; font-size: 18px; }
+.doc-meta { margin: 20px 0 0; font: 12px var(--mono); color: var(--ink-3); }
+.doc-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 52px; align-items: start; margin-top: 50px; }
+.doc-nav { position: sticky; top: 24px; display: grid; gap: 5px; padding: 14px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--sheet); }
+.doc-nav strong { padding: 4px 8px 8px; font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.doc-nav a { padding: 7px 8px; border-radius: 6px; color: var(--muted); font-size: 12px; text-decoration: none; }
+.doc-nav a:hover, .doc-nav a:focus-visible { background: var(--paper); color: var(--ink); }
+.doc-content { min-width: 0; }
+.doc-section { padding: 34px 0; border-top: 1px solid var(--line); scroll-margin-top: 24px; }
+.doc-section:first-child { padding-top: 0; border-top: 0; }
+.doc-section > p:first-of-type { max-width: 78ch; }
+.doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px; margin: 18px 0; }
+.doc-card { min-width: 0; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--sheet); }
+.doc-card p { margin: 7px 0 0; font-size: 13px; }
+.doc-card a, .doc-content a { color: var(--ink); text-decoration-color: var(--line); text-underline-offset: 3px; }
+.doc-card a:hover, .doc-content a:hover { text-decoration-color: var(--orange); }
+.doc-card .tag { display: inline-block; margin-bottom: 10px; color: var(--ink-3); font: 10px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.steps { padding-left: 22px; }
+.steps li { padding-left: 4px; margin: 8px 0; }
+code, pre { font-family: var(--mono); }
+code { font-size: .88em; overflow-wrap: anywhere; }
+pre { overflow-x: auto; margin: 14px 0; padding: 16px; border: 1px solid var(--line); border-radius: 9px; background: #201f22; color: #f8f4ec; font-size: 12px; line-height: 1.6; tab-size: 2; }
+.callout { padding: 16px 18px; border: 1px solid var(--line); border-left: 3px solid var(--orange); border-radius: 8px; background: var(--sheet); }
+.callout p { margin: 0; }
+.table-scroll { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 9px; background: var(--sheet); }
+table { width: 100%; border-collapse: collapse; min-width: 640px; }
+th, td { padding: 11px 13px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 12px; line-height: 1.55; }
+th { color: var(--ink-3); font: 700 10px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+td { color: var(--muted); }
+td strong { color: var(--ink); }
+.doc-index { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 10px; padding: 0; list-style: none; }
+.doc-index li { margin: 0; }
+.doc-index a { display: block; height: 100%; padding: 14px; border: 1px solid var(--line); border-radius: 9px; background: var(--sheet); text-decoration: none; }
+.doc-index a strong { display: block; margin-bottom: 4px; color: var(--ink); }
+.doc-index a span { color: var(--muted); font-size: 12px; }
+.breadcrumb { margin: 0 0 12px; color: var(--ink-3); font: 11px var(--mono); }
+.breadcrumb a { color: inherit; }
+.doc-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 34px; }
+.doc-tabs a { padding: 8px 12px; border: 1px solid var(--line); border-radius: 99px; background: var(--sheet); font-size: 12px; text-decoration: none; }
+.doc-tabs a:hover, .doc-tabs a[aria-current="page"] { border-color: var(--ink); color: var(--ink); }
+.doc-index a { position: relative; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.doc-index a:hover { transform: translateY(-2px); border-color: var(--purple); box-shadow: 0 8px 24px color-mix(in srgb, var(--purple), transparent 90%); }
+@media (max-width: 850px) { .doc-layout { grid-template-columns: 1fr; gap: 26px; } .doc-nav { position: static; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px 6px; } .doc-nav strong { grid-column: 1 / -1; } }
+@media (max-width: 620px) { main.wrap { padding-block: 36px 58px; } .doc-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); } .doc-nav a { font-size: 11px; } pre { margin-inline: -4px; padding: 13px; } }
+/* Search across product, protocol, CLI and implementation documentation. */
+.docs-search { position: relative; max-width: 720px; margin: 24px 0 8px; }
+.docs-search label { display: block; margin-bottom: 7px; color: var(--ink-3); font: 700 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.docs-search-field { display: flex; align-items: center; gap: 10px; min-height: 50px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--sheet); color: var(--muted); }
+.docs-search-field:focus-within { border-color: var(--purple); box-shadow: 0 0 0 3px color-mix(in srgb, var(--purple), transparent 84%); }
+.docs-search-field input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; color: var(--ink); font: 14px var(--sans); }
+.docs-search-field input::placeholder { color: var(--ink-3); }
+.docs-search-shortcut { color: var(--ink-3); font: 10px var(--mono); white-space: nowrap; }
+.docs-search-results { position: absolute; z-index: 5; inset: calc(100% + 6px) 0 auto; max-height: min(60vh, 520px); overflow-y: auto; padding: 7px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--sheet); box-shadow: 0 16px 38px rgba(23,23,23,.13); }
+.docs-search-results[hidden] { display: none; }
+.docs-search-result { display: block; padding: 11px 12px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.docs-search-result:hover, .docs-search-result:focus-visible { outline: 0; background: var(--paper); }
+.docs-search-result strong { display: block; font-size: 13px; }
+.docs-search-result .result-section { color: var(--doc-accent, var(--orange)); font: 10px var(--mono); }
+.docs-search-result .result-snippet { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.docs-search-message { padding: 12px; color: var(--muted); font-size: 12px; }
+.doc-implementation { --doc-accent: var(--orange); }
+.doc-implementation.app-indesign { --doc-accent: var(--app-indesign); }
+.doc-implementation.app-illustrator { --doc-accent: var(--app-illustrator); }
+.doc-implementation.app-photoshop { --doc-accent: var(--app-photoshop); }
+.doc-implementation.app-aftereffects { --doc-accent: var(--app-aftereffects); }
+.doc-implementation.app-premiere { --doc-accent: var(--app-premiere); }
+.doc-implementation .eyebrow::before { background: var(--doc-accent); }
+.doc-implementation .doc-tabs a[aria-current="page"] { border-color: var(--doc-accent); color: var(--ink); }
+.doc-implementation .doc-section h2 { text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--doc-accent), transparent 68%); text-decoration-thickness: 3px; text-underline-offset: 7px; }
+.doc-app a { border-left: 1px solid var(--line); }
+.doc-app strong { display: flex; align-items: center; gap: 9px; }
+.doc-app strong::before { content: ""; width: 9px; height: 9px; flex: 0 0 9px; border-radius: 3px; background: var(--doc-accent); }
+.doc-app-indesign { --doc-accent: var(--app-indesign); }
+.doc-app-illustrator { --doc-accent: var(--app-illustrator); }
+.doc-app-photoshop { --doc-accent: var(--app-photoshop); }
+.doc-app-aftereffects { --doc-accent: var(--app-aftereffects); }
+.doc-app-premiere { --doc-accent: var(--app-premiere); }
+.doc-app-suite { --doc-accent: var(--orange); }

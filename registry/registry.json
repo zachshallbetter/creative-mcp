@@ -1,0 +1,77 @@
+{
+  "$schema": "./registry.schema.json",
+  "schema": 1,
+  "series": "creative-mcp",
+  "author": "Zach Shallbetter",
+  "updated": "2026-11-03",
+  "tools": [
+    {
+      "id": "adobe",
+      "name": "Adobe MCP",
+      "summary": "Local MCP servers for InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, with a coordinator for two documented cross-app workflows.",
+      "repo": "https://github.com/zachshallbetter/adobe-mcp",
+      "docs": "https://creativemcp.com/apps.html",
+      "license": "MIT",
+      "author": "Zach Shallbetter",
+      "status": "Tested",
+      "install": {
+        "brew": { "formula": "zachshallbetter/tap/adobe-mcp" },
+        "npm": { "package": "adobe-mcp-suite" }
+      },
+      "requires": ["node>=18"],
+      "servers": [
+        { "command": "adobe-mcp-suite", "role": "coordinator", "register_as": "adobe" },
+        { "command": "adobe-mcp-indesign", "app": "indesign", "register_as": "indesign" },
+        { "command": "adobe-mcp-illustrator", "app": "illustrator", "register_as": "illustrator" },
+        { "command": "adobe-mcp-photoshop", "app": "photoshop", "register_as": "photoshop" },
+        { "command": "adobe-mcp-aftereffects", "app": "aftereffects", "register_as": "aftereffects" },
+        { "command": "adobe-mcp-premiere", "app": "premiere", "register_as": "premiere" }
+      ],
+      "targets": [
+        { "app": "indesign", "name": "Adobe InDesign",
+          "detect": { "macos": { "bundle_ids": ["com.adobe.InDesign"], "verified": false } } },
+        { "app": "illustrator", "name": "Adobe Illustrator",
+          "detect": { "macos": { "bundle_ids": ["com.adobe.illustrator"], "verified": true } } },
+        { "app": "photoshop", "name": "Adobe Photoshop",
+          "detect": { "macos": { "bundle_ids": ["com.adobe.Photoshop"], "verified": true } } },
+        { "app": "aftereffects", "name": "Adobe After Effects",
+          "detect": { "macos": { "bundle_ids": ["com.adobe.AfterEffects.application"], "verified": true } } },
+        { "app": "premiere", "name": "Adobe Premiere Pro",
+          "detect": { "macos": { "bundle_id_prefixes": ["com.adobe.PremierePro"], "verified": false } } }
+      ],
+      "clients": ["claude-code", "claude-desktop", "codex", "cursor", "gemini"]
+    },
+    {
+      "id": "blender",
+      "name": "Blender MCP",
+      "summary": "A Rust MCP server and companion Blender add-on for scenes, objects, materials and 3D asset pipelines.",
+      "repo": "https://github.com/zachshallbetter/blender-mcp-rs",
+      "docs": "https://creativemcp.com/docs/implementations/blender.html",
+      "license": "MIT OR Apache-2.0",
+      "author": "Zach Shallbetter",
+      "status": "Implemented",
+      "install": {
+        "brew": { "formula": "zachshallbetter/tap/blender-mcp", "head_only": true },
+        "cargo": { "git": "https://github.com/zachshallbetter/blender-mcp-rs", "package": "blender-mcp-cli" }
+      },
+      "requires": [],
+      "servers": [
+        { "command": "blender-mcp", "args": ["serve"], "register_as": "blender" }
+      ],
+      "post_install": ["blender-mcp addon install"],
+      "targets": [
+        { "app": "blender", "name": "Blender",
+          "detect": { "macos": { "bundle_ids": ["org.blenderfoundation.blender"], "min_version": "4.0", "verified": true } } }
+      ],
+      "clients": ["claude-code", "codex", "cursor", "gemini", "antigravity"]
+    }
+  ],
+  "clients": [
+    { "id": "claude-code", "name": "Claude Code", "detect": { "commands": ["claude"], "files": ["~/.claude.json"] } },
+    { "id": "claude-desktop", "name": "Claude Desktop", "detect": { "files": ["~/Library/Application Support/Claude/claude_desktop_config.json"] } },
+    { "id": "codex", "name": "Codex", "detect": { "commands": ["codex"], "files": ["~/.codex/config.toml"] } },
+    { "id": "cursor", "name": "Cursor", "detect": { "commands": ["cursor"], "files": ["~/.cursor/mcp.json"] } },
+    { "id": "gemini", "name": "Gemini CLI", "detect": { "commands": ["gemini"], "files": ["~/.gemini/settings.json"] } },
+    { "id": "antigravity", "name": "Google Antigravity", "detect": { "commands": ["antigravity"] } }
+  ]
+}

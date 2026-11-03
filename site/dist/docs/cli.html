@@ -1,0 +1,109 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f4f0e8"><meta name="description" content="Install and launch commands, Suite coordinator app selection, source checkouts and configuration variables for the Adobe MCP servers.">
+<meta name="author" content="Zach Shallbetter">
+<link rel="author" href="https://creativemcp.com/about.html">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icons/icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="application-name" content="Creative MCP">
+<meta name="apple-mobile-web-app-title" content="Creative MCP">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index">
+<link rel="canonical" href="https://creativemcp.com/docs/cli.html"><meta property="og:type" content="article"><meta property="og:title" content="CLI & configuration — Creative MCP Docs"><meta property="og:description" content="Install and launch commands, Suite coordinator app selection, source checkouts and configuration variables for the Adobe MCP servers."><meta property="og:url" content="https://creativemcp.com/docs/cli.html"><meta property="article:author" content="https://creativemcp.com/about.html"><meta property="article:modified_time" content="2026-11-03"><meta property="og:site_name" content="Creative MCP"><meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://creativemcp.com/assets/social/docs-cli.jpg">
+<meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Creative MCP, Docs · Reference: CLI &amp; configuration Install and launch commands, Homebrew, Suite app selection and configuration variables. By Zach Shallbetter.">
+<meta name="twitter:image" content="https://creativemcp.com/assets/social/docs-cli.jpg">
+<meta name="twitter:image:alt" content="Creative MCP, Docs · Reference: CLI &amp; configuration Install and launch commands, Homebrew, Suite app selection and configuration variables. By Zach Shallbetter.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="CLI & configuration — Creative MCP Docs"><meta name="twitter:description" content="Install and launch commands, Suite coordinator app selection, source checkouts and configuration variables for the Adobe MCP servers.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://creativemcp.com/docs/cli.html#webpage",
+      "url": "https://creativemcp.com/docs/cli.html",
+      "name": "CLI & configuration — Creative MCP Docs",
+      "description": "Install and launch commands, Suite coordinator app selection, source checkouts and configuration variables for the Adobe MCP servers.",
+      "isPartOf": {
+        "@id": "https://creativemcp.com/#website"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "dateModified": "2026-11-03",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://creativemcp.com/assets/social/docs-cli.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "headline": "CLI & configuration",
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "mainEntityOfPage": "https://creativemcp.com/docs/cli.html",
+      "about": {
+        "@id": "https://creativemcp.com/apps.html#adobe-mcp"
+      },
+      "breadcrumb": {
+        "@id": "https://creativemcp.com/docs/cli.html#breadcrumb"
+      },
+      "creator": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://creativemcp.com/docs/cli.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Docs",
+          "item": "https://creativemcp.com/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "CLI & configuration",
+          "item": "https://creativemcp.com/docs/cli.html"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://creativemcp.com/about.html#zach-shallbetter",
+      "name": "Zach Shallbetter",
+      "url": "https://zachshallbetter.com/",
+      "sameAs": [
+        "https://zachshallbetter.com/",
+        "https://github.com/zachshallbetter",
+        "https://linkedin.com/in/zachshallbetter"
+      ]
+    }
+  ]
+}
+</script>
+<title>CLI & configuration — Creative MCP Docs</title><script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script><link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/site-tokens.css?v=14"><link rel="stylesheet" href="/docs/docs.css?v=2">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
+<script src="/analytics.js?v=2" defer></script>
+</head><body>
+<a class="skip-link" href="#top">Skip to main content</a><header class="wrap topbar"><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><nav class="topnav" aria-label="Main navigation"><a href="/projects.html" data-event-id="nav_projects">Projects</a><a href="/how-it-works.html" data-event-id="nav_how_it_works">How it works</a><a href="/docs/" data-event-id="nav_docs" aria-current="page">Docs</a><a href="/about.html" data-event-id="nav_about">About</a><button class="theme-toggle" data-event-id="theme_toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a class="button" href="/docs/getting-started.html" data-event-id="cta_get_started"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav></header><main class="wrap" id="top" tabindex="-1"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/docs/" data-event-id="nav_docs">Docs</a> / <span aria-current="page">CLI & configuration</span></nav><div class="eyebrow">Launch commands · environment</div><h1>CLI & configuration</h1><p class="lede">These packages are MCP server processes launched by your client. They are not general command-line utilities; only the Suite coordinator currently documents app selection flags.</p><nav class="doc-tabs" aria-label="Documentation topics"><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/content.html">Content</a><a href="/docs/api.html">MCP API</a><a href="/docs/cli.html">CLI &amp; config</a><a href="/docs/architecture.html">Architecture</a><a href="/docs/implementations/indesign.html">InDesign</a><a href="/docs/implementations/illustrator.html">Illustrator</a><a href="/docs/implementations/photoshop.html">Photoshop</a><a href="/docs/implementations/aftereffects.html">After Effects</a><a href="/docs/implementations/premiere.html">Premiere</a><a href="/docs/implementations/suite.html">Suite</a></nav><section class="doc-section" id="install-and-launch"><h2>Install and launch</h2><h3>One published app server</h3><pre tabindex="0"><code>claude mcp add illustrator -- npx -y adobe-mcp-illustrator</code></pre><p>Substitute the desired package name. For another MCP client, configure the command and arguments instead of running it as a one-shot shell command.</p><h3>Suite coordinator</h3><pre tabindex="0"><code>claude mcp add adobe -- npx -y adobe-mcp-suite</code></pre><p>Optional global install is documented for the suite package:</p><pre tabindex="0"><code>npm install -g adobe-mcp-suite</code></pre><h3>Homebrew</h3><p>The Creative MCP tap installs the Suite coordinator and links every app server, including the InDesign UXP bridge, onto your <code>PATH</code>. Homebrew 7 and later asks you to trust a third-party tap once.</p><pre tabindex="0"><code>brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/adobe-mcp</code></pre><p>Installed commands: <code>adobe-mcp-suite</code>, <code>adobe-mcp-indesign</code>, <code>adobe-mcp-indesign-uxp-bridge</code>, <code>adobe-mcp-illustrator</code>, <code>adobe-mcp-photoshop</code>, <code>adobe-mcp-premiere</code> and <code>adobe-mcp-aftereffects</code>. Point your client at the command name instead of <code>npx</code>.</p></section><section class="doc-section" id="suite-app-selection"><h2>Suite app selection</h2><p>The coordinator accepts <code>--apps ids</code>, <code>--apps=ids</code>, or <code>ADOBE_MCP_APPS</code>. If none is supplied, it loads InDesign and Illustrator, the current workflow dependencies. Use <code>all</code> to load all five app servers.</p><pre tabindex="0"><code>npx -y adobe-mcp-suite --apps indesign,illustrator
+npx -y adobe-mcp-suite --apps=photoshop,aftereffects
+ADOBE_MCP_APPS=premiere npx -y adobe-mcp-suite
+npx -y adobe-mcp-suite --apps all</code></pre><p>Valid IDs: <code>indesign</code>, <code>illustrator</code>, <code>photoshop</code>, <code>aftereffects</code>, <code>premiere</code>. Unknown IDs fail startup. Loading an app does not add coordinator workflows for it.</p></section><section class="doc-section" id="run-from-a-source-checkout"><h2>Run from a source checkout</h2><pre tabindex="0"><code>git clone https://github.com/zachshallbetter/adobe-mcp.git
+cd adobe-mcp
+npm install
+
+# Suite coordinator
+node packages/suite/src/index.js --apps indesign,illustrator
+
+# Standalone MCP server
+node packages/illustrator/src/index.js</code></pre><p>These entrypoints stay open and speak MCP over stdio, so a client should launch them. The repository’s root scripts are for development checks, not a separate product CLI:</p><pre tabindex="0"><code>npm run check
+npm test</code></pre></section><section class="doc-section" id="no-generic-cli-command-surface"><h2>No generic CLI command surface</h2><p>For the app servers, the documented interface is the MCP protocol, not shell flags like <code>--help</code>, <code>status</code> or <code>export</code>. To inspect tools, connect the server and use <code>tools/list</code> or the server’s MCP <code>help</code> tool. To smoke-check startup, use an MCP client or send MCP initialization and tool-list requests over stdio; tests use stubs and do not require Adobe apps.</p></section><section class="doc-section" id="configuration-variables"><h2>Configuration variables</h2><div class="table-scroll" tabindex="0" role="region" aria-label="Configuration variables table"><table><thead><tr><th>Variable</th><th>Scope</th><th>Use</th></tr></thead><tbody><tr><td><code>ADOBE_MCP_APPS</code></td><td>Suite</td><td>Comma-separated app IDs; suite-only.</td></tr><tr><td><code>*_ALLOWED_DIRS</code></td><td>App-specific</td><td>Additional file directories. Use colon-separated paths on macOS and semicolons on Windows.</td></tr><tr><td><code>*_APP_NAME</code></td><td>Where package supports it</td><td>Select or identify the local Adobe app; see that package guide.</td></tr><tr><td><code>*_SCRIPT_TIMEOUT_MS</code></td><td>App-specific</td><td>Script/operation wait limit; defaults vary by package.</td></tr><tr><td><code>*_BACKEND</code>, <code>*_TARGET</code></td><td>Supported packages only</td><td>Select documented backend or compatible local ArtCraft target.</td></tr><tr><td><code>PREMIERE_WS_PORT</code></td><td>Premiere</td><td>Loopback bridge port; configure the same value in the plugin panel.</td></tr><tr><td><code>BRIDGE_TOKEN</code>, <code>PREMIERE_BRIDGE_TOKEN</code></td><td>Premiere</td><td>Optional shared secret for local bridge authentication; keep private.</td></tr></tbody></table></div><p>These patterns are not universal aliases: check the app README for exact accepted names, defaults, precedence and whether the Suite coordinator forwards them. Configure variables inside the MCP client’s server entry and restart the process after changes.</p></section></main><footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/apps.html" data-event-id="cta_adobe_mcp">Adobe MCP</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/" data-event-id="nav_docs">Docs</a><a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer><script src="/docs/search.js?v=6" defer></script><script src="/theme.js" defer></script><script src="/events.js?v=2" defer></script>
+</body></html>

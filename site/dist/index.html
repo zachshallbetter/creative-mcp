@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e8">
+  <meta name="description" content="Creative MCP connects local MCP implementations for Adobe and Blender to the creative tools you already use.">
+  <meta name="author" content="Zach Shallbetter">
+  <link rel="author" href="https://creativemcp.com/about.html">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icons/icon-180.png">
+  <link rel="manifest" href="/site.webmanifest">
+<meta name="application-name" content="Creative MCP">
+<meta name="apple-mobile-web-app-title" content="Creative MCP">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index">
+  <link rel="canonical" href="https://creativemcp.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Creative MCP — creative tools, connected">
+  <meta property="og:description" content="Creative MCP connects local MCP implementations for Adobe and Blender to the creative tools you already use.">
+  <meta property="og:url" content="https://creativemcp.com/">
+  <meta property="og:site_name" content="Creative MCP">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://creativemcp.com/assets/social/home.jpg">
+  <meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Creative MCP, Creative tools, connected: Make more with the tools you already use. Local MCP servers that connect AI agents to Adobe apps and Blender. By Zach Shallbetter.">
+  <meta name="twitter:image" content="https://creativemcp.com/assets/social/home.jpg">
+  <meta name="twitter:image:alt" content="Creative MCP, Creative tools, connected: Make more with the tools you already use. Local MCP servers that connect AI agents to Adobe apps and Blender. By Zach Shallbetter.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Creative MCP — creative tools, connected">
+  <meta name="twitter:description" content="Creative MCP connects local MCP implementations for Adobe and Blender to the creative tools you already use.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://creativemcp.com/#website",
+      "url": "https://creativemcp.com/",
+      "name": "Creative MCP",
+      "description": "Open implementations that connect creative tools to agent workflows.",
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "creator": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://creativemcp.com/#organization",
+      "name": "Creative MCP",
+      "url": "https://creativemcp.com/",
+      "description": "An open collection of local MCP implementations connecting AI agents with creative software.",
+      "founder": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "sameAs": [
+        "https://github.com/zachshallbetter/creative-mcp",
+        "https://github.com/zachshallbetter/adobe-mcp",
+        "https://github.com/zachshallbetter/blender-mcp-rs"
+      ],
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://creativemcp.com/assets/icons/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://creativemcp.com/assets/social/home.jpg"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://creativemcp.com/about.html#zach-shallbetter",
+      "name": "Zach Shallbetter",
+      "url": "https://zachshallbetter.com/",
+      "sameAs": [
+        "https://zachshallbetter.com/",
+        "https://github.com/zachshallbetter",
+        "https://linkedin.com/in/zachshallbetter"
+      ]
+    }
+  ]
+}
+</script>
+  <title>Creative MCP — creative tools, connected</title>
+  <script>
+    try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }
+  </script>
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/site-tokens.css?v=14">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .hero { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; padding: 76px 0 88px; isolation: isolate; }
+    h1 { max-width: 690px; margin: 20px 0 20px; font-size: clamp(48px, 6.3vw, 84px); line-height: .98; letter-spacing: -.075em; font-weight: 740; }
+    h1 .accent { background: linear-gradient(105deg, var(--purple), #bd3bb6 48%, var(--orange)); -webkit-background-clip: text; color: transparent; }
+    .hero-copy { max-width: 550px; color: var(--muted); font-size: 18px; line-height: 1.65; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .local-note { margin-top: 20px; color: var(--muted); font: 12px var(--mono); }
+    .hero > div:nth-child(2) { position: relative; z-index: 2; }
+    .hero-art { position: relative; z-index: 2; min-height: 600px; display: grid; place-items: center; isolation: isolate; }
+    .paint-particles { position: absolute; z-index: 1; inset: 0; pointer-events: none; }
+    .paint-speck { position: absolute; left: var(--speck-x); top: var(--speck-y); width: var(--speck-size); height: var(--speck-height); border-radius: var(--speck-shape); background: var(--speck-color); opacity: .82; rotate: var(--speck-rotation); translate: 0 0; animation: speck-drift var(--speck-speed) ease-in-out infinite; animation-delay: var(--speck-delay); }
+    .paint-speck:nth-child(2n) { filter: blur(.45px); }
+    @keyframes speck-drift { 0%,100% { translate: 0 0; scale: 1; } 50% { translate: var(--speck-drift) -8px; scale: 1.18; } }
+    .paint-canvas { position: absolute; z-index: 0; top: 0; bottom: 0; left: 50%; width: 130vw; transform: translateX(-50%); pointer-events: none; }
+    .paint-stroke { position: absolute; width: 20%; height: 34%; object-fit: contain; opacity: 0; clip-path: inset(0 100% 0 0 round 0 50% 50% 0); mix-blend-mode: multiply; filter: saturate(1.28); }
+    .paint-stroke:nth-child(1) { left: 46%; top: 0; }
+    .paint-stroke:nth-child(2) { left: 70%; top: 0; }
+    .paint-stroke:nth-child(3) { left: 42%; top: 28%; }
+    .paint-stroke:nth-child(4) { left: 72%; top: 30%; width: 19%; height: 34%; }
+    .paint-stroke:nth-child(5) { left: 46%; top: 61%; width: 19%; height: 34%; }
+    .paint-stroke:nth-child(6) { left: 68%; top: 61%; }
+    .paint-stroke:nth-child(7) { left: 56%; top: 13%; width: 19%; height: 34%; }
+    .paint-stroke:nth-child(8) { left: 56%; top: 48%; width: 19%; height: 34%; }
+    .paint-stroke.is-painting { opacity: .74; animation: brush-paint var(--paint-duration, 4.5s) cubic-bezier(.42,0,.28,1) forwards; }
+    .paint-stroke.is-painted { opacity: .74; clip-path: none; }
+    @keyframes brush-paint { from { clip-path: inset(0 100% 0 0 round 0 50% 50% 0); } to { clip-path: inset(0 round 0 50% 50% 0); } }
+    :root[data-theme="dark"] .paint-stroke { mix-blend-mode: screen; opacity: .68; }
+    @media (prefers-reduced-motion: reduce) { .paint-stroke:first-child { opacity: .74; clip-path: none; } :root[data-theme="dark"] .paint-stroke:first-child { opacity: .68; } }
+    .art-grid { position: absolute; z-index: -1; inset: 5% 3%; border: 1px solid rgba(23,23,23,.13); border-radius: 24px; transform: rotate(-4deg); background-image: linear-gradient(rgba(23,23,23,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(23,23,23,.045) 1px, transparent 1px); background-size: 28px 28px; }
+    .studio { position: relative; z-index: 2; width: min(470px, 94%); padding: 18px; border: 1px solid rgba(23,23,23,.18); border-radius: 18px; background: rgba(255,253,248,.92); box-shadow: 0 22px 60px rgba(39,31,22,.15); transform: rotate(2deg); transform-origin: 50% 55%; animation: studio-drift 8s ease-in-out infinite; will-change: transform; }
+    .studio-head { display: flex; justify-content: space-between; align-items: center; padding: 2px 3px 15px; color: #77736c; font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .status { display: inline-flex; align-items: center; gap: 7px; color: #477851; font: 11px var(--mono); letter-spacing: 0; }
+    .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #5d9c62; box-shadow: 0 0 0 4px rgba(93,156,98,.12); }
+    .studio-agent { display: flex; align-items: center; gap: 12px; padding: 13px; margin-bottom: 12px; border-radius: 11px; background: #1b1a1d; color: white; }
+    .agent-icon { display: grid; place-items: center; flex: 0 0 38px; height: 38px; border-radius: 9px; background: linear-gradient(140deg, #9a67e8, #ef643e); font-size: 17px; }
+    .agent-text strong { display: block; font-size: 13px; }
+    .agent-text span { display: block; margin-top: 4px; color: #c4c0c8; font: 10px var(--mono); }
+    .route { display: grid; grid-template-columns: 1fr 22px 1fr; align-items: center; gap: 7px; margin: 8px 0 13px; }
+    .route-line { height: 1px; background: linear-gradient(90deg, #8854db, #e35f48); }
+    .route-arrow { color: #a148b3; text-align: center; font-size: 18px; }
+    .app-stack { display: grid; gap: 8px; }
+    .app-chip { position: relative; display: flex; align-items: center; gap: 10px; padding: 10px 11px; border: 1px solid rgba(23,23,23,.1); border-radius: 9px; background: white; font-size: 12px; font-weight: 650; transition: transform .22s ease, border-color .22s ease, background-color .22s ease, box-shadow .22s ease; }
+    .app-chip:hover, .app-chip:focus-within { z-index: 1; transform: translateX(7px); border-color: color-mix(in srgb,var(--tone),transparent 35%); background: color-mix(in srgb,var(--tone),white 94%); box-shadow: 0 5px 14px color-mix(in srgb,var(--tone),transparent 84%); }
+    .app-dot { width: 9px; height: 9px; border-radius: 3px; background: var(--tone); }
+    .app-chip small { margin-left: auto; color: var(--muted); font: 9px var(--mono); font-weight: 500; text-transform: uppercase; }
+    .studio-foot { margin-top: 13px; padding: 11px 12px; border-radius: 8px; background: #f0ece3; color: #514d47; font: 10px var(--mono); }
+    .floating-label { position: absolute; z-index: 1; display: inline-flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid color-mix(in srgb,var(--label-tone),transparent 68%); border-radius: 9px 12px 8px 13px; background: color-mix(in srgb,var(--label-tone) 12%,var(--panel)); box-shadow: 0 8px 20px rgba(39,31,22,.1); color: color-mix(in srgb, var(--label-tone), var(--ink) 35%); font: 700 10px var(--mono); white-space: nowrap; animation: label-drift var(--label-speed,9s) ease-in-out infinite; animation-delay: var(--label-delay,0s); }
+    .floating-label::before { content: ""; width: 7px; height: 7px; flex: 0 0 7px; border-radius: 2px 5px 3px 4px; background: currentColor; rotate: var(--pin-rotation,0deg); }
+    .floating-label.one { --label-tone: #7444d8; --label-speed: 8.2s; --label-delay: -2.3s; --pin-rotation: -13deg; top: 3%; left: 3%; transform: rotate(-4deg); }
+    .floating-label.two { --label-tone: #f06430; --label-speed: 10.4s; --label-delay: -5.7s; --pin-rotation: 9deg; top: 3%; right: 4%; transform: rotate(3deg); }
+    .floating-label.three { --label-tone: #3279d5; --label-speed: 9.1s; --label-delay: -6.4s; --pin-rotation: 16deg; bottom: 3%; left: 3%; transform: rotate(2deg); }
+    .floating-label.four { --label-tone: #4b8d57; --label-speed: 11.2s; --label-delay: -1.8s; --pin-rotation: -11deg; bottom: 3%; right: 4%; transform: rotate(-4deg); }
+    .floating-label.handwritten { border-radius: 13px 9px 14px 8px; font: 700 14px "Segoe Print","Bradley Hand",cursive; letter-spacing: -.035em; }
+    @keyframes studio-drift { 0%,100% { transform: translate3d(0,0,0) rotate(2deg); } 50% { transform: translate3d(0,-9px,0) rotate(1.25deg); } }
+    @keyframes label-drift { 0%,100% { translate: 0 0; } 50% { translate: 0 -5px; } }
+    :root[data-theme="dark"] .studio { background: color-mix(in srgb,var(--panel),transparent 5%); }
+    @media (prefers-reduced-motion: reduce) { .studio,.floating-label,.paint-speck { animation: none; } .app-chip { transition: none; } }
+    .section { padding: 76px 0; border-top: 1px solid var(--line); }
+    .section-heading { display: grid; grid-template-columns: 1fr .65fr; gap: 48px; align-items: end; margin-bottom: 34px; }
+    .section-heading h2 { margin: 12px 0 0; font-size: clamp(34px, 4.2vw, 55px); line-height: 1.02; letter-spacing: -.06em; }
+    .section-heading p { max-width: 430px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
+    .apps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+    .app-card { min-height: 220px; display: flex; flex-direction: column; padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,253,248,.68); transition: transform .18s ease, background .18s ease; }
+    .app-card:hover { transform: translateY(-4px); background: var(--panel); }
+    .app-card .app-badge { width: 39px; height: 39px; display: grid; place-items: center; margin-bottom: 24px; border-radius: 10px; background: color-mix(in srgb, var(--tone), var(--panel) 86%); color: color-mix(in srgb, var(--tone), var(--ink) 35%); font: 800 13px var(--mono); }
+    .app-card h3 { margin: 0 0 9px; font-size: 15px; letter-spacing: -.025em; }
+    .app-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .app-card .pkg { margin-top: auto; padding-top: 16px; color: #6a665f; font: 9px var(--mono); overflow-wrap: anywhere; }
+    .inventory { margin-top: 28px; }
+    .inventory-head { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 12px; }
+    .inventory-head strong { font: 700 11px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+    .inventory-head p { max-width: 590px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .inventory-list { border-top: 1px solid var(--line); }
+    .feature-browser { border-bottom: 1px solid var(--line); }
+    .feature-browser > summary { display: grid; grid-template-columns: 44px 1fr auto 20px; gap: 13px; align-items: center; padding: 16px 4px; cursor: pointer; list-style: none; }
+    .feature-browser > summary::-webkit-details-marker { display: none; }
+    .feature-browser > summary::after { content: "+"; color: #77736c; font: 20px var(--mono); text-align: center; }
+    .feature-browser[open] > summary::after { content: "−"; }
+    .inventory-badge { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: color-mix(in srgb, var(--tone), var(--panel) 86%); color: color-mix(in srgb, var(--tone), var(--ink) 35%); font: 800 12px var(--mono); }
+    .inventory-title { font-size: 14px; font-weight: 700; }
+    .inventory-subtitle { display: block; margin-top: 4px; color: #77736c; font-size: 11px; font-weight: 400; }
+    .inventory-count { color: #6c6862; font: 10px var(--mono); text-align: right; }
+    .feature-content { padding: 0 4px 19px 57px; }
+    .feature-controls { display: grid; grid-template-columns: minmax(180px,1fr) 185px auto; gap: 8px; align-items: center; margin-bottom: 11px; }
+    .feature-controls input, .feature-controls select { width: 100%; min-height: 40px; padding: 0 11px; border: 1px solid rgba(23,23,23,.2); border-radius: 7px; background: #fffdf8; color: var(--ink); font: 12px var(--sans); }
+    .feature-controls output { color: #6c6862; font: 10px var(--mono); text-align: right; white-space: nowrap; }
+    .feature-domain { margin-top: 7px; border: 1px solid rgba(23,23,23,.12); border-radius: 8px; background: rgba(255,253,248,.6); }
+    .feature-domain > summary { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 11px 13px; cursor: pointer; list-style: none; }
+    .feature-domain > summary::-webkit-details-marker { display: none; }
+    .feature-domain > summary::after { content: "＋"; color: #77736c; font: 11px var(--mono); }
+    .feature-domain[open] > summary::after { content: "−"; }
+    .domain-name { font-size: 12px; font-weight: 700; }
+    .domain-meta { color: #77736c; font: 9px var(--mono); }
+    .domain-covers { margin: 0; padding: 0 13px 11px; color: #77736c; font-size: 11px; line-height: 1.5; }
+    .feature-records { display: grid; gap: 7px; padding: 0 9px 9px; }
+    .feature-record { padding: 12px; border: 1px solid rgba(23,23,23,.1); border-radius: 7px; background: white; }
+    .feature-record-head { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+    .feature-record h4 { margin: 0; font-size: 12px; line-height: 1.4; }
+    .feature-tags { flex: 0 0 auto; color: #77736c; font: 9px var(--mono); text-align: right; }
+    .feature-record > p { margin: 7px 0 0; color: #5f5b56; font-size: 11px; line-height: 1.55; }
+    .feature-evidence { margin-top: 8px; padding-top: 7px; border-top: 1px solid rgba(23,23,23,.09); }
+    .feature-evidence > summary { color: #605c57; cursor: pointer; font: 9px var(--mono); }
+    .feature-evidence p { margin: 7px 0; color: #68645f; font: 10px/1.5 var(--mono); overflow-wrap: anywhere; }
+    .feature-sources { display: flex; flex-wrap: wrap; gap: 7px 13px; margin: 7px 0 0; padding: 0; list-style: none; }
+    .feature-sources a { color: #6642ac; font-size: 10px; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    .feature-empty, .feature-error { padding: 18px; color: #6c6862; font-size: 12px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .handoff { display: grid; grid-template-columns: .8fr 1.2fr; gap: 30px; align-items: stretch; margin-top: 24px; padding: 28px; border-radius: 15px; background: #1b1a1d; color: #f8f4ec; }
+    .handoff h3 { max-width: 340px; margin: 11px 0 14px; font-size: 27px; line-height: 1.08; letter-spacing: -.05em; }
+    .handoff p { max-width: 380px; margin: 0; color: #c3bec2; font-size: 13px; line-height: 1.6; }
+    .handoff .eyebrow { color: #b7adb9; }
+    .handoff .eyebrow::before { background: #c084f3; }
+    .handoff-list { display: grid; gap: 10px; align-content: center; }
+    .handoff-item { display: grid; grid-template-columns: 35px 1fr auto; align-items: center; gap: 12px; padding: 15px; border: 1px solid rgba(255,255,255,.15); border-radius: 10px; background: rgba(255,255,255,.045); }
+    .handoff-item .n { color: #c181ef; font: 12px var(--mono); }
+    .handoff-item strong { display: block; font-size: 12px; }
+    .handoff-item span { display: block; margin-top: 4px; color: #bab4bb; font-size: 11px; line-height: 1.4; }
+    .handoff-item code { color: #e7c9f3; font: 9px var(--mono); text-align: right; }
+    .install-section { display: grid; grid-template-columns: .72fr 1.28fr; gap: 56px; align-items: start; }
+    .install-copy h2 { margin: 12px 0 15px; font-size: clamp(36px,4.4vw,56px); line-height: 1; letter-spacing: -.065em; }
+    .install-copy p { color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .requirements { margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .requirements strong { display: block; margin-bottom: 8px; font-size: 12px; }
+    .requirements span { color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .install-panel { overflow: hidden; border: 1px solid rgba(23,23,23,.18); border-radius: 13px; background: #201f22; color: #f8f4ec; }
+    .panel-head { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; border-bottom: 1px solid rgba(255,255,255,.13); color: #c7c1c7; font: 10px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+    .panel-body { padding: 20px; }
+    .panel-body p { margin: 0 0 10px; color: #c8c2ca; font-size: 12px; }
+    .code-row { display: flex; align-items: center; gap: 8px; justify-content: space-between; padding: 13px 14px; border-radius: 8px; background: #111114; }
+    code { font-family: var(--mono); }
+    .code-row code { color: #f2d9ac; font-size: 12px; overflow-wrap: anywhere; }
+    .copy { flex: 0 0 auto; padding: 7px 9px; border: 1px solid rgba(255,255,255,.24); border-radius: 5px; background: transparent; color: #f8f4ec; font: 10px var(--mono); cursor: pointer; }
+    .copy:hover { background: rgba(255,255,255,.1); }
+    .config-label { display: block; margin: 22px 0 9px; color: #c8c2ca; font-size: 12px; }
+    pre { overflow-x: auto; margin: 0; padding: 16px; border-radius: 8px; background: #111114; color: #c9e3c5; font: 11px/1.65 var(--mono); }
+    .config-note { margin: 12px 0 0; color: #9d969f; font-size: 11px; line-height: 1.5; }
+    .truth { display: grid; grid-template-columns: .8fr 1.2fr; gap: 46px; align-items: start; }
+    .truth h2 { margin: 12px 0 14px; font-size: clamp(34px, 4vw, 52px); line-height: 1; letter-spacing: -.065em; }
+    .truth p { color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .atlas-note { margin-top: 16px; color: #66645f; font-size: 13px; line-height: 1.5; }
+    .truth-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    .truth-row { display: grid; grid-template-columns: 130px 1fr; gap: 18px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .truth-row strong { font: 11px var(--mono); text-transform: uppercase; letter-spacing: .05em; }
+    .truth-row span { color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .callout { margin-top: 17px; padding: 15px 17px; border-left: 3px solid var(--orange); background: rgba(240,100,48,.08); color: #5b4a3c; font-size: 12px; line-height: 1.6; }
+    .final { display: flex; justify-content: space-between; gap: 30px; align-items: end; padding: 34px; border-radius: 16px; background: linear-gradient(120deg, #ede3fb, #f8e6d9 64%, #f6e5bf); }
+    .final h2 { max-width: 650px; margin: 10px 0 0; font-size: clamp(34px,4.4vw,58px); line-height: 1; letter-spacing: -.06em; }
+    .final p { max-width: 480px; margin: 13px 0 0; color: #605c57; font-size: 14px; line-height: 1.6; }
+    :root[data-theme="dark"] .button { background: #e7eaed; color: #111417; }
+    :root[data-theme="dark"] .button:hover { background: #cbd2d9; }
+    :root[data-theme="dark"] .button.light { border-color: var(--line); background: transparent; color: var(--ink); }
+    :root[data-theme="dark"] .button.light:hover { background: rgba(255,255,255,.06); }
+    :root[data-theme="dark"] .eyebrow, :root[data-theme="dark"] .local-note, :root[data-theme="dark"] .app-card .pkg { color: var(--muted); }
+    :root[data-theme="dark"] .art-grid { border-color: rgba(231,234,237,.13); background-image: linear-gradient(rgba(231,234,237,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(231,234,237,.045) 1px, transparent 1px); }
+    :root[data-theme="dark"] .studio { border-color: var(--line); background: rgba(24,28,32,.96); box-shadow: 0 22px 60px rgba(0,0,0,.38); }
+    :root[data-theme="dark"] .studio-head, :root[data-theme="dark"] .app-chip small { color: var(--muted); }
+    :root[data-theme="dark"] .app-chip { border-color: var(--line); background: #20262c; }
+    :root[data-theme="dark"] .studio-foot { background: #252b31; color: var(--muted); }
+    :root[data-theme="dark"] .floating-label { border-color: var(--line); }
+    :root[data-theme="dark"] .app-card { border-color: var(--line); background: var(--panel); }
+    :root[data-theme="dark"] .app-card:hover { background: #20262c; }
+    :root[data-theme="dark"] .feature-controls input, :root[data-theme="dark"] .feature-controls select { border-color: var(--line); background: var(--panel); color: var(--ink); }
+    :root[data-theme="dark"] .feature-domain { border-color: var(--line); background: rgba(24,28,32,.6); }
+    :root[data-theme="dark"] .feature-record { border-color: var(--line); background: #20262c; }
+    :root[data-theme="dark"] .feature-record > p, :root[data-theme="dark"] .feature-tags, :root[data-theme="dark"] .domain-name { color: var(--ink); }
+    :root[data-theme="dark"] .feature-evidence { border-color: var(--line); }
+    :root[data-theme="dark"] .feature-evidence > summary, :root[data-theme="dark"] .feature-evidence p, :root[data-theme="dark"] .feature-sources a { color: var(--muted); }
+    :root[data-theme="dark"] .atlas-note { color: var(--muted); }
+    :root[data-theme="dark"] .callout { border-color: var(--orange); background: rgba(230,164,74,.1); color: var(--ink); }
+    :root[data-theme="dark"] .final { background: linear-gradient(120deg, #24212d, #282321 64%, #2a281f); color: var(--ink); }
+    :root[data-theme="dark"] .final p { color: var(--muted); }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 20px; padding-top: 56px; }
+      .hero-art { min-height: 600px; }
+      .apps-grid { grid-template-columns: repeat(3, 1fr); }
+      .section-heading { grid-template-columns: 1fr; gap: 14px; }
+      .install-section { grid-template-columns: 1fr; gap: 28px; }
+    }
+    @media (max-width: 620px) {
+      .hero { padding: 52px 0 58px; }
+      .hero-copy { font-size: 16px; }
+      .hero-art { min-height: 580px; }
+      .paint-canvas { left: 50%; width: 150vw; }
+      .floating-label { padding: 9px 10px; font-size: 9px; }
+      .floating-label.handwritten { font-size: 13px; }
+      .section { padding: 58px 0; }
+      .apps-grid { grid-template-columns: repeat(2, 1fr); }
+      .inventory-head { align-items: start; flex-direction: column; gap: 9px; }
+      .feature-browser > summary { grid-template-columns: 38px 1fr 18px; gap: 9px; }
+      .inventory-count { grid-column: 2; grid-row: 2; text-align: left; }
+      .feature-browser > summary::after { grid-column: 3; grid-row: 1 / span 2; }
+      .feature-content { padding-left: 0; }
+      .feature-controls { grid-template-columns: 1fr; }
+      .feature-controls output { text-align: left; }
+      .feature-record-head { flex-direction: column; gap: 5px; }
+      .feature-tags { text-align: left; }
+      .app-card { min-height: 205px; padding: 15px; }
+      .handoff { grid-template-columns: 1fr; padding: 22px; }
+      .handoff-item { grid-template-columns: 26px 1fr; }
+      .handoff-item code { grid-column: 2; text-align: left; }
+      .truth { grid-template-columns: 1fr; gap: 18px; }
+      .truth-row { grid-template-columns: 95px 1fr; gap: 12px; }
+      .final { flex-direction: column; align-items: start; padding: 25px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .project-card { position: relative; min-height: 220px; display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; grid-template-rows: auto 1fr auto; align-items: start; gap: 14px; padding: 22px; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); text-decoration: none; transition: transform .18s ease, border-color .18s ease; }
+    .project-card:hover { transform: translateY(-3px); border-color: var(--tone); }
+    .project-card::after { position: absolute; z-index: 0; right: -26px; bottom: -66px; width: 220px; height: 150px; border-radius: 60% 0 0; background: linear-gradient(135deg, color-mix(in srgb, var(--tone), transparent 92%), color-mix(in srgb, var(--tone), transparent 80%)); content: ""; transform: rotate(-18deg); }
+    .project-card > * { position: relative; z-index: 1; }
+    .project-icon { width: 58px; height: 58px; display: grid; place-items: center; grid-row: 1 / span 2; border-radius: 12px; background: color-mix(in srgb, var(--tone), white 86%); color: var(--tone); }
+    .project-icon img { width: 38px; height: 38px; object-fit: contain; }
+    .project-icon svg { width: 36px; height: 36px; }
+    .project-title h3 { margin: 4px 0 5px; font-size: 18px; letter-spacing: -.04em; }
+    .project-title p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .project-status { display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; border-radius: 999px; background: color-mix(in srgb, var(--good), transparent 90%); color: var(--good); font: 10px var(--mono); white-space: nowrap; }
+    .project-status::before { width: 7px; height: 7px; border-radius: 50%; background: currentColor; content: ""; }
+    .project-detail { grid-column: 2 / 4; max-width: 42ch; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .project-link { grid-column: 2 / 4; color: var(--tone); font-size: 12px; font-weight: 700; }
+    .join-note { display: flex; justify-content: space-between; gap: 18px; align-items: center; margin-top: 12px; padding: 15px 18px; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); font-size: 12px; }
+    .join-note strong { color: var(--ink); }
+    .join-note p { margin: 0; font-size: 11px; text-align: right; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; counter-reset: step; }
+    .step-card { position: relative; min-height: 165px; padding: 20px; border-top: 1px solid var(--line); counter-increment: step; }
+    .step-card::before { display: grid; place-items: center; width: 34px; height: 34px; margin-bottom: 18px; border-radius: 50%; background: color-mix(in srgb, var(--tone), var(--panel) 86%); color: color-mix(in srgb, var(--tone), var(--ink) 35%); content: "0" counter(step); font: 700 11px var(--mono); }
+    .step-card h3 { margin: 0 0 8px; font-size: 17px; letter-spacing: -.03em; }
+    .step-card p { max-width: 34ch; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .workflow-band { position: relative; z-index: 1; padding: 46px 0; }
+    .workflow-band > .wrap { position: relative; isolation: isolate; }
+    .workflow-card { position: relative; z-index: 1; overflow: visible; padding: clamp(26px, 4vw, 54px); border: 1px solid rgba(23,23,23,.14); border-radius: 22px; background: var(--panel); color: var(--ink); box-shadow: 0 24px 65px rgba(39,31,22,.15); }
+    .workflow-paint { position: absolute; z-index: -1; inset: -20% -12%; width: auto; transform: none; overflow: visible; pointer-events: none; }
+    .workflow-paint .paint-stroke { width: 29%; height: 38%; filter: saturate(1.45); }
+    .workflow-paint .paint-stroke:nth-child(1) { left: 3%; top: 8%; }
+    .workflow-paint .paint-stroke:nth-child(2) { left: 68%; top: 5%; }
+    .workflow-paint .paint-stroke:nth-child(3) { left: 1%; top: 55%; }
+    .workflow-paint .paint-stroke:nth-child(4) { left: 68%; top: 56%; }
+    @media (prefers-reduced-motion: reduce) { .workflow-paint .paint-stroke { opacity: .74; clip-path: none; } :root[data-theme="dark"] .workflow-paint .paint-stroke { opacity: .68; } }
+    .workflow-band .eyebrow { color: var(--muted); }
+    .workflow-band .eyebrow::before { background: var(--purple); }
+    .workflow-grid { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 42px; align-items: start; }
+    .workflow-grid > * { min-width: 0; }
+    .workflow-grid h2 { max-width: 480px; margin: 12px 0 12px; font-size: clamp(32px, 4vw, 49px); line-height: 1; letter-spacing: -.06em; }
+    .workflow-grid p { max-width: 430px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .workflow-band .setup-box { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: color-mix(in srgb, var(--panel), transparent 4%); color: var(--ink); box-shadow: 0 10px 25px rgba(39,31,22,.07); }
+    .setup-box + .setup-box { margin-top: 10px; }
+    .setup-box-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 13px; border-bottom: 1px solid var(--line); color: var(--muted); font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .setup-box-head span { display: inline-flex; align-items: center; gap: 8px; }
+    .setup-box-head span::before { display: grid; place-items: center; width: 23px; height: 23px; border-radius: 7px; background: color-mix(in srgb,var(--tone),var(--panel) 86%); color: var(--tone); content: "⌘"; font: 700 12px var(--sans); }
+    .setup-box[data-tone="blender"] .setup-box-head span::before { content: "▸"; }
+    .workflow-band .setup-box pre { min-width: 0; max-width: 100%; overflow-x: auto; margin: 0; padding: 15px 14px; border-radius: 0; background: #17171a; color: #f3eee5; font: 12px/1.7 var(--mono); scrollbar-color: #a678ec #302b37; scrollbar-width: thin; }
+    .workflow-band .setup-box pre::-webkit-scrollbar { height: 9px; }
+    .workflow-band .setup-box pre::-webkit-scrollbar-track { background: #302b37; }
+    .workflow-band .setup-box pre::-webkit-scrollbar-thumb { border: 2px solid #302b37; border-radius: 99px; background: linear-gradient(90deg,var(--purple),#c23bb2,var(--orange)); }
+    .workflow-band .setup-box code { color: inherit; white-space: pre; }
+    .workflow-band .copy { border-color: var(--line); color: var(--ink); }
+    .workflow-band .copy:hover { background: color-mix(in srgb, var(--purple), transparent 90%); }
+    .systems-flow { display: grid; grid-template-columns: 1fr 24px 1.3fr 24px 1fr; gap: 10px; align-items: center; margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line); }
+    .flow-node { --tone: var(--purple); min-height: 76px; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: color-mix(in srgb, var(--panel), transparent 10%); color: var(--ink); font-size: 11px; text-align: left; box-shadow: 0 8px 20px rgba(39,31,22,.05); transition: background-color .3s, border-color .3s, transform .3s; animation: flow-focus 9s ease-in-out infinite; }
+    .flow-node:nth-of-type(3) { --tone: var(--blue); animation-delay: 3s; }
+    .flow-node:nth-of-type(5) { --tone: var(--orange); animation-delay: 6s; }
+    .flow-node strong { display: block; font-size: 11px; }
+    .flow-node span { display: block; margin-top: 3px; color: var(--muted); font: 9px var(--mono); }
+    .flow-node::before { flex: 0 0 auto; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: color-mix(in srgb,var(--tone),var(--panel) 86%); color: var(--tone); content: "✎"; font: 700 17px var(--sans); }
+    .flow-node.hub { --tone: var(--purple); }
+    .flow-node.hub::before { content: "⌘"; }
+    .flow-node:last-child::before { content: "✦"; }
+    .flow-node:focus-within { border-color: var(--tone); }
+    .flow-arrow { color: var(--purple); font-size: 20px; text-align: center; }
+    @keyframes flow-focus { 0%, 14%, 100% { border-color: var(--line); background-color: color-mix(in srgb,var(--panel),transparent 10%); transform: translateY(0); } 5%, 10% { border-color: color-mix(in srgb,var(--tone),transparent 18%); background-color: color-mix(in srgb,var(--tone),var(--panel) 92%); transform: translateY(-2px); } }
+    :root[data-theme="dark"] .workflow-band .setup-box pre { background: #101114; color: #f4efe7; scrollbar-color: #8d61d2 #29242f; }
+    :root[data-theme="dark"] .workflow-band .setup-box pre::-webkit-scrollbar-track { background: #29242f; }
+    :root[data-theme="dark"] .workflow-band .setup-box pre::-webkit-scrollbar-thumb { border-color: #29242f; }
+    :root[data-theme="dark"] .flow-node { animation-name: flow-focus-dark; }
+    @keyframes flow-focus-dark { 0%, 14%, 100% { border-color: var(--line); background-color: color-mix(in srgb,var(--panel),transparent 10%); transform: translateY(0); } 5%, 10% { border-color: color-mix(in srgb,var(--tone),transparent 24%); background-color: color-mix(in srgb,var(--tone),var(--panel) 82%); transform: translateY(-2px); } }
+    @media (prefers-reduced-motion: reduce) { .flow-node { animation: none; } }
+    .flow-apps { display: flex; justify-content: center; gap: 5px; }
+    .flow-apps i { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 6px; background: var(--tone); color: white; font: 800 9px var(--mono); font-style: normal; }
+    .evidence-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .evidence-card { min-height: 132px; padding: 16px; border: 1px solid var(--line); border-radius: 11px; background: var(--panel); }
+    .evidence-card b { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; font: 700 10px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .evidence-card b::before { width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--tone), var(--panel) 86%); color: color-mix(in srgb, var(--tone), var(--ink) 35%); content: attr(data-symbol); font: 700 13px var(--sans); }
+    .evidence-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .beyond-story { display: grid; grid-template-columns: minmax(250px, .7fr) minmax(0, 1.3fr); gap: clamp(38px, 7vw, 96px); align-items: center; }
+    .beyond-intro .eyebrow { margin-bottom: 14px; }
+    .beyond-intro h2 { max-width: 440px; margin: 0 0 18px; font-size: clamp(38px, 4.8vw, 62px); line-height: .98; letter-spacing: -.065em; }
+    .beyond-intro > p:not(.workflow-note) { max-width: 38ch; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
+    .journey-rail { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding-top: 4px; }
+    .journey-rail::before { position: absolute; top: 25px; left: 12%; right: 12%; height: 2px; background: linear-gradient(90deg,var(--purple),#bd3bb6 52%,var(--orange)); content: ""; opacity: .72; }
+    .journey-step { position: relative; min-width: 0; padding: 0 20px 0 0; }
+    .journey-step:last-child { padding-right: 0; }
+    .journey-step-head { position: relative; display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .journey-step-number { min-width: 26px; color: var(--tone); font: 11px var(--mono); }
+    .journey-step-icon { position: relative; z-index: 1; display: grid; place-items: center; width: 46px; height: 46px; border: 5px solid var(--paper); border-radius: 15px; background: color-mix(in srgb, var(--tone), white 86%); color: color-mix(in srgb, var(--tone), var(--ink) 35%); font: 800 12px var(--mono); box-shadow: 0 0 0 1px var(--line); }
+    .journey-step h3 { margin: 0 0 8px; font-size: 18px; letter-spacing: -.035em; }
+    .journey-step p { max-width: 25ch; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .beyond-note { display: flex; justify-content: space-between; gap: 24px; align-items: start; margin: 40px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .beyond-note strong { flex: 0 0 auto; color: var(--ink); font: 10px var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .beyond-note span { max-width: 80ch; }
+    .journey-step-number { position: relative; z-index: 1; display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 5px; border-radius: 50%; background: var(--paper); }
+    .journey-step-head { gap: 10px; }
+    .journey-step-icon { width: 54px; height: 54px; border-width: 4px; }
+    .journey-step h3 { margin-bottom: 7px; }
+    @media (min-width: 901px) {
+      .beyond-story { grid-template-columns: minmax(270px, .62fr) minmax(0, 1.38fr); gap: clamp(50px, 8vw, 120px); }
+      .journey-rail { padding-top: 0; }
+      .journey-rail::before { top: 27px; left: 13%; right: 13%; }
+      .journey-step { padding-right: 28px; }
+      .journey-step-head { flex-direction: column; align-items: flex-start; gap: 13px; margin-bottom: 22px; }
+      .journey-step-number { position: absolute; top: 17px; left: 67px; }
+      .journey-step h3 { font-size: 20px; }
+      .journey-step p { font-size: 13px; }
+    }
+    .workflow-note { margin: 14px 0 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .final { position: relative; overflow: hidden; background: linear-gradient(110deg, #171719, #26202d 64%, #322328); color: #f8f4ec; }
+    .final::after { position: absolute; right: -55px; bottom: -180px; width: 480px; height: 300px; border: 35px solid transparent; border-radius: 50%; background: linear-gradient(115deg,#7547d8,#cb3cb0 56%,#f06430) border-box; content: ""; opacity: .8; transform: rotate(-28deg); }
+    .final > * { position: relative; z-index: 1; }
+    .final .eyebrow { color: #c7becb; }
+    .final p { color: #c7c2c8; }
+    .final .button.light { border-color: rgba(255,255,255,.3); color: #f8f4ec; }
+    .site-footer { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 28px; padding: 28px 0 40px; border-top: 1px solid var(--line); }
+    .site-footer .brand { align-self: start; }
+    .site-footer p { max-width: 220px; margin: 9px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .footer-col { display: grid; align-content: start; gap: 8px; font-size: 11px; }
+    .footer-col strong { margin-bottom: 3px; font: 700 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .footer-col a { color: var(--muted); text-decoration: none; }
+    .footer-col a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+    :root[data-theme="dark"] .project-card::after { opacity: .42; }
+    :root[data-theme="dark"] .project-icon { background: color-mix(in srgb, var(--tone), #181c20 74%); }
+    :root[data-theme="dark"] .step-card::before, :root[data-theme="dark"] .evidence-card b::before, :root[data-theme="dark"] .journey-step-icon { background: color-mix(in srgb, var(--tone), #181c20 76%); border-color: var(--paper); }
+    :root[data-theme="dark"] .final { color: var(--ink); }
+    :root[data-theme="dark"] .final p { color: var(--muted); }
+    @media (max-width: 900px) { .project-grid { grid-template-columns: 1fr; } .evidence-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .beyond-story { grid-template-columns: 1fr; gap: 42px; } .beyond-intro { display: grid; grid-template-columns: minmax(220px, .8fr) 1fr; column-gap: 32px; align-items: end; } .beyond-intro .eyebrow { grid-column: 1 / -1; } .beyond-intro h2 { margin-bottom: 0; } .site-footer { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 620px) { .project-card { grid-template-columns: 48px minmax(0, 1fr); gap: 11px; padding: 16px; } .project-icon { width: 48px; height: 48px; } .project-status { grid-column: 2; grid-row: 2; justify-self: start; } .project-title { grid-column: 2; } .project-detail,.project-link { grid-column: 2; } .join-note { align-items: start; flex-direction: column; } .join-note p { text-align: left; } .steps-grid { grid-template-columns: 1fr; gap: 5px; } .step-card { min-height: 0; padding: 16px 8px; } .workflow-band { padding: 30px 0; } .workflow-card { padding: 24px 18px; border-radius: 17px; } .workflow-paint { inset: -8% -7%; } .workflow-paint .paint-stroke { width: 40%; height: 27%; } .workflow-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; } .systems-flow { grid-template-columns: minmax(0, 1fr); } .flow-arrow { transform: rotate(90deg); } .evidence-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .evidence-card { min-height: 145px; padding: 12px; } .beyond-story { gap: 30px; } .beyond-intro { display: block; } .beyond-intro h2 { margin-bottom: 14px; } .journey-rail { grid-template-columns: 1fr; gap: 20px; padding-left: 3px; } .journey-rail::before { top: 20px; bottom: 20px; left: 24px; right: auto; width: 2px; height: auto; background: linear-gradient(var(--purple),#bd3bb6 52%,var(--orange)); } .journey-step { display: grid; grid-template-columns: 26px 46px minmax(0, 1fr); gap: 0 12px; align-items: center; padding: 0; } .journey-step-head { display: contents; } .journey-step-number { grid-column: 1; grid-row: 1 / 3; } .journey-step-icon { grid-column: 2; grid-row: 1 / 3; } .journey-step h3 { grid-column: 3; align-self: end; margin-bottom: 4px; } .journey-step p { grid-column: 3; align-self: start; max-width: none; } .beyond-note { flex-direction: column; gap: 8px; margin-top: 30px; } .site-footer { grid-template-columns: 1fr 1fr; gap: 22px 14px; } }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
+  <script src="/analytics.js?v=2" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#top">Skip to main content</a>
+  <header class="wrap topbar">
+    <a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a>
+    <nav class="topnav" aria-label="Main navigation"><a data-event-id="nav_projects" href="/projects.html">Projects</a><a data-event-id="nav_how_it_works" href="/how-it-works.html">How it works</a><a data-event-id="nav_docs" href="/docs/">Docs</a><a data-event-id="nav_about" href="/about.html">About</a><button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" data-event-id="theme_toggle"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a data-event-id="cta_get_started" class="button" href="/start.html"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav>
+  </header>
+
+  <main id="top" tabindex="-1">
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <div class="paint-canvas" aria-hidden="true">
+        <img class="paint-stroke" src="/assets/brushes/brand-violet.png" alt="">
+        <img class="paint-stroke" src="/assets/brushes/brand-magenta.png" alt="">
+        <img class="paint-stroke" src="/assets/brushes/brand-coral.png" alt="">
+        <img class="paint-stroke" src="/assets/brushes/indesign.png" alt="">
+        <img class="paint-stroke" src="/assets/brushes/illustrator.png" alt="">
+        <img class="paint-stroke" src="/assets/brushes/photoshop.png" alt="">
+        <img class="paint-stroke" src="/assets/brushes/after-effects.png" alt="">
+        <img class="paint-stroke" src="/assets/brushes/premiere-pro.png" alt="">
+      </div>
+      <div class="hero-copy-block">
+        <div class="eyebrow">Creative tools, connected</div>
+        <h1 id="hero-title">Make more with the tools you <span class="accent">already use.</span></h1>
+        <p class="hero-copy">Local MCP servers connect your creative applications to agent workflows, so your tools, files and context can work together.</p>
+        <div class="hero-actions"><a data-event-id="cta_get_started" class="button" href="/start.html"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a><a data-event-id="nav_projects" class="button light" href="/projects.html"><span class="button-label">Explore implementations</span><span aria-hidden="true"><span class="button-label">→</span></span></a></div>
+        <div class="local-note">LOCAL &nbsp;·&nbsp; OPEN &nbsp;·&nbsp; CREATIVE &nbsp;·&nbsp; ON YOUR TERMS</div>
+      </div>
+      <div class="hero-art" aria-label="Diagram of your MCP client connecting to Adobe creative applications and Blender">
+        <div class="art-grid"></div>
+        <div class="paint-particles" aria-hidden="true">
+          <span class="paint-speck" style="--speck-x:1.3%;--speck-y:25%;--speck-size:10px;--speck-height:6px;--speck-shape:70% 38% 57% 42%;--speck-color:#7444d8;--speck-rotation:-24deg;--speck-speed:7.4s;--speck-delay:-3s;--speck-drift:3px"></span>
+          <span class="paint-speck" style="--speck-x:98%;--speck-y:38%;--speck-size:7px;--speck-height:8px;--speck-shape:42% 66% 38% 70%;--speck-color:#f06430;--speck-rotation:31deg;--speck-speed:9.2s;--speck-delay:-6s;--speck-drift:-4px"></span>
+          <span class="paint-speck" style="--speck-x:1.7%;--speck-y:54%;--speck-size:12px;--speck-height:6px;--speck-shape:58% 40% 67% 33%;--speck-color:#3279d5;--speck-rotation:12deg;--speck-speed:8.1s;--speck-delay:-1s;--speck-drift:5px"></span>
+          <span class="paint-speck" style="--speck-x:98.4%;--speck-y:71%;--speck-size:9px;--speck-height:7px;--speck-shape:38% 62% 45% 66%;--speck-color:#d93f36;--speck-rotation:-37deg;--speck-speed:10.6s;--speck-delay:-8s;--speck-drift:-3px"></span>
+          <span class="paint-speck" style="--speck-x:1.2%;--speck-y:82%;--speck-size:6px;--speck-height:6px;--speck-shape:65% 35% 54% 46%;--speck-color:#4b8d57;--speck-rotation:28deg;--speck-speed:11.4s;--speck-delay:-4s;--speck-drift:4px"></span>
+          <span class="paint-speck" style="--speck-x:98.2%;--speck-y:20%;--speck-size:11px;--speck-height:6px;--speck-shape:44% 58% 37% 63%;--speck-color:#bd3bb6;--speck-rotation:-16deg;--speck-speed:8.8s;--speck-delay:-2s;--speck-drift:-5px"></span>
+        </div>
+        <div class="floating-label one">Your creative apps</div>
+        <div class="floating-label two handwritten">Open source</div>
+        <div class="floating-label three">Local MCP · your machine</div>
+        <div class="floating-label four handwritten">Total control</div>
+        <div class="studio">
+          <div class="studio-head"><span>Creative workspace</span><span class="status">Connected locally</span></div>
+          <div class="studio-agent"><div class="agent-icon" aria-hidden="true">✳</div><div class="agent-text"><strong>Your MCP client</strong><span>one connection · app-aware tools</span></div></div>
+          <div class="route"><span class="route-line"></span><span class="route-arrow" aria-hidden="true">↓</span><span class="route-line"></span></div>
+          <div class="app-stack">
+            <div class="app-chip" style="--tone:var(--purple)"><i class="app-dot"></i>InDesign <small>layout</small></div>
+            <div class="app-chip" style="--tone:var(--orange)"><i class="app-dot"></i>Illustrator <small>vector</small></div>
+            <div class="app-chip" style="--tone:var(--blue)"><i class="app-dot"></i>Photoshop <small>images</small></div>
+            <div class="app-chip" style="--tone:var(--red)"><i class="app-dot"></i>After Effects <small>motion</small></div>
+            <div class="app-chip" style="--tone:var(--green)"><i class="app-dot"></i>Premiere Pro <small>video</small></div>
+            <div class="app-chip blender-chip"><i class="blender-dot" aria-hidden="true">3D</i>Blender <small>scenes</small></div>
+          </div>
+          <div class="studio-foot">Adobe MCP + Blender MCP &nbsp;→&nbsp; your open creative apps</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <div class="section-heading"><div><div class="eyebrow">Implementations</div><h2 id="projects-title">One protocol. Different creative worlds.</h2></div><p>Creative MCP hosts independent, open implementations that connect creative tools to agent workflows.</p></div>
+        <div class="project-grid">
+          <a data-event-id="cta_adobe_mcp" class="project-card" style="--tone:var(--purple)" href="/apps.html">
+            <span class="project-icon"><img src="/brand-symbol.svg" alt=""></span><span class="project-title"><h3>Adobe MCP</h3><p>Connect your Adobe creative apps.</p></span><span class="project-status">Available</span>
+            <p class="project-detail">Five app-specific MCP servers, with a coordinator for supported cross-app workflows.</p><span class="project-link">Explore Adobe MCP ↗</span>
+          </a>
+          <a data-event-id="cta_blender_mcp" class="project-card" style="--tone:var(--orange)" href="/docs/implementations/blender.html">
+            <span class="project-icon"><svg viewBox="0 0 48 48" role="img" aria-label="Blender project mark"><path d="M8 24h14M13 16l10 7M12 32l11-7" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="31" cy="24" r="11" fill="currentColor"/><circle cx="31" cy="24" r="5" fill="var(--panel)"/></svg></span><span class="project-title"><h3>Blender MCP</h3><p>Work with 3D scenes, objects, materials and animation.</p></span><span class="project-status">Available</span>
+            <p class="project-detail">A Rust MCP server and Blender companion add-on for scene tools, assets and pipelines.</p><span class="project-link">Explore Blender MCP ↗</span>
+          </a>
+        </div>
+        <div class="join-note"><strong>＋ &nbsp; More creative tools can join as they’re ready.</strong><p>Creative MCP is an open platform; implementations are developed and released independently.</p></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="steps-title">
+      <div class="wrap">
+        <div class="section-heading"><div><div class="eyebrow">How it works</div><h2 id="steps-title">Get from idea to output in three steps.</h2></div><p>A simple local setup connects your creative applications to your chosen agent workflow.</p></div>
+        <div class="steps-grid">
+          <article class="step-card" style="--tone:var(--purple)"><h3>Choose a tool</h3><p>Pick an implementation, such as Adobe MCP or Blender MCP.</p></article>
+          <article class="step-card" style="--tone:var(--orange)"><h3>Connect your MCP client</h3><p>Install and configure the local server and any app companion it needs.</p></article>
+          <article class="step-card" style="--tone:var(--blue)"><h3>Keep creating in your app</h3><p>Your tools stay open on your machine. Work with your files and context where supported.</p></article>
+        </div>
+        <p><a data-event-id="nav_how_it_works" class="text-link" href="/how-it-works.html">See setup details and implementation requirements →</a></p>
+      </div>
+    </section>
+
+    <section class="workflow-band" aria-labelledby="local-work-title">
+      <div class="wrap">
+        <div class="paint-canvas workflow-paint" aria-hidden="true">
+          <img class="paint-stroke" src="/assets/brushes/brand-violet.png" alt="">
+          <img class="paint-stroke" src="/assets/brushes/brand-magenta.png" alt="">
+          <img class="paint-stroke" src="/assets/brushes/illustrator.png" alt="">
+          <img class="paint-stroke" src="/assets/brushes/photoshop.png" alt="">
+        </div>
+        <div class="workflow-card">
+        <div class="workflow-grid">
+          <div><div class="eyebrow">Built for real work</div><h2 id="local-work-title">Move from instructions to finished creative output.</h2><p>Give agents a way to work with your actual creative tools, files and context. Each implementation runs locally and documents its own setup.</p></div>
+          <div>
+            <div class="setup-box" data-tone="adobe"><div class="setup-box-head"><span>Adobe MCP · Homebrew</span><button class="copy" type="button" data-copy="adobe-brew">Copy command</button></div><pre tabindex="0" aria-label="Adobe MCP Homebrew install commands"><code id="adobe-brew">brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/adobe-mcp</code></pre></div>
+            <div class="setup-box" data-tone="blender"><div class="setup-box-head"><span>Blender MCP · Homebrew</span><button class="copy" type="button" data-copy="blender-brew">Copy command</button></div><pre tabindex="0" aria-label="Blender MCP Homebrew install commands"><code id="blender-brew">brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install --HEAD zachshallbetter/tap/blender-mcp</code></pre></div>
+            <div class="setup-box" data-tone="adobe"><div class="setup-box-head"><span>Adobe MCP · Claude Code with npx</span><button class="copy" type="button" data-copy="adobe-install">Copy command</button></div><pre tabindex="0" aria-label="Adobe MCP installation command"><code id="adobe-install">claude mcp add --scope user adobe -- npx -y adobe-mcp-suite</code></pre></div>
+            <div class="setup-box" data-tone="blender"><div class="setup-box-head"><span>Blender MCP · Rust install</span><button class="copy" type="button" data-copy="blender-install">Copy command</button></div><pre tabindex="0" aria-label="Blender MCP installation command"><code id="blender-install">cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli</code></pre></div>
+          </div>
+        </div>
+        <div class="systems-flow" aria-label="Instructions flow through your MCP client and local implementations to creative applications and output">
+          <div class="flow-node"><div><strong>Your instructions</strong><span>briefs · files · context</span></div></div><span class="flow-arrow" aria-hidden="true">→</span>
+          <div class="flow-node hub"><div><strong>MCP client</strong><span>local connection</span></div></div><span class="flow-arrow" aria-hidden="true">→</span>
+          <div class="flow-node"><div><strong>Creative output</strong><span>Adobe apps · Blender</span></div></div>
+        </div>
+       </div>
+      </div>
+    </section>
+
+    <section class="section" id="evidence" aria-labelledby="evidence-title">
+      <div class="wrap">
+        <div class="section-heading"><div><div class="eyebrow">Capability &amp; evidence</div><h2 id="evidence-title">Clear signals for what’s ready.</h2></div><p>Each implementation provides transparent information about its current capabilities, so you know what to expect.</p></div>
+        <div class="evidence-grid">
+          <article class="evidence-card" style="--tone:var(--purple)"><b data-symbol="≡">Documented</b><p>Guides explain what the implementation does and how to set it up.</p></article>
+          <article class="evidence-card" style="--tone:var(--red)"><b data-symbol="⚙">Implemented</b><p>The tools and capabilities are present in the MCP server.</p></article>
+          <article class="evidence-card" style="--tone:var(--green)"><b data-symbol="✓">Tested</b><p>Automated checks cover the tool implementation where provided.</p></article>
+          <article class="evidence-card" style="--tone:var(--blue)"><b data-symbol="◎">Validated</b><p>Live-app validation is reported separately and depends on the implementation.</p></article>
+        </div>
+        <p class="workflow-note">Adobe MCP’s <a data-event-id="cta_capability_atlas" href="/capability-atlas.html">Capability Atlas</a> tracks evidence by feature. For Blender MCP, see the project’s current repository documentation. A tool passing automated checks does not by itself prove that a workflow has been validated in a live application.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="example-title">
+      <div class="wrap">
+        <div class="beyond-story">
+          <div class="beyond-intro"><div class="eyebrow">Beyond one app</div><h2 id="example-title">From layout to a 3D scene.</h2><p>Move approved artwork and its context into Blender, then keep building in the tools you already use.</p></div>
+          <div class="journey-rail" aria-label="Workflow from InDesign through exported files to Blender">
+            <article class="journey-step" style="--tone:var(--purple)"><div class="journey-step-head"><i class="journey-step-icon" aria-hidden="true">Id</i><span class="journey-step-number">01 / 03</span></div><h3>Design the composition</h3><p>Shape a layout and approve the artwork in InDesign.</p></article>
+            <article class="journey-step" style="--tone:var(--blue)"><div class="journey-step-head"><i class="journey-step-icon" aria-hidden="true">↗</i><span class="journey-step-number">02 / 03</span></div><h3>Move the working files</h3><p>Export the approved assets and carry the brief into the next tool.</p></article>
+            <article class="journey-step" style="--tone:var(--orange)"><div class="journey-step-head"><i class="journey-step-icon" aria-hidden="true">3D</i><span class="journey-step-number">03 / 03</span></div><h3>Develop the scene</h3><p>Bring those assets into Blender and continue building in 3D.</p></article>
+          </div>
+        </div>
+        <div class="beyond-note"><strong>How the handoff works</strong><span>This is a file handoff between separate MCP implementations. Direct Adobe-to-Blender orchestration is not currently provided. <a href="/workflows.html">Explore the workflow gallery →</a></span></div>
+      </div>
+    </section>
+
+    <section class="wrap section" aria-labelledby="final-title"><div class="final"><div><div class="eyebrow">Get started today</div><h2 id="final-title">Give your creative tools a way to work together.</h2><p>Local, open and built for creators.</p></div><div class="hero-actions"><a data-event-id="cta_get_started" class="button" href="/start.html"><span class="button-label">Get started ↗</span></a><a class="button light" href="/workflows.html"><span class="button-label">Browse workflows →</span></a></div></div></section>
+  </main>
+  <footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a data-event-id="cta_adobe_mcp" href="/apps.html">Adobe MCP</a><a data-event-id="cta_blender_mcp" href="/docs/implementations/blender.html">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a data-event-id="cta_get_started" href="/start.html">Quick setup</a><a href="/workflows.html">Workflow gallery</a><a data-event-id="nav_docs" href="/docs/">Docs &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="/docs/contributing.html">Contribute</a><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer>
+  <script>
+    document.querySelectorAll("[data-copy]").forEach(function (button) {
+      button.addEventListener("click", async function () {
+        var code = document.getElementById(button.getAttribute("data-copy"));
+        try {
+          await navigator.clipboard.writeText(code.textContent);
+          if (window.creativeMcpInteraction) window.creativeMcpInteraction("copy_command", { command_id: button.getAttribute("data-copy") });
+          button.textContent = "Copied";
+          window.setTimeout(function () { button.textContent = "Copy"; }, 1500);
+        } catch (error) {
+          button.textContent = "Select text";
+        }
+      });
+    });
+
+    var paintCanvases = document.querySelectorAll(".paint-canvas");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      paintCanvases.forEach(function (paintCanvas) {
+        var paintStrokes = Array.from(paintCanvas.querySelectorAll(".paint-stroke"));
+        for (var index = paintStrokes.length - 1; index > 0; index--) {
+          var swapIndex = Math.floor(Math.random() * (index + 1));
+          [paintStrokes[index], paintStrokes[swapIndex]] = [paintStrokes[swapIndex], paintStrokes[index]];
+        }
+        var paintIndex = 0;
+        function paintNextStroke() {
+          if (paintIndex >= paintStrokes.length) return;
+          var stroke = paintStrokes[paintIndex++];
+          var duration = 4.5 + Math.random() * 2.5;
+          stroke.style.setProperty("--paint-duration", duration.toFixed(2) + "s");
+          stroke.classList.add("is-painting");
+          window.setTimeout(function () {
+            stroke.classList.remove("is-painting");
+            stroke.classList.add("is-painted");
+            window.setTimeout(paintNextStroke, 550 + Math.random() * 1200);
+          }, duration * 1000);
+        }
+        paintNextStroke();
+      });
+    }
+  </script>
+  <script src="/theme.js" defer></script>
+<script src="/events.js?v=2" defer></script>
+</body>
+</html>

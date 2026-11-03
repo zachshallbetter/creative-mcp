@@ -1,0 +1,1503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f0e8">
+<script>
+try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }
+</script>
+<meta name="description" content="Explore researched Adobe app capabilities, automation routes, MCP coverage and production workflows.">
+<meta name="author" content="Zach Shallbetter">
+<link rel="author" href="https://creativemcp.com/about.html">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icons/icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="application-name" content="Creative MCP">
+<meta name="apple-mobile-web-app-title" content="Creative MCP">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index">
+<link rel="canonical" href="https://creativemcp.com/capability-atlas.html">
+<meta property="og:type" content="website"><meta property="og:title" content="Capability Atlas — Creative MCP"><meta property="og:description" content="Explore researched Adobe app capabilities, automation routes, MCP coverage and production workflows."><meta property="og:url" content="https://creativemcp.com/capability-atlas.html"><meta property="og:site_name" content="Creative MCP"><meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://creativemcp.com/assets/social/capability-atlas.jpg">
+<meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Creative MCP, Capability Atlas: What automation can reach in five Adobe apps. 12,014 documented features, their automation routes, MCP coverage and the evidence behind each claim. By Zach Shallbetter.">
+<meta name="twitter:image" content="https://creativemcp.com/assets/social/capability-atlas.jpg">
+<meta name="twitter:image:alt" content="Creative MCP, Capability Atlas: What automation can reach in five Adobe apps. 12,014 documented features, their automation routes, MCP coverage and the evidence behind each claim. By Zach Shallbetter.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Capability Atlas — Creative MCP"><meta name="twitter:description" content="Explore researched Adobe app capabilities, automation routes, MCP coverage and production workflows.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://creativemcp.com/capability-atlas.html#webpage",
+      "url": "https://creativemcp.com/capability-atlas.html",
+      "name": "Capability Atlas — Creative MCP",
+      "description": "Explore researched Adobe app capabilities, automation routes, MCP coverage and production workflows.",
+      "isPartOf": {
+        "@id": "https://creativemcp.com/#website"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "dateModified": "2026-11-02",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://creativemcp.com/assets/social/capability-atlas.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "about": {
+        "@id": "https://creativemcp.com/apps.html#adobe-mcp"
+      },
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "creator": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://creativemcp.com/about.html#zach-shallbetter",
+      "name": "Zach Shallbetter",
+      "url": "https://zachshallbetter.com/",
+      "sameAs": [
+        "https://zachshallbetter.com/",
+        "https://github.com/zachshallbetter",
+        "https://linkedin.com/in/zachshallbetter"
+      ]
+    }
+  ]
+}
+</script>
+<title>Capability Atlas — Creative MCP</title>
+<link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/site-tokens.css?v=14">
+<style>
+/* Atlas report layout, using the suite-wide design tokens and navigation. */
+* { box-sizing: border-box; }
+main.wrap { padding-block: 56px 80px; }
+.topnav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+h1, h2, h3, h4 { font-family: var(--display); text-wrap: balance; margin: 0; }
+h1 { max-width: 850px; font-size: clamp(48px, 6.3vw, 84px); font-weight: 740; line-height: .98; letter-spacing: -.075em; }
+h2 { font-size: clamp(34px, 4.2vw, 55px); font-weight: 700; letter-spacing: -.06em; line-height: 1.02; }
+h3 { font-size: 1.05rem; font-weight: 700; margin-block: 28px 10px; }
+h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+code { font-family: var(--mono); font-size: 0.85em; }
+.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 0.88rem; white-space: nowrap; }
+.dim { color: var(--ink-3); }
+.mast { position: relative; }
+.meta span { padding: 3px 0; }
+.totals div { box-shadow: 0 1px 0 rgba(23,23,23,.025); }
+.totals b { color: var(--ink); }
+.coverage-key { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: -8px 0 18px; color: var(--muted); font-size: 12px; }
+.coverage-key span { display: inline-flex; align-items: center; gap: 7px; }
+.coverage-key i { width: 9px; height: 9px; border-radius: 50%; background: var(--key); }
+.coverage-key .key-implemented { --key: var(--green); }
+.coverage-key .key-tested { --key: var(--blue); }
+.coverage-key .key-validated { --key: var(--orange); }
+.coverage-caption { margin: 0 0 28px; color: var(--ink-3); font-size: 12px; line-height: 1.6; }
+.mast { display: block; padding: 70px 0 34px; border: 0; }
+.mast .eyebrow { margin-bottom: 18px; }
+.stand { max-width: 720px; margin: 20px 0 0; color: var(--muted); font-size: 18px; line-height: 1.6; }
+.nw { white-space: nowrap; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 14px; font: 0.8rem var(--mono); color: var(--ink-3); }
+.totals { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 34px; }
+.totals div { min-height: 112px; padding: 17px 18px; display: grid; align-content: start; gap: 8px; background: var(--sheet); border: 1px solid var(--rule); border-radius: var(--radius-card); }
+.totals b { font: 750 1.8rem/1.05 var(--display); font-variant-numeric: tabular-nums; letter-spacing: -.055em; }
+.totals span { font-size: 0.8rem; line-height: 1.45; color: var(--ink-2); }
+.tabs { display: flex; flex-wrap: wrap; gap: 0; margin-top: 40px; border-bottom: 1px solid var(--rule); }
+.tabs button { font: 700 1.1rem var(--display); letter-spacing: -.03em; background: none; border: 0; border-bottom: 3px solid transparent; color: var(--ink-3); padding: 10px 18px 9px; cursor: pointer; }
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.tabs button[aria-selected="true"] .tc { color: var(--ink-2); }
+.tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tabs button .tc { font: 400 0.78rem var(--mono); color: var(--ink-3); margin-left: 6px; }
+#tab-indesign, #panel-indesign, .app-indesign { --accent: var(--app-indesign); }
+#tab-illustrator, #panel-illustrator, .app-illustrator { --accent: var(--app-illustrator); }
+#tab-photoshop, #panel-photoshop, .app-photoshop { --accent: var(--app-photoshop); }
+#tab-aftereffects, #panel-aftereffects, .app-aftereffects { --accent: var(--app-aftereffects); }
+#tab-premiere, #panel-premiere, .app-premiere { --accent: var(--app-premiere); }
+.panel:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.section-heading { display: grid; grid-template-columns: 1fr .65fr; gap: 48px; align-items: end; margin: 8px 0 24px; }
+.section-heading h2 { margin: 12px 0 0; font-size: clamp(34px, 4.2vw, 55px); line-height: 1.02; letter-spacing: -.06em; }
+.section-heading p { max-width: 520px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+.compare { margin-top: 0; overflow-x: auto; border: 1px solid var(--rule); border-radius: var(--radius-card); background: var(--sheet); }
+.compare table { min-width: 720px; background: transparent; }
+.compare th, .compare td { padding: 9px 12px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: middle; }
+.compare thead th { font: 700 0.72rem var(--body); letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-3); }
+.compare thead th.num { text-align: right; }
+.compare tbody th a { color: var(--ink); font: 700 1rem var(--display); letter-spacing: -.025em; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.compare tbody th a:hover { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.compare tbody th a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.compare .sw { background: var(--accent); }
+.compare .ibar { display: block; height: 4px; margin-top: 4px; background: var(--rule); }
+.compare .ibar span { display: block; height: 100%; background: var(--accent); }
+.empty { font-style: italic; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 8px 44px; }
+.col { min-width: 0; }
+.lede, .note { color: var(--ink-2); max-width: 62ch; margin: 0 0 12px; font-size: 0.95rem; }
+.note { border-left: 3px solid var(--accent); padding-left: 12px; margin-top: 16px; }
+.ladder { list-style: none; padding: 0; margin: 0; display: grid; gap: 13px; }
+.ladder li { display: grid; grid-template-columns: 7.5em 5em 3.5em 1fr; grid-template-areas: "k v p n" "b b b b"; align-items: baseline; gap: 2px 10px; }
+.lk { grid-area: k; font: 700 0.95rem var(--display); letter-spacing: -.02em; }
+.lv { grid-area: v; text-align: right; font: 600 1rem var(--mono); font-variant-numeric: tabular-nums; }
+.lp { grid-area: p; text-align: right; font: 0.8rem var(--mono); color: var(--ink-3); }
+.ln { grid-area: n; font-size: 0.85rem; color: var(--ink-2); min-width: 0; }
+.lbar { grid-area: b; height: 8px; background: var(--rule); display: block; }
+.lbar span { display: block; height: 100%; background: var(--stage-color, var(--accent)); min-width: 0; border-radius: inherit; }
+.ladder li:nth-child(3) { --stage-color: var(--green); }
+.ladder li:nth-child(4) { --stage-color: var(--blue); }
+.ladder li:nth-child(5) { --stage-color: var(--orange); }
+.chips, .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.chip { font-size: 0.85rem; color: var(--ink-2); white-space: nowrap; }
+.sub .chip { margin-right: 8px; }
+.chip b { color: var(--ink); font-family: var(--mono); font-weight: 500; font-size: 0.82rem; }
+.legend span { font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px; }
+.legend b { font-family: var(--mono); font-weight: 500; font-size: 0.82rem; }
+.sw { width: 11px; height: 11px; display: inline-block; flex: 0 0 11px; border-radius: 3px; }
+.r-dom { background: var(--r-dom); } .r-menu_command { background: var(--r-menu); } .r-action_manager { background: var(--r-am); } .r-uxp { background: var(--r-uxp); } .r-action { background: var(--r-menu); }
+.r-native_sdk { background: var(--r-sdk); } .r-none { background: var(--r-none); } .r-unknown { background: var(--r-unknown); }
+/* Patterns keep routes distinguishable without relying on hue (color-blind safe). */
+.seg.r-menu_command, .sw.r-menu_command, .seg.r-action, .sw.r-action { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.55) 0 2px, transparent 2px 5px); }
+.seg.r-action_manager, .sw.r-action_manager { background-image: radial-gradient(rgba(255,255,255,.7) 1px, transparent 1.4px); background-size: 4px 4px; }
+.seg.r-uxp, .sw.r-uxp { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.6) 0 1.5px, transparent 1.5px 4px); }
+.seg.r-native_sdk, .sw.r-native_sdk { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.5) 0 1.5px, transparent 1.5px 5px), repeating-linear-gradient(-45deg, rgba(255,255,255,.5) 0 1.5px, transparent 1.5px 5px); }
+.seg.r-none, .sw.r-none { background-image: repeating-linear-gradient(-45deg, rgba(0,0,0,.38) 0 2px, transparent 2px 4px); }
+.seg + .seg { box-shadow: inset 1px 0 0 var(--paper); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; }
+.domains { min-width: 720px; background: var(--sheet); border: 1px solid var(--rule); border-radius: var(--radius-card); overflow: hidden; }
+.domains th, .domains td { padding: 9px 12px; border-bottom: 1px solid var(--rule); vertical-align: middle; text-align: left; }
+.domains thead th, .plain thead th { font: 700 0.72rem var(--body); letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-3); }
+.domains thead th.num, .plain thead th.num { text-align: right; }
+.domains tbody th { font-weight: 400; width: 34%; }
+.dn { display: block; font-weight: 700; }
+.dc { display: block; font-size: 0.8rem; color: var(--ink-3); line-height: 1.35; }
+.barcol { width: 30%; }
+.bar { display: flex; height: 12px; min-width: 2px; overflow: hidden; border-radius: 999px; background: var(--line); }
+.seg { display: block; height: 100%; }
+.plain th, .plain td { padding: 6px 10px 6px 0; border-bottom: 1px solid var(--rule); text-align: left; font-size: 0.9rem; vertical-align: top; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; margin-top: 30px; }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: var(--radius-card); padding: 18px; min-width: 0; }
+.big { font: 800 2.1rem/1.1 var(--display); margin: 6px 0; font-variant-numeric: tabular-nums; letter-spacing: -.045em; }
+.sub { margin: 4px 0 0; font-size: 0.86rem; color: var(--ink-2); }
+.cmds { list-style: none; padding: 0; margin: 0; display: grid; gap: 5px; }
+.cmds li { display: grid; grid-template-columns: minmax(0, 13em) 1fr 2.5em; gap: 10px; align-items: center; }
+.cmds code { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cbar { height: 6px; background: var(--rule); } .cbar span { display: block; height: 100%; background: var(--accent); }
+.limits { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.limits li { display: grid; grid-template-columns: 5.8em 1fr; gap: 10px; font-size: 0.92rem; }
+.limits b { font-weight: 600; }
+.wk { display: block; color: var(--ink-2); font-size: 0.84rem; margin-top: 2px; }
+.sev { font: 600 0.68rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 6px; height: fit-content; text-align: center; border: 1px solid currentColor; }
+.sev-blocks { color: var(--bad); } .sev-corrupts { color: var(--warn); }
+.adds { padding-left: 18px; margin: 10px 0 0; font-size: 0.88rem; color: var(--ink-2); display: grid; gap: 4px; }
+.section { margin-top: 56px; border-top: 1px solid var(--rule); padding-top: 30px; }
+.wf { columns: 2 300px; column-gap: 40px; padding-left: 18px; font-size: 0.9rem; }
+.wf li { break-inside: avoid; margin-bottom: 4px; }
+.wf .ap { font: 0.75rem var(--mono); color: var(--ink-3); }
+.gaps { min-width: 760px; }
+.gaps th, .gaps td { font-size: 0.84rem; }
+.method { color: var(--ink-2); font-size: 0.92rem; max-width: 70ch; }
+.method li { margin-bottom: 6px; }
+@media (max-width: 900px) { .section-heading { grid-template-columns: 1fr; gap: 14px; } }
+@media (max-width: 620px) { main.wrap { padding-block: 36px 56px; } .mast { padding-top: 52px; } .totals { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .totals div { min-height: 100px; padding: 14px; } }
+@media (max-width: 560px) { .tabs button { padding: 8px 10px 7px; font-size: 1rem; } .tabs button .tc { margin-left: 4px; } .ladder li { grid-template-columns: 6.5em 4.5em 3em; grid-template-areas: "k v p" "n n n" "b b b"; } .mast { grid-template-columns: 1fr; } .reg { display: none; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+</style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
+  <script src="/analytics.js?v=2" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#top">Skip to main content</a>
+  <header class="wrap topbar"><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><nav class="topnav" aria-label="Main navigation"><a href="/projects.html" data-event-id="nav_projects" aria-current="page">Projects</a><a href="/how-it-works.html" data-event-id="nav_how_it_works">How it works</a><a href="/docs/" data-event-id="nav_docs">Docs</a><a href="/about.html" data-event-id="nav_about">About</a><button class="theme-toggle" data-event-id="theme_toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a class="button" href="/docs/getting-started.html" data-event-id="cta_get_started"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav></header>
+  <main id="top" class="wrap" tabindex="-1">
+  <header class="mast">
+    <div class="eyebrow">Researched coverage · five Adobe apps</div>
+    <div>
+      <h1>Adobe Capability Atlas</h1>
+      <p class="stand">A researched map of documented features across InDesign, Illustrator, Photoshop, After Effects and Premiere Pro: how automation can reach them, what our MCP tools cover, and what evidence supports each claim.</p>
+      <div class="meta"><span>Snapshot 1 November 2026</span><span>5 applications</span><span class="nw">adobe-mcp-indesign 2.4.0</span><span class="nw">adobe-mcp-illustrator 0.9.0</span><span class="nw">adobe-mcp-photoshop 0.1.0</span><span class="nw">adobe-mcp-aftereffects 0.1.0</span><span class="nw">adobe-mcp-premiere 0.1.0</span></div>
+    </div>
+  </header>
+
+  <div class="totals">
+    <div><b>12,014</b><span>features documented</span></div>
+    <div><b>4,427</b><span>menu commands and events</span></div>
+    <div><b>352</b><span>automation limitations</span></div>
+    <div><b>4,003</b><span>community scripts analysed</span></div>
+    <div><b>68</b><span>production workflows</span></div>
+    <div><b>2,707</b><span>entries on other automation routes</span></div>
+  </div>
+
+  <section aria-labelledby="coverage-title">
+    <div class="section-heading">
+      <div><div class="eyebrow">Coverage snapshot</div><h2 id="coverage-title">By application</h2></div>
+      <p>Counts move through distinct evidence stages: features Adobe documents, reachable automation routes, MCP coverage, automated script checks, and validation in a running app.</p>
+    </div>
+  <div class="compare scroll">
+    <table>
+      <caption class="sr">Coverage by application</caption>
+      <thead><tr><th scope="col">Application</th><th scope="col" class="num">Features</th><th scope="col" class="num">Scriptable</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Static checks</th><th scope="col" class="num">Live validated</th><th scope="col" class="num">MCP tools</th></tr></thead>
+      <tbody><tr class="app-indesign">
+        <th scope="row"><a href="#indesign"><i class="sw" aria-hidden="true"></i>InDesign</a></th>
+        <td class="num">2,742</td>
+        <td class="num">2,609 <span class="dim">95%</span></td>
+        <td class="num">2,524 <span class="dim">92%</span><span class="ibar" aria-hidden="true"><span style="width:92.04959883296864%"></span></span></td>
+        <td class="num">2,523</td>
+        <td class="num">0</td>
+        <td class="num">423</td>
+      </tr><tr class="app-illustrator">
+        <th scope="row"><a href="#illustrator"><i class="sw" aria-hidden="true"></i>Illustrator</a></th>
+        <td class="num">2,540</td>
+        <td class="num">1,951 <span class="dim">77%</span></td>
+        <td class="num">1,562 <span class="dim">61%</span><span class="ibar" aria-hidden="true"><span style="width:61.496062992125985%"></span></span></td>
+        <td class="num">1,561</td>
+        <td class="num">0</td>
+        <td class="num">308</td>
+      </tr><tr class="app-photoshop">
+        <th scope="row"><a href="#photoshop"><i class="sw" aria-hidden="true"></i>Photoshop</a></th>
+        <td class="num">2,609</td>
+        <td class="num">1,720 <span class="dim">66%</span></td>
+        <td class="num">1,413 <span class="dim">54%</span><span class="ibar" aria-hidden="true"><span style="width:54.15868148715983%"></span></span></td>
+        <td class="num">1,410</td>
+        <td class="num">0</td>
+        <td class="num">205</td>
+      </tr><tr class="app-aftereffects">
+        <th scope="row"><a href="#aftereffects"><i class="sw" aria-hidden="true"></i>After Effects</a></th>
+        <td class="num">3,198</td>
+        <td class="num">2,595 <span class="dim">81%</span></td>
+        <td class="num">2,555 <span class="dim">80%</span><span class="ibar" aria-hidden="true"><span style="width:79.89368355222014%"></span></span></td>
+        <td class="num">2,553</td>
+        <td class="num">0</td>
+        <td class="num">164</td>
+      </tr><tr class="app-premiere">
+        <th scope="row"><a href="#premiere"><i class="sw" aria-hidden="true"></i>Premiere Pro</a></th>
+        <td class="num">925</td>
+        <td class="num">494 <span class="dim">53%</span></td>
+        <td class="num">413 <span class="dim">45%</span><span class="ibar" aria-hidden="true"><span style="width:44.648648648648646%"></span></span></td>
+        <td class="num">413</td>
+        <td class="num">0</td>
+        <td class="num">96</td>
+      </tr></tbody>
+    </table>
+  </div>
+
+  <div class="coverage-key" aria-label="Coverage stage colors"><span><i class="key-implemented"></i>Implemented in MCP tools</span><span><i class="key-tested"></i>Passed automated static checks</span><span><i class="key-validated"></i>Validated in the running app</span></div>
+  <p class="coverage-caption">Percentages use each app’s documented feature count as the denominator. Static checks run generated scripts against a stubbed app and API definitions; live validation requires running the workflow in the actual Adobe app and checking the result.</p>
+  </section>
+
+  <nav class="tabs" role="tablist" aria-label="Application">
+    <button role="tab" id="tab-indesign" aria-controls="panel-indesign" aria-selected="true">InDesign<span class="tc">2,742</span></button>
+    <button role="tab" id="tab-illustrator" aria-controls="panel-illustrator" aria-selected="false" tabindex="-1">Illustrator<span class="tc">2,540</span></button>
+    <button role="tab" id="tab-photoshop" aria-controls="panel-photoshop" aria-selected="false" tabindex="-1">Photoshop<span class="tc">2,609</span></button>
+    <button role="tab" id="tab-aftereffects" aria-controls="panel-aftereffects" aria-selected="false" tabindex="-1">After Effects<span class="tc">3,198</span></button>
+    <button role="tab" id="tab-premiere" aria-controls="panel-premiere" aria-selected="false" tabindex="-1">Premiere Pro<span class="tc">925</span></button>
+  </nav>
+  
+  <section class="panel" id="panel-indesign" role="tabpanel" aria-labelledby="tab-indesign" tabindex="0" >
+    <div class="split">
+      <div class="col">
+        <h3>Support, step by step</h3>
+        <p class="lede">Each stage is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live InDesign session.</p>
+        <ol class="ladder">
+    <li><span class="lk">Documented</span><span class="lv">2,742</span><span class="lp">100%</span><span class="ln">features Adobe documents</span>
+    <span class="lbar"><span style="width:100%"></span></span></li>
+    <li><span class="lk">Scriptable</span><span class="lv">2,609</span><span class="lp">95%</span><span class="ln">reachable by object model or menu command</span>
+    <span class="lbar"><span style="width:95.14952589350838%"></span></span></li>
+    <li><span class="lk">Implemented</span><span class="lv">2,524</span><span class="lp">92%</span><span class="ln">claimed by our 423 MCP tools</span>
+    <span class="lbar"><span style="width:92.04959883296864%"></span></span></li>
+    <li><span class="lk">Static checks</span><span class="lv">2,523</span><span class="lp">92%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
+    <span class="lbar"><span style="width:92.01312910284464%"></span></span></li>
+    <li><span class="lk">Live validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
+    <span class="lbar"><span style="width:0%"></span></span></li></ol>
+      </div>
+      <div class="col">
+        <h3>What kind of features</h3>
+        <div class="chips"><span class="chip">setting <b>1,314</b></span> <span class="chip">menu command <b>843</b></span> <span class="chip">workflow <b>181</b></span> <span class="chip">dialog <b>156</b></span> <span class="chip">object type <b>98</b></span> <span class="chip">panel <b>71</b></span> <span class="chip">file format <b>40</b></span> <span class="chip">tool <b>39</b></span></div>
+        <h3>Automation routes</h3>
+        <div class="legend"><span><i class="sw r-dom"></i>Object model <b>2,431</b></span><span><i class="sw r-menu_command"></i>Menu command <b>178</b></span><span><i class="sw r-none"></i>Not automatable <b>125</b></span><span><i class="sw r-unknown"></i>Not established <b>8</b></span></div>
+        
+      </div>
+    </div>
+
+    <h3>By domain</h3>
+    <div class="scroll" tabindex="0" role="region" aria-label="InDesign: By domain table"><table class="domains">
+  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Static checks</th><th scope="col" class="num">Live validated</th><th scope="col" class="num">Not established</th></tr></thead>
+  <tbody><tr>
+    <th scope="row"><span class="dn">Typography</span><span class="dc">Character and paragraph formatting, fonts, OpenType, special characters, lists, composers and non-Latin script features.</span></th>
+    <td class="num">307</td>
+    <td class="barcol"><div class="bar" style="width:100.0%" role="img" aria-label="Object model 295, Menu command 3, Not automatable 9"><span class="seg r-dom" style="flex:295" title="Object model: 295"></span><span class="seg r-menu_command" style="flex:3" title="Menu command: 3"></span><span class="seg r-none" style="flex:9" title="Not automatable: 9"></span></div></td>
+    <td class="num">298 <span class="dim">97%</span></td><td class="num">298</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Import and export</span><span class="dc">Supported file formats and the options for placing content in and exporting PDF, EPUB, HTML, images and interchange files.</span></th>
+    <td class="num">301</td>
+    <td class="barcol"><div class="bar" style="width:98.0%" role="img" aria-label="Object model 291, Not automatable 6, Not established 4"><span class="seg r-dom" style="flex:291" title="Object model: 291"></span><span class="seg r-none" style="flex:6" title="Not automatable: 6"></span><span class="seg r-unknown" style="flex:4" title="Not established: 4"></span></div></td>
+    <td class="num">291 <span class="dim">97%</span></td><td class="num">291</td><td class="num">0</td>
+    <td class="num">4</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Long documents</span><span class="dc">Books, tables of contents, indexes, footnotes, endnotes, cross-references, hyperlinks, bookmarks, captions, text variables and conditional text.</span></th>
+    <td class="num">212</td>
+    <td class="barcol"><div class="bar" style="width:69.1%" role="img" aria-label="Object model 200, Menu command 12"><span class="seg r-dom" style="flex:200" title="Object model: 200"></span><span class="seg r-menu_command" style="flex:12" title="Menu command: 12"></span></div></td>
+    <td class="num">212 <span class="dim">100%</span></td><td class="num">212</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Styles</span><span class="dc">Paragraph, character, object, table, cell and table-of-contents styles and the panels that manage them.</span></th>
+    <td class="num">195</td>
+    <td class="barcol"><div class="bar" style="width:63.5%" role="img" aria-label="Object model 150, Menu command 39, Not automatable 6"><span class="seg r-dom" style="flex:150" title="Object model: 150"></span><span class="seg r-menu_command" style="flex:39" title="Menu command: 39"></span><span class="seg r-none" style="flex:6" title="Not automatable: 6"></span></div></td>
+    <td class="num">189 <span class="dim">97%</span></td><td class="num">189</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Interface</span><span class="dc">Workspaces, panels, preferences, view modes, zooming, display performance and other on-screen aids.</span></th>
+    <td class="num">191</td>
+    <td class="barcol"><div class="bar" style="width:62.2%" role="img" aria-label="Object model 162, Menu command 21, Not automatable 8"><span class="seg r-dom" style="flex:162" title="Object model: 162"></span><span class="seg r-menu_command" style="flex:21" title="Menu command: 21"></span><span class="seg r-none" style="flex:8" title="Not automatable: 8"></span></div></td>
+    <td class="num">120 <span class="dim">63%</span></td><td class="num">120</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Preflight and prepress</span><span class="dc">Preflight checks, separations and overprint preview, inks, trapping, packaging and printing.</span></th>
+    <td class="num">169</td>
+    <td class="barcol"><div class="bar" style="width:55.0%" role="img" aria-label="Object model 152, Menu command 11, Not automatable 6"><span class="seg r-dom" style="flex:152" title="Object model: 152"></span><span class="seg r-menu_command" style="flex:11" title="Menu command: 11"></span><span class="seg r-none" style="flex:6" title="Not automatable: 6"></span></div></td>
+    <td class="num">162 <span class="dim">96%</span></td><td class="num">162</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Effects and transparency</span><span class="dc">Opacity, blending modes and the drop shadow, glow, feather and other effects, plus flattening presets.</span></th>
+    <td class="num">126</td>
+    <td class="barcol"><div class="bar" style="width:41.0%" role="img" aria-label="Object model 123, Menu command 3"><span class="seg r-dom" style="flex:123" title="Object model: 123"></span><span class="seg r-menu_command" style="flex:3" title="Menu command: 3"></span></div></td>
+    <td class="num">125 <span class="dim">99%</span></td><td class="num">125</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Tables</span><span class="dc">Creating, editing and formatting tables, rows, columns and cells.</span></th>
+    <td class="num">124</td>
+    <td class="barcol"><div class="bar" style="width:40.4%" role="img" aria-label="Object model 110, Menu command 11, Not automatable 3"><span class="seg r-dom" style="flex:110" title="Object model: 110"></span><span class="seg r-menu_command" style="flex:11" title="Menu command: 11"></span><span class="seg r-none" style="flex:3" title="Not automatable: 3"></span></div></td>
+    <td class="num">120 <span class="dim">97%</span></td><td class="num">120</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Interactive</span><span class="dc">Buttons, form fields, object states, animation, timing, media and page transitions for digital output.</span></th>
+    <td class="num">111</td>
+    <td class="barcol"><div class="bar" style="width:36.2%" role="img" aria-label="Object model 101, Menu command 7, Not automatable 3"><span class="seg r-dom" style="flex:101" title="Object model: 101"></span><span class="seg r-menu_command" style="flex:7" title="Menu command: 7"></span><span class="seg r-none" style="flex:3" title="Not automatable: 3"></span></div></td>
+    <td class="num">108 <span class="dim">97%</span></td><td class="num">108</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Text frames and stories</span><span class="dc">Text frames, threading, frame options, text wrap, the Story Editor, editorial notes and tracked changes.</span></th>
+    <td class="num">109</td>
+    <td class="barcol"><div class="bar" style="width:35.5%" role="img" aria-label="Object model 96, Menu command 8, Not automatable 3, Not established 2"><span class="seg r-dom" style="flex:96" title="Object model: 96"></span><span class="seg r-menu_command" style="flex:8" title="Menu command: 8"></span><span class="seg r-none" style="flex:3" title="Not automatable: 3"></span><span class="seg r-unknown" style="flex:2" title="Not established: 2"></span></div></td>
+    <td class="num">104 <span class="dim">95%</span></td><td class="num">104</td><td class="num">0</td>
+    <td class="num">2</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Colour</span><span class="dc">Swatches, colour models, tints, gradients, mixed inks and colour management.</span></th>
+    <td class="num">89</td>
+    <td class="barcol"><div class="bar" style="width:29.0%" role="img" aria-label="Object model 75, Menu command 7, Not automatable 7"><span class="seg r-dom" style="flex:75" title="Object model: 75"></span><span class="seg r-menu_command" style="flex:7" title="Menu command: 7"></span><span class="seg r-none" style="flex:7" title="Not automatable: 7"></span></div></td>
+    <td class="num">82 <span class="dim">92%</span></td><td class="num">82</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Layout tools</span><span class="dc">Rulers, guides, grids, smart guides, measuring, the Gap tool, liquid and flex layout, alternate layouts and content linking.</span></th>
+    <td class="num">85</td>
+    <td class="barcol"><div class="bar" style="width:27.7%" role="img" aria-label="Object model 79, Menu command 3, Not automatable 2, Not established 1"><span class="seg r-dom" style="flex:79" title="Object model: 79"></span><span class="seg r-menu_command" style="flex:3" title="Menu command: 3"></span><span class="seg r-none" style="flex:2" title="Not automatable: 2"></span><span class="seg r-unknown" style="flex:1" title="Not established: 1"></span></div></td>
+    <td class="num">82 <span class="dim">96%</span></td><td class="num">82</td><td class="num">0</td>
+    <td class="num">1</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Frames and objects</span><span class="dc">Frames, shapes, groups and other page items, with their stacking, locking, fitting, strokes, anchoring and object libraries.</span></th>
+    <td class="num">78</td>
+    <td class="barcol"><div class="bar" style="width:25.4%" role="img" aria-label="Object model 70, Menu command 3, Not automatable 5"><span class="seg r-dom" style="flex:70" title="Object model: 70"></span><span class="seg r-menu_command" style="flex:3" title="Menu command: 3"></span><span class="seg r-none" style="flex:5" title="Not automatable: 5"></span></div></td>
+    <td class="num">73 <span class="dim">94%</span></td><td class="num">73</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Documents</span><span class="dc">Creating, opening, saving, closing and configuring whole documents, including size, intent, bleed, slug and windows onto them.</span></th>
+    <td class="num">75</td>
+    <td class="barcol"><div class="bar" style="width:24.4%" role="img" aria-label="Object model 71, Menu command 1, Not automatable 3"><span class="seg r-dom" style="flex:71" title="Object model: 71"></span><span class="seg r-menu_command" style="flex:1" title="Menu command: 1"></span><span class="seg r-none" style="flex:3" title="Not automatable: 3"></span></div></td>
+    <td class="num">72 <span class="dim">96%</span></td><td class="num">72</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Images and links</span><span class="dc">Placing graphics, managing linked and embedded files, image layers and generative image features.</span></th>
+    <td class="num">74</td>
+    <td class="barcol"><div class="bar" style="width:24.1%" role="img" aria-label="Object model 55, Menu command 11, Not automatable 8"><span class="seg r-dom" style="flex:55" title="Object model: 55"></span><span class="seg r-menu_command" style="flex:11" title="Menu command: 11"></span><span class="seg r-none" style="flex:8" title="Not automatable: 8"></span></div></td>
+    <td class="num">65 <span class="dim">88%</span></td><td class="num">65</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">XML</span><span class="dc">Tagging content, the structure view, importing and exporting XML, DTDs and XML rules.</span></th>
+    <td class="num">74</td>
+    <td class="barcol"><div class="bar" style="width:24.1%" role="img" aria-label="Object model 70, Menu command 4"><span class="seg r-dom" style="flex:70" title="Object model: 70"></span><span class="seg r-menu_command" style="flex:4" title="Menu command: 4"></span></div></td>
+    <td class="num">74 <span class="dim">100%</span></td><td class="num">74</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Interoperability</span><span class="dc">Working with other Adobe apps and services: InCopy, Creative Cloud Libraries, Bridge, Stock, Express, Illustrator and shared reviews.</span></th>
+    <td class="num">67</td>
+    <td class="barcol"><div class="bar" style="width:21.8%" role="img" aria-label="Object model 29, Menu command 5, Not automatable 32, Not established 1"><span class="seg r-dom" style="flex:29" title="Object model: 29"></span><span class="seg r-menu_command" style="flex:5" title="Menu command: 5"></span><span class="seg r-none" style="flex:32" title="Not automatable: 32"></span><span class="seg r-unknown" style="flex:1" title="Not established: 1"></span></div></td>
+    <td class="num">34 <span class="dim">51%</span></td><td class="num">34</td><td class="num">0</td>
+    <td class="num">1</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Pages and spreads</span><span class="dc">Pages, spreads, parent pages, page navigation, sections and page numbering.</span></th>
+    <td class="num">66</td>
+    <td class="barcol"><div class="bar" style="width:21.5%" role="img" aria-label="Object model 56, Menu command 9, Not automatable 1"><span class="seg r-dom" style="flex:56" title="Object model: 56"></span><span class="seg r-menu_command" style="flex:9" title="Menu command: 9"></span><span class="seg r-none" style="flex:1" title="Not automatable: 1"></span></div></td>
+    <td class="num">65 <span class="dim">98%</span></td><td class="num">65</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Paths and geometry</span><span class="dc">Drawing and editing paths and anchor points, compound paths, Pathfinder operations, shape conversion and corner effects.</span></th>
+    <td class="num">52</td>
+    <td class="barcol"><div class="bar" style="width:16.9%" role="img" aria-label="Object model 40, Menu command 2, Not automatable 10"><span class="seg r-dom" style="flex:40" title="Object model: 40"></span><span class="seg r-menu_command" style="flex:2" title="Menu command: 2"></span><span class="seg r-none" style="flex:10" title="Not automatable: 10"></span></div></td>
+    <td class="num">40 <span class="dim">77%</span></td><td class="num">40</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Transformations</span><span class="dc">Moving, scaling, rotating, shearing, flipping, aligning and distributing objects.</span></th>
+    <td class="num">50</td>
+    <td class="barcol"><div class="bar" style="width:16.3%" role="img" aria-label="Object model 50"><span class="seg r-dom" style="flex:50" title="Object model: 50"></span></div></td>
+    <td class="num">50 <span class="dim">100%</span></td><td class="num">50</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Data merge</span><span class="dc">Merging records from a data source into placeholders to produce many document variants.</span></th>
+    <td class="num">30</td>
+    <td class="barcol"><div class="bar" style="width:9.8%" role="img" aria-label="Object model 27, Menu command 1, Not automatable 2"><span class="seg r-dom" style="flex:27" title="Object model: 27"></span><span class="seg r-menu_command" style="flex:1" title="Menu command: 1"></span><span class="seg r-none" style="flex:2" title="Not automatable: 2"></span></div></td>
+    <td class="num">28 <span class="dim">93%</span></td><td class="num">28</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Find and change</span><span class="dc">Searching and replacing text, GREP patterns, glyphs, objects, colours and fonts, with saved queries.</span></th>
+    <td class="num">30</td>
+    <td class="barcol"><div class="bar" style="width:9.8%" role="img" aria-label="Object model 24, Menu command 5, Not automatable 1"><span class="seg r-dom" style="flex:24" title="Object model: 24"></span><span class="seg r-menu_command" style="flex:5" title="Menu command: 5"></span><span class="seg r-none" style="flex:1" title="Not automatable: 1"></span></div></td>
+    <td class="num">29 <span class="dim">97%</span></td><td class="num">29</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Selection and clipboard</span><span class="dc">Picking objects and text, moving through stacked or nested items, and cut, copy and paste of the selection.</span></th>
+    <td class="num">28</td>
+    <td class="barcol"><div class="bar" style="width:9.1%" role="img" aria-label="Object model 25, Menu command 3"><span class="seg r-dom" style="flex:25" title="Object model: 25"></span><span class="seg r-menu_command" style="flex:3" title="Menu command: 3"></span></div></td>
+    <td class="num">28 <span class="dim">100%</span></td><td class="num">28</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Automation</span><span class="dc">Scripts, the Scripts and Script Label panels, menu actions, events and the scripting environment.</span></th>
+    <td class="num">26</td>
+    <td class="barcol"><div class="bar" style="width:8.5%" role="img" aria-label="Object model 20, Menu command 4, Not automatable 2"><span class="seg r-dom" style="flex:20" title="Object model: 20"></span><span class="seg r-menu_command" style="flex:4" title="Menu command: 4"></span><span class="seg r-none" style="flex:2" title="Not automatable: 2"></span></div></td>
+    <td class="num">24 <span class="dim">92%</span></td><td class="num">23</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Layers</span><span class="dc">Document layers and the controls that show, lock, order and merge them.</span></th>
+    <td class="num">24</td>
+    <td class="barcol"><div class="bar" style="width:7.8%" role="img" aria-label="Object model 23, Menu command 1"><span class="seg r-dom" style="flex:23" title="Object model: 23"></span><span class="seg r-menu_command" style="flex:1" title="Menu command: 1"></span></div></td>
+    <td class="num">24 <span class="dim">100%</span></td><td class="num">24</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Application</span><span class="dc">The program itself: launching, version, help, user identity, add-ons, AI assistant and app-wide utilities.</span></th>
+    <td class="num">21</td>
+    <td class="barcol"><div class="bar" style="width:6.8%" role="img" aria-label="Object model 12, Menu command 4, Not automatable 5"><span class="seg r-dom" style="flex:12" title="Object model: 12"></span><span class="seg r-menu_command" style="flex:4" title="Menu command: 4"></span><span class="seg r-none" style="flex:5" title="Not automatable: 5"></span></div></td>
+    <td class="num">0 <span class="dim">0%</span></td><td class="num">0</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Language and proofing</span><span class="dc">Spell checking, autocorrect, dictionaries, hyphenation exceptions and language assignment.</span></th>
+    <td class="num">21</td>
+    <td class="barcol"><div class="bar" style="width:6.8%" role="img" aria-label="Object model 19, Not automatable 2"><span class="seg r-dom" style="flex:19" title="Object model: 19"></span><span class="seg r-none" style="flex:2" title="Not automatable: 2"></span></div></td>
+    <td class="num">19 <span class="dim">90%</span></td><td class="num">19</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">History</span><span class="dc">Undo, redo, the History panel and script undo behaviour.</span></th>
+    <td class="num">7</td>
+    <td class="barcol"><div class="bar" style="width:2.3%" role="img" aria-label="Object model 6, Not automatable 1"><span class="seg r-dom" style="flex:6" title="Object model: 6"></span><span class="seg r-none" style="flex:1" title="Not automatable: 1"></span></div></td>
+    <td class="num">6 <span class="dim">86%</span></td><td class="num">6</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr></tbody></table></div>
+
+    <div class="grid3">
+      <div class="card">
+        <h4>Menu commands</h4>
+        <p class="big">2,043</p>
+        <p class="sub">2,004 linked to features · 0 verified by running them</p>
+        <p class="sub">37 seen working in community scripts</p>
+      </div>
+      <div class="card">
+        <h4>Limitations</h4>
+        <p class="big">153</p>
+        <p class="sub"><span class="chip">misleads <b>59</b></span> <span class="chip">blocks <b>53</b></span> <span class="chip">inconvenience <b>21</b></span> <span class="chip">corrupts <b>13</b></span> <span class="chip">slows <b>7</b></span></p>
+        <p class="sub">63 documented by Adobe · 90 reported by the community</p>
+      </div>
+      <div class="card">
+        <h4>Community scripts</h4>
+        <p class="big">2,023</p>
+        <p class="sub">from 93 repositories · 97% parsed</p>
+        <p class="sub">Most used: <code>documents</code> <code>name</code> <code>add</code> <code>activeDocument</code> <code>item</code> <code>pages</code></p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="col">
+        <h3>Commands seen in real scripts</h3>
+        <p class="lede">How many published scripts invoke each command. A command a script relies on has at least been seen to do something.</p>
+        <ol class="cmds"><li><code>name:$ID/Fit Selection in Window</code><span class="cbar"><span style="width:100%"></span></span><span class="num">7</span></li><li><code>id:61710</code><span class="cbar"><span style="width:42.857142857142854%"></span></span><span class="num">3</span></li><li><code>name:$ID/Selection Tool</code><span class="cbar"><span style="width:42.857142857142854%"></span></span><span class="num">3</span></li><li><code>name:Place...</code><span class="cbar"><span style="width:42.857142857142854%"></span></span><span class="num">3</span></li><li><code>id:24332</code><span class="cbar"><span style="width:28.571428571428573%"></span></span><span class="num">2</span></li><li><code>id:8489</code><span class="cbar"><span style="width:28.571428571428573%"></span></span><span class="num">2</span></li><li><code>name:$ID/AutoUpdateURLStatus</code><span class="cbar"><span style="width:28.571428571428573%"></span></span><span class="num">2</span></li><li><code>id:11288</code><span class="cbar"><span style="width:14.285714285714286%"></span></span><span class="num">1</span></li><li><code>id:11289</code><span class="cbar"><span style="width:14.285714285714286%"></span></span><span class="num">1</span></li><li><code>id:113166</code><span class="cbar"><span style="width:14.285714285714286%"></span></span><span class="num">1</span></li><li><code>id:118786</code><span class="cbar"><span style="width:14.285714285714286%"></span></span><span class="num">1</span></li><li><code>id:118790</code><span class="cbar"><span style="width:14.285714285714286%"></span></span><span class="num">1</span></li><li><code>id:119611</code><span class="cbar"><span style="width:14.285714285714286%"></span></span><span class="num">1</span></li><li><code>id:119681</code><span class="cbar"><span style="width:14.285714285714286%"></span></span><span class="num">1</span></li><li><code>id:16403</code><span class="cbar"><span style="width:14.285714285714286%"></span></span><span class="num">1</span></li></ol>
+      </div>
+      <div class="col">
+        <h3>What stops a script</h3>
+        <ul class="limits"><li><span class="sev sev-blocks">Blocks</span><span><b>Adding a colour with an existing name fails</b><span class="wk">Look the colour up with itemByName and check isValid before adding; update the existing swatch instead.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>colorValue length and range must match the colour space</b><span class="wk">Set space before colorValue and validate array length and ranges.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Closing a document during a background export fails</b><span class="wk">Wait for the task (or use exportFile) before closing.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Idle tasks can stop firing</b><span class="wk">Monitor the task and recreate it; avoid relying on idle tasks for critical work.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>$.sleep blocks InDesign</b><span class="wk">Use idle tasks or event listeners for deferred work.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Scripts run on the main thread one at a time</b><span class="wk">Queue jobs in the caller and use generous timeouts; split long work.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>'Object is invalid' after deletion or restructuring</b><span class="wk">Check isValid before use and re-fetch objects after structural changes.</span></span></li><li><span class="sev sev-corrupts">Corrupts</span><span><b>Removing items while iterating forwards skips items</b><span class="wk">Iterate backwards, or collect targets first with getElements() and then remove.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Built-in PDF preset names are bracketed and localized</b><span class="wk">Look presets up and check isValid; fall back to iterating app.pdfExportPresets, or ship a custom preset with a known name.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Named presets must exist on the machine</b><span class="wk">Install presets with the script, or set app.pdfExportPreferences directly.</span></span></li></ul>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="col">
+        <h3>Object model by version</h3>
+        <div class="scroll" tabindex="0" role="region" aria-label="InDesign: Object model by version table"><table class="plain"><thead><tr><th>Version</th><th class="num">Classes</th><th class="num">Enums</th><th class="num">Members</th></tr></thead><tbody><tr><td>Adobe InDesign 2023 (18.x)</td><td class="num">659</td><td class="num">420</td><td class="num">26,944</td></tr><tr><td>Adobe InDesign 2024 (19.2.0.46)</td><td class="num">659</td><td class="num">420</td><td class="num">26,952</td></tr><tr><td>Adobe InDesign 2025 (20.0.0.95)</td><td class="num">661</td><td class="num">420</td><td class="num">27,034</td></tr><tr><td>Adobe InDesign 2026 (21.0.0.192)</td><td class="num">664</td><td class="num">427</td><td class="num">27,372</td></tr><tr><td>Adobe InDesign 2026 (21.5.1.73)</td><td class="num">665</td><td class="num">432</td><td class="num">27,439</td></tr></tbody></table></div>
+        <ul class="adds"><li><b>2025</b> added <code>MathObject</code>, <code>MathObjects</code></li><li><b>2026-21.0</b> added <code>FlexLayoutAttributeOption</code>, <code>FlexObject</code>, <code>FlexObjects</code></li><li><b>2026</b> added <code>Html5ExportPreference</code></li></ul>
+      </div>
+      <div class="col">
+        <h3>Other ways in</h3>
+        <div class="scroll" tabindex="0" role="region" aria-label="InDesign: Other ways in table"><table class="plain"><thead><tr><th>Surface</th><th class="num">Entries</th><th>Status</th><th class="num">Beyond the object model</th></tr></thead><tbody><tr><td>AppleScript</td><td class="num">639</td><td><span class="chip">current <b>636</b></span> <span class="chip">removed <b>3</b></span></td><td class="num">2</td></tr><tr><td>CEP</td><td class="num">15</td><td><span class="chip">deprecated <b>13</b></span> <span class="chip">current <b>2</b></span></td><td class="num">6</td></tr><tr><td>C++ SDK</td><td class="num">40</td><td><span class="chip">current <b>39</b></span> <span class="chip">beta <b>1</b></span></td><td class="num">28</td></tr><tr><td>UXP</td><td class="num">121</td><td><span class="chip">current <b>118</b></span> <span class="chip">beta <b>2</b></span> <span class="chip">unavailable <b>1</b></span></td><td class="num">22</td></tr><tr><td>VBScript / COM</td><td class="num">672</td><td><span class="chip">current <b>672</b></span></td><td class="num">1</td></tr></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-illustrator" role="tabpanel" aria-labelledby="tab-illustrator" tabindex="0" hidden>
+    <div class="split">
+      <div class="col">
+        <h3>Support, step by step</h3>
+        <p class="lede">Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Illustrator session.</p>
+        <ol class="ladder">
+    <li><span class="lk">Documented</span><span class="lv">2,540</span><span class="lp">100%</span><span class="ln">features Adobe documents</span>
+    <span class="lbar"><span style="width:100%"></span></span></li>
+    <li><span class="lk">Scriptable</span><span class="lv">1,951</span><span class="lp">77%</span><span class="ln">reachable by object model, menu command or recorded Action</span>
+    <span class="lbar"><span style="width:76.81102362204724%"></span></span></li>
+    <li><span class="lk">Implemented</span><span class="lv">1,562</span><span class="lp">61%</span><span class="ln">claimed by our 308 MCP tools</span>
+    <span class="lbar"><span style="width:61.496062992125985%"></span></span></li>
+    <li><span class="lk">Static checks</span><span class="lv">1,561</span><span class="lp">61%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
+    <span class="lbar"><span style="width:61.45669291338583%"></span></span></li>
+    <li><span class="lk">Live validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
+    <span class="lbar"><span style="width:0%"></span></span></li></ol>
+      </div>
+      <div class="col">
+        <h3>What kind of features</h3>
+        <div class="chips"><span class="chip">setting <b>943</b></span> <span class="chip">menu command <b>889</b></span> <span class="chip">workflow <b>272</b></span> <span class="chip">dialog <b>115</b></span> <span class="chip">file format <b>98</b></span> <span class="chip">tool <b>91</b></span> <span class="chip">object type <b>68</b></span> <span class="chip">panel <b>64</b></span></div>
+        <h3>Automation routes</h3>
+        <div class="legend"><span><i class="sw r-dom"></i>Object model <b>1,269</b></span><span><i class="sw r-menu_command"></i>Menu command <b>669</b></span><span><i class="sw r-action"></i>Recorded Action <b>13</b></span><span><i class="sw r-native_sdk"></i>C++ SDK only <b>37</b></span><span><i class="sw r-none"></i>Not automatable <b>510</b></span><span><i class="sw r-unknown"></i>Not established <b>42</b></span></div>
+        <p class="note">Illustrator's object model is a fifth the size of InDesign's, so far more of its features are reached only through menu commands, recorded Actions or the C++ SDK. Preference keys and Live Effect definitions used by published scripts reach many settings the object model does not list.</p>
+      </div>
+    </div>
+
+    <h3>By domain</h3>
+    <div class="scroll" tabindex="0" role="region" aria-label="Illustrator: By domain table"><table class="domains">
+  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Static checks</th><th scope="col" class="num">Live validated</th><th scope="col" class="num">Not established</th></tr></thead>
+  <tbody><tr>
+    <th scope="row"><span class="dn">Import and export</span><span class="dc">File formats Illustrator opens, places, saves and exports, and the options each format offers.</span></th>
+    <td class="num">298</td>
+    <td class="barcol"><div class="bar" style="width:100.0%" role="img" aria-label="Object model 275, Not automatable 22, Not established 1"><span class="seg r-dom" style="flex:275" title="Object model: 275"></span><span class="seg r-none" style="flex:22" title="Not automatable: 22"></span><span class="seg r-unknown" style="flex:1" title="Not established: 1"></span></div></td>
+    <td class="num">274 <span class="dim">92%</span></td><td class="num">274</td><td class="num">0</td>
+    <td class="num">1</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Typography</span><span class="dc">Type objects and text formatting: type tools, fonts, character and paragraph settings, styles, glyphs, spelling and Asian type.</span></th>
+    <td class="num">277</td>
+    <td class="barcol"><div class="bar" style="width:93.0%" role="img" aria-label="Object model 190, Menu command 56, Not automatable 30, Not established 1"><span class="seg r-dom" style="flex:190" title="Object model: 190"></span><span class="seg r-menu_command" style="flex:56" title="Menu command: 56"></span><span class="seg r-none" style="flex:30" title="Not automatable: 30"></span><span class="seg r-unknown" style="flex:1" title="Not established: 1"></span></div></td>
+    <td class="num">234 <span class="dim">84%</span></td><td class="num">234</td><td class="num">0</td>
+    <td class="num">1</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Color</span><span class="dc">Color models, swatches, color groups, gradients, color editing and recoloring, and color management.</span></th>
+    <td class="num">239</td>
+    <td class="barcol"><div class="bar" style="width:80.2%" role="img" aria-label="Object model 49, Menu command 130, Recorded Action 1, C++ SDK only 2, Not automatable 56, Not established 1"><span class="seg r-dom" style="flex:49" title="Object model: 49"></span><span class="seg r-menu_command" style="flex:130" title="Menu command: 130"></span><span class="seg r-action" style="flex:1" title="Recorded Action: 1"></span><span class="seg r-native_sdk" style="flex:2" title="C++ SDK only: 2"></span><span class="seg r-none" style="flex:56" title="Not automatable: 56"></span><span class="seg r-unknown" style="flex:1" title="Not established: 1"></span></div></td>
+    <td class="num">72 <span class="dim">30%</span></td><td class="num">72</td><td class="num">0</td>
+    <td class="num">1</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Effects</span><span class="dc">Live effects from the Effect menu, including Illustrator vector effects, Photoshop raster effects, warps and SVG filters.</span></th>
+    <td class="num">163</td>
+    <td class="barcol"><div class="bar" style="width:54.7%" role="img" aria-label="Object model 47, Menu command 57, Not automatable 59"><span class="seg r-dom" style="flex:47" title="Object model: 47"></span><span class="seg r-menu_command" style="flex:57" title="Menu command: 57"></span><span class="seg r-none" style="flex:59" title="Not automatable: 59"></span></div></td>
+    <td class="num">102 <span class="dim">63%</span></td><td class="num">102</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Appearance</span><span class="dc">How objects are painted: fills, strokes, stroke styles, multiple appearance attributes, graphic styles, transparency and Live Paint.</span></th>
+    <td class="num">131</td>
+    <td class="barcol"><div class="bar" style="width:44.0%" role="img" aria-label="Object model 49, Menu command 29, C++ SDK only 23, Not automatable 21, Not established 9"><span class="seg r-dom" style="flex:49" title="Object model: 49"></span><span class="seg r-menu_command" style="flex:29" title="Menu command: 29"></span><span class="seg r-native_sdk" style="flex:23" title="C++ SDK only: 23"></span><span class="seg r-none" style="flex:21" title="Not automatable: 21"></span><span class="seg r-unknown" style="flex:9" title="Not established: 9"></span></div></td>
+    <td class="num">73 <span class="dim">56%</span></td><td class="num">73</td><td class="num">0</td>
+    <td class="num">9</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Application</span><span class="dc">Launching and quitting Illustrator, preferences, workspaces, keyboard shortcut sets, plug-ins, help and account items.</span></th>
+    <td class="num">107</td>
+    <td class="barcol"><div class="bar" style="width:35.9%" role="img" aria-label="Object model 44, Menu command 53, C++ SDK only 1, Not automatable 6, Not established 3"><span class="seg r-dom" style="flex:44" title="Object model: 44"></span><span class="seg r-menu_command" style="flex:53" title="Menu command: 53"></span><span class="seg r-native_sdk" style="flex:1" title="C++ SDK only: 1"></span><span class="seg r-none" style="flex:6" title="Not automatable: 6"></span><span class="seg r-unknown" style="flex:3" title="Not established: 3"></span></div></td>
+    <td class="num">23 <span class="dim">21%</span></td><td class="num">23</td><td class="num">0</td>
+    <td class="num">3</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Geometry</span><span class="dc">Paths, anchor points and segments: drawing them, editing them and combining them with path and pathfinder operations.</span></th>
+    <td class="num">107</td>
+    <td class="barcol"><div class="bar" style="width:35.9%" role="img" aria-label="Object model 53, Menu command 25, Recorded Action 4, Not automatable 25"><span class="seg r-dom" style="flex:53" title="Object model: 53"></span><span class="seg r-menu_command" style="flex:25" title="Menu command: 25"></span><span class="seg r-action" style="flex:4" title="Recorded Action: 4"></span><span class="seg r-none" style="flex:25" title="Not automatable: 25"></span></div></td>
+    <td class="num">69 <span class="dim">64%</span></td><td class="num">69</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Transformations</span><span class="dc">Moving, rotating, reflecting, scaling, shearing, aligning, distributing and distorting objects.</span></th>
+    <td class="num">101</td>
+    <td class="barcol"><div class="bar" style="width:33.9%" role="img" aria-label="Object model 49, Menu command 31, Not automatable 21"><span class="seg r-dom" style="flex:49" title="Object model: 49"></span><span class="seg r-menu_command" style="flex:31" title="Menu command: 31"></span><span class="seg r-none" style="flex:21" title="Not automatable: 21"></span></div></td>
+    <td class="num">65 <span class="dim">64%</span></td><td class="num">65</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">User interface</span><span class="dc">Viewing and navigating the canvas and arranging the workspace: zoom, preview modes, rulers, guides, grids, snapping and panels.</span></th>
+    <td class="num">97</td>
+    <td class="barcol"><div class="bar" style="width:32.6%" role="img" aria-label="Object model 25, Menu command 45, Not automatable 27"><span class="seg r-dom" style="flex:25" title="Object model: 25"></span><span class="seg r-menu_command" style="flex:45" title="Menu command: 45"></span><span class="seg r-none" style="flex:27" title="Not automatable: 27"></span></div></td>
+    <td class="num">1 <span class="dim">1%</span></td><td class="num">1</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Prepress</span><span class="dc">Getting artwork ready for print: printing, separations, overprint, trapping, flattening, marks, bleeds and packaging.</span></th>
+    <td class="num">96</td>
+    <td class="barcol"><div class="bar" style="width:32.2%" role="img" aria-label="Object model 72, Menu command 10, Not automatable 14"><span class="seg r-dom" style="flex:72" title="Object model: 72"></span><span class="seg r-menu_command" style="flex:10" title="Menu command: 10"></span><span class="seg r-none" style="flex:14" title="Not automatable: 14"></span></div></td>
+    <td class="num">82 <span class="dim">85%</span></td><td class="num">82</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Documents</span><span class="dc">Creating, opening, saving, closing and configuring documents, including templates, presets, color mode and metadata.</span></th>
+    <td class="num">85</td>
+    <td class="barcol"><div class="bar" style="width:28.5%" role="img" aria-label="Object model 49, Menu command 14, Not automatable 22"><span class="seg r-dom" style="flex:49" title="Object model: 49"></span><span class="seg r-menu_command" style="flex:14" title="Menu command: 14"></span><span class="seg r-none" style="flex:22" title="Not automatable: 22"></span></div></td>
+    <td class="num">62 <span class="dim">73%</span></td><td class="num">62</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Selection</span><span class="dc">Choosing which objects or anchor points are active, including selection tools, the Select menu, isolation mode, locking and hiding.</span></th>
+    <td class="num">78</td>
+    <td class="barcol"><div class="bar" style="width:26.2%" role="img" aria-label="Object model 22, Menu command 51, Not automatable 5"><span class="seg r-dom" style="flex:22" title="Object model: 22"></span><span class="seg r-menu_command" style="flex:51" title="Menu command: 51"></span><span class="seg r-none" style="flex:5" title="Not automatable: 5"></span></div></td>
+    <td class="num">60 <span class="dim">77%</span></td><td class="num">60</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Brushes</span><span class="dc">Brush tools, the five brush types, brush libraries and brush stroke editing.</span></th>
+    <td class="num">77</td>
+    <td class="barcol"><div class="bar" style="width:25.8%" role="img" aria-label="Object model 12, Menu command 30, C++ SDK only 1, Not automatable 11, Not established 23"><span class="seg r-dom" style="flex:12" title="Object model: 12"></span><span class="seg r-menu_command" style="flex:30" title="Menu command: 30"></span><span class="seg r-native_sdk" style="flex:1" title="C++ SDK only: 1"></span><span class="seg r-none" style="flex:11" title="Not automatable: 11"></span><span class="seg r-unknown" style="flex:23" title="Not established: 23"></span></div></td>
+    <td class="num">41 <span class="dim">53%</span></td><td class="num">41</td><td class="num">0</td>
+    <td class="num">23</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Symbols</span><span class="dc">Reusable symbol definitions, their instances, symbol libraries and the symbolism tools.</span></th>
+    <td class="num">70</td>
+    <td class="barcol"><div class="bar" style="width:23.5%" role="img" aria-label="Object model 23, Menu command 31, Not automatable 16"><span class="seg r-dom" style="flex:23" title="Object model: 23"></span><span class="seg r-menu_command" style="flex:31" title="Menu command: 31"></span><span class="seg r-none" style="flex:16" title="Not automatable: 16"></span></div></td>
+    <td class="num">46 <span class="dim">66%</span></td><td class="num">46</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Images</span><span class="dc">Placed and embedded raster or vector files, links, cropping, rasterizing, mockups and image cleanup.</span></th>
+    <td class="num">65</td>
+    <td class="barcol"><div class="bar" style="width:21.8%" role="img" aria-label="Object model 41, Menu command 11, Not automatable 13"><span class="seg r-dom" style="flex:41" title="Object model: 41"></span><span class="seg r-menu_command" style="flex:11" title="Menu command: 11"></span><span class="seg r-none" style="flex:13" title="Not automatable: 13"></span></div></td>
+    <td class="num">45 <span class="dim">69%</span></td><td class="num">45</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Automation</span><span class="dc">Actions, batch processing, scripts, variables and data sets for repeating or data-driven work.</span></th>
+    <td class="num">63</td>
+    <td class="barcol"><div class="bar" style="width:21.1%" role="img" aria-label="Object model 36, Menu command 7, Not automatable 19, Not established 1"><span class="seg r-dom" style="flex:36" title="Object model: 36"></span><span class="seg r-menu_command" style="flex:7" title="Menu command: 7"></span><span class="seg r-none" style="flex:19" title="Not automatable: 19"></span><span class="seg r-unknown" style="flex:1" title="Not established: 1"></span></div></td>
+    <td class="num">42 <span class="dim">67%</span></td><td class="num">41</td><td class="num">0</td>
+    <td class="num">1</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Shapes</span><span class="dc">Primitive and live shapes such as rectangles, ellipses, polygons, stars, lines, arcs, spirals, grids and flares.</span></th>
+    <td class="num">60</td>
+    <td class="barcol"><div class="bar" style="width:20.1%" role="img" aria-label="Object model 45, Menu command 5, Not automatable 10"><span class="seg r-dom" style="flex:45" title="Object model: 45"></span><span class="seg r-menu_command" style="flex:5" title="Menu command: 5"></span><span class="seg r-none" style="flex:10" title="Not automatable: 10"></span></div></td>
+    <td class="num">47 <span class="dim">78%</span></td><td class="num">47</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Asset export</span><span class="dc">Producing screen and web assets: Export for Screens, the Asset Export panel, slices and legacy web export.</span></th>
+    <td class="num">47</td>
+    <td class="barcol"><div class="bar" style="width:15.8%" role="img" aria-label="Object model 19, Menu command 14, Not automatable 14"><span class="seg r-dom" style="flex:19" title="Object model: 19"></span><span class="seg r-menu_command" style="flex:14" title="Menu command: 14"></span><span class="seg r-none" style="flex:14" title="Not automatable: 14"></span></div></td>
+    <td class="num">31 <span class="dim">66%</span></td><td class="num">31</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Layers</span><span class="dc">Organizing artwork into layers and sublayers, stacking order, and layer-level visibility, locking and printing.</span></th>
+    <td class="num">43</td>
+    <td class="barcol"><div class="bar" style="width:14.4%" role="img" aria-label="Object model 33, Menu command 5, C++ SDK only 1, Not automatable 3, Not established 1"><span class="seg r-dom" style="flex:33" title="Object model: 33"></span><span class="seg r-menu_command" style="flex:5" title="Menu command: 5"></span><span class="seg r-native_sdk" style="flex:1" title="C++ SDK only: 1"></span><span class="seg r-none" style="flex:3" title="Not automatable: 3"></span><span class="seg r-unknown" style="flex:1" title="Not established: 1"></span></div></td>
+    <td class="num">38 <span class="dim">88%</span></td><td class="num">38</td><td class="num">0</td>
+    <td class="num">1</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">3D</span><span class="dc">Three-dimensional effects, materials, lighting and rendering applied to vector artwork.</span></th>
+    <td class="num">41</td>
+    <td class="barcol"><div class="bar" style="width:13.8%" role="img" aria-label="Object model 11, Menu command 18, Not automatable 12"><span class="seg r-dom" style="flex:11" title="Object model: 11"></span><span class="seg r-menu_command" style="flex:18" title="Menu command: 18"></span><span class="seg r-none" style="flex:12" title="Not automatable: 12"></span></div></td>
+    <td class="num">15 <span class="dim">37%</span></td><td class="num">15</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Graphs</span><span class="dc">Data-driven column, bar, line, area, scatter, pie and radar graphs, their data and their designs.</span></th>
+    <td class="num">39</td>
+    <td class="barcol"><div class="bar" style="width:13.1%" role="img" aria-label="Object model 15, Menu command 1, Not automatable 23"><span class="seg r-dom" style="flex:15" title="Object model: 15"></span><span class="seg r-menu_command" style="flex:1" title="Menu command: 1"></span><span class="seg r-none" style="flex:23" title="Not automatable: 23"></span></div></td>
+    <td class="num">14 <span class="dim">36%</span></td><td class="num">14</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Patterns</span><span class="dc">Pattern swatches, pattern editing mode and repeat objects (radial, grid and mirror).</span></th>
+    <td class="num">38</td>
+    <td class="barcol"><div class="bar" style="width:12.8%" role="img" aria-label="Object model 16, Menu command 8, Not automatable 14"><span class="seg r-dom" style="flex:16" title="Object model: 16"></span><span class="seg r-menu_command" style="flex:8" title="Menu command: 8"></span><span class="seg r-none" style="flex:14" title="Not automatable: 14"></span></div></td>
+    <td class="num">22 <span class="dim">58%</span></td><td class="num">22</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Image Trace</span><span class="dc">Converting raster images into vector paths with Image Trace and its presets and options.</span></th>
+    <td class="num">38</td>
+    <td class="barcol"><div class="bar" style="width:12.8%" role="img" aria-label="Object model 36, Menu command 1, Not automatable 1"><span class="seg r-dom" style="flex:36" title="Object model: 36"></span><span class="seg r-menu_command" style="flex:1" title="Menu command: 1"></span><span class="seg r-none" style="flex:1" title="Not automatable: 1"></span></div></td>
+    <td class="num">30 <span class="dim">79%</span></td><td class="num">30</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Generative AI</span><span class="dc">Firefly-powered commands that create or modify vector artwork, patterns, colors and text from prompts or references.</span></th>
+    <td class="num">36</td>
+    <td class="barcol"><div class="bar" style="width:12.1%" role="img" aria-label="Menu command 4, Not automatable 32"><span class="seg r-menu_command" style="flex:4" title="Menu command: 4"></span><span class="seg r-none" style="flex:32" title="Not automatable: 32"></span></div></td>
+    <td class="num">0 <span class="dim">0%</span></td><td class="num">0</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Artboards</span><span class="dc">Creating, sizing, arranging, naming and exporting the artboards that make up a document's pages.</span></th>
+    <td class="num">34</td>
+    <td class="barcol"><div class="bar" style="width:11.4%" role="img" aria-label="Object model 26, Menu command 5, C++ SDK only 1, Not automatable 1, Not established 1"><span class="seg r-dom" style="flex:26" title="Object model: 26"></span><span class="seg r-menu_command" style="flex:5" title="Menu command: 5"></span><span class="seg r-native_sdk" style="flex:1" title="C++ SDK only: 1"></span><span class="seg r-none" style="flex:1" title="Not automatable: 1"></span><span class="seg r-unknown" style="flex:1" title="Not established: 1"></span></div></td>
+    <td class="num">30 <span class="dim">88%</span></td><td class="num">30</td><td class="num">0</td>
+    <td class="num">1</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Perspective</span><span class="dc">The perspective grid and drawing or attaching artwork in one-, two- or three-point perspective.</span></th>
+    <td class="num">34</td>
+    <td class="barcol"><div class="bar" style="width:11.4%" role="img" aria-label="Object model 13, Menu command 7, Not automatable 14"><span class="seg r-dom" style="flex:13" title="Object model: 13"></span><span class="seg r-menu_command" style="flex:7" title="Menu command: 7"></span><span class="seg r-none" style="flex:14" title="Not automatable: 14"></span></div></td>
+    <td class="num">19 <span class="dim">56%</span></td><td class="num">19</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Blends</span><span class="dc">Blend objects that interpolate shape and color between objects, and their options and spines.</span></th>
+    <td class="num">20</td>
+    <td class="barcol"><div class="bar" style="width:6.7%" role="img" aria-label="Object model 2, Menu command 8, Recorded Action 7, Not automatable 3"><span class="seg r-dom" style="flex:2" title="Object model: 2"></span><span class="seg r-menu_command" style="flex:8" title="Menu command: 8"></span><span class="seg r-action" style="flex:7" title="Recorded Action: 7"></span><span class="seg r-none" style="flex:3" title="Not automatable: 3"></span></div></td>
+    <td class="num">15 <span class="dim">75%</span></td><td class="num">15</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Interoperability</span><span class="dc">Working with other Adobe apps and services: Creative Cloud Libraries, Bridge, Stock, Fonts, sharing, comments and external AI tools.</span></th>
+    <td class="num">20</td>
+    <td class="barcol"><div class="bar" style="width:6.7%" role="img" aria-label="Object model 6, Menu command 7, Not automatable 6, Not established 1"><span class="seg r-dom" style="flex:6" title="Object model: 6"></span><span class="seg r-menu_command" style="flex:7" title="Menu command: 7"></span><span class="seg r-none" style="flex:6" title="Not automatable: 6"></span><span class="seg r-unknown" style="flex:1" title="Not established: 1"></span></div></td>
+    <td class="num">0 <span class="dim">0%</span></td><td class="num">0</td><td class="num">0</td>
+    <td class="num">1</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Clipping</span><span class="dc">Clipping masks, opacity masks and drawing modes that confine artwork to a shape.</span></th>
+    <td class="num">14</td>
+    <td class="barcol"><div class="bar" style="width:4.7%" role="img" aria-label="Object model 6, Menu command 2, C++ SDK only 6"><span class="seg r-dom" style="flex:6" title="Object model: 6"></span><span class="seg r-menu_command" style="flex:2" title="Menu command: 2"></span><span class="seg r-native_sdk" style="flex:6" title="C++ SDK only: 6"></span></div></td>
+    <td class="num">8 <span class="dim">57%</span></td><td class="num">8</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Meshes</span><span class="dc">Gradient mesh objects and the tools and commands that create and edit them.</span></th>
+    <td class="num">13</td>
+    <td class="barcol"><div class="bar" style="width:4.4%" role="img" aria-label="Object model 2, Recorded Action 1, C++ SDK only 2, Not automatable 8"><span class="seg r-dom" style="flex:2" title="Object model: 2"></span><span class="seg r-action" style="flex:1" title="Recorded Action: 1"></span><span class="seg r-native_sdk" style="flex:2" title="C++ SDK only: 2"></span><span class="seg r-none" style="flex:8" title="Not automatable: 8"></span></div></td>
+    <td class="num">2 <span class="dim">15%</span></td><td class="num">2</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">History</span><span class="dc">Undo and redo, the History panel, version history and recovery of unsaved work.</span></th>
+    <td class="num">9</td>
+    <td class="barcol"><div class="bar" style="width:3.0%" role="img" aria-label="Object model 3, Menu command 4, Not automatable 2"><span class="seg r-dom" style="flex:3" title="Object model: 3"></span><span class="seg r-menu_command" style="flex:4" title="Menu command: 4"></span><span class="seg r-none" style="flex:2" title="Not automatable: 2"></span></div></td>
+    <td class="num">0 <span class="dim">0%</span></td><td class="num">0</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr></tbody></table></div>
+
+    <div class="grid3">
+      <div class="card">
+        <h4>Menu commands</h4>
+        <p class="big">859</p>
+        <p class="sub">847 linked to features · 0 verified by running them</p>
+        <p class="sub">134 seen working in community scripts</p>
+      </div>
+      <div class="card">
+        <h4>Limitations</h4>
+        <p class="big">133</p>
+        <p class="sub"><span class="chip">misleads <b>53</b></span> <span class="chip">inconvenience <b>31</b></span> <span class="chip">blocks <b>30</b></span> <span class="chip">corrupts <b>13</b></span> <span class="chip">slows <b>6</b></span></p>
+        <p class="sub">54 documented by Adobe · 79 reported by the community</p>
+      </div>
+      <div class="card">
+        <h4>Community scripts</h4>
+        <p class="big">1,563</p>
+        <p class="sub">from 64 repositories · 99% parsed</p>
+        <p class="sub">Most used: <code>activeDocument</code> <code>selection</code> <code>documents</code> <code>typename</code> <code>name</code> <code>preferences</code></p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="col">
+        <h3>Commands seen in real scripts</h3>
+        <p class="lede">How many published scripts invoke each command. A command a script relies on has at least been seen to do something.</p>
+        <ol class="cmds"><li><code>group</code><span class="cbar"><span style="width:100%"></span></span><span class="num">64</span></li><li><code>deselectall</code><span class="cbar"><span style="width:92.1875%"></span></span><span class="num">59</span></li><li><code>expandStyle</code><span class="cbar"><span style="width:84.375%"></span></span><span class="num">54</span></li><li><code>ungroup</code><span class="cbar"><span style="width:60.9375%"></span></span><span class="num">39</span></li><li><code>noCompoundPath</code><span class="cbar"><span style="width:51.5625%"></span></span><span class="num">33</span></li><li><code>Live Pathfinder Add</code><span class="cbar"><span style="width:40.625%"></span></span><span class="num">26</span></li><li><code>copy</code><span class="cbar"><span style="width:35.9375%"></span></span><span class="num">23</span></li><li><code>fitall</code><span class="cbar"><span style="width:23.4375%"></span></span><span class="num">15</span></li><li><code>selectallinartboard</code><span class="cbar"><span style="width:23.4375%"></span></span><span class="num">15</span></li><li><code>edge</code><span class="cbar"><span style="width:21.875%"></span></span><span class="num">14</span></li><li><code>outline</code><span class="cbar"><span style="width:21.875%"></span></span><span class="num">14</span></li><li><code>preview</code><span class="cbar"><span style="width:20.3125%"></span></span><span class="num">13</span></li><li><code>selectall</code><span class="cbar"><span style="width:20.3125%"></span></span><span class="num">13</span></li><li><code>compoundPath</code><span class="cbar"><span style="width:18.75%"></span></span><span class="num">12</span></li><li><code>showHiddenChar</code><span class="cbar"><span style="width:18.75%"></span></span><span class="num">12</span></li></ol>
+      </div>
+      <div class="col">
+        <h3>What stops a script</h3>
+        <ul class="limits"><li><span class="sev sev-blocks">Blocks</span><span><b>Document colour mode is set at creation</b><span class="wk">Create documents with the right colour space in documents.add, or use executeMenuCommand('doc-color-cmyk'/'doc-color-rgb') and verify.</span></span></li><li><span class="sev sev-corrupts">Corrupts</span><span><b>Colours in the other model are converted lossily</b><span class="wk">Check documentColorSpace and create colours in the matching class.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Adding a spot with an existing name fails</b><span class="wk">Look the spot up in try/catch first and reuse it.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>No scripting access to the Appearance panel</b><span class="wk">Apply graphic styles prepared by hand, or use actions.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Illustrator runs one script at a time</b><span class="wk">Serialise jobs in a queue outside Illustrator and use generous timeouts.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Intermittent 'MRAP' errors</b><span class="wk">Retry the failing call, reduce work per run, and restart Illustrator between large batches.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>References to closed documents must not be used</b><span class="wk">Null references after closing and re-fetch documents by path when needed.</span></span></li><li><span class="sev sev-corrupts">Corrupts</span><span><b>Removing items while iterating forward skips items</b><span class="wk">Iterate from the end towards the start.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>PDF presets are selected by exact name</b><span class="wk">Check app.PDFPresetsList for the name before saving, and ship custom presets.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Raster export scale is capped</b><span class="wk">Use imageCapture, exportForScreens with resolution settings, or scale the artwork.</span></span></li></ul>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="col">
+        <h3>Object model by version</h3>
+        <div class="scroll" tabindex="0" role="region" aria-label="Illustrator: Object model by version table"><table class="plain"><thead><tr><th>Version</th><th class="num">Classes</th><th class="num">Enums</th><th class="num">Members</th></tr></thead><tbody><tr><td>Adobe Illustrator 2022 (26.x)</td><td class="num">140</td><td class="num">128</td><td class="num">2,593</td></tr><tr><td>Adobe Illustrator 2023 (27)</td><td class="num">158</td><td class="num">133</td><td class="num">2,871</td></tr><tr><td>Adobe Illustrator 2024 (28)</td><td class="num">158</td><td class="num">133</td><td class="num">2,875</td></tr><tr><td>Adobe Illustrator 2025 (29)</td><td class="num">158</td><td class="num">134</td><td class="num">2,882</td></tr></tbody></table></div>
+        
+      </div>
+      <div class="col">
+        <h3>Other ways in</h3>
+        <div class="scroll" tabindex="0" role="region" aria-label="Illustrator: Other ways in table"><table class="plain"><thead><tr><th>Surface</th><th class="num">Entries</th><th>Status</th><th class="num">Beyond the object model</th></tr></thead><tbody><tr><td>AppleScript</td><td class="num">245</td><td><span class="chip">current <b>244</b></span> <span class="chip">deprecated <b>1</b></span></td><td class="num">1</td></tr><tr><td>CEP</td><td class="num">15</td><td><span class="chip">current <b>15</b></span></td><td class="num">6</td></tr><tr><td>C++ SDK</td><td class="num">251</td><td><span class="chip">current <b>238</b></span> <span class="chip">deprecated <b>9</b></span> <span class="chip">removed <b>2</b></span> <span class="chip">unavailable <b>2</b></span></td><td class="num">180</td></tr><tr><td>UXP</td><td class="num">4</td><td><span class="chip">unavailable <b>4</b></span></td><td class="num">0</td></tr><tr><td>VBScript / COM</td><td class="num">161</td><td><span class="chip">current <b>161</b></span></td><td class="num">1</td></tr></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-photoshop" role="tabpanel" aria-labelledby="tab-photoshop" tabindex="0" hidden>
+    <div class="split">
+      <div class="col">
+        <h3>Support, step by step</h3>
+        <p class="lede">Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Photoshop session.</p>
+        <ol class="ladder">
+    <li><span class="lk">Documented</span><span class="lv">2,609</span><span class="lp">100%</span><span class="ln">features Adobe documents</span>
+    <span class="lbar"><span style="width:100%"></span></span></li>
+    <li><span class="lk">Scriptable</span><span class="lv">1,720</span><span class="lp">66%</span><span class="ln">reachable by object model, menu command, Action Manager or recorded Action</span>
+    <span class="lbar"><span style="width:65.92564200843235%"></span></span></li>
+    <li><span class="lk">Implemented</span><span class="lv">1,413</span><span class="lp">54%</span><span class="ln">claimed by our 205 MCP tools</span>
+    <span class="lbar"><span style="width:54.15868148715983%"></span></span></li>
+    <li><span class="lk">Static checks</span><span class="lv">1,410</span><span class="lp">54%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
+    <span class="lbar"><span style="width:54.0436949022614%"></span></span></li>
+    <li><span class="lk">Live validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
+    <span class="lbar"><span style="width:0%"></span></span></li></ol>
+      </div>
+      <div class="col">
+        <h3>What kind of features</h3>
+        <div class="chips"><span class="chip">setting <b>1,374</b></span> <span class="chip">menu command <b>509</b></span> <span class="chip">dialog <b>295</b></span> <span class="chip">workflow <b>155</b></span> <span class="chip">object type <b>89</b></span> <span class="chip">tool <b>82</b></span> <span class="chip">panel <b>64</b></span> <span class="chip">file format <b>41</b></span></div>
+        <h3>Automation routes</h3>
+        <div class="legend"><span><i class="sw r-dom"></i>Object model <b>787</b></span><span><i class="sw r-menu_command"></i>Menu command <b>3</b></span><span><i class="sw r-action_manager"></i>Action Manager <b>928</b></span><span><i class="sw r-action"></i>Recorded Action <b>2</b></span><span><i class="sw r-none"></i>Not automatable <b>456</b></span><span><i class="sw r-unknown"></i>Not established <b>433</b></span></div>
+        <p class="note">Photoshop's object model leaves out most adjustments, filters and settings, so many of its features are reached only through the Action Manager: executeAction with an event id and a descriptor of its settings. Those are counted as their own route, scriptable but outside the object model.</p>
+      </div>
+    </div>
+
+    <h3>By domain</h3>
+    <div class="scroll" tabindex="0" role="region" aria-label="Photoshop: By domain table"><table class="domains">
+  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Static checks</th><th scope="col" class="num">Live validated</th><th scope="col" class="num">Not established</th></tr></thead>
+  <tbody><tr>
+    <th scope="row"><span class="dn">Filters</span><span class="dc">The Filter menu: blur, sharpen, noise, distort, render, stylize, pixelate, other, Filter Gallery, Liquify, Lens Correction, Adaptive Wide Angle, Vanishing Point and Camera Raw as a filter.</span></th>
+    <td class="num">395</td>
+    <td class="barcol"><div class="bar" style="width:100.0%" role="img" aria-label="Object model 131, Action Manager 165, Not automatable 66, Not established 33"><span class="seg r-dom" style="flex:131" title="Object model: 131"></span><span class="seg r-action_manager" style="flex:165" title="Action Manager: 165"></span><span class="seg r-none" style="flex:66" title="Not automatable: 66"></span><span class="seg r-unknown" style="flex:33" title="Not established: 33"></span></div></td>
+    <td class="num">247 <span class="dim">63%</span></td><td class="num">247</td><td class="num">0</td>
+    <td class="num">33</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Painting</span><span class="dc">Brush, pencil, mixer brush, eraser, gradient and paint bucket tools, brush settings and presets, and fill and stroke.</span></th>
+    <td class="num">211</td>
+    <td class="barcol"><div class="bar" style="width:53.4%" role="img" aria-label="Object model 24, Action Manager 117, Not automatable 1, Not established 69"><span class="seg r-dom" style="flex:24" title="Object model: 24"></span><span class="seg r-action_manager" style="flex:117" title="Action Manager: 117"></span><span class="seg r-none" style="flex:1" title="Not automatable: 1"></span><span class="seg r-unknown" style="flex:69" title="Not established: 69"></span></div></td>
+    <td class="num">60 <span class="dim">28%</span></td><td class="num">60</td><td class="num">0</td>
+    <td class="num">69</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Adjustments</span><span class="dc">Image adjustments and adjustment layers: levels, curves, hue/saturation, colour balance, black and white, photo filter, channel mixer, gradient map and the rest, plus auto tone, colour and contrast.</span></th>
+    <td class="num">178</td>
+    <td class="barcol"><div class="bar" style="width:45.1%" role="img" aria-label="Object model 36, Action Manager 74, Not automatable 38, Not established 30"><span class="seg r-dom" style="flex:36" title="Object model: 36"></span><span class="seg r-action_manager" style="flex:74" title="Action Manager: 74"></span><span class="seg r-none" style="flex:38" title="Not automatable: 38"></span><span class="seg r-unknown" style="flex:30" title="Not established: 30"></span></div></td>
+    <td class="num">82 <span class="dim">46%</span></td><td class="num">82</td><td class="num">0</td>
+    <td class="num">30</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">User interface</span><span class="dc">Workspaces, panels, tools panel, views, zoom, rulers, guides, grid, smart guides, screen modes and the contextual task bar.</span></th>
+    <td class="num">163</td>
+    <td class="barcol"><div class="bar" style="width:41.3%" role="img" aria-label="Object model 18, Action Manager 84, Not automatable 36, Not established 25"><span class="seg r-dom" style="flex:18" title="Object model: 18"></span><span class="seg r-action_manager" style="flex:84" title="Action Manager: 84"></span><span class="seg r-none" style="flex:36" title="Not automatable: 36"></span><span class="seg r-unknown" style="flex:25" title="Not established: 25"></span></div></td>
+    <td class="num">90 <span class="dim">55%</span></td><td class="num">90</td><td class="num">0</td>
+    <td class="num">25</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Import and export</span><span class="dc">Open, Place, Save As and Export formats and their options: Export As, Quick Export, Save for Web, Generate Image Assets, layers to files and PDF presentation.</span></th>
+    <td class="num">144</td>
+    <td class="barcol"><div class="bar" style="width:36.5%" role="img" aria-label="Object model 110, Action Manager 15, Not automatable 4, Not established 15"><span class="seg r-dom" style="flex:110" title="Object model: 110"></span><span class="seg r-action_manager" style="flex:15" title="Action Manager: 15"></span><span class="seg r-none" style="flex:4" title="Not automatable: 4"></span><span class="seg r-unknown" style="flex:15" title="Not established: 15"></span></div></td>
+    <td class="num">121 <span class="dim">84%</span></td><td class="num">121</td><td class="num">0</td>
+    <td class="num">15</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Type</span><span class="dc">Point and paragraph type, character and paragraph formatting, styles, OpenType, type on a path, warp text, fonts and spelling.</span></th>
+    <td class="num">133</td>
+    <td class="barcol"><div class="bar" style="width:33.7%" role="img" aria-label="Object model 72, Action Manager 21, Recorded Action 1, Not automatable 13, Not established 26"><span class="seg r-dom" style="flex:72" title="Object model: 72"></span><span class="seg r-action_manager" style="flex:21" title="Action Manager: 21"></span><span class="seg r-action" style="flex:1" title="Recorded Action: 1"></span><span class="seg r-none" style="flex:13" title="Not automatable: 13"></span><span class="seg r-unknown" style="flex:26" title="Not established: 26"></span></div></td>
+    <td class="num">81 <span class="dim">61%</span></td><td class="num">81</td><td class="num">0</td>
+    <td class="num">26</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Camera Raw and neural filters</span><span class="dc">Camera Raw, the Neural Filters workspace and other AI-assisted image filters.</span></th>
+    <td class="num">125</td>
+    <td class="barcol"><div class="bar" style="width:31.6%" role="img" aria-label="Object model 17, Action Manager 48, Not automatable 17, Not established 43"><span class="seg r-dom" style="flex:17" title="Object model: 17"></span><span class="seg r-action_manager" style="flex:48" title="Action Manager: 48"></span><span class="seg r-none" style="flex:17" title="Not automatable: 17"></span><span class="seg r-unknown" style="flex:43" title="Not established: 43"></span></div></td>
+    <td class="num">33 <span class="dim">26%</span></td><td class="num">33</td><td class="num">0</td>
+    <td class="num">43</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Application</span><span class="dc">Launching and quitting Photoshop, preferences, plug-ins, help, account and Creative Cloud items, and performance settings.</span></th>
+    <td class="num">122</td>
+    <td class="barcol"><div class="bar" style="width:30.9%" role="img" aria-label="Object model 58, Menu command 3, Action Manager 18, Not automatable 19, Not established 24"><span class="seg r-dom" style="flex:58" title="Object model: 58"></span><span class="seg r-menu_command" style="flex:3" title="Menu command: 3"></span><span class="seg r-action_manager" style="flex:18" title="Action Manager: 18"></span><span class="seg r-none" style="flex:19" title="Not automatable: 19"></span><span class="seg r-unknown" style="flex:24" title="Not established: 24"></span></div></td>
+    <td class="num">70 <span class="dim">57%</span></td><td class="num">69</td><td class="num">0</td>
+    <td class="num">24</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Retouching</span><span class="dc">Healing, spot healing, patch, content-aware move and fill, clone stamp, red eye, and the dodge, burn, sponge, blur, sharpen and smudge tools.</span></th>
+    <td class="num">99</td>
+    <td class="barcol"><div class="bar" style="width:25.1%" role="img" aria-label="Object model 2, Action Manager 36, Not automatable 56, Not established 5"><span class="seg r-dom" style="flex:2" title="Object model: 2"></span><span class="seg r-action_manager" style="flex:36" title="Action Manager: 36"></span><span class="seg r-none" style="flex:56" title="Not automatable: 56"></span><span class="seg r-unknown" style="flex:5" title="Not established: 5"></span></div></td>
+    <td class="num">28 <span class="dim">28%</span></td><td class="num">28</td><td class="num">0</td>
+    <td class="num">5</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Colour</span><span class="dc">Choosing colours: foreground and background, Color and Swatches panels, colour pickers, gradients and patterns as colours.</span></th>
+    <td class="num">95</td>
+    <td class="barcol"><div class="bar" style="width:24.1%" role="img" aria-label="Object model 17, Action Manager 22, Not automatable 35, Not established 21"><span class="seg r-dom" style="flex:17" title="Object model: 17"></span><span class="seg r-action_manager" style="flex:22" title="Action Manager: 22"></span><span class="seg r-none" style="flex:35" title="Not automatable: 35"></span><span class="seg r-unknown" style="flex:21" title="Not established: 21"></span></div></td>
+    <td class="num">34 <span class="dim">36%</span></td><td class="num">34</td><td class="num">0</td>
+    <td class="num">21</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Documents</span><span class="dc">Creating, opening, saving, closing and configuring documents: presets, templates, metadata (File Info) and recovery.</span></th>
+    <td class="num">89</td>
+    <td class="barcol"><div class="bar" style="width:22.5%" role="img" aria-label="Object model 45, Action Manager 16, Not automatable 14, Not established 14"><span class="seg r-dom" style="flex:45" title="Object model: 45"></span><span class="seg r-action_manager" style="flex:16" title="Action Manager: 16"></span><span class="seg r-none" style="flex:14" title="Not automatable: 14"></span><span class="seg r-unknown" style="flex:14" title="Not established: 14"></span></div></td>
+    <td class="num">52 <span class="dim">58%</span></td><td class="num">52</td><td class="num">0</td>
+    <td class="num">14</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Video and animation</span><span class="dc">The Timeline panel, video layers, frame animation and rendering video.</span></th>
+    <td class="num">89</td>
+    <td class="barcol"><div class="bar" style="width:22.5%" role="img" aria-label="Object model 1, Action Manager 63, Not automatable 12, Not established 13"><span class="seg r-dom" style="flex:1" title="Object model: 1"></span><span class="seg r-action_manager" style="flex:63" title="Action Manager: 63"></span><span class="seg r-none" style="flex:12" title="Not automatable: 12"></span><span class="seg r-unknown" style="flex:13" title="Not established: 13"></span></div></td>
+    <td class="num">55 <span class="dim">62%</span></td><td class="num">55</td><td class="num">0</td>
+    <td class="num">13</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Automation</span><span class="dc">Actions, batch, droplets, scripts, variables and data sets, image processor, photomerge, merge to HDR, contact sheets and other File &gt; Automate and Scripts items.</span></th>
+    <td class="num">85</td>
+    <td class="barcol"><div class="bar" style="width:21.5%" role="img" aria-label="Object model 19, Action Manager 23, Recorded Action 1, Not automatable 21, Not established 21"><span class="seg r-dom" style="flex:19" title="Object model: 19"></span><span class="seg r-action_manager" style="flex:23" title="Action Manager: 23"></span><span class="seg r-action" style="flex:1" title="Recorded Action: 1"></span><span class="seg r-none" style="flex:21" title="Not automatable: 21"></span><span class="seg r-unknown" style="flex:21" title="Not established: 21"></span></div></td>
+    <td class="num">42 <span class="dim">49%</span></td><td class="num">40</td><td class="num">0</td>
+    <td class="num">21</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Image</span><span class="dc">Whole-image operations: image size and resampling, canvas size, crop and trim, rotate canvas, colour mode and bit depth, duplicate and reveal all.</span></th>
+    <td class="num">82</td>
+    <td class="barcol"><div class="bar" style="width:20.8%" role="img" aria-label="Object model 52, Action Manager 11, Not automatable 17, Not established 2"><span class="seg r-dom" style="flex:52" title="Object model: 52"></span><span class="seg r-action_manager" style="flex:11" title="Action Manager: 11"></span><span class="seg r-none" style="flex:17" title="Not automatable: 17"></span><span class="seg r-unknown" style="flex:2" title="Not established: 2"></span></div></td>
+    <td class="num">63 <span class="dim">77%</span></td><td class="num">63</td><td class="num">0</td>
+    <td class="num">2</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Layers</span><span class="dc">Layers and groups: creating, stacking, linking, locking, blending, opacity, fill, merging, flattening, layer comps and the Layers panel.</span></th>
+    <td class="num">78</td>
+    <td class="barcol"><div class="bar" style="width:19.7%" role="img" aria-label="Object model 42, Action Manager 31, Not established 5"><span class="seg r-dom" style="flex:42" title="Object model: 42"></span><span class="seg r-action_manager" style="flex:31" title="Action Manager: 31"></span><span class="seg r-unknown" style="flex:5" title="Not established: 5"></span></div></td>
+    <td class="num">70 <span class="dim">90%</span></td><td class="num">70</td><td class="num">0</td>
+    <td class="num">5</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Transformations</span><span class="dc">Free transform, warp, perspective warp, puppet warp, content-aware scale, align and distribute, and auto-align layers.</span></th>
+    <td class="num">74</td>
+    <td class="barcol"><div class="bar" style="width:18.7%" role="img" aria-label="Object model 10, Action Manager 36, Not automatable 15, Not established 13"><span class="seg r-dom" style="flex:10" title="Object model: 10"></span><span class="seg r-action_manager" style="flex:36" title="Action Manager: 36"></span><span class="seg r-none" style="flex:15" title="Not automatable: 15"></span><span class="seg r-unknown" style="flex:13" title="Not established: 13"></span></div></td>
+    <td class="num">35 <span class="dim">47%</span></td><td class="num">35</td><td class="num">0</td>
+    <td class="num">13</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Generative AI</span><span class="dc">Generative Fill, Generative Expand, Generate Image, Generate Background, Remove tool and other Firefly-powered features.</span></th>
+    <td class="num">63</td>
+    <td class="barcol"><div class="bar" style="width:15.9%" role="img" aria-label="Object model 1, Action Manager 5, Not automatable 17, Not established 40"><span class="seg r-dom" style="flex:1" title="Object model: 1"></span><span class="seg r-action_manager" style="flex:5" title="Action Manager: 5"></span><span class="seg r-none" style="flex:17" title="Not automatable: 17"></span><span class="seg r-unknown" style="flex:40" title="Not established: 40"></span></div></td>
+    <td class="num">4 <span class="dim">6%</span></td><td class="num">4</td><td class="num">0</td>
+    <td class="num">40</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Shapes and paths</span><span class="dc">Shape layers and tools, the pen and path tools, the Paths panel, path operations and vector strokes.</span></th>
+    <td class="num">61</td>
+    <td class="barcol"><div class="bar" style="width:15.4%" role="img" aria-label="Object model 34, Action Manager 12, Not automatable 8, Not established 7"><span class="seg r-dom" style="flex:34" title="Object model: 34"></span><span class="seg r-action_manager" style="flex:12" title="Action Manager: 12"></span><span class="seg r-none" style="flex:8" title="Not automatable: 8"></span><span class="seg r-unknown" style="flex:7" title="Not established: 7"></span></div></td>
+    <td class="num">40 <span class="dim">66%</span></td><td class="num">40</td><td class="num">0</td>
+    <td class="num">7</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">3D</span><span class="dc">3D layers and features, including those Adobe has removed.</span></th>
+    <td class="num">53</td>
+    <td class="barcol"><div class="bar" style="width:13.4%" role="img" aria-label="Not automatable 51, Not established 2"><span class="seg r-none" style="flex:51" title="Not automatable: 51"></span><span class="seg r-unknown" style="flex:2" title="Not established: 2"></span></div></td>
+    <td class="num">0 <span class="dim">0%</span></td><td class="num">0</td><td class="num">0</td>
+    <td class="num">2</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Selection</span><span class="dc">Selection tools and the Select menu: marquee, lasso, magic wand, object and subject selection, colour range, focus area, modify and transform selection, saving and loading selections.</span></th>
+    <td class="num">42</td>
+    <td class="barcol"><div class="bar" style="width:10.6%" role="img" aria-label="Object model 24, Action Manager 9, Not automatable 6, Not established 3"><span class="seg r-dom" style="flex:24" title="Object model: 24"></span><span class="seg r-action_manager" style="flex:9" title="Action Manager: 9"></span><span class="seg r-none" style="flex:6" title="Not automatable: 6"></span><span class="seg r-unknown" style="flex:3" title="Not established: 3"></span></div></td>
+    <td class="num">31 <span class="dim">74%</span></td><td class="num">31</td><td class="num">0</td>
+    <td class="num">3</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Artboards</span><span class="dc">Creating, sizing, arranging and exporting artboards.</span></th>
+    <td class="num">37</td>
+    <td class="barcol"><div class="bar" style="width:9.4%" role="img" aria-label="Object model 2, Action Manager 21, Not automatable 5, Not established 9"><span class="seg r-dom" style="flex:2" title="Object model: 2"></span><span class="seg r-action_manager" style="flex:21" title="Action Manager: 21"></span><span class="seg r-none" style="flex:5" title="Not automatable: 5"></span><span class="seg r-unknown" style="flex:9" title="Not established: 9"></span></div></td>
+    <td class="num">19 <span class="dim">51%</span></td><td class="num">19</td><td class="num">0</td>
+    <td class="num">9</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Layer styles</span><span class="dc">Layer effects (drop shadow, strokes, glows, bevel and emboss, overlays) and saved styles.</span></th>
+    <td class="num">37</td>
+    <td class="barcol"><div class="bar" style="width:9.4%" role="img" aria-label="Object model 3, Action Manager 32, Not established 2"><span class="seg r-dom" style="flex:3" title="Object model: 3"></span><span class="seg r-action_manager" style="flex:32" title="Action Manager: 32"></span><span class="seg r-unknown" style="flex:2" title="Not established: 2"></span></div></td>
+    <td class="num">28 <span class="dim">76%</span></td><td class="num">28</td><td class="num">0</td>
+    <td class="num">2</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Masks</span><span class="dc">Layer masks, vector masks, clipping masks, Quick Mask and Select and Mask.</span></th>
+    <td class="num">34</td>
+    <td class="barcol"><div class="bar" style="width:8.6%" role="img" aria-label="Object model 10, Action Manager 21, Not established 3"><span class="seg r-dom" style="flex:10" title="Object model: 10"></span><span class="seg r-action_manager" style="flex:21" title="Action Manager: 21"></span><span class="seg r-unknown" style="flex:3" title="Not established: 3"></span></div></td>
+    <td class="num">27 <span class="dim">79%</span></td><td class="num">27</td><td class="num">0</td>
+    <td class="num">3</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Colour management</span><span class="dc">Colour settings, profiles (assign, convert), proof setup and gamut warnings.</span></th>
+    <td class="num">29</td>
+    <td class="barcol"><div class="bar" style="width:7.3%" role="img" aria-label="Object model 9, Action Manager 15, Not automatable 3, Not established 2"><span class="seg r-dom" style="flex:9" title="Object model: 9"></span><span class="seg r-action_manager" style="flex:15" title="Action Manager: 15"></span><span class="seg r-none" style="flex:3" title="Not automatable: 3"></span><span class="seg r-unknown" style="flex:2" title="Not established: 2"></span></div></td>
+    <td class="num">22 <span class="dim">76%</span></td><td class="num">22</td><td class="num">0</td>
+    <td class="num">2</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Smart objects</span><span class="dc">Smart objects, linked smart objects, smart filters and editing their contents.</span></th>
+    <td class="num">28</td>
+    <td class="barcol"><div class="bar" style="width:7.1%" role="img" aria-label="Object model 3, Action Manager 23, Not established 2"><span class="seg r-dom" style="flex:3" title="Object model: 3"></span><span class="seg r-action_manager" style="flex:23" title="Action Manager: 23"></span><span class="seg r-unknown" style="flex:2" title="Not established: 2"></span></div></td>
+    <td class="num">23 <span class="dim">82%</span></td><td class="num">23</td><td class="num">0</td>
+    <td class="num">2</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">History</span><span class="dc">Undo and redo, the History panel, snapshots, the history brush and Revert.</span></th>
+    <td class="num">25</td>
+    <td class="barcol"><div class="bar" style="width:6.3%" role="img" aria-label="Object model 15, Action Manager 6, Not established 4"><span class="seg r-dom" style="flex:15" title="Object model: 15"></span><span class="seg r-action_manager" style="flex:6" title="Action Manager: 6"></span><span class="seg r-unknown" style="flex:4" title="Not established: 4"></span></div></td>
+    <td class="num">21 <span class="dim">84%</span></td><td class="num">21</td><td class="num">0</td>
+    <td class="num">4</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Channels</span><span class="dc">Colour, alpha and spot channels, the Channels panel, Calculations and Apply Image.</span></th>
+    <td class="num">20</td>
+    <td class="barcol"><div class="bar" style="width:5.1%" role="img" aria-label="Object model 16, Action Manager 4"><span class="seg r-dom" style="flex:16" title="Object model: 16"></span><span class="seg r-action_manager" style="flex:4" title="Action Manager: 4"></span></div></td>
+    <td class="num">19 <span class="dim">95%</span></td><td class="num">19</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Print</span><span class="dc">The Print dialog and its colour management and output options.</span></th>
+    <td class="num">18</td>
+    <td class="barcol"><div class="bar" style="width:4.6%" role="img" aria-label="Object model 16, Not automatable 2"><span class="seg r-dom" style="flex:16" title="Object model: 16"></span><span class="seg r-none" style="flex:2" title="Not automatable: 2"></span></div></td>
+    <td class="num">16 <span class="dim">89%</span></td><td class="num">16</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr></tbody></table></div>
+
+    <div class="grid3">
+      <div class="card">
+        <h4>Events and menu commands</h4>
+        <p class="big">443</p>
+        <p class="sub">396 linked to features · 0 verified by running them</p>
+        <p class="sub">104 seen working in community scripts</p>
+      </div>
+      <div class="card">
+        <h4>Limitations</h4>
+        <p class="big">44</p>
+        <p class="sub"><span class="chip">inconvenience <b>14</b></span> <span class="chip">blocks <b>11</b></span> <span class="chip">misleads <b>10</b></span> <span class="chip">slows <b>5</b></span> <span class="chip">corrupts <b>4</b></span></p>
+        <p class="sub">40 documented by Adobe · 4 reported by the community</p>
+      </div>
+      <div class="card">
+        <h4>Community scripts</h4>
+        <p class="big">417</p>
+        <p class="sub">from 61 repositories · 89% parsed</p>
+        <p class="sub">Most used: <code>name</code> <code>activeDocument</code> <code>putEnumerated</code> <code>putReference</code> <code>putBoolean</code> <code>putObject</code></p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="col">
+        <h3>Commands seen in real scripts</h3>
+        <p class="lede">How many published scripts invoke each command. A command a script relies on has at least been seen to do something.</p>
+        <ol class="cmds"><li><code>set</code><span class="cbar"><span style="width:100%"></span></span><span class="num">100</span></li><li><code>select</code><span class="cbar"><span style="width:73%"></span></span><span class="num">73</span></li><li><code>make</code><span class="cbar"><span style="width:59%"></span></span><span class="num">59</span></li><li><code>open</code><span class="cbar"><span style="width:53%"></span></span><span class="num">53</span></li><li><code>duplicate</code><span class="cbar"><span style="width:27%"></span></span><span class="num">27</span></li><li><code>delete</code><span class="cbar"><span style="width:22%"></span></span><span class="num">22</span></li><li><code>move</code><span class="cbar"><span style="width:21%"></span></span><span class="num">21</span></li><li><code>placeEvent</code><span class="cbar"><span style="width:15%"></span></span><span class="num">15</span></li><li><code>transform</code><span class="cbar"><span style="width:15%"></span></span><span class="num">15</span></li><li><code>convertMode</code><span class="cbar"><span style="width:13%"></span></span><span class="num">13</span></li><li><code>fill</code><span class="cbar"><span style="width:13%"></span></span><span class="num">13</span></li><li><code>save</code><span class="cbar"><span style="width:12%"></span></span><span class="num">12</span></li><li><code>export</code><span class="cbar"><span style="width:11%"></span></span><span class="num">11</span></li><li><code>get</code><span class="cbar"><span style="width:11%"></span></span><span class="num">11</span></li><li><code>groupEvent</code><span class="cbar"><span style="width:10%"></span></span><span class="num">10</span></li></ol>
+      </div>
+      <div class="col">
+        <h3>What stops a script</h3>
+        <ul class="limits"><li><span class="sev sev-blocks">Blocks</span><span><b>UXP changes to Photoshop must run inside executeAsModal</b><span class="wk">Wrap every modifying batchPlay or DOM call in await core.executeAsModal(fn, {commandName}); read-only calls may run outside.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Only one plugin can hold the modal scope</b><span class="wk">Always await executeAsModal, catch error number 9, raise timeOut where waiting is acceptable, and retry or report.</span></span></li><li><span class="sev sev-corrupts">Corrupts</span><span><b>Un-awaited calls and swallowed exceptions defeat cancellation</b><span class="wk">await every Photoshop call, rethrow exceptions inside the target function, and check executionContext.isCancelled in long computations.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>batchPlay throws more often since 23.4.1</b><span class="wk">Guard batchPlay calls with try/catch, or use DOM methods where they exist.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Dialogs stop an unattended script</b><span class="wk">Set app.displayDialogs = DialogModes.NO for the job (DisplayDialogs = 3 in VBScript, display dialogs to never in AppleScript) and restore the previous value afterwards.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>executeAction shows the command's own dialog unless told not to</b><span class="wk">Pass DialogModes.NO as the third argument and supply every parameter in the descriptor.</span></span></li><li><span class="sev sev-corrupts">Corrupts</span><span><b>A UXP dialog's showModal does not lock Photoshop</b><span class="wk">Call showModal({lockDocumentFocus: true}).</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Letting the user work in a dialog during executeAsModal needs interactive mode</b><span class="wk">Pass {interactive: true} to executeAsModal (Photoshop 23.3+); the user cancels through Plugins &gt; Cancel Plugin Command instead of the progress dialog.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>AppleScript has no Action Manager</b><span class="wk">Write the Action Manager part in JavaScript and run it with do javascript (with arguments for parameters).</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Generative features need a connection, a signed-in account and credits</b><span class="wk">Check connectivity and sign-in before a job, budget credits, and keep generative steps out of offline batch pipelines. In UXP, Document.generativeUpscale (27.2) is the one documented generative method.</span></span></li></ul>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="col">
+        <h3>Object model by version</h3>
+        <div class="scroll" tabindex="0" role="region" aria-label="Photoshop: Object model by version table"><table class="plain"><thead><tr><th>Version</th><th class="num">Classes</th><th class="num">Enums</th><th class="num">Members</th></tr></thead><tbody><tr><td>Adobe Photoshop CC 2015.5 (17.x)</td><td class="num">92</td><td class="num">132</td><td class="num">1,856</td></tr></tbody></table></div>
+        
+      </div>
+      <div class="col">
+        <h3>Other ways in</h3>
+        <div class="scroll" tabindex="0" role="region" aria-label="Photoshop: Other ways in table"><table class="plain"><thead><tr><th>Surface</th><th class="num">Entries</th><th>Status</th><th class="num">Beyond the object model</th></tr></thead><tbody><tr><td>AppleScript</td><td class="num">221</td><td><span class="chip">current <b>220</b></span> <span class="chip">unavailable <b>1</b></span></td><td class="num">0</td></tr><tr><td>CEP</td><td class="num">8</td><td><span class="chip">current <b>7</b></span> <span class="chip">deprecated <b>1</b></span></td><td class="num">1</td></tr><tr><td>C++ SDK</td><td class="num">44</td><td><span class="chip">current <b>44</b></span></td><td class="num">36</td></tr><tr><td>UXP</td><td class="num">53</td><td><span class="chip">current <b>53</b></span></td><td class="num">8</td></tr><tr><td>VBScript / COM</td><td class="num">88</td><td><span class="chip">current <b>88</b></span></td><td class="num">0</td></tr></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-aftereffects" role="tabpanel" aria-labelledby="tab-aftereffects" tabindex="0" hidden>
+    <div class="split">
+      <div class="col">
+        <h3>Support, step by step</h3>
+        <p class="lede">Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live After Effects session.</p>
+        <ol class="ladder">
+    <li><span class="lk">Documented</span><span class="lv">3,198</span><span class="lp">100%</span><span class="ln">features Adobe documents</span>
+    <span class="lbar"><span style="width:100%"></span></span></li>
+    <li><span class="lk">Scriptable</span><span class="lv">2,595</span><span class="lp">81%</span><span class="ln">reachable by object model or menu command</span>
+    <span class="lbar"><span style="width:81.14446529080675%"></span></span></li>
+    <li><span class="lk">Implemented</span><span class="lv">2,555</span><span class="lp">80%</span><span class="ln">claimed by our 164 MCP tools</span>
+    <span class="lbar"><span style="width:79.89368355222014%"></span></span></li>
+    <li><span class="lk">Static checks</span><span class="lv">2,553</span><span class="lp">80%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
+    <span class="lbar"><span style="width:79.8311444652908%"></span></span></li>
+    <li><span class="lk">Live validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
+    <span class="lbar"><span style="width:0%"></span></span></li></ol>
+      </div>
+      <div class="col">
+        <h3>What kind of features</h3>
+        <div class="chips"><span class="chip">setting <b>1,883</b></span> <span class="chip">menu command <b>712</b></span> <span class="chip">workflow <b>214</b></span> <span class="chip">object type <b>138</b></span> <span class="chip">file format <b>93</b></span> <span class="chip">dialog <b>76</b></span> <span class="chip">panel <b>42</b></span> <span class="chip">tool <b>40</b></span></div>
+        <h3>Automation routes</h3>
+        <div class="legend"><span><i class="sw r-dom"></i>Object model <b>2,409</b></span><span><i class="sw r-menu_command"></i>Menu command <b>186</b></span><span><i class="sw r-native_sdk"></i>C++ SDK only <b>2</b></span><span><i class="sw r-none"></i>Not automatable <b>410</b></span><span><i class="sw r-unknown"></i>Not established <b>191</b></span></div>
+        
+      </div>
+    </div>
+
+    <h3>By domain</h3>
+    <div class="scroll" tabindex="0" role="region" aria-label="After Effects: By domain table"><table class="domains">
+  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Static checks</th><th scope="col" class="num">Live validated</th><th scope="col" class="num">Not established</th></tr></thead>
+  <tbody><tr>
+    <th scope="row"><span class="dn">Effects</span><span class="dc">The Effect menu and the Effects &amp; Presets panel: every effect category and animation presets.</span></th>
+    <td class="num">1,490</td>
+    <td class="barcol"><div class="bar" style="width:100.0%" role="img" aria-label="Object model 1423, Menu command 5, Not automatable 60, Not established 2"><span class="seg r-dom" style="flex:1423" title="Object model: 1423"></span><span class="seg r-menu_command" style="flex:5" title="Menu command: 5"></span><span class="seg r-none" style="flex:60" title="Not automatable: 60"></span><span class="seg r-unknown" style="flex:2" title="Not established: 2"></span></div></td>
+    <td class="num">1,426 <span class="dim">96%</span></td><td class="num">1,426</td><td class="num">0</td>
+    <td class="num">2</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Layers</span><span class="dc">Layer types (solid, null, adjustment, shape, text, camera, light), layer properties and switches, parenting, blending modes, track mattes and arrangement.</span></th>
+    <td class="num">165</td>
+    <td class="barcol"><div class="bar" style="width:11.1%" role="img" aria-label="Object model 136, Menu command 19, Not automatable 6, Not established 4"><span class="seg r-dom" style="flex:136" title="Object model: 136"></span><span class="seg r-menu_command" style="flex:19" title="Menu command: 19"></span><span class="seg r-none" style="flex:6" title="Not automatable: 6"></span><span class="seg r-unknown" style="flex:4" title="Not established: 4"></span></div></td>
+    <td class="num">153 <span class="dim">93%</span></td><td class="num">153</td><td class="num">0</td>
+    <td class="num">4</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">3D</span><span class="dc">3D layers, cameras, lights, the 3D renderers, 3D models and environment lights.</span></th>
+    <td class="num">164</td>
+    <td class="barcol"><div class="bar" style="width:11.0%" role="img" aria-label="Object model 81, Menu command 24, Not automatable 27, Not established 32"><span class="seg r-dom" style="flex:81" title="Object model: 81"></span><span class="seg r-menu_command" style="flex:24" title="Menu command: 24"></span><span class="seg r-none" style="flex:27" title="Not automatable: 27"></span><span class="seg r-unknown" style="flex:32" title="Not established: 32"></span></div></td>
+    <td class="num">104 <span class="dim">63%</span></td><td class="num">104</td><td class="num">0</td>
+    <td class="num">32</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">User interface</span><span class="dc">Workspaces, panels, viewers, the timeline, guides and grids, and preview controls.</span></th>
+    <td class="num">160</td>
+    <td class="barcol"><div class="bar" style="width:10.7%" role="img" aria-label="Object model 54, Menu command 15, Not automatable 53, Not established 38"><span class="seg r-dom" style="flex:54" title="Object model: 54"></span><span class="seg r-menu_command" style="flex:15" title="Menu command: 15"></span><span class="seg r-none" style="flex:53" title="Not automatable: 53"></span><span class="seg r-unknown" style="flex:38" title="Not established: 38"></span></div></td>
+    <td class="num">64 <span class="dim">40%</span></td><td class="num">64</td><td class="num">0</td>
+    <td class="num">38</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Footage and import</span><span class="dc">Importing footage, image sequences, layered files and other formats, and Interpret Footage (alpha, frame rate, fields, pixel aspect, colour).</span></th>
+    <td class="num">137</td>
+    <td class="barcol"><div class="bar" style="width:9.2%" role="img" aria-label="Object model 107, Menu command 9, Not automatable 8, Not established 13"><span class="seg r-dom" style="flex:107" title="Object model: 107"></span><span class="seg r-menu_command" style="flex:9" title="Menu command: 9"></span><span class="seg r-none" style="flex:8" title="Not automatable: 8"></span><span class="seg r-unknown" style="flex:13" title="Not established: 13"></span></div></td>
+    <td class="num">111 <span class="dim">81%</span></td><td class="num">111</td><td class="num">0</td>
+    <td class="num">13</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Text</span><span class="dc">Text layers, character and paragraph formatting, text animators and selectors, and fonts.</span></th>
+    <td class="num">129</td>
+    <td class="barcol"><div class="bar" style="width:8.7%" role="img" aria-label="Object model 113, Menu command 6, Not automatable 5, Not established 5"><span class="seg r-dom" style="flex:113" title="Object model: 113"></span><span class="seg r-menu_command" style="flex:6" title="Menu command: 6"></span><span class="seg r-none" style="flex:5" title="Not automatable: 5"></span><span class="seg r-unknown" style="flex:5" title="Not established: 5"></span></div></td>
+    <td class="num">119 <span class="dim">92%</span></td><td class="num">119</td><td class="num">0</td>
+    <td class="num">5</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Keyframes and animation</span><span class="dc">Keyframes, interpolation, the Graph Editor, motion paths, easing, wiggle and smoothing, and Animation menu commands.</span></th>
+    <td class="num">116</td>
+    <td class="barcol"><div class="bar" style="width:7.8%" role="img" aria-label="Object model 47, Menu command 25, Not automatable 28, Not established 16"><span class="seg r-dom" style="flex:47" title="Object model: 47"></span><span class="seg r-menu_command" style="flex:25" title="Menu command: 25"></span><span class="seg r-none" style="flex:28" title="Not automatable: 28"></span><span class="seg r-unknown" style="flex:16" title="Not established: 16"></span></div></td>
+    <td class="num">60 <span class="dim">52%</span></td><td class="num">60</td><td class="num">0</td>
+    <td class="num">16</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Masks and shapes</span><span class="dc">Masks and mask modes, shape layers, shape groups and operators, and the pen and shape tools.</span></th>
+    <td class="num">115</td>
+    <td class="barcol"><div class="bar" style="width:7.7%" role="img" aria-label="Object model 93, Menu command 7, Not automatable 15"><span class="seg r-dom" style="flex:93" title="Object model: 93"></span><span class="seg r-menu_command" style="flex:7" title="Menu command: 7"></span><span class="seg r-none" style="flex:15" title="Not automatable: 15"></span></div></td>
+    <td class="num">96 <span class="dim">83%</span></td><td class="num">96</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Render and export</span><span class="dc">The Render Queue, render settings and output modules, Adobe Media Encoder, and rendering templates.</span></th>
+    <td class="num">110</td>
+    <td class="barcol"><div class="bar" style="width:7.4%" role="img" aria-label="Object model 79, Menu command 1, Not automatable 8, Not established 22"><span class="seg r-dom" style="flex:79" title="Object model: 79"></span><span class="seg r-menu_command" style="flex:1" title="Menu command: 1"></span><span class="seg r-none" style="flex:8" title="Not automatable: 8"></span><span class="seg r-unknown" style="flex:22" title="Not established: 22"></span></div></td>
+    <td class="num">79 <span class="dim">72%</span></td><td class="num">79</td><td class="num">0</td>
+    <td class="num">22</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Application</span><span class="dc">Launching and quitting After Effects, preferences, plug-ins, memory and performance, help and account items.</span></th>
+    <td class="num">92</td>
+    <td class="barcol"><div class="bar" style="width:6.2%" role="img" aria-label="Object model 20, Menu command 14, C++ SDK only 1, Not automatable 45, Not established 12"><span class="seg r-dom" style="flex:20" title="Object model: 20"></span><span class="seg r-menu_command" style="flex:14" title="Menu command: 14"></span><span class="seg r-native_sdk" style="flex:1" title="C++ SDK only: 1"></span><span class="seg r-none" style="flex:45" title="Not automatable: 45"></span><span class="seg r-unknown" style="flex:12" title="Not established: 12"></span></div></td>
+    <td class="num">29 <span class="dim">32%</span></td><td class="num">29</td><td class="num">0</td>
+    <td class="num">12</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Tracking and stabilization</span><span class="dc">Motion tracking, 3D camera tracking, warp stabilizer, mocha and face tracking.</span></th>
+    <td class="num">91</td>
+    <td class="barcol"><div class="bar" style="width:6.1%" role="img" aria-label="Object model 37, Menu command 7, Not automatable 46, Not established 1"><span class="seg r-dom" style="flex:37" title="Object model: 37"></span><span class="seg r-menu_command" style="flex:7" title="Menu command: 7"></span><span class="seg r-none" style="flex:46" title="Not automatable: 46"></span><span class="seg r-unknown" style="flex:1" title="Not established: 1"></span></div></td>
+    <td class="num">44 <span class="dim">48%</span></td><td class="num">44</td><td class="num">0</td>
+    <td class="num">1</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Paint and rotoscoping</span><span class="dc">Paint tools, Roto Brush, Refine Edge, rotobezier and Content-Aware Fill.</span></th>
+    <td class="num">72</td>
+    <td class="barcol"><div class="bar" style="width:4.8%" role="img" aria-label="Object model 28, Menu command 3, Not automatable 40, Not established 1"><span class="seg r-dom" style="flex:28" title="Object model: 28"></span><span class="seg r-menu_command" style="flex:3" title="Menu command: 3"></span><span class="seg r-none" style="flex:40" title="Not automatable: 40"></span><span class="seg r-unknown" style="flex:1" title="Not established: 1"></span></div></td>
+    <td class="num">31 <span class="dim">43%</span></td><td class="num">31</td><td class="num">0</td>
+    <td class="num">1</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Compositions</span><span class="dc">Creating and setting compositions, nesting and pre-composing, the work area, composition flowchart and markers.</span></th>
+    <td class="num">61</td>
+    <td class="barcol"><div class="bar" style="width:4.1%" role="img" aria-label="Object model 37, Menu command 9, Not automatable 10, Not established 5"><span class="seg r-dom" style="flex:37" title="Object model: 37"></span><span class="seg r-menu_command" style="flex:9" title="Menu command: 9"></span><span class="seg r-none" style="flex:10" title="Not automatable: 10"></span><span class="seg r-unknown" style="flex:5" title="Not established: 5"></span></div></td>
+    <td class="num">46 <span class="dim">75%</span></td><td class="num">46</td><td class="num">0</td>
+    <td class="num">5</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Expressions</span><span class="dc">Expressions and the expression language, the expression controls effects, and the expression editor.</span></th>
+    <td class="num">55</td>
+    <td class="barcol"><div class="bar" style="width:3.7%" role="img" aria-label="Object model 41, Menu command 3, Not automatable 5, Not established 6"><span class="seg r-dom" style="flex:41" title="Object model: 41"></span><span class="seg r-menu_command" style="flex:3" title="Menu command: 3"></span><span class="seg r-none" style="flex:5" title="Not automatable: 5"></span><span class="seg r-unknown" style="flex:6" title="Not established: 6"></span></div></td>
+    <td class="num">44 <span class="dim">80%</span></td><td class="num">44</td><td class="num">0</td>
+    <td class="num">6</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Projects</span><span class="dc">Projects and the Project panel: creating, opening, saving, folders, items, dependencies, collect files, reduce and consolidate.</span></th>
+    <td class="num">54</td>
+    <td class="barcol"><div class="bar" style="width:3.6%" role="img" aria-label="Object model 30, Menu command 12, Not automatable 7, Not established 5"><span class="seg r-dom" style="flex:30" title="Object model: 30"></span><span class="seg r-menu_command" style="flex:12" title="Menu command: 12"></span><span class="seg r-none" style="flex:7" title="Not automatable: 7"></span><span class="seg r-unknown" style="flex:5" title="Not established: 5"></span></div></td>
+    <td class="num">41 <span class="dim">76%</span></td><td class="num">41</td><td class="num">0</td>
+    <td class="num">5</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Colour</span><span class="dc">Colour management, project colour settings, working space and colour depth, and colour correction effects in workflow.</span></th>
+    <td class="num">44</td>
+    <td class="barcol"><div class="bar" style="width:3.0%" role="img" aria-label="Object model 13, Menu command 12, Not automatable 5, Not established 14"><span class="seg r-dom" style="flex:13" title="Object model: 13"></span><span class="seg r-menu_command" style="flex:12" title="Menu command: 12"></span><span class="seg r-none" style="flex:5" title="Not automatable: 5"></span><span class="seg r-unknown" style="flex:14" title="Not established: 14"></span></div></td>
+    <td class="num">25 <span class="dim">57%</span></td><td class="num">25</td><td class="num">0</td>
+    <td class="num">14</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Essential Graphics</span><span class="dc">Motion Graphics templates, the Essential Graphics panel, essential properties and responsive design.</span></th>
+    <td class="num">44</td>
+    <td class="barcol"><div class="bar" style="width:3.0%" role="img" aria-label="Object model 27, Menu command 3, Not automatable 9, Not established 5"><span class="seg r-dom" style="flex:27" title="Object model: 27"></span><span class="seg r-menu_command" style="flex:3" title="Menu command: 3"></span><span class="seg r-none" style="flex:9" title="Not automatable: 9"></span><span class="seg r-unknown" style="flex:5" title="Not established: 5"></span></div></td>
+    <td class="num">29 <span class="dim">66%</span></td><td class="num">29</td><td class="num">0</td>
+    <td class="num">5</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Collaboration</span><span class="dc">Team Projects, Frame.io review, Creative Cloud Libraries and Dynamic Link.</span></th>
+    <td class="num">26</td>
+    <td class="barcol"><div class="bar" style="width:1.7%" role="img" aria-label="Object model 8, Menu command 2, Not automatable 16"><span class="seg r-dom" style="flex:8" title="Object model: 8"></span><span class="seg r-menu_command" style="flex:2" title="Menu command: 2"></span><span class="seg r-none" style="flex:16" title="Not automatable: 16"></span></div></td>
+    <td class="num">9 <span class="dim">35%</span></td><td class="num">9</td><td class="num">0</td>
+    <td class="num"><span class="dim">0</span></td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Time</span><span class="dc">Time remapping, time stretch, frame blending, time-reverse and frame rate conversion.</span></th>
+    <td class="num">25</td>
+    <td class="barcol"><div class="bar" style="width:1.7%" role="img" aria-label="Object model 18, Menu command 3, Not automatable 1, Not established 3"><span class="seg r-dom" style="flex:18" title="Object model: 18"></span><span class="seg r-menu_command" style="flex:3" title="Menu command: 3"></span><span class="seg r-none" style="flex:1" title="Not automatable: 1"></span><span class="seg r-unknown" style="flex:3" title="Not established: 3"></span></div></td>
+    <td class="num">20 <span class="dim">80%</span></td><td class="num">20</td><td class="num">0</td>
+    <td class="num">3</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Audio</span><span class="dc">Audio layers, the Audio panel, audio effects and waveforms.</span></th>
+    <td class="num">24</td>
+    <td class="barcol"><div class="bar" style="width:1.6%" role="img" aria-label="Object model 10, Menu command 3, Not automatable 6, Not established 5"><span class="seg r-dom" style="flex:10" title="Object model: 10"></span><span class="seg r-menu_command" style="flex:3" title="Menu command: 3"></span><span class="seg r-none" style="flex:6" title="Not automatable: 6"></span><span class="seg r-unknown" style="flex:5" title="Not established: 5"></span></div></td>
+    <td class="num">13 <span class="dim">54%</span></td><td class="num">13</td><td class="num">0</td>
+    <td class="num">5</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Automation</span><span class="dc">Scripts, the Scripts menu and ScriptUI panels, and other automation features.</span></th>
+    <td class="num">24</td>
+    <td class="barcol"><div class="bar" style="width:1.6%" role="img" aria-label="Object model 7, Menu command 4, C++ SDK only 1, Not automatable 10, Not established 2"><span class="seg r-dom" style="flex:7" title="Object model: 7"></span><span class="seg r-menu_command" style="flex:4" title="Menu command: 4"></span><span class="seg r-native_sdk" style="flex:1" title="C++ SDK only: 1"></span><span class="seg r-none" style="flex:10" title="Not automatable: 10"></span><span class="seg r-unknown" style="flex:2" title="Not established: 2"></span></div></td>
+    <td class="num">12 <span class="dim">50%</span></td><td class="num">10</td><td class="num">0</td>
+    <td class="num">2</td>
+  </tr></tbody></table></div>
+
+    <div class="grid3">
+      <div class="card">
+        <h4>Menu commands</h4>
+        <p class="big">1,082</p>
+        <p class="sub">794 linked to features · 0 verified by running them</p>
+        <p class="sub">0 seen working in community scripts</p>
+      </div>
+      <div class="card">
+        <h4>Limitations</h4>
+        <p class="big">0</p>
+        <p class="sub">Not researched yet.</p>
+      </div>
+      <div class="card">
+        <h4>Community scripts</h4>
+        <p class="big">0</p>
+        <p class="sub">Not collected yet.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="col">
+        <h3>Commands seen in real scripts</h3>
+        <p class="lede empty">No community scripts for After Effects have been collected yet.</p>
+      </div>
+      <div class="col">
+        <h3>What stops a script</h3>
+        <p class="lede empty">Automation limitations for After Effects have not been researched yet.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="col">
+        <h3>Object model by version</h3>
+        <div class="scroll" tabindex="0" role="region" aria-label="After Effects: Object model by version table"><table class="plain"><thead><tr><th>Version</th><th class="num">Classes</th><th class="num">Enums</th><th class="num">Members</th></tr></thead><tbody><tr><td>Adobe After Effects 2026 (26.x)</td><td class="num">84</td><td class="num">56</td><td class="num">2,777</td></tr></tbody></table></div>
+        
+      </div>
+      <div class="col">
+        <h3>Other ways in</h3>
+        <p class="lede empty">Other automation surfaces for After Effects have not been researched yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-premiere" role="tabpanel" aria-labelledby="tab-premiere" tabindex="0" hidden>
+    <div class="split">
+      <div class="col">
+        <h3>Support, step by step</h3>
+        <p class="lede">Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Premiere Pro session.</p>
+        <ol class="ladder">
+    <li><span class="lk">Documented</span><span class="lv">925</span><span class="lp">100%</span><span class="ln">features Adobe documents</span>
+    <span class="lbar"><span style="width:100%"></span></span></li>
+    <li><span class="lk">Scriptable</span><span class="lv">494</span><span class="lp">53%</span><span class="ln">reachable by object model or UXP API</span>
+    <span class="lbar"><span style="width:53.4054054054054%"></span></span></li>
+    <li><span class="lk">Implemented</span><span class="lv">413</span><span class="lp">45%</span><span class="ln">claimed by our 96 MCP tools</span>
+    <span class="lbar"><span style="width:44.648648648648646%"></span></span></li>
+    <li><span class="lk">Static checks</span><span class="lv">413</span><span class="lp">45%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
+    <span class="lbar"><span style="width:44.648648648648646%"></span></span></li>
+    <li><span class="lk">Live validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
+    <span class="lbar"><span style="width:0%"></span></span></li></ol>
+      </div>
+      <div class="col">
+        <h3>What kind of features</h3>
+        <div class="chips"><span class="chip">setting <b>228</b></span> <span class="chip">workflow <b>186</b></span> <span class="chip">object type <b>167</b></span> <span class="chip">menu command <b>166</b></span> <span class="chip">dialog <b>75</b></span> <span class="chip">file format <b>43</b></span> <span class="chip">panel <b>40</b></span> <span class="chip">tool <b>20</b></span></div>
+        <h3>Automation routes</h3>
+        <div class="legend"><span><i class="sw r-dom"></i>Object model <b>82</b></span><span><i class="sw r-uxp"></i>UXP API <b>412</b></span><span><i class="sw r-native_sdk"></i>C++ SDK only <b>8</b></span><span><i class="sw r-none"></i>Not automatable <b>177</b></span><span><i class="sw r-unknown"></i>Not established <b>246</b></span></div>
+        <p class="note">Premiere Pro is reached through a UXP plugin running inside the application; it has no AppleScript dictionary and no COM interface. A feature's route is the UXP API when a UXP plugin reaches it unattended (the members are in uxp_refs). Features only ExtendScript or the QE DOM reach keep the object model route, with a note that UXP does not reach them; our server cannot use that route. Our server's scripts are UXP JavaScript, and its tested state comes from checking each script against Premiere Pro's UXP DOM.</p>
+      </div>
+    </div>
+
+    <h3>By domain</h3>
+    <div class="scroll" tabindex="0" role="region" aria-label="Premiere Pro: By domain table"><table class="domains">
+  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Static checks</th><th scope="col" class="num">Live validated</th><th scope="col" class="num">Not established</th></tr></thead>
+  <tbody><tr>
+    <th scope="row"><span class="dn">Effects and transitions</span><span class="dc">Video and audio effects and transitions, the Effect Controls panel, keyframes and presets.</span></th>
+    <td class="num">133</td>
+    <td class="barcol"><div class="bar" style="width:100.0%" role="img" aria-label="Object model 1, UXP API 103, Not automatable 11, Not established 18"><span class="seg r-dom" style="flex:1" title="Object model: 1"></span><span class="seg r-uxp" style="flex:103" title="UXP API: 103"></span><span class="seg r-none" style="flex:11" title="Not automatable: 11"></span><span class="seg r-unknown" style="flex:18" title="Not established: 18"></span></div></td>
+    <td class="num">103 <span class="dim">77%</span></td><td class="num">103</td><td class="num">0</td>
+    <td class="num">18</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Editing</span><span class="dc">Timeline editing: insert, overwrite, ripple and roll edits, trimming, slip and slide, razor, tracks and targeting.</span></th>
+    <td class="num">96</td>
+    <td class="barcol"><div class="bar" style="width:72.2%" role="img" aria-label="Object model 16, UXP API 40, Not automatable 12, Not established 28"><span class="seg r-dom" style="flex:16" title="Object model: 16"></span><span class="seg r-uxp" style="flex:40" title="UXP API: 40"></span><span class="seg r-none" style="flex:12" title="Not automatable: 12"></span><span class="seg r-unknown" style="flex:28" title="Not established: 28"></span></div></td>
+    <td class="num">40 <span class="dim">42%</span></td><td class="num">40</td><td class="num">0</td>
+    <td class="num">28</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Media and import</span><span class="dc">Importing media, the Import and Media Browser, ingest, proxies and transcoding, and interpreting footage.</span></th>
+    <td class="num">82</td>
+    <td class="barcol"><div class="bar" style="width:61.7%" role="img" aria-label="Object model 3, UXP API 65, Not automatable 5, Not established 9"><span class="seg r-dom" style="flex:3" title="Object model: 3"></span><span class="seg r-uxp" style="flex:65" title="UXP API: 65"></span><span class="seg r-none" style="flex:5" title="Not automatable: 5"></span><span class="seg r-unknown" style="flex:9" title="Not established: 9"></span></div></td>
+    <td class="num">65 <span class="dim">79%</span></td><td class="num">65</td><td class="num">0</td>
+    <td class="num">9</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Audio</span><span class="dc">Audio tracks, the Audio Track Mixer, Essential Sound, audio effects and auto ducking.</span></th>
+    <td class="num">77</td>
+    <td class="barcol"><div class="bar" style="width:57.9%" role="img" aria-label="UXP API 38, Not automatable 7, Not established 32"><span class="seg r-uxp" style="flex:38" title="UXP API: 38"></span><span class="seg r-none" style="flex:7" title="Not automatable: 7"></span><span class="seg r-unknown" style="flex:32" title="Not established: 32"></span></div></td>
+    <td class="num">38 <span class="dim">49%</span></td><td class="num">38</td><td class="num">0</td>
+    <td class="num">32</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">User interface</span><span class="dc">Workspaces, panels, monitors, the timeline display and keyboard shortcuts.</span></th>
+    <td class="num">74</td>
+    <td class="barcol"><div class="bar" style="width:55.6%" role="img" aria-label="Object model 12, UXP API 6, Not automatable 50, Not established 6"><span class="seg r-dom" style="flex:12" title="Object model: 12"></span><span class="seg r-uxp" style="flex:6" title="UXP API: 6"></span><span class="seg r-none" style="flex:50" title="Not automatable: 50"></span><span class="seg r-unknown" style="flex:6" title="Not established: 6"></span></div></td>
+    <td class="num">6 <span class="dim">8%</span></td><td class="num">6</td><td class="num">0</td>
+    <td class="num">6</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Graphics and captions</span><span class="dc">The Essential Graphics panel, text and shape layers, Motion Graphics templates, captions and subtitles, speech to text.</span></th>
+    <td class="num">71</td>
+    <td class="barcol"><div class="bar" style="width:53.4%" role="img" aria-label="Object model 2, UXP API 10, Not automatable 13, Not established 46"><span class="seg r-dom" style="flex:2" title="Object model: 2"></span><span class="seg r-uxp" style="flex:10" title="UXP API: 10"></span><span class="seg r-none" style="flex:13" title="Not automatable: 13"></span><span class="seg r-unknown" style="flex:46" title="Not established: 46"></span></div></td>
+    <td class="num">11 <span class="dim">15%</span></td><td class="num">11</td><td class="num">0</td>
+    <td class="num">46</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Sequences</span><span class="dc">Creating sequences, sequence settings and presets, nesting, and sequence markers.</span></th>
+    <td class="num">65</td>
+    <td class="barcol"><div class="bar" style="width:48.9%" role="img" aria-label="Object model 6, UXP API 39, Not automatable 3, Not established 17"><span class="seg r-dom" style="flex:6" title="Object model: 6"></span><span class="seg r-uxp" style="flex:39" title="UXP API: 39"></span><span class="seg r-none" style="flex:3" title="Not automatable: 3"></span><span class="seg r-unknown" style="flex:17" title="Not established: 17"></span></div></td>
+    <td class="num">39 <span class="dim">60%</span></td><td class="num">39</td><td class="num">0</td>
+    <td class="num">17</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Projects</span><span class="dc">Projects, bins and the Project panel: project items, metadata, labels, search bins and project settings.</span></th>
+    <td class="num">64</td>
+    <td class="barcol"><div class="bar" style="width:48.1%" role="img" aria-label="Object model 8, UXP API 33, Not automatable 13, Not established 10"><span class="seg r-dom" style="flex:8" title="Object model: 8"></span><span class="seg r-uxp" style="flex:33" title="UXP API: 33"></span><span class="seg r-none" style="flex:13" title="Not automatable: 13"></span><span class="seg r-unknown" style="flex:10" title="Not established: 10"></span></div></td>
+    <td class="num">33 <span class="dim">52%</span></td><td class="num">33</td><td class="num">0</td>
+    <td class="num">10</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Export</span><span class="dc">Export mode, export presets and settings, Adobe Media Encoder and publishing destinations.</span></th>
+    <td class="num">45</td>
+    <td class="barcol"><div class="bar" style="width:33.8%" role="img" aria-label="Object model 4, UXP API 29, Not automatable 3, Not established 9"><span class="seg r-dom" style="flex:4" title="Object model: 4"></span><span class="seg r-uxp" style="flex:29" title="UXP API: 29"></span><span class="seg r-none" style="flex:3" title="Not automatable: 3"></span><span class="seg r-unknown" style="flex:9" title="Not established: 9"></span></div></td>
+    <td class="num">29 <span class="dim">64%</span></td><td class="num">29</td><td class="num">0</td>
+    <td class="num">9</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Application</span><span class="dc">Launching and quitting Premiere Pro, preferences, plug-ins, performance, help and account items.</span></th>
+    <td class="num">44</td>
+    <td class="barcol"><div class="bar" style="width:33.1%" role="img" aria-label="Object model 5, UXP API 3, C++ SDK only 1, Not automatable 8, Not established 27"><span class="seg r-dom" style="flex:5" title="Object model: 5"></span><span class="seg r-uxp" style="flex:3" title="UXP API: 3"></span><span class="seg r-native_sdk" style="flex:1" title="C++ SDK only: 1"></span><span class="seg r-none" style="flex:8" title="Not automatable: 8"></span><span class="seg r-unknown" style="flex:27" title="Not established: 27"></span></div></td>
+    <td class="num">3 <span class="dim">7%</span></td><td class="num">3</td><td class="num">0</td>
+    <td class="num">27</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Colour</span><span class="dc">Lumetri Color, colour management and settings, scopes and LUTs.</span></th>
+    <td class="num">43</td>
+    <td class="barcol"><div class="bar" style="width:32.3%" role="img" aria-label="Object model 5, UXP API 11, Not automatable 14, Not established 13"><span class="seg r-dom" style="flex:5" title="Object model: 5"></span><span class="seg r-uxp" style="flex:11" title="UXP API: 11"></span><span class="seg r-none" style="flex:14" title="Not automatable: 14"></span><span class="seg r-unknown" style="flex:13" title="Not established: 13"></span></div></td>
+    <td class="num">11 <span class="dim">26%</span></td><td class="num">11</td><td class="num">0</td>
+    <td class="num">13</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Collaboration</span><span class="dc">Productions, Team Projects, Frame.io and Dynamic Link.</span></th>
+    <td class="num">41</td>
+    <td class="barcol"><div class="bar" style="width:30.8%" role="img" aria-label="Object model 7, UXP API 3, Not automatable 21, Not established 10"><span class="seg r-dom" style="flex:7" title="Object model: 7"></span><span class="seg r-uxp" style="flex:3" title="UXP API: 3"></span><span class="seg r-none" style="flex:21" title="Not automatable: 21"></span><span class="seg r-unknown" style="flex:10" title="Not established: 10"></span></div></td>
+    <td class="num">3 <span class="dim">7%</span></td><td class="num">3</td><td class="num">0</td>
+    <td class="num">10</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Markers</span><span class="dc">Clip and sequence markers, marker types and the Markers panel.</span></th>
+    <td class="num">30</td>
+    <td class="barcol"><div class="bar" style="width:22.6%" role="img" aria-label="Object model 4, UXP API 22, Not automatable 1, Not established 3"><span class="seg r-dom" style="flex:4" title="Object model: 4"></span><span class="seg r-uxp" style="flex:22" title="UXP API: 22"></span><span class="seg r-none" style="flex:1" title="Not automatable: 1"></span><span class="seg r-unknown" style="flex:3" title="Not established: 3"></span></div></td>
+    <td class="num">22 <span class="dim">73%</span></td><td class="num">22</td><td class="num">0</td>
+    <td class="num">3</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Automation</span><span class="dc">Scripting (ExtendScript and UXP), the QE DOM, and other automation features.</span></th>
+    <td class="num">24</td>
+    <td class="barcol"><div class="bar" style="width:18.0%" role="img" aria-label="Object model 8, UXP API 3, C++ SDK only 7, Not automatable 5, Not established 1"><span class="seg r-dom" style="flex:8" title="Object model: 8"></span><span class="seg r-uxp" style="flex:3" title="UXP API: 3"></span><span class="seg r-native_sdk" style="flex:7" title="C++ SDK only: 7"></span><span class="seg r-none" style="flex:5" title="Not automatable: 5"></span><span class="seg r-unknown" style="flex:1" title="Not established: 1"></span></div></td>
+    <td class="num">3 <span class="dim">13%</span></td><td class="num">3</td><td class="num">0</td>
+    <td class="num">1</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">AI features</span><span class="dc">Auto Reframe, Scene Edit Detection, Generative Extend, speech to text, enhance speech and other Sensei and Firefly features.</span></th>
+    <td class="num">24</td>
+    <td class="barcol"><div class="bar" style="width:18.0%" role="img" aria-label="Object model 1, UXP API 4, Not automatable 7, Not established 12"><span class="seg r-dom" style="flex:1" title="Object model: 1"></span><span class="seg r-uxp" style="flex:4" title="UXP API: 4"></span><span class="seg r-none" style="flex:7" title="Not automatable: 7"></span><span class="seg r-unknown" style="flex:12" title="Not established: 12"></span></div></td>
+    <td class="num">4 <span class="dim">17%</span></td><td class="num">4</td><td class="num">0</td>
+    <td class="num">12</td>
+  </tr><tr>
+    <th scope="row"><span class="dn">Multi-camera</span><span class="dc">Multi-camera source sequences and editing, and synchronising clips.</span></th>
+    <td class="num">12</td>
+    <td class="barcol"><div class="bar" style="width:9.0%" role="img" aria-label="UXP API 3, Not automatable 4, Not established 5"><span class="seg r-uxp" style="flex:3" title="UXP API: 3"></span><span class="seg r-none" style="flex:4" title="Not automatable: 4"></span><span class="seg r-unknown" style="flex:5" title="Not established: 5"></span></div></td>
+    <td class="num">3 <span class="dim">25%</span></td><td class="num">3</td><td class="num">0</td>
+    <td class="num">5</td>
+  </tr></tbody></table></div>
+
+    <div class="grid3">
+      <div class="card">
+        <h4>Menu commands</h4>
+        <p class="big">0</p>
+        <p class="sub">Premiere Pro offers scripts no way to run a menu item.</p>
+      </div>
+      <div class="card">
+        <h4>Limitations</h4>
+        <p class="big">22</p>
+        <p class="sub"><span class="chip">blocks <b>9</b></span> <span class="chip">inconvenience <b>6</b></span> <span class="chip">misleads <b>6</b></span> <span class="chip">slows <b>1</b></span></p>
+        <p class="sub">19 documented by Adobe · 3 reported by the community</p>
+      </div>
+      <div class="card">
+        <h4>Community scripts</h4>
+        <p class="big">0</p>
+        <p class="sub">Not collected yet.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="col">
+        <h3>Commands seen in real scripts</h3>
+        <p class="lede empty">Premiere Pro offers scripts no way to run a menu item.</p>
+      </div>
+      <div class="col">
+        <h3>What stops a script</h3>
+        <ul class="limits"><li><span class="sev sev-blocks">Blocks</span><span><b>UXP edits must be built inside lockedAccess</b><span class="wk">Wrap action creation in lockedAccess and group them in one executeTransaction per undo step.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>No API to run menu commands</b><span class="wk">Use a composite of members, the QE DOM where it covers the operation, or keyboard shortcuts sent by OS-level UI automation (fragile).</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Some members show dialogs unless told not to</b><span class="wk">Pass openDocument(path, true, true, true, true), importFiles(..., suppressUI=true, ...), exportFinalCutProXML(path, 1); save before quit; create sequences from presets (UXP createSequenceWithPresetPath or the QE newSequence) instead of createNewSequence.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>Command-line script execution is unsupported and launch-only</b><span class="wk">Use only for one-shot start-up jobs; for request/response automation use a panel bridge. Modifying the application folder may need administrator rights and is undone by updates.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>No AppleScript route into Premiere</b><span class="wk">Use a resident CEP or UXP plugin as a bridge; Apple events can still launch Premiere or open a .prproj.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>No COM or VBScript route into Premiere</b><span class="wk">Use a resident CEP or UXP plugin as a bridge.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>UXP plugins cannot listen for connections</b><span class="wk">Run the server outside Premiere (in the MCP server or a small proxy) and have the plugin connect to it with WebSocket, as adb-mcp does. Declare the localhost domain in the manifest network permission. A hybrid plugin's native addon is not bound by this, but Adobe documents no server pattern.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>UXP launching external processes needs user consent</b><span class="wk">Start helpers from the outside process, not from the plugin.</span></span></li><li><span class="sev sev-blocks">Blocks</span><span><b>CEP is being retired in Premiere</b><span class="wk">Plan a UXP bridge (WebSocket client) for 2028 onward; keep the CEP bridge for older versions.</span></span></li></ul>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="col">
+        <h3>Object model by version</h3>
+        <div class="scroll" tabindex="0" role="region" aria-label="Premiere Pro: Object model by version table"><table class="plain"><thead><tr><th>Version</th><th class="num">Classes</th><th class="num">Enums</th><th class="num">Members</th></tr></thead><tbody><tr><td>Adobe Premiere Pro 2024 (24.x)</td><td class="num">35</td><td class="num">2</td><td class="num">488</td></tr></tbody></table></div>
+        
+      </div>
+      <div class="col">
+        <h3>Other ways in</h3>
+        <div class="scroll" tabindex="0" role="region" aria-label="Premiere Pro: Other ways in table"><table class="plain"><thead><tr><th>Surface</th><th class="num">Entries</th><th>Status</th><th class="num">Beyond the object model</th></tr></thead><tbody><tr><td>AppleScript</td><td class="num">2</td><td><span class="chip">unavailable <b>1</b></span> <span class="chip">current <b>1</b></span></td><td class="num">0</td></tr><tr><td>CEP</td><td class="num">14</td><td><span class="chip">current <b>14</b></span></td><td class="num">2</td></tr><tr><td>C++ SDK</td><td class="num">36</td><td><span class="chip">current <b>36</b></span></td><td class="num">9</td></tr><tr><td>UXP</td><td class="num">77</td><td><span class="chip">current <b>75</b></span> <span class="chip">unavailable <b>2</b></span></td><td class="num">19</td></tr><tr><td>VBScript / COM</td><td class="num">1</td><td><span class="chip">unavailable <b>1</b></span></td><td class="num">0</td></tr></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>What InDesign is missing</h2>
+    <p class="lede">The scriptable InDesign features our server does not cover yet, ranked by how often community scripts need them and how much work each is.</p>
+    <div class="scroll" tabindex="0" role="region" aria-label="Premiere Pro: What InDesign is missing table"><table class="plain gaps"><thead><tr><th class="num">#</th><th>Proposed tool</th><th>Features it covers</th><th>Demand evidence</th><th>Effort</th></tr></thead>
+    <tbody><tr><td class="num">1</td><td><code>create_line</code></td><td>2: <code>frames_objects.graphic_line</code>, <code>frames_objects.line_tool</code></td><td>43 scripts / 15 repos use <code>add (with GraphicLines access)</code> *(generic)*; core</td><td>S</td></tr><tr><td class="num">2</td><td><code>thread_text_frames</code></td><td>3: <code>text_frames.thread_text_frames</code>, <code>text_frames.unthread</code>, <code>text_frames.thread_navigation</code></td><td>35 scripts / 13 repos use <code>nextTextFrame (with TextFrame access)</code>; core</td><td>S</td></tr><tr><td class="num">3</td><td><code>set_character_formatting</code></td><td>36: <code>typography.basic_char_kerning</code>, <code>typography.basic_char_tracking</code>, <code>typography.basic_char_case</code>, <code>typography.basic_char_position</code>, <code>typography.basic_char_ligatures</code>, +31 more</td><td>119 scripts / 20 repos use <code>pointSize (with Text access)</code>; core</td><td>M</td></tr><tr><td class="num">4</td><td><code>arrange_page_item</code></td><td>3: <code>frames_objects.bring_to_front</code>, <code>frames_objects.bring_forward</code>, <code>frames_objects.send_backward</code></td><td>15 scripts / 10 repos use <code>bringToFront (with SplineItem access)</code>; core</td><td>S</td></tr><tr><td class="num">5</td><td><code>find_change_formatting</code></td><td>13: <code>find_change.fc_option_include_locked_layers_and_locked_objects</code>, <code>find_change.fc_option_include_locked_stories</code>, <code>find_change.fc_option_include_hidden_layers_and_hidden_objects</code>, <code>find_change.fc_option_include_parent_pages</code>, <code>find_change.fc_option_include_footnotes</code>, +8 more</td><td>82 scripts / 16 repos use <code>fonts</code>; core</td><td>M</td></tr><tr><td class="num">6</td><td><code>set_text_frame_options</code></td><td>38: <code>text_frames.text_frame_options</code>, <code>text_frames.tfo_general_columns_fixed_number_fixed_width_flexible_width</code>, <code>text_frames.tfo_general_number</code>, <code>text_frames.tfo_general_width</code>, <code>text_frames.tfo_general_maximum</code>, +33 more</td><td>79 scripts / 23 repos use <code>textFramePreferences (with TextFrame access)</code>; core</td><td>M</td></tr><tr><td class="num">7</td><td><code>set_stroke_options</code></td><td>10: <code>frames_objects.stroke_panel</code>, <code>frames_objects.stroke_type</code>, <code>frames_objects.stroke_cap</code>, <code>frames_objects.stroke_join</code>, <code>frames_objects.stroke_align</code>, +5 more</td><td>77 scripts / 19 repos use <code>strokeWeight (with PageItem access)</code>; core</td><td>M</td></tr><tr><td class="num">8</td><td><code>list_links</code></td><td>7: <code>images_links.link</code>, <code>images_links.link_metadata</code>, <code>images_links.links_menu_go_to_link</code>, <code>images_links.links_menu_go_to_source</code>, <code>images_links.links_menu_utilities_xmp_file_info</code>, +2 more</td><td>70 scripts / 16 repos use <code>links</code>; core</td><td>M</td></tr><tr><td class="num">9</td><td><code>move_items_to_layer</code></td><td>4: <code>layers.paste_remembers_layers</code>, <code>layers.move_to_layer</code>, <code>layers.select_items_on_layer</code>, <code>layers.layer_objects_list</code></td><td>65 scripts / 18 repos use <code>itemLayer (with PageItem access)</code>; core</td><td>M</td></tr><tr><td class="num">10</td><td><code>edit_table_structure</code></td><td>27: <code>tables.row</code>, <code>tables.column</code>, <code>tables.table_panel</code>, <code>tables.insert_table</code>, <code>tables.nested_table</code>, +22 more</td><td>60 scripts / 17 repos use <code>tables (with InsertionPoint access)</code>; core</td><td>M</td></tr><tr><td class="num">11</td><td><code>manage_parent_pages</code></td><td>6: <code>pages_spreads.parent_based_on</code>, <code>pages_spreads.load_parent_pages</code>, <code>pages_spreads.allow_parent_item_overrides</code>, <code>pages_spreads.parent_overlay</code>, <code>pages_spreads.move_parent</code>, +1 more</td><td>48 scripts / 15 repos use <code>appliedMaster (with MasterSpread access)</code>; core</td><td>M</td></tr><tr><td class="num">12</td><td><code>set_paragraph_formatting</code></td><td>26: <code>tables.table_alignment</code>, <code>typography.story_panel</code>, <code>typography.optical_margin_alignment</code>, <code>typography.ignore_optical_margin</code>, <code>typography.para_indents_balance_ragged_lines</code>, +21 more</td><td>46 scripts / 14 repos use <code>justification (with Text access)</code>; core</td><td>M</td></tr><tr><td class="num">13</td><td><code>create_cross_reference</code></td><td>7: <code>long_documents.cross_references_panel</code>, <code>long_documents.insert_cross_reference</code>, <code>long_documents.cross_reference_formats</code>, <code>long_documents.load_cross_reference_formats</code>, <code>long_documents.update_cross_references</code>, +2 more</td><td>43 scripts / 15 repos use <code>hyperlinks</code>; core</td><td>M</td></tr><tr><td class="num">14</td><td><code>set_measurement_units</code></td><td>18: <code>documents.zero_point</code>, <code>documents.newdoc_units_new_document</code>, <code>layout_tools.rulers</code>, <code>layout_tools.ruler_units</code>, <code>layout_tools.cycle_units</code>, +13 more</td><td>330 scripts / 44 repos use <code>viewPreferences</code>; core</td><td>L</td></tr><tr><td class="num">15</td><td><code>insert_special_character</code></td><td>25: <code>pages_spreads.current_page_number</code>, <code>pages_spreads.next_page_number</code>, <code>pages_spreads.previous_page_number</code>, <code>pages_spreads.section_marker</code>, <code>typography.glyphs_panel</code>, +20 more</td><td>38 scripts use <code>SpecialCharacters.* enum</code>; core</td><td>M</td></tr><tr><td class="num">16</td><td><code>load_styles</code></td><td>10: <code>styles.load_styles</code>, <code>styles.paragraph_styles_menu_load_paragraph_styles</code>, <code>styles.paragraph_styles_menu_load_all_text_styles</code>, <code>styles.character_styles_menu_load_character_styles</code>, <code>styles.character_styles_menu_load_all_text_styles</code>, +5 more</td><td>7 scripts / 6 repos use <code>importStyles</code>; core</td><td>S</td></tr><tr><td class="num">17</td><td><code>clear_style_overrides</code></td><td>16: <code>styles.clear_overrides</code>, <code>styles.clear_character_overrides</code>, <code>styles.clear_paragraph_overrides</code>, <code>styles.clear_all_overrides</code>, <code>styles.clear_object_style_overrides</code>, +11 more</td><td>33 scripts / 14 repos use <code>applyParagraphStyle (with Text access)</code>; core</td><td>M</td></tr><tr><td class="num">18</td><td><code>update_links</code></td><td>2: <code>images_links.links_menu_update_link</code>, <code>images_links.links_menu_update_all_links</code></td><td>29 scripts / 6 repos use <code>update (with Link access)</code> *(generic)*; core</td><td>M</td></tr><tr><td class="num">19</td><td><code>align_distribute</code></td><td>6: <code>transformations.align_panel</code>, <code>transformations.align_objects</code>, <code>transformations.distribute_objects</code>, <code>transformations.distribute_spacing</code>, <code>transformations.key_object</code>, +1 more</td><td>27 scripts / 6 repos use <code>align</code>; core</td><td>M</td></tr><tr><td class="num">20</td><td><code>anchor_object</code></td><td>4: <code>frames_objects.anchored_object_insert</code>, <code>frames_objects.anchored_object_options</code>, <code>frames_objects.anchored_object_release</code>, <code>frames_objects.anchored_object_defaults</code></td><td>26 scripts / 12 repos use <code>anchoredObjectSettings (with SplineItem access)</code>; core</td><td>M</td></tr><tr><td class="num">21</td><td><code>relink_links</code></td><td>4: <code>images_links.links_menu_relink</code>, <code>images_links.links_menu_relink_to_folder</code>, <code>images_links.links_menu_relink_file_extension</code>, <code>interactive.relink_legacy_media</code></td><td>26 scripts / 8 repos use <code>relink (with Link access)</code> *(generic)*; core</td><td>M</td></tr><tr><td class="num">22</td><td><code>manage_footnotes</code></td><td>22: <code>long_documents.footnote</code>, <code>long_documents.insert_footnote</code>, <code>long_documents.document_footnote_options</code>, <code>long_documents.fn_num_style_footnote_numbering</code>, <code>long_documents.fn_num_start_at_footnotes</code>, +17 more</td><td>22 scripts / 12 repos use <code>footnotes (with InsertionPoint access)</code>; core</td><td>M</td></tr><tr><td class="num">23</td><td><code>run_script_file</code></td><td>6: <code>automation.scripts_panel</code>, <code>automation.scripts_menu_run_script</code>, <code>automation.scripts_menu_enable_redraw</code>, <code>automation.script_preferences</code>, <code>automation.script_args</code>, +1 more</td><td>430 scripts / 43 repos use <code>doScript</code></td><td>M</td></tr><tr><td class="num">24</td><td><code>transform_page_item</code></td><td>32: <code>transformations.reference_point</code>, <code>transformations.rotate_tool</code>, <code>transformations.scale_tool</code>, <code>transformations.shear_tool</code>, <code>transformations.free_transform_tool</code>, +27 more</td><td>18 scripts / 8 repos use <code>transformReferencePoint (with LayoutWindow access)</code>; core</td><td>M</td></tr><tr><td class="num">25</td><td><code>set_hyphenation_and_justification</code></td><td>25: <code>typography.auto_hyphenate_shortcut</code>, <code>typography.para_hyph_hyphenate</code>, <code>typography.para_hyph_words_with_at_least</code>, <code>typography.para_hyph_after_first</code>, <code>typography.para_hyph_before_last</code>, +20 more</td><td>15 scripts / 10 repos use <code>autoLeading (with Text access)</code>; core</td><td>M</td></tr><tr><td class="num">26</td><td><code>set_bullets_and_numbering</code></td><td>23: <code>styles.paragraph_styles_menu_convert_bullets_and_numbering_to_text</code>, <code>typography.bullets_list_type</code>, <code>typography.bullets_list</code>, <code>typography.bullets_level</code>, <code>typography.bullets_bullet_character</code>, +18 more</td><td>14 scripts / 7 repos use <code>firstLineIndent (with Text access)</code>; core</td><td>M</td></tr><tr><td class="num">27</td><td><code>set_script_label</code></td><td>1: <code>automation.script_label_panel</code></td><td>79 scripts / 16 repos use <code>extractLabel (with PageItem access)</code></td><td>S</td></tr><tr><td class="num">28</td><td><code>set_drop_caps_and_nested_styles</code></td><td>14: <code>styles.sequential_styles</code>, <code>styles.nested_styles</code>, <code>styles.nested_line_styles</code>, <code>styles.grep_styles</code>, <code>styles.end_nested_style</code>, +9 more</td><td>13 scripts / 6 repos use <code>appliedCharacterStyle (with NestedGrepStyle access)</code>; core</td><td>M</td></tr><tr><td class="num">29</td><td><code>create_table_style</code></td><td>17: <code>styles.tbs_style_name_table_style</code>, <code>styles.tbs_based_on_table_style</code>, <code>styles.tbs_cell_styles_header_rows_footer_rows_body_rows_left_column_right_column</code>, <code>styles.tbs_table_setup_table_style</code>, <code>styles.tbs_row_strokes_table_style</code>, +12 more</td><td>12 scripts / 8 repos use <code>appliedTableStyle (with Table access)</code>; core</td><td>M</td></tr><tr><td class="num">30</td><td><code>set_object_transparency</code></td><td>12: <code>effects_transparency.effects_panel</code>, <code>effects_transparency.effects_dialog</code>, <code>effects_transparency.transparency_setting</code>, <code>effects_transparency.fx_transparency_blending_mode</code>, <code>effects_transparency.fx_transparency_isolate_blending</code>, +7 more</td><td>12 scripts / 7 repos use <code>transparencySettings (with PageItem access)</code>; core</td><td>M</td></tr></tbody></table></div>
+  </section>
+
+  <section class="section">
+    <h2>Production workflows</h2>
+    <p class="lede">Real jobs composed of atlas features, each step with the state it must leave and a check a script can run. The features most workflows need are the first ones to build and qualify.</p>
+    <div class="split">
+      <div class="col">
+        <h3>Most-needed features</h3>
+        <ol class="cmds"><li><span title="illustrator.import_export.save_pdf">Save as Adobe PDF</span><span class="cbar"><span style="width:100%"></span></span><span class="num">14</span></li><li><span title="indesign.import_export.export_pdf_print">Export Adobe PDF</span><span class="cbar"><span style="width:100%"></span></span><span class="num">14</span></li><li><span title="indesign.text_frames.overset_text">Overset text</span><span class="cbar"><span style="width:100%"></span></span><span class="num">14</span></li><li><span title="indesign.images_links.place">Place</span><span class="cbar"><span style="width:92.85714285714286%"></span></span><span class="num">13</span></li><li><span title="illustrator.import_export.save_ai">Save as Adobe Illustrator (AI)</span><span class="cbar"><span style="width:71.42857142857143%"></span></span><span class="num">10</span></li><li><span title="illustrator.appearance.fill">Fill</span><span class="cbar"><span style="width:57.142857142857146%"></span></span><span class="num">8</span></li><li><span title="indesign.images_links.link">Link</span><span class="cbar"><span style="width:50%"></span></span><span class="num">7</span></li><li><span title="illustrator.color.spot_color">Spot color</span><span class="cbar"><span style="width:42.857142857142854%"></span></span><span class="num">6</span></li><li><span title="indesign.data_merge.data_merge_menu_create_merged_document">Create Merged Document</span><span class="cbar"><span style="width:42.857142857142854%"></span></span><span class="num">6</span></li><li><span title="indesign.data_merge.data_merge_menu_select_data_source">Select Data Source</span><span class="cbar"><span style="width:42.857142857142854%"></span></span><span class="num">6</span></li><li><span title="illustrator.artboards.artboard_object">Artboard</span><span class="cbar"><span style="width:35.714285714285715%"></span></span><span class="num">5</span></li><li><span title="illustrator.asset_export.export_for_screens">Export for Screens</span><span class="cbar"><span style="width:35.714285714285715%"></span></span><span class="num">5</span></li><li><span title="illustrator.color.swatch_object">Swatch</span><span class="cbar"><span style="width:35.714285714285715%"></span></span><span class="num">5</span></li><li><span title="illustrator.documents.save_as">Save As</span><span class="cbar"><span style="width:35.714285714285715%"></span></span><span class="num">5</span></li><li><span title="illustrator.import_export.ai_option.create_pdf_compatible_file">Create PDF Compatible File</span><span class="cbar"><span style="width:35.714285714285715%"></span></span><span class="num">5</span></li></ol>
+      </div>
+      <div class="col">
+        <h3>Steps no script can reach yet</h3>
+        <ul class="limits"><li><span class="sev sev-blocks">none</span><span><b>Package</b><span class="wk">Illustrator artwork package and PDF/X for print, step 2</span></span></li></ul>
+      </div>
+    </div>
+    <h3>All workflows</h3>
+    <ul class="wf"><li>Accessible tagged PDF from InDesign, verified in Acrobat <span class="ap">InDesign + Acrobat · 6 steps</span></li><li>Accessible reflowable EPUB from InDesign, checked with Ace <span class="ap">InDesign · 6 steps</span></li><li>Accessible fillable form with tooltips and tab order <span class="ap">InDesign + Acrobat · 4 steps</span></li><li>Text colour contrast audit in an InDesign layout <span class="ap">InDesign · 3 steps</span></li><li>Logo lockup variations: horizontal, stacked and symbol-only, in full colour, one colour and reversed <span class="ap">Illustrator · 6 steps</span></li><li>Brand asset export at multiple sizes and formats <span class="ap">Illustrator · 5 steps</span></li><li>Brand colour palette as a shared swatch library <span class="ap">Illustrator · 3 steps</span></li><li>Brand colour compliance audit and fix in Illustrator artwork <span class="ap">Illustrator · 4 steps</span></li><li>Brand InDesign template with locked parent pages, styles and swatches <span class="ap">InDesign · 6 steps</span></li><li>Outlined, font-independent logo delivery files <span class="ap">Illustrator · 4 steps</span></li><li>Illustrator artwork placed into an InDesign layout with layer control <span class="ap">Illustrator + InDesign · 5 steps</span></li><li>Illustrator infographic placed into an InDesign report with caption and alt text, exported as accessible PDF <span class="ap">Illustrator + InDesign + Acrobat · 6 steps</span></li><li>Brand swatches from Illustrator to InDesign via ASE <span class="ap">Illustrator + InDesign · 4 steps</span></li><li>Stationery suite: Illustrator logo into InDesign letterhead, compliment slip and envelope <span class="ap">Illustrator + InDesign · 4 steps</span></li><li>Packaging approval sheet: Illustrator carton PDF into an InDesign proof sheet, checked in Acrobat <span class="ap">Illustrator + InDesign + Acrobat · 5 steps</span></li><li>Edit-original round trip for linked Illustrator graphics <span class="ap">InDesign + Illustrator · 3 steps</span></li><li>Supplied advertisement intake: Acrobat preflight, then placement in the magazine layout <span class="ap">Acrobat + InDesign · 3 steps</span></li><li>Illustrator icons as inline anchored graphics in InDesign text <span class="ap">Illustrator + InDesign · 3 steps</span></li><li>InDesign print PDF checked for ink coverage and separations in Acrobat <span class="ap">InDesign + Acrobat · 3 steps</span></li><li>Brand guidelines document: Illustrator lockups and palette into an InDesign guide, published as a navigable PDF <span class="ap">Illustrator + InDesign + Acrobat · 5 steps</span></li><li>Catalogue with Illustrator product line drawings fed into InDesign Data Merge <span class="ap">Illustrator + InDesign · 4 steps</span></li><li>Product catalogue from CSV via Data Merge <span class="ap">InDesign + Acrobat · 7 steps</span></li><li>Illustrator variable-driven batch artwork from a data set <span class="ap">Illustrator · 3 steps</span></li><li>Infographic chart from data in Illustrator <span class="ap">Illustrator · 4 steps</span></li><li>Structured catalogue from XML with mapped styles <span class="ap">InDesign · 4 steps</span></li><li>Event tickets or badges with per-record QR codes <span class="ap">InDesign · 3 steps</span></li><li>Price list from CSV converted to a styled table <span class="ap">InDesign · 4 steps</span></li><li>Personalised certificates with one record per page <span class="ap">InDesign · 4 steps</span></li><li>Vector clean-up of traced artwork (scanned logo or sketch to clean vectors) <span class="ap">Illustrator · 6 steps</span></li><li>Seamless pattern swatch creation <span class="ap">Illustrator · 4 steps</span></li><li>Reusable symbol library from icon or map-marker art <span class="ap">Illustrator · 3 steps</span></li><li>Cut file preparation for vinyl, laser or plotter cutting <span class="ap">Illustrator · 4 steps</span></li><li>Interactive PDF form from InDesign with field validation checked in Acrobat <span class="ap">InDesign + Acrobat · 5 steps</span></li><li>Navigable digital report: bookmarks, hyperlinked TOC and cross-document links <span class="ap">InDesign + Acrobat · 4 steps</span></li><li>Interactive product explorer with multi-state objects and buttons <span class="ap">InDesign · 3 steps</span></li><li>Localisation: translated text swap with language assignment and overset check <span class="ap">InDesign + Acrobat · 7 steps</span></li><li>Localised labels in an Illustrator diagram, checked for fit <span class="ap">Illustrator · 4 steps</span></li><li>Language layers in Illustrator artwork switched per edition in InDesign <span class="ap">Illustrator + InDesign · 3 steps</span></li><li>Folding carton artwork on a supplied dieline with spot colours, spot varnish and overprinting technical layers <span class="ap">Illustrator + Acrobat · 9 steps</span></li><li>Label for clear or metallic film with a white ink underprint plate <span class="ap">Illustrator · 5 steps</span></li><li>Process-only proof copy of spot-colour packaging for a digital proofer <span class="ap">Illustrator · 4 steps</span></li><li>Multi-up label sheet without imposition software <span class="ap">Illustrator · 4 steps</span></li><li>Separation and overprint audit of supplied packaging artwork <span class="ap">Illustrator · 4 steps</span></li><li>Preflight against a print profile and package for the printer <span class="ap">InDesign + Acrobat · 6 steps</span></li><li>PDF/X-4 export with bleed and printer's marks, checked in Acrobat <span class="ap">InDesign + Acrobat · 4 steps</span></li><li>Colour conversion to the printer's CMYK profile <span class="ap">InDesign + Acrobat · 5 steps</span></li><li>Batch relinking and image audit <span class="ap">InDesign · 4 steps</span></li><li>Print-ready business cards for a team, multi-up without imposition software <span class="ap">InDesign + Acrobat · 6 steps</span></li><li>Saddle-stitched booklet output with creep <span class="ap">InDesign · 3 steps</span></li><li>Swatch and ink clean-up before separation <span class="ap">InDesign + Acrobat · 6 steps</span></li><li>Overprint audit: black text overprint and white-overprint traps <span class="ap">InDesign + Acrobat · 5 steps</span></li><li>Illustrator artwork package and PDF/X for print <span class="ap">Illustrator + Acrobat · 4 steps</span></li><li>Book production: Book file, synchronised styles, continuous numbering, TOC, index and cross-references <span class="ap">InDesign + Acrobat · 9 steps</span></li><li>Magazine feature article layout with styles and threaded frames <span class="ap">InDesign · 7 steps</span></li><li>Long-document style audit <span class="ap">InDesign · 6 steps</span></li><li>GREP-driven text clean-up of imported copy <span class="ap">InDesign · 5 steps</span></li><li>Table import from Excel and styling with table and cell styles <span class="ap">InDesign · 5 steps</span></li><li>Word manuscript import with style mapping <span class="ap">InDesign · 4 steps</span></li><li>Running headers, sections and page-number styles for a report <span class="ap">InDesign · 4 steps</span></li><li>Edition variants with conditional text and condition sets <span class="ap">InDesign · 3 steps</span></li><li>Academic chapter with footnotes, endnotes conversion and numbering rules <span class="ap">InDesign · 3 steps</span></li><li>Icon set: pixel-aligned artboards exported as SVG and PNG <span class="ap">Illustrator · 5 steps</span></li><li>App icon set for iOS, Android and web manifest <span class="ap">Illustrator · 3 steps</span></li><li>Template-driven social graphics in Illustrator <span class="ap">Illustrator · 4 steps</span></li><li>Template-driven social graphics in InDesign via Data Merge and JPEG/PNG export <span class="ap">InDesign · 4 steps</span></li><li>Alternate layouts for different page sizes <span class="ap">InDesign · 4 steps</span></li><li>Display ad banner set in standard sizes <span class="ap">Illustrator · 3 steps</span></li><li>Developer-ready SVG export with meaningful ids and accessible titles <span class="ap">Illustrator · 2 steps</span></li></ul>
+  </section>
+
+  <section class="section">
+    <h2>How this was built</h2>
+    <ul class="method">
+      <li><b>Features</b> come from Adobe's user guides and shortcut references; each record cites its source and is written in our own words. Third-party parity checklists were used only to spot omissions.</li>
+      <li><b>Object models</b> are generated from types-for-adobe (MIT), and for InDesign and Illustrator also from Gregor Fellenz's per-version references: InDesign 2023 to 2026, Illustrator 2022 to 2025, Photoshop 2015.5, After Effects 2026 and Premiere Pro 2024. No public object model exists yet for Illustrator 2026.</li>
+      <li><b>Implemented and tested</b> come from running every tool of adobe-mcp-indesign 2.4.0, adobe-mcp-illustrator 0.9.0, adobe-mcp-photoshop 0.1.0, adobe-mcp-aftereffects 0.1.0 and adobe-mcp-premiere 0.1.0 (all in the adobe-mcp repository) with the application stubbed, recording the calls each generated script makes and checking each script: ExtendScript against the application's object model, and Premiere Pro's UXP JavaScript against its UXP DOM. Nothing has been validated against a running application yet.</li>
+      <li><b>Community scripts</b> were parsed for the members and menu commands they use; no script was copied, and repositories without a licence are counted as evidence only.</li>
+      <li><b>Menu commands</b> are listed from published references and are unverified until run: Illustrator silently ignores a command string it does not know. Photoshop's Action Manager events come from Adobe's UXP event table, Adobe's bundled scripts and open-source helper libraries, and are unverified in the same way.</li>
+    </ul>
+  </section>
+</div>
+<script>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(tab, setHash) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (setHash && history.replaceState) history.replaceState(null, '', '#' + tab.id.slice(4));
+    if (setHash && window.creativeMcpInteraction) window.creativeMcpInteraction('select_app', { app: tab.id.slice(4) });
+  }
+  function fromHash() {
+    var tab = document.getElementById('tab-' + location.hash.slice(1));
+    if (tab && tabs.indexOf(tab) >= 0) { select(tab, false); return tab; }
+    return null;
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { select(t, true); });
+    t.addEventListener('keydown', function (e) {
+      var next = null;
+      if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+      else if (e.key === 'ArrowLeft') next = tabs[(i + tabs.length - 1) % tabs.length];
+      else if (e.key === 'Home') next = tabs[0];
+      else if (e.key === 'End') next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); select(next, true); next.focus(); }
+    });
+  });
+  window.addEventListener('hashchange', function () {
+    var tab = fromHash();
+    if (tab) tab.scrollIntoView({ block: 'start' });
+  });
+  fromHash();
+})();
+</script>
+</main>
+<footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/apps.html" data-event-id="cta_adobe_mcp">Adobe MCP</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/" data-event-id="nav_docs">Docs</a><a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer>
+<script src="/theme.js" defer></script>
+<script src="/events.js?v=2" defer></script>
+</body>
+</html>

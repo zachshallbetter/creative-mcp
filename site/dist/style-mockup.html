@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#f4f0e8">
+  <meta name="description" content="A visual direction study for Creative MCP site layout, controls, color and shared components.">
+  <meta name="author" content="Zach Shallbetter"><link rel="author" href="https://creativemcp.com/about.html"><link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/icons/icon-180.png"><title>Visual direction — Creative MCP</title>
+  <script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script>
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/site-tokens.css?v=14">
+  <link rel="stylesheet" href="/style-mockup.css">
+</head>
+<body>
+  <header class="wrap topbar"><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><nav class="topnav" aria-label="Main navigation"><a href="/projects.html">Projects</a><a href="/how-it-works.html">How it works</a><a href="/docs/">Docs</a><button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a class="button" href="/docs/getting-started.html"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav></header>
+  <main>
+    <section class="wrap mock-hero" aria-labelledby="mock-title">
+      <div class="mock-copy">
+        <p class="eyebrow">A connected workspace for creative tools</p>
+        <h1 id="mock-title">Move ideas across the <span>whole suite.</span></h1>
+        <p class="mock-lede">One local MCP connection brings your Adobe apps into the same conversation, while each app keeps the tools and workflow that make it distinct.</p>
+        <div class="mock-actions"><a class="button" href="/apps.html"><span class="button-label">Explore the apps</span><span aria-hidden="true"><span class="button-label">↗</span></span></a><a class="button light" href="/features.html"><span class="button-label">Browse features</span><span aria-hidden="true"><span class="button-label">→</span></span></a></div>
+        <div class="mock-proof"><span>5 creative apps</span><i></i><span>One local server</span><i></i><span>Your files stay local</span></div>
+      </div>
+      <div class="workspace" aria-label="Five Adobe apps connected to one local MCP client">
+        <div class="workspace-halo" aria-hidden="true"><span class="masked-mark"></span></div>
+        <div class="workspace-top"><span>Connected workspace</span><span class="connection"><i></i> Running locally</span></div>
+        <div class="workspace-client"><span class="client-symbol" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span><strong>Your MCP client</strong><small>one connection · app-aware tools</small></span><span class="client-count">05</span></div>
+        <div class="workspace-apps">
+          <div style="--tone:var(--app-indesign)"><span class="app-pin">ID</span><strong>InDesign</strong><small>Layout</small><span class="app-state">Ready</span></div>
+          <div style="--tone:var(--app-illustrator)"><span class="app-pin">AI</span><strong>Illustrator</strong><small>Vector</small><span class="app-state">Ready</span></div>
+          <div style="--tone:var(--app-photoshop)"><span class="app-pin">Ps</span><strong>Photoshop</strong><small>Image</small><span class="app-state">Ready</span></div>
+          <div style="--tone:var(--app-aftereffects)"><span class="app-pin">Ae</span><strong>After Effects</strong><small>Motion</small><span class="app-state">Ready</span></div>
+          <div style="--tone:var(--app-premiere)"><span class="app-pin">Pr</span><strong>Premiere Pro</strong><small>Video</small><span class="app-state">Ready</span></div>
+        </div>
+        <div class="workspace-foot"><span>Local MCP process</span><span aria-hidden="true">↔</span><span>Open Adobe apps</span></div>
+      </div>
+    </section>
+
+    <section class="mock-section" aria-labelledby="surfaces-title">
+      <div class="wrap">
+        <div class="section-intro"><div><p class="eyebrow">Five creative surfaces</p><h2 id="surfaces-title">Start where the work is.</h2></div><a class="section-link" href="/apps.html">All app guides <span aria-hidden="true">↗</span></a></div>
+        <div class="surface-grid">
+          <a class="surface-card" style="--tone:var(--app-indesign)" href="/docs/implementations/indesign.html"><span class="surface-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="7" y="4.5" width="18" height="23" rx="2"/><path d="M11 11h10M11 15h10M11 19h7"/></svg></span><span class="surface-meta">01 · Layout</span><strong>InDesign</strong><span class="surface-desc">Pages, type, tables and long documents.</span><span class="surface-arrow" aria-hidden="true">↗</span></a>
+          <a class="surface-card" style="--tone:var(--app-illustrator)" href="/docs/implementations/illustrator.html"><span class="surface-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 23c5-13 12-17 18-14 5 3 1 11-4 14-4 2-7 0-5-3 1-2 3-3 5-4"/><circle cx="6" cy="23" r="1.5"/><circle cx="24" cy="9" r="1.5"/></svg></span><span class="surface-meta">02 · Vector</span><strong>Illustrator</strong><span class="surface-desc">Paths, artboards, layers and artwork.</span><span class="surface-arrow" aria-hidden="true">↗</span></a>
+          <a class="surface-card" style="--tone:var(--app-photoshop)" href="/docs/implementations/photoshop.html"><span class="surface-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="5" y="7" width="18" height="17" rx="2"/><path d="m7 21 5-5 4 3 3-4 4 5M22 11h5v15H10"/><circle cx="11" cy="12" r="1.5"/></svg></span><span class="surface-meta">03 · Image</span><strong>Photoshop</strong><span class="surface-desc">Pixels, layers, selections and effects.</span><span class="surface-arrow" aria-hidden="true">↗</span></a>
+          <a class="surface-card" style="--tone:var(--app-aftereffects)" href="/docs/implementations/aftereffects.html"><span class="surface-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 17h4l3-8 5 15 4-12 3 5h5"/></svg></span><span class="surface-meta">04 · Motion</span><strong>After Effects</strong><span class="surface-desc">Compositions, keyframes and rendering.</span><span class="surface-arrow" aria-hidden="true">↗</span></a>
+          <a class="surface-card" style="--tone:var(--app-premiere)" href="/docs/implementations/premiere.html"><span class="surface-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 8h7v6H5zM14 8h13v6H14zM5 18h12v6H5zM19 18h8v6h-8z"/><path d="M5 27h22"/></svg></span><span class="surface-meta">05 · Video</span><strong>Premiere Pro</strong><span class="surface-desc">Sequences, timeline edits and effects.</span><span class="surface-arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap transfer-section" aria-labelledby="transfer-title">
+      <div class="transfer-heading"><p class="eyebrow">Useful handoffs</p><h2 id="transfer-title">Keep momentum between apps.</h2><p>The suite connects more than servers. It carries selected work from one creative surface into another.</p></div>
+      <div class="transfer-cards">
+        <article class="transfer-card"><span class="transfer-index">01</span><div class="transfer-glyph" aria-hidden="true"><span>AI</span><b>↗</b><span>ID</span></div><div><strong>Place artwork in a layout</strong><p>Send an Illustrator artboard into an InDesign page as a linked asset.</p></div><span class="transfer-route">Illustrator → InDesign</span></article>
+        <article class="transfer-card"><span class="transfer-index">02</span><div class="transfer-glyph color-glyph" aria-hidden="true"><span></span><span></span><span></span><b>→</b></div><div><strong>Carry a palette into InDesign</strong><p>Copy supported swatches with their original color values intact.</p></div><span class="transfer-route">Illustrator → InDesign</span></article>
+      </div>
+    </section>
+
+    <section class="wrap mock-cta"><div><p class="eyebrow">One connection, your choice of workflow</p><h2>Make the next step a prompt.</h2></div><a class="button" href="/docs/getting-started.html"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></section>
+  </main>
+  <footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/apps.html">Adobe MCP</a><a href="/docs/implementations/blender.html">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/docs/getting-started.html">Getting started</a><a href="/docs/">Docs</a><a href="/capability-atlas.html">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer>
+  <script src="/theme.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f4f0e8">
+  <meta name="description" content="Blender MCP implementation guide: local Rust server, Blender companion add-on, setup requirements and safety notes.">
+  <meta name="author" content="Zach Shallbetter">
+  <link rel="author" href="https://creativemcp.com/about.html">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icons/icon-180.png">
+  <link rel="manifest" href="/site.webmanifest">
+<meta name="application-name" content="Creative MCP">
+<meta name="apple-mobile-web-app-title" content="Creative MCP">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index">
+  <link rel="canonical" href="https://creativemcp.com/docs/implementations/blender.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Blender MCP implementation — Creative MCP Docs">
+  <meta property="og:description" content="Blender MCP implementation guide: local Rust server, Blender companion add-on, setup requirements and safety notes.">
+  <meta property="og:url" content="https://creativemcp.com/docs/implementations/blender.html">
+  <meta property="article:author" content="https://creativemcp.com/about.html"><meta property="article:modified_time" content="2026-11-03"><meta property="og:site_name" content="Creative MCP">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://creativemcp.com/assets/social/docs-blender.jpg">
+  <meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Creative MCP, Implementation guide: Blender MCP A Rust MCP server and companion add-on for scenes, objects, materials and 3D pipelines. By Zach Shallbetter.">
+  <meta name="twitter:image" content="https://creativemcp.com/assets/social/docs-blender.jpg">
+  <meta name="twitter:image:alt" content="Creative MCP, Implementation guide: Blender MCP A Rust MCP server and companion add-on for scenes, objects, materials and 3D pipelines. By Zach Shallbetter.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blender MCP implementation — Creative MCP Docs">
+  <meta name="twitter:description" content="Blender MCP implementation guide: local Rust server, Blender companion add-on, setup requirements and safety notes.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://creativemcp.com/docs/implementations/blender.html#webpage",
+      "url": "https://creativemcp.com/docs/implementations/blender.html",
+      "name": "Blender MCP implementation — Creative MCP Docs",
+      "description": "Blender MCP implementation guide: local Rust server, Blender companion add-on, setup requirements and safety notes.",
+      "isPartOf": {
+        "@id": "https://creativemcp.com/#website"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "dateModified": "2026-11-03",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://creativemcp.com/assets/social/docs-blender.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "headline": "Blender MCP",
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "mainEntityOfPage": "https://creativemcp.com/docs/implementations/blender.html",
+      "about": {
+        "@id": "https://creativemcp.com/docs/implementations/blender.html#blender-mcp"
+      },
+      "breadcrumb": {
+        "@id": "https://creativemcp.com/docs/implementations/blender.html#breadcrumb"
+      },
+      "creator": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://creativemcp.com/docs/implementations/blender.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Docs",
+          "item": "https://creativemcp.com/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Implementation guides",
+          "item": "https://creativemcp.com/docs/#implementation-guides"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Blender MCP",
+          "item": "https://creativemcp.com/docs/implementations/blender.html"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://creativemcp.com/docs/implementations/blender.html#blender-mcp",
+      "name": "Blender MCP",
+      "description": "A Rust MCP server and companion Blender add-on for working with scenes, objects, materials and 3D asset pipelines.",
+      "url": "https://creativemcp.com/docs/implementations/blender.html",
+      "applicationCategory": "DeveloperApplication",
+      "softwareRequirements": "Blender 4.0 or later with the companion add-on; Rust and Cargo to build from source",
+      "license": [
+        "https://opensource.org/license/mit",
+        "https://www.apache.org/licenses/LICENSE-2.0"
+      ],
+      "isAccessibleForFree": true,
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "sameAs": [
+        "https://github.com/zachshallbetter/blender-mcp-rs"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://creativemcp.com/about.html#zach-shallbetter",
+      "name": "Zach Shallbetter",
+      "url": "https://zachshallbetter.com/",
+      "sameAs": [
+        "https://zachshallbetter.com/",
+        "https://github.com/zachshallbetter",
+        "https://linkedin.com/in/zachshallbetter"
+      ]
+    }
+  ]
+}
+</script>
+  <title>Blender MCP implementation — Creative MCP Docs</title>
+  <script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script>
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/site-tokens.css?v=14"><link rel="stylesheet" href="/docs/docs.css?v=2">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
+  <script src="/analytics.js?v=2" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#top">Skip to main content</a>
+  <header class="wrap topbar"><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><nav class="topnav" aria-label="Main navigation"><a href="/projects.html" data-event-id="nav_projects">Projects</a><a href="/how-it-works.html" data-event-id="nav_how_it_works">How it works</a><a href="/docs/" data-event-id="nav_docs" aria-current="page">Docs</a><a href="/about.html" data-event-id="nav_about">About</a><button class="theme-toggle" data-event-id="theme_toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a class="button" href="/docs/getting-started.html" data-event-id="cta_get_started"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav></header>
+  <main class="wrap doc-implementation" id="top" tabindex="-1">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/docs/" data-event-id="nav_docs">Docs</a> / <a href="/docs/#implementation-guides">Implementation guides</a> / <span aria-current="page">Blender MCP</span></nav>
+    <div class="eyebrow">Implementation guide · Blender MCP</div><h1>Blender MCP</h1>
+    <p class="lede">A Rust MCP server and Blender companion add-on for scene and asset workflows. The server speaks MCP over stdio; a local IPC connection links it to Blender.</p>
+    <nav class="doc-tabs" aria-label="Documentation topics"><a href="/docs/" data-event-id="nav_docs">Docs home</a><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp" aria-current="page">Blender MCP</a><a href="/docs/implementations/indesign.html">Adobe MCP</a><a href="/docs/api.html">MCP API</a><a href="/docs/cli.html">CLI &amp; config</a><a href="/docs/architecture.html">Architecture</a></nav>
+    <section class="doc-section" id="what-this-implementation-covers"><h2>What this implementation covers</h2><p>The project combines a Rust MCP server with a Blender add-on that performs scene operations. Its repository documents tools for scene data, geometry, asset workflows and Blender resources. For the current list of tools, parameters and behavior, use the <a href="https://github.com/zachshallbetter/blender-mcp-rs/blob/main/docs/tools.md">tool reference</a> maintained with the source.</p><p>The project is independent from Adobe MCP. They can be configured as separate servers in a compatible MCP client; direct Adobe-to-Blender handoff tools are not currently provided.</p></section>
+    <section class="doc-section" id="connection-and-requirements"><h2>Connection and requirements</h2><div class="doc-grid"><div class="doc-card"><span class="tag">Transport</span><h3>Local server and add-on</h3><p>The client starts the MCP process over stdio. The companion add-on runs inside Blender and accepts the server’s local IPC connection.</p></div><div class="doc-card"><span class="tag">Prerequisites</span><h3>Blender and Rust</h3><p>Install Rust with rustup. Blender 4.0 or later is required, and the companion add-on must be installed and enabled.</p></div></div><p><strong>Source package:</strong> <code>blender-mcp-cli</code> in the <a href="https://github.com/zachshallbetter/blender-mcp-rs">blender-mcp-rs repository</a>.</p></section>
+    <section class="doc-section" id="install-and-configure"><h2>Install and configure</h2><p>Install the CLI from the project’s Git repository:</p><pre tabindex="0"><code>cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli</code></pre><p>Or install with Homebrew. There is no tagged release yet, so the formula builds the current <code>main</code> branch (<code>--HEAD</code>) and needs no Rust setup of your own:</p><pre tabindex="0"><code>brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install --HEAD zachshallbetter/tap/blender-mcp
+blender-mcp addon install</code></pre><p>Install and enable the Blender companion add-on before starting a workflow. The project CLI can add configuration for supported clients, including Codex, Claude Code, Cursor, Gemini CLI and Antigravity:</p><pre tabindex="0"><code>blender-mcp client add codex</code></pre><p>For client-specific scopes, add-on installation steps and exact options, follow the <a href="https://github.com/zachshallbetter/blender-mcp-rs/blob/main/README.md">current repository quick start</a>.</p></section>
+    <section class="doc-section" id="safety-and-limitations"><h2>Safety and limitations</h2><div class="callout"><p>The add-on listens on loopback and is intended for local use; it does not authenticate local clients. The <code>execute_blender_code</code> tool runs Python with Blender’s process permissions. Its pattern checks are not a security sandbox. Connect only trusted agents and review code before execution.</p></div><p>Scene-editing and file-writing tools can change or overwrite local work. Some asset search and import tools contact Poly Haven services; consult the project’s current README for the destinations and data involved.</p></section>
+    <section class="doc-section" id="full-reference"><h2>Full reference</h2><ul><li><a href="https://github.com/zachshallbetter/blender-mcp-rs/blob/main/docs/tools.md">Tool reference catalog ↗</a></li><li><a href="https://github.com/zachshallbetter/blender-mcp-rs/blob/main/docs/addon.md">Blender companion add-on guide ↗</a></li><li><a href="https://github.com/zachshallbetter/blender-mcp-rs/blob/main/docs/architecture.md">Architecture and transport ↗</a></li><li><a href="https://github.com/zachshallbetter/blender-mcp-rs">Source repository ↗</a></li></ul></section>
+  </main>
+  <footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/apps.html" data-event-id="cta_adobe_mcp">Adobe MCP</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/" data-event-id="nav_docs">Docs</a><a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer>
+  <script src="/docs/search.js?v=6" defer></script><script src="/theme.js" defer></script>
+<script src="/events.js?v=2" defer></script>
+</body>
+</html>

@@ -1,0 +1,2364 @@
+# Creative MCP
+
+> Creative MCP is an open collection of local Model Context Protocol (MCP) servers that connect AI agents and MCP clients to creative software: Adobe MCP for InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, and Blender MCP for Blender. Servers run on the user's own machine over stdio; nothing is hosted.
+
+Key facts:
+- Adobe MCP: five app-specific Node.js servers (Node.js 18+, macOS or Windows) plus a Suite coordinator for two documented Illustrator-to-InDesign workflows. npm: `adobe-mcp-suite`; Homebrew: `brew install zachshallbetter/tap/adobe-mcp`. Source: https://github.com/zachshallbetter/adobe-mcp (MIT).
+- Blender MCP: a Rust MCP server and CLI with a companion Blender add-on (Blender 4.0+). Homebrew: `brew install --HEAD zachshallbetter/tap/blender-mcp` (builds the main branch; no tagged release yet). Source: https://github.com/zachshallbetter/blender-mcp-rs (MIT OR Apache-2.0).
+- The projects are independent. A client can load both, but moving files between Adobe apps and Blender is a user-managed handoff.
+- Capability status is reported as Documented, Implemented, Tested or Validated; those levels are distinct and a lower level never implies a higher one.
+- Created by Zach Shallbetter (https://zachshallbetter.com/).
+- Each tool has its own repository and release cycle; they share the Homebrew tap `zachshallbetter/tap`. A series installer (`creative-mcp setup`) and catalogue are planned but not available yet.
+
+---
+
+Source: https://creativemcp.com/
+
+Creative tools, connected
+
+# Make more with the tools you already use.
+
+Local MCP servers connect your creative applications to agent workflows, so your tools, files and context can work together.
+
+[Get started](https://creativemcp.com/start.html)[Explore implementations](https://creativemcp.com/projects.html)
+
+LOCAL · OPEN · CREATIVE · ON YOUR TERMS
+
+Your creative apps
+
+Open source
+
+Local MCP · your machine
+
+Total control
+
+Creative workspaceConnected locally
+
+Your MCP clientone connection · app-aware tools
+
+InDesign layout
+
+Illustrator vector
+
+Photoshop images
+
+After Effects motion
+
+Premiere Pro video
+
+Blender scenes
+
+Adobe MCP + Blender MCP → your open creative apps
+
+Implementations
+
+## One protocol. Different creative worlds.
+
+Creative MCP hosts independent, open implementations that connect creative tools to agent workflows.
+
+[### Adobe MCP
+
+Connect your Adobe creative apps.
+Available
+
+Five app-specific MCP servers, with a coordinator for supported cross-app workflows.
+Explore Adobe MCP ↗](https://creativemcp.com/apps.html) [### Blender MCP
+
+Work with 3D scenes, objects, materials and animation.
+Available
+
+A Rust MCP server and Blender companion add-on for scene tools, assets and pipelines.
+Explore Blender MCP ↗](https://creativemcp.com/docs/implementations/blender.html)
+
+＋ More creative tools can join as they’re ready.
+
+Creative MCP is an open platform; implementations are developed and released independently.
+
+How it works
+
+## Get from idea to output in three steps.
+
+A simple local setup connects your creative applications to your chosen agent workflow.
+
+### Choose a tool
+
+Pick an implementation, such as Adobe MCP or Blender MCP.
+
+### Connect your MCP client
+
+Install and configure the local server and any app companion it needs.
+
+### Keep creating in your app
+
+Your tools stay open on your machine. Work with your files and context where supported.
+
+[See setup details and implementation requirements →](https://creativemcp.com/how-it-works.html)
+
+Built for real work
+
+## Move from instructions to finished creative output.
+
+Give agents a way to work with your actual creative tools, files and context. Each implementation runs locally and documents its own setup.
+
+Adobe MCP · Homebrew
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/adobe-mcp
+```
+
+Blender MCP · Homebrew
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install --HEAD zachshallbetter/tap/blender-mcp
+```
+
+Adobe MCP · Claude Code with npx
+
+```
+claude mcp add --scope user adobe -- npx -y adobe-mcp-suite
+```
+
+Blender MCP · Rust install
+
+```
+cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli
+```
+
+Your instructionsbriefs · files · context
+
+MCP clientlocal connection
+
+Creative outputAdobe apps · Blender
+
+Capability & evidence
+
+## Clear signals for what’s ready.
+
+Each implementation provides transparent information about its current capabilities, so you know what to expect.
+
+Documented
+
+Guides explain what the implementation does and how to set it up.
+
+Implemented
+
+The tools and capabilities are present in the MCP server.
+
+Tested
+
+Automated checks cover the tool implementation where provided.
+
+Validated
+
+Live-app validation is reported separately and depends on the implementation.
+
+Adobe MCP’s [Capability Atlas](https://creativemcp.com/capability-atlas.html) tracks evidence by feature. For Blender MCP, see the project’s current repository documentation. A tool passing automated checks does not by itself prove that a workflow has been validated in a live application.
+
+Beyond one app
+
+## From layout to a 3D scene.
+
+Move approved artwork and its context into Blender, then keep building in the tools you already use.
+
+01 / 03
+
+### Design the composition
+
+Shape a layout and approve the artwork in InDesign.
+
+02 / 03
+
+### Move the working files
+
+Export the approved assets and carry the brief into the next tool.
+
+03 / 03
+
+### Develop the scene
+
+Bring those assets into Blender and continue building in 3D.
+
+How the handoff worksThis is a file handoff between separate MCP implementations. Direct Adobe-to-Blender orchestration is not currently provided. [Explore the workflow gallery →](https://creativemcp.com/workflows.html)
+
+Get started today
+
+## Give your creative tools a way to work together.
+
+Local, open and built for creators.
+
+[Get started ↗](https://creativemcp.com/start.html)[Browse workflows →](https://creativemcp.com/workflows.html)
+
+---
+
+Source: https://creativemcp.com/projects.html
+
+Open implementations · local creative tools
+
+# One protocol. Different creative worlds.
+
+Creative MCP brings together independent implementations for the creative applications you already use. Each project has its own setup, requirements and capabilities.
+
+## Implementations
+
+### Adobe MCP
+
+Connect an MCP client to InDesign, Illustrator, Photoshop, After Effects and Premiere Pro through local servers.
+
+- Five application-specific implementations
+- One suite coordinator for two documented cross-app workflows
+- Node.js 18+, macOS or Windows
+- Install with npx or `brew install zachshallbetter/tap/adobe-mcp`
+[Explore Adobe MCP →](https://creativemcp.com/apps.html)
+
+### Blender MCP
+
+A Rust MCP server and companion Blender add-on for working with scenes, objects, materials and 3D asset pipelines.
+
+- Stdio MCP server with local Blender IPC
+- Blender 4.0+ and the companion add-on
+- Install with Homebrew or from source with Rust
+[Explore Blender MCP →](https://creativemcp.com/docs/implementations/blender.html)
+
+These projects are separate MCP implementations. They can be configured in a compatible client at the same time, but direct Adobe-to-Blender orchestration is not currently part of either project.
+
+Adobe MCP · five creative surfaces
+
+## Choose a place to start.
+
+Each Adobe server has its own tools and workflow. Read the implementation guide for app-specific requirements and behavior.
+
+[Browse Adobe application implementations →](https://creativemcp.com/apps.html) · [Explore the Capability Atlas →](https://creativemcp.com/capability-atlas.html)
+
+An open collection
+
+## More creative tools can join as they’re ready.
+
+New projects will be added as their implementations, documentation and evidence are ready to share. [Explore workflows across the current projects →](https://creativemcp.com/workflows.html)
+
+---
+
+Source: https://creativemcp.com/how-it-works.html
+
+Local setup · your tools stay yours
+
+# Get from idea to output in three steps.
+
+An MCP client starts a local server for the creative implementation you choose. That server connects to its supported application, so an agent can use the tools and context the implementation exposes.
+
+## The three steps
+
+### Choose an implementation
+
+Start with Adobe MCP for Adobe apps or Blender MCP for 3D work. Check each project’s prerequisites and supported workflows.
+
+### Connect your MCP client
+
+Install the implementation and add its local launch command to a compatible client. Some projects also require an app-side companion add-on.
+
+### Keep creating in your app
+
+Open the creative application and let your client use the available tools against local work, files and context.
+
+Choose your path
+
+## Each project has its own setup.
+
+### Adobe MCP
+
+Install the Suite coordinator or an app-specific server. It runs with Node.js and connects to the Adobe desktop application on the same machine.
+
+```
+claude mcp add --scope user adobe -- npx -y adobe-mcp-suite
+```
+
+Or install every Adobe server with Homebrew:
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/adobe-mcp
+```
+
+[Adobe setup guide →](https://creativemcp.com/docs/getting-started.html)
+
+### Blender MCP
+
+Install the Rust CLI and its Blender companion add-on. The add-on must be enabled in Blender 4.0 or later.
+
+```
+cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli
+```
+
+Or let Homebrew build it for you:
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install --HEAD zachshallbetter/tap/blender-mcp
+```
+
+[Blender setup guide →](https://creativemcp.com/docs/implementations/blender.html)
+
+One client · local implementations
+
+## Follow the work from prompt to app.
+
+The client communicates with each server over MCP. Implementations reach their target applications using the app-specific route documented by that project.
+
+Your instructionsbriefs · files · context
+
+MCP clientstarts local servers
+
+Creative applicationsAdobe · Blender
+
+Capability & evidence
+
+## Know what a status means.
+
+Documented
+
+Project guides describe the behavior and requirements.
+
+Implemented
+
+The capability is present in that implementation’s tools.
+
+Tested
+
+Automated checks cover the code or tool behavior they target.
+
+Validated
+
+The workflow has been run in the actual application and its result checked. This state is tracked separately.
+
+Adobe MCP publishes feature-level research and evidence in its [Capability Atlas](https://creativemcp.com/capability-atlas.html). Validation depends on the specific application and workflow; automated checks alone do not prove live-app behavior.
+
+Project boundaries
+
+## Separate tools. Clear handoffs.
+
+Adobe MCP and Blender MCP are independent projects. A compatible client can expose both to the same workflow, but moving a file between them is currently a user-managed handoff rather than a direct cross-project tool.
+
+[Explore projects →](https://creativemcp.com/projects.html) · [Browse workflow examples →](https://creativemcp.com/workflows.html) · [Browse documentation →](https://creativemcp.com/docs/)
+
+---
+
+Source: https://creativemcp.com/start.html
+
+A guided first connection
+
+# Start with the tools you have.
+
+Choose an implementation and client to get the right setup steps. This guide stays in your browser: it never scans your computer or sends project files anywhere.
+
+Adobe MCP · Claude Code
+
+```
+
+```
+
+Before you connect
+
+## A quick readiness check.
+
+Check each item after confirming it on your machine. The page cannot inspect installed apps, running processes, permissions or client configuration from the browser.
+
+0 of 0 checkedWork through the list to see your progress.
+
+Continue from here
+
+## Go from setup to a real workflow.
+
+[Explore example workflowsSee supported app handoffs and user-managed creative workflows →](https://creativemcp.com/workflows.html)[Check capability evidenceReview Adobe feature coverage and how each status is defined →](https://creativemcp.com/capability-atlas.html)[Download the starter projectGet a brief and reference board for your first manual handoff →](https://creativemcp.com/downloads/creative-mcp-starter.zip)
+
+---
+
+Source: https://creativemcp.com/about.html
+
+The person behind Creative MCP
+
+# An artist who builds creative software.
+
+Zach Shallbetter is an artist, designer, and creative technologist based in Spokane, Washington. He founded Snack Studio and created Creative MCP. It brings his Adobe MCP and Blender MCP projects together. The tools connect AI agents with creative software.
+Meet Zach
+
+[Image: Illustrated portrait of Zach Shallbetter seated in a vivid, paint-filled creative studio]
+
+Zach Shallbetter · artist, designer, creative technologist
+
+Why Creative MCP exists
+
+## Creative work deserves tools that understand the work.
+
+Creative MCP connects AI agents to the software used by artists and designers. Each implementation gives an MCP client a local path into a creative tool. Instructions and context can meet real documents, artwork, scenes, and timelines.
+
+The aim is practical: make creative software easier to reach through conversation and code. The application and its files stay in the workflow. So does the creator’s judgment.
+
+What makes it different
+
+## Built for creative practice. Clear about its limits.
+
+01
+
+### Close to the work
+
+Local MCP servers connect agents with supported desktop applications and the work already open there.
+
+02
+
+### Made for distinct tools
+
+InDesign, Illustrator, Photoshop, After Effects, Premiere Pro, and Blender each have different creative surfaces and implementation needs.
+
+03
+
+### Evidence stays visible
+
+The Adobe Capability Atlas separates documented features, automation routes, implementation coverage, checks, and live-app validation.
+
+[Explore the implementations →](https://creativemcp.com/projects.html)[Read the Capability Atlas →](https://creativemcp.com/capability-atlas.html)[Browse the documentation →](https://creativemcp.com/docs/)
+
+A practice across art and technology
+
+## Drawing led to creative technology.
+
+Zach’s practice began with drawing, illustration, comics, and murals. It grew into interface design, interactive media, and creative production software.
+
+For more than twenty years, he has worked between visual storytelling and technical implementation. Recent projects include computer-vision tools for video production. They support rotoscoping, object callouts, and masking. His [InDesign MCP server exposes 137 tools](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign).
+
+Creative MCP extends that work across Adobe applications and Blender. It connects code and conversation to the tools artists and designers use.
+
+About the creator
+
+## Zach Shallbetter
+
+Zach approaches creative software as an artist who builds his own tools. He wants creators to express an idea, shape the result, and understand what their tools are doing.
+
+Artist · Designer · Creative technologist · Spokane, Washington
+
+[Portfolio zachshallbetter.com](https://zachshallbetter.com/) [GitHub github.com/zachshallbetter](https://github.com/zachshallbetter) [LinkedIn linkedin.com/in/zachshallbetter](https://linkedin.com/in/zachshallbetter)
+
+---
+
+Source: https://creativemcp.com/docs/
+
+Documentation · local servers, one guide per surface
+
+# Find the right guide.
+
+Setup and product concepts, the MCP tool interface, command-line launch and configuration, then detailed references for Adobe MCP and Blender MCP implementations.
+
+PRODUCT GUIDES · PROTOCOL REFERENCE · IMPLEMENTATION MANUALS
+
+## Start here
+
+- [Guided setupChoose an implementation and client, then check local prerequisites.](https://creativemcp.com/start.html)
+- [Getting startedRequirements, install, client setup and first local workflow.](https://creativemcp.com/docs/getting-started.html)
+- [Content & capability guideWhat the tools work on, how to read coverage and evidence.](https://creativemcp.com/docs/content.html)
+- [MCP API referenceInitialization, tools/list, tools/call, help and result semantics.](https://creativemcp.com/docs/api.html)
+- [CLI & configurationLaunch commands, suite app selection and environment variables.](https://creativemcp.com/docs/cli.html)
+- [Architecture & distributionHow the series is organized, the Homebrew tap, the planned installer and conventions for new tools.](https://creativemcp.com/docs/architecture.html)
+- [Capability AtlasFeature-level data, automation routes, tool mapping and evidence.](https://creativemcp.com/capability-atlas.html)
+- [Workflow gallerySupported cross-app actions and clearly labeled manual handoffs.](https://creativemcp.com/workflows.html)
+
+## Implementation guides
+
+Each MCP implementation has a dedicated guide for its content surface, application connection, API conventions and setup. These pages explain how the implementations differ; package READMEs and generated references remain the source for complete tool schemas and options.
+
+- [InDesignLayout, documents, typography, tables, long documents and output.](https://creativemcp.com/docs/implementations/indesign.html)
+- [IllustratorArtboards, vector artwork, paths, type, effects and export.](https://creativemcp.com/docs/implementations/illustrator.html)
+- [PhotoshopPixels, documents, layers, selections, adjustments and output.](https://creativemcp.com/docs/implementations/photoshop.html)
+- [After EffectsProjects, compositions, animation, effects and rendering.](https://creativemcp.com/docs/implementations/aftereffects.html)
+- [Premiere ProProjects, sequences, timeline editing and UXP bridge setup.](https://creativemcp.com/docs/implementations/premiere.html)
+- [Adobe MCP coordinatorCross-app workflows and child-server orchestration.](https://creativemcp.com/docs/implementations/suite.html)
+- [Blender MCPRust server, Blender add-on, local IPC and 3D workflows.](https://creativemcp.com/docs/implementations/blender.html)
+- [Shared coreCommon server infrastructure for contributors and integrators.](https://creativemcp.com/docs/implementations/core.html)
+
+## Choose by task
+
+I want to install
+
+### Connect a client
+
+Follow [MCP client setup](https://creativemcp.com/docs/getting-started.html#clients), then see [CLI and configuration](https://creativemcp.com/docs/cli.html) for launch options.
+
+I want a tool schema
+
+### Inspect the API
+
+Use the server’s live MCP `tools/list` or `help` tool; open the matching [API guide](https://creativemcp.com/docs/api.html) for conventions and sources.
+
+I want to see coverage
+
+### Browse the Atlas
+
+Explore documented features, automation routes, MCP mapping and validation status in the [Capability Atlas](https://creativemcp.com/capability-atlas.html).
+
+I want to contribute
+
+### Make a change
+
+Read the [contribution guide](https://creativemcp.com/docs/contributing.html) for implementation boundaries and evidence expectations.
+
+---
+
+Source: https://creativemcp.com/docs/getting-started.html
+
+Field guide · setup to first workflow
+
+# Get set up.
+
+Install the local servers, connect them to your MCP client, understand which Adobe app each package reaches, and troubleshoot the bridge between your model and your creative work.
+
+LOCAL PROCESS · MCP OVER STDIO · macOS + WINDOWS
+
+On this page [Docs home](https://creativemcp.com/docs/)[Content guide](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)How it worksChoose a packageRequirements Quick startMCP client setupSuite coordinator App setupFirst workflowsConfiguration Files & safetyTroubleshootingReference library
+
+## How it works
+
+These are desktop automation servers. Your MCP client starts a Node.js process on the same computer as the Adobe app. The server accepts MCP messages over standard input/output (stdio), translates a tool call into an application script or bridge request, and returns the result to the client.
+
+01 · Ask
+
+### Your MCP client
+
+Claude Code, Claude Desktop, Cursor, Warp, or another client that can launch an MCP server process.
+
+02 · Route
+
+### Local MCP server
+
+Node runs on your machine. The server validates arguments and routes the request to the selected application backend.
+
+03 · Act
+
+### Adobe desktop app
+
+The app must be installed and generally open (or launchable). Your client and Adobe files stay in your local workflow.
+
+Not a hosted Adobe endpoint. The public website provides documentation and the capability atlas. Tool execution happens locally through the server process you configure in your MCP client; this website does not proxy MCP calls.
+
+## Choose a package
+
+Install one app server for direct control of that application. Add the Suite coordinator when you want its current cross-app workflows. The coordinator does not expose the full tool list of its child servers.
+
+| Package | Use it for | Connection route | Install
+
+| InDesign
+`adobe-mcp-indesign` | Documents, pages, typography, tables, long documents and export. | ExtendScript via AppleScript on macOS or COM/PowerShell on Windows; optional UXP backend. | `npx -y adobe-mcp-indesign`
+
+| Illustrator
+`adobe-mcp-illustrator` | Documents, artboards, layers, vectors, typography, effects and export. | ExtendScript via AppleScript on macOS or COM/PowerShell on Windows. | `npx -y adobe-mcp-illustrator`
+
+| Photoshop
+`adobe-mcp-photoshop` | Documents, pixels, layers, selections, adjustments, painting and export. | ExtendScript through local desktop automation. | `npx -y adobe-mcp-photoshop`
+
+| After Effects
+`adobe-mcp-aftereffects` | Projects, footage, compositions, layers, keyframes, effects and render queue. | ExtendScript through local desktop automation. | `npx -y adobe-mcp-aftereffects`
+
+| Premiere Pro
+`adobe-mcp-premiere` | Projects, sequences, timeline edits, markers, effects and export. | Local WebSocket bridge to a UXP plugin panel in Premiere Pro. | `npx -y adobe-mcp-premiere`
+
+| Suite coordinator
+`adobe-mcp-suite` | Two coordinated Illustrator → InDesign handoffs. | Starts child MCP servers locally and delegates workflow steps. | `npx -y adobe-mcp-suite`
+
+Tool counts, exact coverage, evidence levels and known gaps are in the [Capability Atlas](https://creativemcp.com/capability-atlas.html). The individual package guides document each package's current tool surfaces and options.
+
+## Requirements
+
+- Node.js 18 or later. Use an up-to-date LTS release; `npx` ships with npm.
+- macOS or Windows for the listed desktop server integrations. macOS may prompt you to authorize Terminal or Node to control an Adobe app in System Settings → Privacy & Security → Automation.
+- The corresponding Adobe desktop app installed on the same computer. InDesign, Illustrator, Photoshop and After Effects guides specify 2023+; Premiere Pro requires 25.6+ and its MCP Bridge UXP plugin loaded.
+- An MCP client that can launch a command with arguments and environment variables and communicate over stdio.
+- Premiere only: UXP Developer Tool to load the plugin until a published installation path is documented; plugin/server ports and bridge token must match.
+
+Adobe app versions and backend support can differ by operation. Consult the app guide and the tool's `help` response for version-specific behavior.
+
+## Quick start
+
+- Install Node.js 18 or later and the Adobe application you intend to automate.
+- Register the matching package in your MCP client using the setup below.
+- Restart or reconnect the MCP client so it launches the process and refreshes its tool list.
+- Open the Adobe app and a suitable document (or ask a read-only status tool what is open).
+- Start with a small, reversible request. Confirm the target document, selection, units and output path before asking for a change or export.
+
+For example: “In the active Illustrator document, list the artboards and report their sizes. Don’t make changes.” Once the connection is confirmed, try a bounded edit in a copy of a document.
+
+## MCP client setup
+
+### Claude Code: one app server
+
+```
+claude mcp add --scope user illustrator -- npx -y adobe-mcp-illustrator
+```
+
+Replace `illustrator` and the package name with the Adobe application you want. Omit `--scope user` if you prefer the client’s default scope.
+
+### Claude Code: the Suite coordinator
+
+```
+claude mcp add --scope user adobe -- npx -y adobe-mcp-suite
+```
+
+### Any client with an `mcpServers` configuration
+
+```
+{
+"mcpServers": {
+"illustrator": {
+"command": "npx",
+"args": ["-y", "adobe-mcp-illustrator"]
+}
+}
+}
+```
+
+For Claude Desktop, edit its MCP server configuration file. Cursor, Warp and other clients use their own configuration screen or file; follow the client’s current instructions for where to place this block. Do not paste the JSON into a shell command. See the dedicated [CLI and configuration reference](https://creativemcp.com/docs/cli.html) for source-checkout launch and environment-variable details.
+
+### Run a specific published version
+
+```
+{
+"mcpServers": {
+"illustrator": {
+"command": "npx",
+"args": ["-y", "adobe-mcp-illustrator@0.9.0"]
+}
+}
+}
+```
+
+Pin the package version when you need repeatable team setups; check npm for the current published version before updating the pin.
+
+### Install with Homebrew
+
+On macOS or Linux, the Creative MCP tap installs the Suite coordinator and every app server onto your `PATH`, so clients can launch them without `npx`. Homebrew 7 and later asks you to trust a third-party tap once.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/adobe-mcp
+claude mcp add adobe -- adobe-mcp-suite
+claude mcp add illustrator -- adobe-mcp-illustrator
+```
+
+## Suite coordinator
+
+The coordinator currently offers two workflows across InDesign and Illustrator. It starts the app servers it needs as child MCP processes, then delegates the individual actions. Install an app's standalone package as well if you need its direct tools in your client.
+
+Illustrator → InDesign
+
+### Place artwork
+
+Place an artboard from the active Illustrator document on an InDesign page as a link to its `.ai` source. The Illustrator document is saved first by default.
+
+Illustrator → InDesign
+
+### Copy swatches
+
+Copy supported process and spot swatches with exact values. Gradients and patterns are reported, not copied; built-in InDesign swatches are preserved.
+
+### Select which child servers load
+
+```
+npx -y adobe-mcp-suite --apps indesign,illustrator
+# or set ADOBE_MCP_APPS=indesign,illustrator
+```
+
+The supported app IDs are `indesign`, `illustrator`, `photoshop`, `aftereffects` and `premiere`. The current coordinator workflows require both InDesign and Illustrator. Selecting other apps does not add new cross-app workflows or re-export their tools.
+
+### Allow the files needed by a workflow
+
+File operations are confined to the user’s home directory and any additional per-app allowed directories. For a handoff, configure both participating servers for the directory containing the source artwork and the destination document as needed.
+
+```
+{
+"mcpServers": {
+"adobe": {
+"command": "npx",
+"args": ["-y", "adobe-mcp-suite", "--apps", "indesign,illustrator"],
+"env": {
+"INDESIGN_ALLOWED_DIRS": "/Users/you/Projects",
+"ILLUSTRATOR_ALLOWED_DIRS": "/Users/you/Projects"
+}
+}
+}
+}
+```
+
+On Windows, use a Windows path and separate multiple allowed directories with semicolons. The coordinator forwards each server only the variables it needs.
+
+## Application setup
+
+Each app server has its own behavior, terminology, tool names and supported operations. Its MCP `help` tool describes parameters and categories from the definitions the server advertises.
+
+Desktop automation
+
+### InDesign
+
+macOS uses AppleScript; Windows uses COM via PowerShell. Optional UXP bridge support is available. The guide explains page units, document selection, path permissions and backend selection.
+
+[Read the InDesign guide ↗](https://creativemcp.com/docs/implementations/indesign.html)
+
+Desktop automation
+
+### Illustrator
+
+Learn artboard-relative geometry, coordinate direction, item targeting, color formats, fonts and allowed paths before editing artwork.
+
+[Read the Illustrator guide ↗](https://creativemcp.com/docs/implementations/illustrator.html)
+
+Desktop automation
+
+### Photoshop
+
+Review layer and selection identifiers, image dimensions, file operations, export options and its local target/backend settings.
+
+[Read the Photoshop guide ↗](https://creativemcp.com/docs/implementations/photoshop.html)
+
+Desktop automation
+
+### After Effects
+
+Review composition and layer targeting, time/keyframe conventions, render queue behavior, file access and script timeout settings.
+
+[Read the After Effects guide ↗](https://creativemcp.com/docs/implementations/aftereffects.html)
+
+UXP plugin bridge
+
+### Premiere Pro
+
+Load the MCP Bridge panel, match its port and optional token to the server, and understand its tested status and API-version limits.
+
+[Read the Premiere Pro guide ↗](https://creativemcp.com/docs/implementations/premiere.html)
+
+Premiere Pro validation status: the repository guide says the server has not yet been tested against a real Premiere Pro session. Script checks and a stand-in test DOM do not establish live-app validation. See the guide’s “What is not certain yet” section.
+
+## Plan a first workflow
+
+- Inspect before editing. Ask for app status, document/project information, selections and relevant items first.
+- Specify the target. Name the active document or use stable IDs returned by list tools. Avoid relying on a repeated display name when IDs are available.
+- State units and bounds. Provide page/artboard dimensions, pixel sizes, frame/time units and a bounded set of objects where the tool requires them.
+- Choose an output path. Use a path in your home folder or explicitly allowed directory. Do not overwrite an existing deliverable unless you intend to.
+- Review before destructive work. Duplicate the document or project, check the intended selection, and ask the client to confirm before deleting, closing without saving, or replacing output.
+- Verify in the Adobe app. Open or inspect the result, check links/fonts/render status as appropriate, and save/export deliberately.
+
+Tool calls are discrete operations. A sequence of calls is not automatically an all-or-nothing transaction; inspect intermediate state when the workflow depends on a prior change.
+
+## Configuration
+
+Set environment variables in the MCP client’s server entry. Do not set them in a website form or commit real credentials to a repository.
+
+| Variable family | Applies to | Purpose
+
+| `*_ALLOWED_DIRS` | Each app server, e.g. `PHOTOSHOP_ALLOWED_DIRS` | Add directories to the default home-folder file access scope. Delimiter is platform-specific: `:` on macOS, `;` on Windows.
+
+| `ADOBE_MCP_APPS` | Suite coordinator | Choose which app server IDs the coordinator starts.
+
+| `*_APP_NAME` | App-specific, where supported | Select a local Adobe application installation. Availability and behavior vary by package and operating system.
+
+| `*_SCRIPT_TIMEOUT_MS` | App-specific | Adjust how long a server waits for a script or bridge response. See the package guide for defaults and exceptions.
+
+| `*_TARGET`, `ADOBE_TARGET` | Supported ArtCraft-compatible servers | Route compatible operations to a named local ArtCraft adapter. Support is app-specific; consult that server’s guide.
+
+| `PREMIERE_WS_PORT` | Premiere Pro | Choose the loopback port used by the local server and set the same port in the UXP bridge panel.
+
+| `BRIDGE_TOKEN`, `PREMIERE_BRIDGE_TOKEN` | Premiere Pro | Optional local bridge authentication; use the per-server override when coordinating with another bridge consumer. Keep tokens private.
+
+| `UXP_BRIDGE_URL` | Packages with a UXP backend | Set the local bridge address only where the app guide documents that backend.
+
+Variable names do not imply every package supports every option. Confirm the exact variable, default, delimiter and forwarding behavior in the package README.
+
+## Files, permissions & safety
+
+- Local process, local authority. MCP tools can make changes in the desktop application under your user session. Grant only the client permissions needed for the apps you use.
+- File paths are constrained. Shared path policy confines supported file operations to the home directory and configured allowed directories, and rejects system-directory paths. An app may still interpret its own document references according to its own behavior.
+- Destructive operations need review. Deleting pages/layers/clips, closing unsaved work, replacing files and similar actions can lose work. Tool annotations help capable clients recognize destructive or open-world calls; review each target and result.
+- Use copies for consequential edits. Save a working copy, inspect the active document/selection and verify output before relying on an automated result.
+- Premiere bridge stays local. Its documented server binds to loopback. A bridge token is stored by the plugin panel in local storage; protect access to the machine and do not share the token.
+- Custom code is powerful. App-specific execution tools that accept code are not equivalent to ordinary constrained editing tools. Read their package security notes before enabling or using them.
+
+## Troubleshooting
+
+### The server does not appear in the client
+
+Check the client’s MCP configuration syntax, command name and package spelling. Confirm Node/npm are on the client process PATH, then restart or reconnect the client and inspect its MCP logs.
+
+### The client cannot start `npx`
+
+Run `node --version` and `npm --version` in a terminal. Install Node.js 18+ and ensure the client app inherits a PATH that includes Node and npm.
+
+### The server says no document is open
+
+Open the target Adobe app and a document/project. Ask for the app’s status or list tools first, then identify the intended active document.
+
+### macOS asks for Automation permission
+
+Approve the prompt for the process actually controlling the Adobe app (often Terminal, the MCP client, or Node). Review it under System Settings → Privacy & Security → Automation.
+
+### A file path is rejected
+
+Use an absolute path inside your home directory or add its parent directory to that server’s `*_ALLOWED_DIRS`. Restart the MCP server after changing client environment settings.
+
+### Premiere says the bridge is disconnected
+
+Confirm Premiere Pro 25.6+, load the UXP plugin and open its MCP Bridge panel. Match its port and token to the server configuration; then run `premiere_status`.
+
+### A call times out
+
+Check for a modal dialog in the Adobe app and verify the app is responsive. Some renders and long operations need a longer package-specific timeout; do not blindly retry an operation that may have completed.
+
+### A tool or parameter is unfamiliar
+
+Call `help` for a tool or category. Use the exact advertised argument names and inspect current document state rather than guessing IDs or enum values.
+
+### A cross-app workflow is missing
+
+The coordinator currently advertises its supported InDesign/Illustrator workflows only when both child servers are loaded. It does not expose standalone app tools.
+
+## Reference library
+
+Use the maintained package guides as the source of truth for current tools, configuration, platform behavior and limitations. The site explains the product and common setup; it does not replace the detailed references.
+
+- [Repository overviewPackages, install options, client config and development.](https://github.com/zachshallbetter/adobe-mcp/blob/main/README.md)
+- [Suite coordinatorCross-app workflows and delegation behavior.](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/suite)
+- [InDesign serverTool guide, platform backends, conventions and security.](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign)
+- [Illustrator serverArtboards, coordinates, targeting, colors and tools.](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/illustrator)
+- [Photoshop serverDocument, layer, image, export and configuration reference.](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/photoshop)
+- [After Effects serverProjects, compositions, timing, scripting and rendering.](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/aftereffects)
+- [Premiere Pro serverUXP setup, bridge security, API limits and validation status.](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/premiere)
+- [Security policyReport security issues through the repository’s stated process.](https://github.com/zachshallbetter/adobe-mcp/blob/main/SECURITY.md)
+- [ContributingDevelopment and project contribution guidance.](https://github.com/zachshallbetter/adobe-mcp/blob/main/CONTRIBUTING.md)
+- [Capability AtlasDetailed feature coverage, routes, evidence and workflows.](https://creativemcp.com/capability-atlas.html)
+- [Suite on npmPublished package versions and release information.](https://www.npmjs.com/package/adobe-mcp-suite)
+- [GitHub repositorySource, releases and issue tracker.](https://github.com/zachshallbetter/adobe-mcp)
+
+---
+
+Source: https://creativemcp.com/docs/content.html
+
+[Docs](https://creativemcp.com/docs/) / Content & capability guide
+
+What the tools work on
+
+# Content & capability guide
+
+Understand the difference between an Adobe feature, an automation route, an MCP implementation, a passing static check, and a workflow verified in the live application.
+
+[Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)
+
+## Six different things called “coverage”
+
+| Stage | What it means | What it does not establish
+
+| Documented | A feature appears in Adobe product guides, scripting references or other cited source material. | That an API can reach it or an MCP server has a tool for it.
+
+| Scriptable | A known automation route may reach the feature: object model, menu command, UXP API or another documented route. | That the route is supported on every OS/app version or covered by this project.
+
+| Implemented | An MCP tool is mapped to the feature in the atlas dataset. | That the mapping is complete, the app accepted the operation, or the result is correct.
+
+| Static checks | Generated scripts were exercised with a stubbed application and checked against the relevant API/type information. | Live behavior, application version compatibility, visual quality or successful production output.
+
+| Live validated | A workflow was run in the actual Adobe app and its result checked. | Universal behavior beyond the tested version, document, platform and conditions.
+
+Atlas percentages use that app’s documented feature count as the denominator. Tool counts represent MCP tools mapped in that dataset. Read the snapshot date and methodology before comparing releases.
+
+## What the app servers work on
+
+### InDesign
+
+Documents and books, pages and spreads, text, tables, styles, color, images, long-document structure, interactive output, prepress and export.
+
+### Illustrator
+
+Documents, artboards, layers, vector shapes and paths, text, swatches, appearance, effects, symbols, data sets, images, actions and output.
+
+### Photoshop
+
+Documents and canvas, pixels, layers and masks, selections, channels, adjustments, filters, painting, retouching, type, actions and export.
+
+### After Effects
+
+Projects and footage, compositions, layers and time, keyframes, expressions, effects, text, masks, shapes, tracking, 3D and rendering.
+
+### Premiere Pro
+
+Projects and media, sequences, timeline edits, markers, effects, keyframes, color, audio, captions/transcripts, metadata and export.
+
+### Suite coordinator
+
+Two explicitly coordinated workflows today: place Illustrator artwork in InDesign and copy supported swatches from Illustrator to InDesign.
+
+Use the [Capability Atlas](https://creativemcp.com/capability-atlas.html) to explore the detailed feature inventory and its sources. Use each [implementation guide](https://creativemcp.com/docs/) for tool behavior and package-specific constraints.
+
+## Choose by content
+
+- Read before write: request status, document/project information, list results and selected items before making edits.
+- Stable target: use IDs returned by list/create tools where the app supports them; verify the selection and active document.
+- App-native units: follow the specific app guide. InDesign documentation commonly specifies millimetres; Illustrator uses points from an artboard’s top-left with y increasing downward; Photoshop geometry is pixels from the document top-left; Premiere time values are seconds.
+- Export is its own workflow: specify format, preset/options, path and whether overwrite is intended; confirm the generated file in the target app or viewer.
+- Coverage is not endorsement: the Atlas may document features that are inaccessible through a script route or absent from our tools.
+
+---
+
+Source: https://creativemcp.com/docs/api.html
+
+[Docs](https://creativemcp.com/docs/) / MCP API reference
+
+Protocol surface · tool schemas
+
+# MCP API reference
+
+The Adobe servers expose tools through MCP over stdio. Use the server’s advertised schema as the executable contract; this page explains discovery, calls, instructions, results and where to find exact per-tool parameters.
+
+[Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)
+
+## Transport and lifecycle
+
+The MCP client launches the configured command as a local process and communicates over standard input/output. The process stdout is protocol traffic; startup diagnostics belong on stderr. There is no public HTTP API for the desktop servers.
+
+- The client starts the server and negotiates MCP initialization.
+- The server returns its identity, capabilities and app-specific usage instructions.
+- The client discovers tool names and JSON input schemas with `tools/list`.
+- The client invokes a tool with `tools/call` and arguments that match the advertised schema.
+- The server validates inputs, performs the app operation, then returns structured text/content or an error result.
+
+## Discover the live API
+
+Do not treat a marketing summary, Atlas row or old copy of a README as the current schema. The connected server’s `tools/list` is authoritative for the tool names and inputs exposed by that running package.
+
+Discovery
+
+### `tools/list`
+
+Returns advertised tools and their JSON input schemas. Reconnect after a package upgrade so the client refreshes its list.
+
+Detailed guidance
+
+### `help`
+
+App servers with the help utility can describe a tool, list categories, and provide detailed usage/examples. Consult the app-specific guide for its exact formats.
+
+Execution
+
+### `tools/call`
+
+Calls one tool using the exact tool name and schema-defined argument object. Respect enum, unit, target and path constraints.
+
+```
+Client action (conceptual):
+discover tools → choose an advertised name
+call tool with arguments matching that tool's input schema
+inspect isError and returned content before continuing
+```
+
+Use the package tool references for full parameter tables: [InDesign generated tool reference](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign/docs), and the [Illustrator](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/illustrator), [Photoshop](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/photoshop), [After Effects](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/aftereffects), [Premiere](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/premiere) and [Suite](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/suite) READMEs.
+
+## Tool metadata and results
+
+- Input schema: use the exact property names, required fields, types, ranges and enum values returned by the server.
+- Instructions: server instructions explain app conventions such as units, indices, colors, path rules, errors and safe targeting. MCP clients may pass them to the model as connection context.
+- Annotations: supported tools may identify read-only, destructive, idempotent and open-world behavior. Treat annotations as useful metadata, not a replacement for checking the target.
+- Errors: a failed tool may return `isError: true` with a message. Stop and interpret that result; do not assume the operation partially or fully succeeded.
+- Stateful application: active document, selection, current sequence and UI state can change between calls. Re-read state when later steps depend on it.
+
+Suite API is intentionally narrow. The coordinator exposes its cross-app workflows; it does not proxy every child server’s tools. Connect an app package separately for direct application tools.
+
+## Execution boundaries
+
+Most app tools generate a script for ExtendScript or UXP and send it to a local Adobe app or plugin. Premiere Pro uses its UXP Bridge panel. The tool call is local computer automation with the permissions of the configured process; it is not a hosted service request. Review app-specific notes about unrestricted code-execution tools before using them.
+
+---
+
+Source: https://creativemcp.com/docs/cli.html
+
+[Docs](https://creativemcp.com/docs/) / CLI & configuration
+
+Launch commands · environment
+
+# CLI & configuration
+
+These packages are MCP server processes launched by your client. They are not general command-line utilities; only the Suite coordinator currently documents app selection flags.
+
+[Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)
+
+## Install and launch
+
+### One published app server
+
+```
+claude mcp add illustrator -- npx -y adobe-mcp-illustrator
+```
+
+Substitute the desired package name. For another MCP client, configure the command and arguments instead of running it as a one-shot shell command.
+
+### Suite coordinator
+
+```
+claude mcp add adobe -- npx -y adobe-mcp-suite
+```
+
+Optional global install is documented for the suite package:
+
+```
+npm install -g adobe-mcp-suite
+```
+
+### Homebrew
+
+The Creative MCP tap installs the Suite coordinator and links every app server, including the InDesign UXP bridge, onto your `PATH`. Homebrew 7 and later asks you to trust a third-party tap once.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/adobe-mcp
+```
+
+Installed commands: `adobe-mcp-suite`, `adobe-mcp-indesign`, `adobe-mcp-indesign-uxp-bridge`, `adobe-mcp-illustrator`, `adobe-mcp-photoshop`, `adobe-mcp-premiere` and `adobe-mcp-aftereffects`. Point your client at the command name instead of `npx`.
+
+## Suite app selection
+
+The coordinator accepts `--apps ids`, `--apps=ids`, or `ADOBE_MCP_APPS`. If none is supplied, it loads InDesign and Illustrator, the current workflow dependencies. Use `all` to load all five app servers.
+
+```
+npx -y adobe-mcp-suite --apps indesign,illustrator
+npx -y adobe-mcp-suite --apps=photoshop,aftereffects
+ADOBE_MCP_APPS=premiere npx -y adobe-mcp-suite
+npx -y adobe-mcp-suite --apps all
+```
+
+Valid IDs: `indesign`, `illustrator`, `photoshop`, `aftereffects`, `premiere`. Unknown IDs fail startup. Loading an app does not add coordinator workflows for it.
+
+## Run from a source checkout
+
+```
+git clone https://github.com/zachshallbetter/adobe-mcp.git
+cd adobe-mcp
+npm install
+
+# Suite coordinator
+node packages/suite/src/index.js --apps indesign,illustrator
+
+# Standalone MCP server
+node packages/illustrator/src/index.js
+```
+
+These entrypoints stay open and speak MCP over stdio, so a client should launch them. The repository’s root scripts are for development checks, not a separate product CLI:
+
+```
+npm run check
+npm test
+```
+
+## No generic CLI command surface
+
+For the app servers, the documented interface is the MCP protocol, not shell flags like `--help`, `status` or `export`. To inspect tools, connect the server and use `tools/list` or the server’s MCP `help` tool. To smoke-check startup, use an MCP client or send MCP initialization and tool-list requests over stdio; tests use stubs and do not require Adobe apps.
+
+## Configuration variables
+
+| Variable | Scope | Use
+
+| `ADOBE_MCP_APPS` | Suite | Comma-separated app IDs; suite-only.
+
+| `*_ALLOWED_DIRS` | App-specific | Additional file directories. Use colon-separated paths on macOS and semicolons on Windows.
+
+| `*_APP_NAME` | Where package supports it | Select or identify the local Adobe app; see that package guide.
+
+| `*_SCRIPT_TIMEOUT_MS` | App-specific | Script/operation wait limit; defaults vary by package.
+
+| `*_BACKEND`, `*_TARGET` | Supported packages only | Select documented backend or compatible local ArtCraft target.
+
+| `PREMIERE_WS_PORT` | Premiere | Loopback bridge port; configure the same value in the plugin panel.
+
+| `BRIDGE_TOKEN`, `PREMIERE_BRIDGE_TOKEN` | Premiere | Optional shared secret for local bridge authentication; keep private.
+
+These patterns are not universal aliases: check the app README for exact accepted names, defaults, precedence and whether the Suite coordinator forwards them. Configure variables inside the MCP client’s server entry and restart the process after changes.
+
+---
+
+Source: https://creativemcp.com/docs/architecture.html
+
+[Docs](https://creativemcp.com/docs/) / Architecture & distribution
+
+How the series fits together
+
+# Architecture & distribution
+
+Creative MCP is a series of independent MCP implementations created by Zach Shallbetter. Each tool lives in its own repository and release cycle. They share one website, one Homebrew tap and, as planned, one installer and catalogue.
+
+[Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)
+
+## The series today
+
+Each implementation is a separate project with its own language, licence and release process. They share no runtime, API or process. A client can load several at once, but moving files between them is a handoff you manage.
+
+| Project | Source | Language | Install | Licence
+
+| [Adobe MCP](https://creativemcp.com/apps.html): five app servers, Suite coordinator, shared core | [adobe-mcp](https://github.com/zachshallbetter/adobe-mcp) | Node.js 18+ | Homebrew `zachshallbetter/tap/adobe-mcp`, npm `adobe-mcp-*` | MIT
+
+| [Blender MCP](https://creativemcp.com/docs/implementations/blender.html): Rust server, CLI and Blender add-on | [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) | Rust | Homebrew `zachshallbetter/tap/blender-mcp` (`--HEAD` until a tagged release), Cargo from source | MIT OR Apache-2.0
+
+| Homebrew tap | [homebrew-tap](https://github.com/zachshallbetter/homebrew-tap) | Ruby formulae | `brew tap zachshallbetter/tap` |
+
+## How releases reach you
+
+Every tool is published through its own ecosystem first (npm for Adobe MCP, Cargo for Blender MCP), then gets a formula in the Creative MCP Homebrew tap. Homebrew installs the runtime the tool needs, so you don't have to set up Node.js or Rust yourself.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap        # Homebrew 7+: trust a third-party tap once
+brew install zachshallbetter/tap/adobe-mcp
+brew install --HEAD zachshallbetter/tap/blender-mcp
+```
+
+Each formula runs a real MCP `initialize` check as its test. Update with `brew upgrade`. For Blender MCP, use `brew upgrade --fetch-HEAD blender-mcp` until it has tagged releases.
+
+## Planned: one installer for the series
+
+Status: Planned. The installer and catalogue described here do not exist yet. Until they ship, use the per-tool installs above or the [setup builder](https://creativemcp.com/start.html).
+
+A browser can't see which apps you have installed, so the series will get a small local installer that can. `creative-mcp setup` will:
+
+- detect installed creative apps (on macOS by bundle ID, for example `com.adobe.Photoshop` and `org.blenderfoundation.blender`) and MCP clients (commands on your `PATH` and their config files)
+- show a checklist with the matching tools pre-selected, and let you change it
+- install your choices with Homebrew where available, or the tool's own method otherwise
+- register each tool with the clients you choose, showing every config change first and backing up the file
+- start each server once to confirm it answers MCP `initialize`
+
+It will also have `list`, `doctor`, `update`, `add` and `remove` commands, and `--yes`, `--dry-run` and `--json` flags. Detection runs only on your machine and sends nothing anywhere.
+
+```
+brew install zachshallbetter/tap/creative-mcp   # planned
+creative-mcp setup                             # planned
+```
+
+## Planned: one catalogue for every tool
+
+Every place that lists tools (these docs, the setup builder, [llms.txt](https://creativemcp.com/llms.txt), the installer and the tap) will read one versioned catalogue, `registry.json`. Each entry records the tool's repository, licence, author, capability status, install methods, server commands, the apps it targets and how to detect them, and the clients it supports. Adding a tool to the series then means adding one entry.
+
+## Conventions for new tools
+
+| Thing | Rule | Example
+
+| Catalogue ID | Lowercase subject, one word | `adobe`, `blender`
+
+| Repository | `<id>-mcp` | `adobe-mcp`
+
+| Homebrew formula | `<id>-mcp` in `zachshallbetter/tap` | `blender-mcp`
+
+| Packages and server commands | `<id>-mcp`, plus `<id>-mcp-<app>` for per-app servers | `adobe-mcp-photoshop`
+
+| Client registration name | `<id>`, or `<app>` for a per-app server | `claude mcp add photoshop -- adobe-mcp-photoshop`
+
+| Docs page | `/docs/implementations/<id>.html` | [Blender MCP](https://creativemcp.com/docs/implementations/blender.html)
+
+| Capability status | Documented, Implemented, Tested or Validated | See [Content & capability guide](https://creativemcp.com/docs/content.html)
+
+## Adding a tool to the series
+
+- Create the repository with a README, licence files, contribution guide and tagged releases.
+- Publish a package and add a formula to the tap with a working test.
+- Add the catalogue entry, with detection rules checked on a real machine.
+- Add the implementation guide to these docs.
+- Record capability status honestly: only Validated means the workflow ran in the real app and its result was checked.
+
+See the [contribution guide](https://creativemcp.com/docs/contributing.html) for review expectations.
+
+---
+
+Source: https://creativemcp.com/docs/contributing.html
+
+Contributing · implementation by implementation
+
+# Make a useful tool easier to reach.
+
+Creative MCP is a collection of open implementations for creative applications. A contribution should make one implementation or a documented workflow more useful while keeping its capabilities and limits clear.
+
+Start with the project
+
+## Choose the right home for the change.
+
+### Adobe MCP
+
+Adobe app servers and coordinator work live in the Adobe MCP repository. Follow that repository’s contributor instructions and app-specific requirements.
+[Open Adobe MCP on GitHub ↗](https://github.com/zachshallbetter/adobe-mcp)
+
+### Blender MCP
+
+The Rust CLI, Blender companion add-on and Blender-specific documentation live in the Blender MCP repository. Follow its current build and contribution guidance.
+[Open Blender MCP on GitHub ↗](https://github.com/zachshallbetter/blender-mcp-rs)
+
+These implementations are maintained in separate repositories and have separate setup and capability boundaries. A shared website does not imply a shared runtime, API or automatic handoff.
+
+Proposing a new tool
+
+## Join the series with the same conventions.
+
+A new implementation gets its own repository, published package, Homebrew formula in `zachshallbetter/tap`, implementation guide and, once the catalogue ships, a catalogue entry with detection rules checked on a real machine. Names follow one pattern: `<id>-mcp` for the repository, formula and package, and `<id>-mcp-<app>` for per-app servers.
+[Read the architecture & conventions →](https://creativemcp.com/docs/architecture.html#adding-a-tool)
+
+Make the contribution reviewable
+
+## Show what changed and how you know.
+
+### State the user task.
+
+Name the application, the operation, the required input and the expected result. Keep the change scoped to the relevant implementation.
+
+### Keep claims tied to evidence.
+
+Distinguish documented, implemented, automated-check tested and validated in the real application. Link the source or run record behind each claim.
+
+### Document setup and limits.
+
+Record supported application and client versions, permissions, platform differences, failure cases and any manual handoff still required.
+
+For a workflow example
+
+## Describe the handoff honestly.
+
+When an example spans implementations, list which server performs each step, what the person exports or imports, what the client coordinates, and which operations have actually been validated. Do not imply automatic file transfer or cross-server orchestration unless the code provides it.
+[Review workflow examples](https://creativemcp.com/workflows.html)
+
+---
+
+Source: https://creativemcp.com/apps.html
+
+Adobe MCP · five creative surfaces
+
+# Pick up the work where it lives.
+
+Each Adobe app has its own local MCP server, tools and workflow. The Adobe MCP coordinator adds two supported handoffs, with an implementation guide for every surface.
+
+[ID
+
+## InDesign
+
+Pages, layouts, typography, tables, styles, long documents and export.
+adobe-mcp-indesignImplementation guide ↗](https://creativemcp.com/docs/implementations/indesign.html) [AI
+
+## Illustrator
+
+Artboards, vector shapes, paths, layers, type, color and artwork export.
+adobe-mcp-illustratorImplementation guide ↗](https://creativemcp.com/docs/implementations/illustrator.html) [PS
+
+## Photoshop
+
+Documents, pixels, layers, selections, adjustments, filters and export.
+adobe-mcp-photoshopImplementation guide ↗](https://creativemcp.com/docs/implementations/photoshop.html) [Ae
+
+## After Effects
+
+Projects, footage, compositions, keyframes, effects and rendering.
+adobe-mcp-aftereffectsImplementation guide ↗](https://creativemcp.com/docs/implementations/aftereffects.html) [Pr
+
+## Premiere Pro
+
+Projects, bins, sequences, timeline edits, markers, effects and exports.
+adobe-mcp-premiereImplementation guide ↗](https://creativemcp.com/docs/implementations/premiere.html)
+
+Beyond separate tools
+
+## Carry creative decisions across apps.
+
+The suite includes explicit cross-app workflows so source and destination apps can participate in a single task.
+
+01
+
+Place Illustrator artwork in InDesignPlace an artboard into a page as a link to the .ai file.
+`Illustrator → InDesign`
+
+02
+
+Copy swatches into InDesignCarry exact color values from the Illustrator document.
+`Illustrator → InDesign`
+
+[Browse the full feature inventory →](https://creativemcp.com/features.html)
+
+Install
+
+## Every Adobe server in one install.
+
+Homebrew installs the Suite coordinator and all five app servers onto your `PATH`. Prefer not to install anything? Each server also runs on demand with `npx`.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/adobe-mcp
+```
+
+[Build the setup for your client →](https://creativemcp.com/start.html)
+
+---
+
+Source: https://creativemcp.com/docs/implementations/indesign.html
+
+[Docs](https://creativemcp.com/docs/) / [Implementation guides](https://creativemcp.com/docs/#implementation-guides) / InDesign
+
+Implementation guide · InDesign
+
+# InDesign
+
+The InDesign MCP server controls documents, pages and spreads, typography, tables, styles, images and links, long-document workflows, interactive output, prepress and export.
+
+[Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)
+
+## What this implementation covers
+
+documents; pages, spreads and parent pages; text, stories and tables; typography and styles; images, links and color; books, indexing and cross-references; data merge; prepress and export; preferences and scripting.
+
+For feature-level detail and evidence, see the [Capability Atlas](https://creativemcp.com/capability-atlas.html).
+
+## Connection and requirements
+
+Runtime route
+
+### How it reaches the app
+
+ExtendScript via AppleScript on macOS or COM through PowerShell on Windows. Optional UXP bridge backends are described in the package guide.
+
+Prerequisites
+
+### What you need
+
+InDesign 2023 or later recommended; Node.js 18+; macOS or Windows.
+
+Package: `adobe-mcp-indesign`. Add it as a local stdio MCP server using [CLI & client configuration](https://creativemcp.com/docs/cli.html).
+
+## API and content conventions
+
+Use MCP help to inspect tools by category and exact arguments. A generated tool reference lives in the package docs. The package also includes optional UXP backend and bridge setup.
+
+Discover the running package’s exact tool names and JSON input schemas through MCP `tools/list`. If the server provides `help`, use it to inspect a tool or category. Schemas from a different package version may not match.
+
+Target and units: Measurements in the main tool set are commonly millimetres. Verify each tool description; object indices and units are tool-specific. File paths stay under the home folder plus INDESIGN_ALLOWED_DIRS.
+
+## CLI and configuration
+
+This package is launched as a persistent MCP process, not as a conventional one-shot CLI. Relevant settings documented by the package include:
+
+`INDESIGN_APP_NAME, INDESIGN_BACKEND, INDESIGN_SCRIPT_TIMEOUT_MS, INDESIGN_ALLOWED_DIRS, INDESIGN_TARGET; optional UXP bridge settings.`
+
+Variable names and defaults are package-specific; consult the package README before changing them. File-operation permissions and bridge tokens should be configured in the client’s environment, not embedded in prompts or checked into source.
+
+```
+claude mcp add indesign -- npx -y adobe-mcp-indesign
+```
+
+For client-neutral JSON configuration and source-checkout commands, see [CLI & configuration](https://creativemcp.com/docs/cli.html).
+
+## Full reference
+
+The repository README is maintained alongside this implementation and covers exact setup, tool families, package-specific behavior, limitations, security and development status.
+
+- [InDesign package README ↗](https://github.com/zachshallbetter/adobe-mcp/blob/main/packages/indesign/README.md)
+- [Generated InDesign tool reference ↗](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign/docs/TOOLS.md)
+- [Browse package source and supporting docs ↗](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign)
+- [MCP API conventions ↗](https://creativemcp.com/docs/api.html)
+- [Launch and environment reference ↗](https://creativemcp.com/docs/cli.html)
+
+---
+
+Source: https://creativemcp.com/docs/implementations/illustrator.html
+
+[Docs](https://creativemcp.com/docs/) / [Implementation guides](https://creativemcp.com/docs/#implementation-guides) / Illustrator
+
+Implementation guide · Illustrator
+
+# Illustrator
+
+The Illustrator MCP server works with documents, artboards, layers, vector shapes and paths, text, color, appearance, effects, symbols, patterns, images, actions, variables and export.
+
+[Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)
+
+## What this implementation covers
+
+document setup; artboards; artwork, shapes, paths and transforms; layers and selection; text and styles; color and appearance; effects, blends, brushes, patterns and symbols; images and export; actions and prepress.
+
+For feature-level detail and evidence, see the [Capability Atlas](https://creativemcp.com/capability-atlas.html).
+
+## Connection and requirements
+
+Runtime route
+
+### How it reaches the app
+
+ExtendScript via AppleScript on macOS or COM through PowerShell on Windows.
+
+Prerequisites
+
+### What you need
+
+Illustrator 2023 or later; Node.js 18+; macOS or Windows.
+
+Package: `adobe-mcp-illustrator`. Add it as a local stdio MCP server using [CLI & client configuration](https://creativemcp.com/docs/cli.html).
+
+## API and content conventions
+
+Use live MCP tools/list and help for exact definitions. Check coordinate direction, artboard index and target selector before editing.
+
+Discover the running package’s exact tool names and JSON input schemas through MCP `tools/list`. If the server provides `help`, use it to inspect a tool or category. Schemas from a different package version may not match.
+
+Target and units: Geometry uses points from the active artboard’s top-left; y increases downward. Target artwork by item ids, names or selection. Color accepts named swatches or documented color strings. File paths are home-folder confined plus ILLUSTRATOR_ALLOWED_DIRS.
+
+## CLI and configuration
+
+This package is launched as a persistent MCP process, not as a conventional one-shot CLI. Relevant settings documented by the package include:
+
+`ILLUSTRATOR_APP_NAME, ILLUSTRATOR_SCRIPT_TIMEOUT_MS, ILLUSTRATOR_ALLOWED_DIRS, ILLUSTRATOR_TARGET and documented shared backend settings.`
+
+Variable names and defaults are package-specific; consult the package README before changing them. File-operation permissions and bridge tokens should be configured in the client’s environment, not embedded in prompts or checked into source.
+
+```
+claude mcp add illustrator -- npx -y adobe-mcp-illustrator
+```
+
+For client-neutral JSON configuration and source-checkout commands, see [CLI & configuration](https://creativemcp.com/docs/cli.html).
+
+## Full reference
+
+The repository README is maintained alongside this implementation and covers exact setup, tool families, package-specific behavior, limitations, security and development status.
+
+- [Illustrator package README ↗](https://github.com/zachshallbetter/adobe-mcp/blob/main/packages/illustrator/README.md)
+- [Browse package source and supporting docs ↗](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/illustrator)
+- [MCP API conventions ↗](https://creativemcp.com/docs/api.html)
+- [Launch and environment reference ↗](https://creativemcp.com/docs/cli.html)
+
+---
+
+Source: https://creativemcp.com/docs/implementations/photoshop.html
+
+[Docs](https://creativemcp.com/docs/) / [Implementation guides](https://creativemcp.com/docs/#implementation-guides) / Photoshop
+
+Implementation guide · Photoshop
+
+# Photoshop
+
+The Photoshop MCP server works with documents and formats, canvas and image data, layers and masks, selections and channels, adjustments, filters, painting and retouching, type, paths, actions, batch operations and export.
+
+[Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)
+
+## What this implementation covers
+
+documents and formats; canvas, image and color; layers, masks and smart objects; selections and channels; adjustment/fill layers; filters; brush and retouch; type and paths; timeline, actions and batch; export and print.
+
+For feature-level detail and evidence, see the [Capability Atlas](https://creativemcp.com/capability-atlas.html).
+
+## Connection and requirements
+
+Runtime route
+
+### How it reaches the app
+
+ExtendScript through local desktop automation, with documented local ArtCraft adapter support for compatible tools.
+
+Prerequisites
+
+### What you need
+
+Photoshop 2023 or later; Node.js 18+; macOS or Windows.
+
+Package: `adobe-mcp-photoshop`. Add it as a local stdio MCP server using [CLI & client configuration](https://creativemcp.com/docs/cli.html).
+
+## API and content conventions
+
+The server includes a help tool. The package README describes tool families, units, target selection, timeout behavior and backend configuration.
+
+Discover the running package’s exact tool names and JSON input schemas through MCP `tools/list`. If the server provides `help`, use it to inspect a tool or category. Schemas from a different package version may not match.
+
+Target and units: Geometry is in pixels from the document’s top-left. Layer targets use IDs from list_layers, names or active:true. Supported color inputs vary by tool; review each schema. File access is home-folder confined plus PHOTOSHOP_ALLOWED_DIRS.
+
+## CLI and configuration
+
+This package is launched as a persistent MCP process, not as a conventional one-shot CLI. Relevant settings documented by the package include:
+
+`PHOTOSHOP_APP_NAME, PHOTOSHOP_SCRIPT_TIMEOUT_MS, PHOTOSHOP_ALLOWED_DIRS, PHOTOSHOP_BACKEND and PHOTOSHOP_TARGET; ArtCraft control settings where applicable.`
+
+Variable names and defaults are package-specific; consult the package README before changing them. File-operation permissions and bridge tokens should be configured in the client’s environment, not embedded in prompts or checked into source.
+
+```
+claude mcp add photoshop -- npx -y adobe-mcp-photoshop
+```
+
+For client-neutral JSON configuration and source-checkout commands, see [CLI & configuration](https://creativemcp.com/docs/cli.html).
+
+## Full reference
+
+The repository README is maintained alongside this implementation and covers exact setup, tool families, package-specific behavior, limitations, security and development status.
+
+- [Photoshop package README ↗](https://github.com/zachshallbetter/adobe-mcp/blob/main/packages/photoshop/README.md)
+- [Browse package source and supporting docs ↗](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/photoshop)
+- [MCP API conventions ↗](https://creativemcp.com/docs/api.html)
+- [Launch and environment reference ↗](https://creativemcp.com/docs/cli.html)
+
+---
+
+Source: https://creativemcp.com/docs/implementations/aftereffects.html
+
+[Docs](https://creativemcp.com/docs/) / [Implementation guides](https://creativemcp.com/docs/#implementation-guides) / After Effects
+
+Implementation guide · After Effects
+
+# After Effects
+
+The After Effects MCP server works with projects and footage, compositions and layers, time and keyframes, expressions, effects, text animators, masks, shape layers, paint/roto, 3D, tracking, color and the render queue.
+
+[Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)
+
+## What this implementation covers
+
+project and footage; compositions; layers and property paths; keyframes and animation; effects; text, shapes, masks and paint; tracking and 3D; render settings, output modules and queue management.
+
+For feature-level detail and evidence, see the [Capability Atlas](https://creativemcp.com/capability-atlas.html).
+
+## Connection and requirements
+
+Runtime route
+
+### How it reaches the app
+
+ExtendScript through local desktop automation; Windows may use AfterFX.exe to run scripts. Compatible operations can route to EffectCraft.
+
+Prerequisites
+
+### What you need
+
+After Effects 2023 or later; Node.js 18+; macOS or Windows.
+
+Package: `adobe-mcp-aftereffects`. Add it as a local stdio MCP server using [CLI & client configuration](https://creativemcp.com/docs/cli.html).
+
+## API and content conventions
+
+Use help for the exact tool schema. Static script audit does not establish that operations have been validated in a live After Effects session; use the package README for current evidence status.
+
+Discover the running package’s exact tool names and JSON input schemas through MCP `tools/list`. If the server provides `help`, use it to inspect a tool or category. Schemas from a different package version may not match.
+
+Target and units: Use project item IDs or composition names as documented. Layer indices follow After Effects’ 1-based convention; time values are seconds where specified. File operations use home-folder confinement plus AFTEREFFECTS_ALLOWED_DIRS.
+
+## CLI and configuration
+
+This package is launched as a persistent MCP process, not as a conventional one-shot CLI. Relevant settings documented by the package include:
+
+`AFTEREFFECTS_EXE (Windows), AFTEREFFECTS_ALLOWED_DIRS, AFTEREFFECTS_SCRIPT_TIMEOUT_MS, AFTEREFFECTS_TARGET and EffectCraft control settings where configured.`
+
+Variable names and defaults are package-specific; consult the package README before changing them. File-operation permissions and bridge tokens should be configured in the client’s environment, not embedded in prompts or checked into source.
+
+```
+claude mcp add aftereffects -- npx -y adobe-mcp-aftereffects
+```
+
+For client-neutral JSON configuration and source-checkout commands, see [CLI & configuration](https://creativemcp.com/docs/cli.html).
+
+## Full reference
+
+The repository README is maintained alongside this implementation and covers exact setup, tool families, package-specific behavior, limitations, security and development status.
+
+- [After Effects package README ↗](https://github.com/zachshallbetter/adobe-mcp/blob/main/packages/aftereffects/README.md)
+- [Browse package source and supporting docs ↗](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/aftereffects)
+- [MCP API conventions ↗](https://creativemcp.com/docs/api.html)
+- [Launch and environment reference ↗](https://creativemcp.com/docs/cli.html)
+
+---
+
+Source: https://creativemcp.com/docs/implementations/premiere.html
+
+[Docs](https://creativemcp.com/docs/) / [Implementation guides](https://creativemcp.com/docs/#implementation-guides) / Premiere Pro
+
+Implementation guide · Premiere Pro
+
+# Premiere Pro
+
+The Premiere Pro MCP server works with projects and media, bins, sequences, timeline edits, markers, effects and keyframes, color, audio, graphics/captions, transcripts, metadata and export.
+
+[Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)
+
+## What this implementation covers
+
+Project and media; sequences/settings; timeline clips/tracks; markers; effects, transitions and keyframes; color and audio; graphics/captions/transcripts; metadata; export and application events.
+
+For feature-level detail and evidence, see the [Capability Atlas](https://creativemcp.com/capability-atlas.html).
+
+## Connection and requirements
+
+Runtime route
+
+### How it reaches the app
+
+A local WebSocket server connects to the MCP Bridge UXP panel inside Premiere Pro. Premiere UXP initiates the connection to the local server.
+
+Prerequisites
+
+### What you need
+
+Premiere Pro 25.6+; Node.js 18+; macOS or Windows; UXP Developer Tool to load the plugin until the package provides a published installation route.
+
+Package: `adobe-mcp-premiere`. Add it as a local stdio MCP server using [CLI & client configuration](https://creativemcp.com/docs/cli.html).
+
+## API and content conventions
+
+The package guide says not yet tested against a real Premiere Pro session. Read its security, version-specific API limitations, connection steps and “What is not certain yet” section before production use.
+
+Discover the running package’s exact tool names and JSON input schemas through MCP `tools/list`. If the server provides `help`, use it to inspect a tool or category. Schemas from a different package version may not match.
+
+Target and units: Times are seconds. Clips use track and index values returned by list_clips; indexes shift after edits. Project item IDs come from list_project_items. Output paths must be home-folder or PREMIERE_ALLOWED_DIRS; overwrites require explicit option.
+
+## CLI and configuration
+
+This package is launched as a persistent MCP process, not as a conventional one-shot CLI. Relevant settings documented by the package include:
+
+`PREMIERE_WS_PORT, BRIDGE_TOKEN or PREMIERE_BRIDGE_TOKEN, PREMIERE_ALLOWED_DIRS, PREMIERE_SCRIPT_TIMEOUT_MS, PREMIERE_CONNECT_WAIT_MS.`
+
+Variable names and defaults are package-specific; consult the package README before changing them. File-operation permissions and bridge tokens should be configured in the client’s environment, not embedded in prompts or checked into source.
+
+```
+claude mcp add premiere -- npx -y adobe-mcp-premiere
+```
+
+For client-neutral JSON configuration and source-checkout commands, see [CLI & configuration](https://creativemcp.com/docs/cli.html).
+
+## Full reference
+
+The repository README is maintained alongside this implementation and covers exact setup, tool families, package-specific behavior, limitations, security and development status.
+
+- [Premiere Pro package README ↗](https://github.com/zachshallbetter/adobe-mcp/blob/main/packages/premiere/README.md)
+- [Browse package source and supporting docs ↗](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/premiere)
+- [MCP API conventions ↗](https://creativemcp.com/docs/api.html)
+- [Launch and environment reference ↗](https://creativemcp.com/docs/cli.html)
+
+---
+
+Source: https://creativemcp.com/docs/implementations/suite.html
+
+[Docs](https://creativemcp.com/docs/) / [Implementation guides](https://creativemcp.com/docs/#implementation-guides) / Suite coordinator
+
+Implementation guide · Suite coordinator
+
+# Suite coordinator
+
+The Suite coordinator joins app servers behind two explicit cross-app workflows: placing Illustrator artwork in InDesign and copying supported Illustrator swatches into InDesign.
+
+[Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)
+
+## What this implementation covers
+
+Workflow: place an artboard from the active Illustrator document on an InDesign page as a linked .ai file; copy supported RGB/CMYK process, spot and gray swatches while preserving InDesign built-ins. Gradients and patterns are reported, not copied.
+
+For feature-level detail and evidence, see the [Capability Atlas](https://creativemcp.com/capability-atlas.html).
+
+## Connection and requirements
+
+Runtime route
+
+### How it reaches the app
+
+Starts standalone MCP server implementations as local child processes and delegates workflow steps through MCP. It speaks MCP over stdio to the client.
+
+Prerequisites
+
+### What you need
+
+Node.js 18+ and InDesign plus Illustrator for its current workflows. Other child apps can be selected, but that does not add coordinator workflows.
+
+Package: `adobe-mcp-suite`. Add it as a local stdio MCP server using [CLI & client configuration](https://creativemcp.com/docs/cli.html).
+
+## API and content conventions
+
+The coordinator advertises its own workflow tools only; it does not mirror child tool inventories. Install standalone app servers for direct app tools. Use its package README for delegation semantics and constraints.
+
+Discover the running package’s exact tool names and JSON input schemas through MCP `tools/list`. If the server provides `help`, use it to inspect a tool or category. Schemas from a different package version may not match.
+
+Target and units: Select child app IDs with --apps or ADOBE_MCP_APPS. Current workflows need both InDesign and Illustrator. File permissions remain app-specific: configure both participating app servers as needed.
+
+## CLI and configuration
+
+This package is launched as a persistent MCP process, not as a conventional one-shot CLI. Relevant settings documented by the package include:
+
+`ADOBE_MCP_APPS plus per-app variables documented by each child package; the coordinator forwards matching variables rather than acting as a single app backend.`
+
+Variable names and defaults are package-specific; consult the package README before changing them. File-operation permissions and bridge tokens should be configured in the client’s environment, not embedded in prompts or checked into source.
+
+```
+claude mcp add suite -- npx -y adobe-mcp-suite
+```
+
+With Homebrew, the coordinator and every app server are installed on your `PATH`:
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/adobe-mcp
+claude mcp add suite -- adobe-mcp-suite
+```
+
+For client-neutral JSON configuration and source-checkout commands, see [CLI & configuration](https://creativemcp.com/docs/cli.html).
+
+## Full reference
+
+The repository README is maintained alongside this implementation and covers exact setup, tool families, package-specific behavior, limitations, security and development status.
+
+- [Suite coordinator package README ↗](https://github.com/zachshallbetter/adobe-mcp/blob/main/packages/suite/README.md)
+- [Browse package source and supporting docs ↗](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/suite)
+- [MCP API conventions ↗](https://creativemcp.com/docs/api.html)
+- [Launch and environment reference ↗](https://creativemcp.com/docs/cli.html)
+
+---
+
+Source: https://creativemcp.com/docs/implementations/core.html
+
+[Docs](https://creativemcp.com/docs/) / [Implementation guides](https://creativemcp.com/docs/#implementation-guides) / Shared core
+
+Implementation guide · Shared core
+
+# Shared core
+
+The shared core package provides infrastructure used by the Adobe app servers: safe argument normalization and script literals, path policy, script execution, structured results, MCP server construction, annotations and static script auditing.
+
+[Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)
+
+## What this implementation covers
+
+safe string/number/enum/path conversion; execution adapters; structured result parsing; failure detection; alias normalization; MCP tools/list and tools/call; annotation metadata; static API audits.
+
+For feature-level detail and evidence, see the [Capability Atlas](https://creativemcp.com/capability-atlas.html).
+
+## Connection and requirements
+
+Runtime route
+
+### How it reaches the app
+
+A JavaScript library dependency, not a standalone MCP server and not a user-facing CLI.
+
+Prerequisites
+
+### What you need
+
+Node.js 18+ when used by the packages. App runtimes are determined by the consuming server.
+
+Package: `adobe-mcp-core`. Add it as a local stdio MCP server using [CLI & client configuration](https://creativemcp.com/docs/cli.html).
+
+## API and content conventions
+
+For contributors and integrators. The core README documents exports, executor options, error/result shape and tests. It does not provide Adobe app tools directly.
+
+Discover the running package’s exact tool names and JSON input schemas through MCP `tools/list`. If the server provides `help`, use it to inspect a tool or category. Schemas from a different package version may not match.
+
+Target and units: Core helpers are called by consuming packages; behavior such as application backend, paths and protocol is configured at the app-server layer.
+
+## CLI and configuration
+
+This package is launched as a persistent MCP process, not as a conventional one-shot CLI. Relevant settings documented by the package include:
+
+`No standalone CLI configuration. Refer to each consuming package for environment variables and runtime behavior.`
+
+Variable names and defaults are package-specific; consult the package README before changing them. File-operation permissions and bridge tokens should be configured in the client’s environment, not embedded in prompts or checked into source.
+
+```
+claude mcp add core -- npx -y adobe-mcp-core
+```
+
+For client-neutral JSON configuration and source-checkout commands, see [CLI & configuration](https://creativemcp.com/docs/cli.html).
+
+## Full reference
+
+The repository README is maintained alongside this implementation and covers exact setup, tool families, package-specific behavior, limitations, security and development status.
+
+- [Shared core package README ↗](https://github.com/zachshallbetter/adobe-mcp/blob/main/packages/core/README.md)
+- [Browse package source and supporting docs ↗](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/core)
+- [MCP API conventions ↗](https://creativemcp.com/docs/api.html)
+- [Launch and environment reference ↗](https://creativemcp.com/docs/cli.html)
+
+---
+
+Source: https://creativemcp.com/docs/implementations/blender.html
+
+[Docs](https://creativemcp.com/docs/) / [Implementation guides](https://creativemcp.com/docs/#implementation-guides) / Blender MCP
+
+Implementation guide · Blender MCP
+
+# Blender MCP
+
+A Rust MCP server and Blender companion add-on for scene and asset workflows. The server speaks MCP over stdio; a local IPC connection links it to Blender.
+
+[Docs home](https://creativemcp.com/docs/)[Getting started](https://creativemcp.com/docs/getting-started.html)[Blender MCP](https://creativemcp.com/docs/implementations/blender.html)[Adobe MCP](https://creativemcp.com/docs/implementations/indesign.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)
+
+## What this implementation covers
+
+The project combines a Rust MCP server with a Blender add-on that performs scene operations. Its repository documents tools for scene data, geometry, asset workflows and Blender resources. For the current list of tools, parameters and behavior, use the [tool reference](https://github.com/zachshallbetter/blender-mcp-rs/blob/main/docs/tools.md) maintained with the source.
+
+The project is independent from Adobe MCP. They can be configured as separate servers in a compatible MCP client; direct Adobe-to-Blender handoff tools are not currently provided.
+
+## Connection and requirements
+
+Transport
+
+### Local server and add-on
+
+The client starts the MCP process over stdio. The companion add-on runs inside Blender and accepts the server’s local IPC connection.
+
+Prerequisites
+
+### Blender and Rust
+
+Install Rust with rustup. Blender 4.0 or later is required, and the companion add-on must be installed and enabled.
+
+Source package: `blender-mcp-cli` in the [blender-mcp-rs repository](https://github.com/zachshallbetter/blender-mcp-rs).
+
+## Install and configure
+
+Install the CLI from the project’s Git repository:
+
+```
+cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli
+```
+
+Or install with Homebrew. There is no tagged release yet, so the formula builds the current `main` branch (`--HEAD`) and needs no Rust setup of your own:
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install --HEAD zachshallbetter/tap/blender-mcp
+blender-mcp addon install
+```
+
+Install and enable the Blender companion add-on before starting a workflow. The project CLI can add configuration for supported clients, including Codex, Claude Code, Cursor, Gemini CLI and Antigravity:
+
+```
+blender-mcp client add codex
+```
+
+For client-specific scopes, add-on installation steps and exact options, follow the [current repository quick start](https://github.com/zachshallbetter/blender-mcp-rs/blob/main/README.md).
+
+## Safety and limitations
+
+The add-on listens on loopback and is intended for local use; it does not authenticate local clients. The `execute_blender_code` tool runs Python with Blender’s process permissions. Its pattern checks are not a security sandbox. Connect only trusted agents and review code before execution.
+
+Scene-editing and file-writing tools can change or overwrite local work. Some asset search and import tools contact Poly Haven services; consult the project’s current README for the destinations and data involved.
+
+## Full reference
+
+- [Tool reference catalog ↗](https://github.com/zachshallbetter/blender-mcp-rs/blob/main/docs/tools.md)
+- [Blender companion add-on guide ↗](https://github.com/zachshallbetter/blender-mcp-rs/blob/main/docs/addon.md)
+- [Architecture and transport ↗](https://github.com/zachshallbetter/blender-mcp-rs/blob/main/docs/architecture.md)
+- [Source repository ↗](https://github.com/zachshallbetter/blender-mcp-rs)
+
+---
+
+Source: https://creativemcp.com/capability-atlas.html
+
+12,014features documented
+
+4,427menu commands and events
+
+352automation limitations
+
+4,003community scripts analysed
+
+68production workflows
+
+2,707entries on other automation routes
+
+Coverage snapshot
+
+## By application
+
+Counts move through distinct evidence stages: features Adobe documents, reachable automation routes, MCP coverage, automated script checks, and validation in a running app.
+
+Coverage by application
+
+| Application | Features | Scriptable | Implemented | Static checks | Live validated | MCP tools
+
+| InDesign  | 2,742  | 2,609 95%  | 2,524 92%  | 2,523  | 0  | 423
+
+| Illustrator  | 2,540  | 1,951 77%  | 1,562 61%  | 1,561  | 0  | 308
+
+| Photoshop  | 2,609  | 1,720 66%  | 1,413 54%  | 1,410  | 0  | 205
+
+| After Effects  | 3,198  | 2,595 81%  | 2,555 80%  | 2,553  | 0  | 164
+
+| Premiere Pro  | 925  | 494 53%  | 413 45%  | 413  | 0  | 96
+
+Implemented in MCP toolsPassed automated static checksValidated in the running app
+
+Percentages use each app’s documented feature count as the denominator. Static checks run generated scripts against a stubbed app and API definitions; live validation requires running the workflow in the actual Adobe app and checking the result.
+
+### Support, step by step
+
+Each stage is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live InDesign session.
+
+- Documented2,742100%features Adobe documents
+- Scriptable2,60995%reachable by object model or menu command
+- Implemented2,52492%claimed by our 423 MCP tools
+- Static checks2,52392%scripts pass automated checks with the app stubbed
+- Live validated00%run and checked in the actual app
+
+### What kind of features
+
+setting 1,314 menu command 843 workflow 181 dialog 156 object type 98 panel 71 file format 40 tool 39
+
+### Automation routes
+
+Object model 2,431Menu command 178Not automatable 125Not established 8
+
+### By domain
+
+| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+
+| TypographyCharacter and paragraph formatting, fonts, OpenType, special characters, lists, composers and non-Latin script features.  | 307  |
+
+| 298 97% | 298 | 0  | 0
+
+| Import and exportSupported file formats and the options for placing content in and exporting PDF, EPUB, HTML, images and interchange files.  | 301  |
+
+| 291 97% | 291 | 0  | 4
+
+| Long documentsBooks, tables of contents, indexes, footnotes, endnotes, cross-references, hyperlinks, bookmarks, captions, text variables and conditional text.  | 212  |
+
+| 212 100% | 212 | 0  | 0
+
+| StylesParagraph, character, object, table, cell and table-of-contents styles and the panels that manage them.  | 195  |
+
+| 189 97% | 189 | 0  | 0
+
+| InterfaceWorkspaces, panels, preferences, view modes, zooming, display performance and other on-screen aids.  | 191  |
+
+| 120 63% | 120 | 0  | 0
+
+| Preflight and prepressPreflight checks, separations and overprint preview, inks, trapping, packaging and printing.  | 169  |
+
+| 162 96% | 162 | 0  | 0
+
+| Effects and transparencyOpacity, blending modes and the drop shadow, glow, feather and other effects, plus flattening presets.  | 126  |
+
+| 125 99% | 125 | 0  | 0
+
+| TablesCreating, editing and formatting tables, rows, columns and cells.  | 124  |
+
+| 120 97% | 120 | 0  | 0
+
+| InteractiveButtons, form fields, object states, animation, timing, media and page transitions for digital output.  | 111  |
+
+| 108 97% | 108 | 0  | 0
+
+| Text frames and storiesText frames, threading, frame options, text wrap, the Story Editor, editorial notes and tracked changes.  | 109  |
+
+| 104 95% | 104 | 0  | 2
+
+| ColourSwatches, colour models, tints, gradients, mixed inks and colour management.  | 89  |
+
+| 82 92% | 82 | 0  | 0
+
+| Layout toolsRulers, guides, grids, smart guides, measuring, the Gap tool, liquid and flex layout, alternate layouts and content linking.  | 85  |
+
+| 82 96% | 82 | 0  | 1
+
+| Frames and objectsFrames, shapes, groups and other page items, with their stacking, locking, fitting, strokes, anchoring and object libraries.  | 78  |
+
+| 73 94% | 73 | 0  | 0
+
+| DocumentsCreating, opening, saving, closing and configuring whole documents, including size, intent, bleed, slug and windows onto them.  | 75  |
+
+| 72 96% | 72 | 0  | 0
+
+| Images and linksPlacing graphics, managing linked and embedded files, image layers and generative image features.  | 74  |
+
+| 65 88% | 65 | 0  | 0
+
+| XMLTagging content, the structure view, importing and exporting XML, DTDs and XML rules.  | 74  |
+
+| 74 100% | 74 | 0  | 0
+
+| InteroperabilityWorking with other Adobe apps and services: InCopy, Creative Cloud Libraries, Bridge, Stock, Express, Illustrator and shared reviews.  | 67  |
+
+| 34 51% | 34 | 0  | 1
+
+| Pages and spreadsPages, spreads, parent pages, page navigation, sections and page numbering.  | 66  |
+
+| 65 98% | 65 | 0  | 0
+
+| Paths and geometryDrawing and editing paths and anchor points, compound paths, Pathfinder operations, shape conversion and corner effects.  | 52  |
+
+| 40 77% | 40 | 0  | 0
+
+| TransformationsMoving, scaling, rotating, shearing, flipping, aligning and distributing objects.  | 50  |
+
+| 50 100% | 50 | 0  | 0
+
+| Data mergeMerging records from a data source into placeholders to produce many document variants.  | 30  |
+
+| 28 93% | 28 | 0  | 0
+
+| Find and changeSearching and replacing text, GREP patterns, glyphs, objects, colours and fonts, with saved queries.  | 30  |
+
+| 29 97% | 29 | 0  | 0
+
+| Selection and clipboardPicking objects and text, moving through stacked or nested items, and cut, copy and paste of the selection.  | 28  |
+
+| 28 100% | 28 | 0  | 0
+
+| AutomationScripts, the Scripts and Script Label panels, menu actions, events and the scripting environment.  | 26  |
+
+| 24 92% | 23 | 0  | 0
+
+| LayersDocument layers and the controls that show, lock, order and merge them.  | 24  |
+
+| 24 100% | 24 | 0  | 0
+
+| ApplicationThe program itself: launching, version, help, user identity, add-ons, AI assistant and app-wide utilities.  | 21  |
+
+| 0 0% | 0 | 0  | 0
+
+| Language and proofingSpell checking, autocorrect, dictionaries, hyphenation exceptions and language assignment.  | 21  |
+
+| 19 90% | 19 | 0  | 0
+
+| HistoryUndo, redo, the History panel and script undo behaviour.  | 7  |
+
+| 6 86% | 6 | 0  | 0
+
+#### Menu commands
+
+2,043
+
+2,004 linked to features · 0 verified by running them
+
+37 seen working in community scripts
+
+#### Limitations
+
+153
+
+misleads 59 blocks 53 inconvenience 21 corrupts 13 slows 7
+
+63 documented by Adobe · 90 reported by the community
+
+#### Community scripts
+
+2,023
+
+from 93 repositories · 97% parsed
+
+Most used: `documents` `name` `add` `activeDocument` `item` `pages`
+
+### Commands seen in real scripts
+
+How many published scripts invoke each command. A command a script relies on has at least been seen to do something.
+
+- `name:$ID/Fit Selection in Window`7
+- `id:61710`3
+- `name:$ID/Selection Tool`3
+- `name:Place...`3
+- `id:24332`2
+- `id:8489`2
+- `name:$ID/AutoUpdateURLStatus`2
+- `id:11288`1
+- `id:11289`1
+- `id:113166`1
+- `id:118786`1
+- `id:118790`1
+- `id:119611`1
+- `id:119681`1
+- `id:16403`1
+
+### What stops a script
+
+- BlocksAdding a colour with an existing name failsLook the colour up with itemByName and check isValid before adding; update the existing swatch instead.
+- BlockscolorValue length and range must match the colour spaceSet space before colorValue and validate array length and ranges.
+- BlocksClosing a document during a background export failsWait for the task (or use exportFile) before closing.
+- BlocksIdle tasks can stop firingMonitor the task and recreate it; avoid relying on idle tasks for critical work.
+- Blocks$.sleep blocks InDesignUse idle tasks or event listeners for deferred work.
+- BlocksScripts run on the main thread one at a timeQueue jobs in the caller and use generous timeouts; split long work.
+- Blocks'Object is invalid' after deletion or restructuringCheck isValid before use and re-fetch objects after structural changes.
+- CorruptsRemoving items while iterating forwards skips itemsIterate backwards, or collect targets first with getElements() and then remove.
+- BlocksBuilt-in PDF preset names are bracketed and localizedLook presets up and check isValid; fall back to iterating app.pdfExportPresets, or ship a custom preset with a known name.
+- BlocksNamed presets must exist on the machineInstall presets with the script, or set app.pdfExportPreferences directly.
+
+### Object model by version
+
+| Version | Classes | Enums | Members
+
+| Adobe InDesign 2023 (18.x) | 659 | 420 | 26,944
+
+| Adobe InDesign 2024 (19.2.0.46) | 659 | 420 | 26,952
+
+| Adobe InDesign 2025 (20.0.0.95) | 661 | 420 | 27,034
+
+| Adobe InDesign 2026 (21.0.0.192) | 664 | 427 | 27,372
+
+| Adobe InDesign 2026 (21.5.1.73) | 665 | 432 | 27,439
+
+- 2025 added `MathObject`, `MathObjects`
+- 2026-21.0 added `FlexLayoutAttributeOption`, `FlexObject`, `FlexObjects`
+- 2026 added `Html5ExportPreference`
+
+### Other ways in
+
+| Surface | Entries | Status | Beyond the object model
+
+| AppleScript | 639 | current 636 removed 3 | 2
+
+| CEP | 15 | deprecated 13 current 2 | 6
+
+| C++ SDK | 40 | current 39 beta 1 | 28
+
+| UXP | 121 | current 118 beta 2 unavailable 1 | 22
+
+| VBScript / COM | 672 | current 672 | 1
+
+## What InDesign is missing
+
+The scriptable InDesign features our server does not cover yet, ranked by how often community scripts need them and how much work each is.
+
+| # | Proposed tool | Features it covers | Demand evidence | Effort
+
+| 1 | `create_line` | 2: `frames_objects.graphic_line`, `frames_objects.line_tool` | 43 scripts / 15 repos use `add (with GraphicLines access)` *(generic)*; core | S
+
+| 2 | `thread_text_frames` | 3: `text_frames.thread_text_frames`, `text_frames.unthread`, `text_frames.thread_navigation` | 35 scripts / 13 repos use `nextTextFrame (with TextFrame access)`; core | S
+
+| 3 | `set_character_formatting` | 36: `typography.basic_char_kerning`, `typography.basic_char_tracking`, `typography.basic_char_case`, `typography.basic_char_position`, `typography.basic_char_ligatures`, +31 more | 119 scripts / 20 repos use `pointSize (with Text access)`; core | M
+
+| 4 | `arrange_page_item` | 3: `frames_objects.bring_to_front`, `frames_objects.bring_forward`, `frames_objects.send_backward` | 15 scripts / 10 repos use `bringToFront (with SplineItem access)`; core | S
+
+| 5 | `find_change_formatting` | 13: `find_change.fc_option_include_locked_layers_and_locked_objects`, `find_change.fc_option_include_locked_stories`, `find_change.fc_option_include_hidden_layers_and_hidden_objects`, `find_change.fc_option_include_parent_pages`, `find_change.fc_option_include_footnotes`, +8 more | 82 scripts / 16 repos use `fonts`; core | M
+
+| 6 | `set_text_frame_options` | 38: `text_frames.text_frame_options`, `text_frames.tfo_general_columns_fixed_number_fixed_width_flexible_width`, `text_frames.tfo_general_number`, `text_frames.tfo_general_width`, `text_frames.tfo_general_maximum`, +33 more | 79 scripts / 23 repos use `textFramePreferences (with TextFrame access)`; core | M
+
+| 7 | `set_stroke_options` | 10: `frames_objects.stroke_panel`, `frames_objects.stroke_type`, `frames_objects.stroke_cap`, `frames_objects.stroke_join`, `frames_objects.stroke_align`, +5 more | 77 scripts / 19 repos use `strokeWeight (with PageItem access)`; core | M
+
+| 8 | `list_links` | 7: `images_links.link`, `images_links.link_metadata`, `images_links.links_menu_go_to_link`, `images_links.links_menu_go_to_source`, `images_links.links_menu_utilities_xmp_file_info`, +2 more | 70 scripts / 16 repos use `links`; core | M
+
+| 9 | `move_items_to_layer` | 4: `layers.paste_remembers_layers`, `layers.move_to_layer`, `layers.select_items_on_layer`, `layers.layer_objects_list` | 65 scripts / 18 repos use `itemLayer (with PageItem access)`; core | M
+
+| 10 | `edit_table_structure` | 27: `tables.row`, `tables.column`, `tables.table_panel`, `tables.insert_table`, `tables.nested_table`, +22 more | 60 scripts / 17 repos use `tables (with InsertionPoint access)`; core | M
+
+| 11 | `manage_parent_pages` | 6: `pages_spreads.parent_based_on`, `pages_spreads.load_parent_pages`, `pages_spreads.allow_parent_item_overrides`, `pages_spreads.parent_overlay`, `pages_spreads.move_parent`, +1 more | 48 scripts / 15 repos use `appliedMaster (with MasterSpread access)`; core | M
+
+| 12 | `set_paragraph_formatting` | 26: `tables.table_alignment`, `typography.story_panel`, `typography.optical_margin_alignment`, `typography.ignore_optical_margin`, `typography.para_indents_balance_ragged_lines`, +21 more | 46 scripts / 14 repos use `justification (with Text access)`; core | M
+
+| 13 | `create_cross_reference` | 7: `long_documents.cross_references_panel`, `long_documents.insert_cross_reference`, `long_documents.cross_reference_formats`, `long_documents.load_cross_reference_formats`, `long_documents.update_cross_references`, +2 more | 43 scripts / 15 repos use `hyperlinks`; core | M
+
+| 14 | `set_measurement_units` | 18: `documents.zero_point`, `documents.newdoc_units_new_document`, `layout_tools.rulers`, `layout_tools.ruler_units`, `layout_tools.cycle_units`, +13 more | 330 scripts / 44 repos use `viewPreferences`; core | L
+
+| 15 | `insert_special_character` | 25: `pages_spreads.current_page_number`, `pages_spreads.next_page_number`, `pages_spreads.previous_page_number`, `pages_spreads.section_marker`, `typography.glyphs_panel`, +20 more | 38 scripts use `SpecialCharacters.* enum`; core | M
+
+| 16 | `load_styles` | 10: `styles.load_styles`, `styles.paragraph_styles_menu_load_paragraph_styles`, `styles.paragraph_styles_menu_load_all_text_styles`, `styles.character_styles_menu_load_character_styles`, `styles.character_styles_menu_load_all_text_styles`, +5 more | 7 scripts / 6 repos use `importStyles`; core | S
+
+| 17 | `clear_style_overrides` | 16: `styles.clear_overrides`, `styles.clear_character_overrides`, `styles.clear_paragraph_overrides`, `styles.clear_all_overrides`, `styles.clear_object_style_overrides`, +11 more | 33 scripts / 14 repos use `applyParagraphStyle (with Text access)`; core | M
+
+| 18 | `update_links` | 2: `images_links.links_menu_update_link`, `images_links.links_menu_update_all_links` | 29 scripts / 6 repos use `update (with Link access)` *(generic)*; core | M
+
+| 19 | `align_distribute` | 6: `transformations.align_panel`, `transformations.align_objects`, `transformations.distribute_objects`, `transformations.distribute_spacing`, `transformations.key_object`, +1 more | 27 scripts / 6 repos use `align`; core | M
+
+| 20 | `anchor_object` | 4: `frames_objects.anchored_object_insert`, `frames_objects.anchored_object_options`, `frames_objects.anchored_object_release`, `frames_objects.anchored_object_defaults` | 26 scripts / 12 repos use `anchoredObjectSettings (with SplineItem access)`; core | M
+
+| 21 | `relink_links` | 4: `images_links.links_menu_relink`, `images_links.links_menu_relink_to_folder`, `images_links.links_menu_relink_file_extension`, `interactive.relink_legacy_media` | 26 scripts / 8 repos use `relink (with Link access)` *(generic)*; core | M
+
+| 22 | `manage_footnotes` | 22: `long_documents.footnote`, `long_documents.insert_footnote`, `long_documents.document_footnote_options`, `long_documents.fn_num_style_footnote_numbering`, `long_documents.fn_num_start_at_footnotes`, +17 more | 22 scripts / 12 repos use `footnotes (with InsertionPoint access)`; core | M
+
+| 23 | `run_script_file` | 6: `automation.scripts_panel`, `automation.scripts_menu_run_script`, `automation.scripts_menu_enable_redraw`, `automation.script_preferences`, `automation.script_args`, +1 more | 430 scripts / 43 repos use `doScript` | M
+
+| 24 | `transform_page_item` | 32: `transformations.reference_point`, `transformations.rotate_tool`, `transformations.scale_tool`, `transformations.shear_tool`, `transformations.free_transform_tool`, +27 more | 18 scripts / 8 repos use `transformReferencePoint (with LayoutWindow access)`; core | M
+
+| 25 | `set_hyphenation_and_justification` | 25: `typography.auto_hyphenate_shortcut`, `typography.para_hyph_hyphenate`, `typography.para_hyph_words_with_at_least`, `typography.para_hyph_after_first`, `typography.para_hyph_before_last`, +20 more | 15 scripts / 10 repos use `autoLeading (with Text access)`; core | M
+
+| 26 | `set_bullets_and_numbering` | 23: `styles.paragraph_styles_menu_convert_bullets_and_numbering_to_text`, `typography.bullets_list_type`, `typography.bullets_list`, `typography.bullets_level`, `typography.bullets_bullet_character`, +18 more | 14 scripts / 7 repos use `firstLineIndent (with Text access)`; core | M
+
+| 27 | `set_script_label` | 1: `automation.script_label_panel` | 79 scripts / 16 repos use `extractLabel (with PageItem access)` | S
+
+| 28 | `set_drop_caps_and_nested_styles` | 14: `styles.sequential_styles`, `styles.nested_styles`, `styles.nested_line_styles`, `styles.grep_styles`, `styles.end_nested_style`, +9 more | 13 scripts / 6 repos use `appliedCharacterStyle (with NestedGrepStyle access)`; core | M
+
+| 29 | `create_table_style` | 17: `styles.tbs_style_name_table_style`, `styles.tbs_based_on_table_style`, `styles.tbs_cell_styles_header_rows_footer_rows_body_rows_left_column_right_column`, `styles.tbs_table_setup_table_style`, `styles.tbs_row_strokes_table_style`, +12 more | 12 scripts / 8 repos use `appliedTableStyle (with Table access)`; core | M
+
+| 30 | `set_object_transparency` | 12: `effects_transparency.effects_panel`, `effects_transparency.effects_dialog`, `effects_transparency.transparency_setting`, `effects_transparency.fx_transparency_blending_mode`, `effects_transparency.fx_transparency_isolate_blending`, +7 more | 12 scripts / 7 repos use `transparencySettings (with PageItem access)`; core | M
+
+## Production workflows
+
+Real jobs composed of atlas features, each step with the state it must leave and a check a script can run. The features most workflows need are the first ones to build and qualify.
+
+### Most-needed features
+
+- Save as Adobe PDF14
+- Export Adobe PDF14
+- Overset text14
+- Place13
+- Save as Adobe Illustrator (AI)10
+- Fill8
+- Link7
+- Spot color6
+- Create Merged Document6
+- Select Data Source6
+- Artboard5
+- Export for Screens5
+- Swatch5
+- Save As5
+- Create PDF Compatible File5
+
+### Steps no script can reach yet
+
+- nonePackageIllustrator artwork package and PDF/X for print, step 2
+
+### All workflows
+
+- Accessible tagged PDF from InDesign, verified in Acrobat InDesign + Acrobat · 6 steps
+- Accessible reflowable EPUB from InDesign, checked with Ace InDesign · 6 steps
+- Accessible fillable form with tooltips and tab order InDesign + Acrobat · 4 steps
+- Text colour contrast audit in an InDesign layout InDesign · 3 steps
+- Logo lockup variations: horizontal, stacked and symbol-only, in full colour, one colour and reversed Illustrator · 6 steps
+- Brand asset export at multiple sizes and formats Illustrator · 5 steps
+- Brand colour palette as a shared swatch library Illustrator · 3 steps
+- Brand colour compliance audit and fix in Illustrator artwork Illustrator · 4 steps
+- Brand InDesign template with locked parent pages, styles and swatches InDesign · 6 steps
+- Outlined, font-independent logo delivery files Illustrator · 4 steps
+- Illustrator artwork placed into an InDesign layout with layer control Illustrator + InDesign · 5 steps
+- Illustrator infographic placed into an InDesign report with caption and alt text, exported as accessible PDF Illustrator + InDesign + Acrobat · 6 steps
+- Brand swatches from Illustrator to InDesign via ASE Illustrator + InDesign · 4 steps
+- Stationery suite: Illustrator logo into InDesign letterhead, compliment slip and envelope Illustrator + InDesign · 4 steps
+- Packaging approval sheet: Illustrator carton PDF into an InDesign proof sheet, checked in Acrobat Illustrator + InDesign + Acrobat · 5 steps
+- Edit-original round trip for linked Illustrator graphics InDesign + Illustrator · 3 steps
+- Supplied advertisement intake: Acrobat preflight, then placement in the magazine layout Acrobat + InDesign · 3 steps
+- Illustrator icons as inline anchored graphics in InDesign text Illustrator + InDesign · 3 steps
+- InDesign print PDF checked for ink coverage and separations in Acrobat InDesign + Acrobat · 3 steps
+- Brand guidelines document: Illustrator lockups and palette into an InDesign guide, published as a navigable PDF Illustrator + InDesign + Acrobat · 5 steps
+- Catalogue with Illustrator product line drawings fed into InDesign Data Merge Illustrator + InDesign · 4 steps
+- Product catalogue from CSV via Data Merge InDesign + Acrobat · 7 steps
+- Illustrator variable-driven batch artwork from a data set Illustrator · 3 steps
+- Infographic chart from data in Illustrator Illustrator · 4 steps
+- Structured catalogue from XML with mapped styles InDesign · 4 steps
+- Event tickets or badges with per-record QR codes InDesign · 3 steps
+- Price list from CSV converted to a styled table InDesign · 4 steps
+- Personalised certificates with one record per page InDesign · 4 steps
+- Vector clean-up of traced artwork (scanned logo or sketch to clean vectors) Illustrator · 6 steps
+- Seamless pattern swatch creation Illustrator · 4 steps
+- Reusable symbol library from icon or map-marker art Illustrator · 3 steps
+- Cut file preparation for vinyl, laser or plotter cutting Illustrator · 4 steps
+- Interactive PDF form from InDesign with field validation checked in Acrobat InDesign + Acrobat · 5 steps
+- Navigable digital report: bookmarks, hyperlinked TOC and cross-document links InDesign + Acrobat · 4 steps
+- Interactive product explorer with multi-state objects and buttons InDesign · 3 steps
+- Localisation: translated text swap with language assignment and overset check InDesign + Acrobat · 7 steps
+- Localised labels in an Illustrator diagram, checked for fit Illustrator · 4 steps
+- Language layers in Illustrator artwork switched per edition in InDesign Illustrator + InDesign · 3 steps
+- Folding carton artwork on a supplied dieline with spot colours, spot varnish and overprinting technical layers Illustrator + Acrobat · 9 steps
+- Label for clear or metallic film with a white ink underprint plate Illustrator · 5 steps
+- Process-only proof copy of spot-colour packaging for a digital proofer Illustrator · 4 steps
+- Multi-up label sheet without imposition software Illustrator · 4 steps
+- Separation and overprint audit of supplied packaging artwork Illustrator · 4 steps
+- Preflight against a print profile and package for the printer InDesign + Acrobat · 6 steps
+- PDF/X-4 export with bleed and printer's marks, checked in Acrobat InDesign + Acrobat · 4 steps
+- Colour conversion to the printer's CMYK profile InDesign + Acrobat · 5 steps
+- Batch relinking and image audit InDesign · 4 steps
+- Print-ready business cards for a team, multi-up without imposition software InDesign + Acrobat · 6 steps
+- Saddle-stitched booklet output with creep InDesign · 3 steps
+- Swatch and ink clean-up before separation InDesign + Acrobat · 6 steps
+- Overprint audit: black text overprint and white-overprint traps InDesign + Acrobat · 5 steps
+- Illustrator artwork package and PDF/X for print Illustrator + Acrobat · 4 steps
+- Book production: Book file, synchronised styles, continuous numbering, TOC, index and cross-references InDesign + Acrobat · 9 steps
+- Magazine feature article layout with styles and threaded frames InDesign · 7 steps
+- Long-document style audit InDesign · 6 steps
+- GREP-driven text clean-up of imported copy InDesign · 5 steps
+- Table import from Excel and styling with table and cell styles InDesign · 5 steps
+- Word manuscript import with style mapping InDesign · 4 steps
+- Running headers, sections and page-number styles for a report InDesign · 4 steps
+- Edition variants with conditional text and condition sets InDesign · 3 steps
+- Academic chapter with footnotes, endnotes conversion and numbering rules InDesign · 3 steps
+- Icon set: pixel-aligned artboards exported as SVG and PNG Illustrator · 5 steps
+- App icon set for iOS, Android and web manifest Illustrator · 3 steps
+- Template-driven social graphics in Illustrator Illustrator · 4 steps
+- Template-driven social graphics in InDesign via Data Merge and JPEG/PNG export InDesign · 4 steps
+- Alternate layouts for different page sizes InDesign · 4 steps
+- Display ad banner set in standard sizes Illustrator · 3 steps
+- Developer-ready SVG export with meaningful ids and accessible titles Illustrator · 2 steps
+
+## How this was built
+
+- Features come from Adobe's user guides and shortcut references; each record cites its source and is written in our own words. Third-party parity checklists were used only to spot omissions.
+- Object models are generated from types-for-adobe (MIT), and for InDesign and Illustrator also from Gregor Fellenz's per-version references: InDesign 2023 to 2026, Illustrator 2022 to 2025, Photoshop 2015.5, After Effects 2026 and Premiere Pro 2024. No public object model exists yet for Illustrator 2026.
+- Implemented and tested come from running every tool of adobe-mcp-indesign 2.4.0, adobe-mcp-illustrator 0.9.0, adobe-mcp-photoshop 0.1.0, adobe-mcp-aftereffects 0.1.0 and adobe-mcp-premiere 0.1.0 (all in the adobe-mcp repository) with the application stubbed, recording the calls each generated script makes and checking each script: ExtendScript against the application's object model, and Premiere Pro's UXP JavaScript against its UXP DOM. Nothing has been validated against a running application yet.
+- Community scripts were parsed for the members and menu commands they use; no script was copied, and repositories without a licence are counted as evidence only.
+- Menu commands are listed from published references and are unverified until run: Illustrator silently ignores a command string it does not know. Photoshop's Action Manager events come from Adobe's UXP event table, Adobe's bundled scripts and open-source helper libraries, and are unverified in the same way.
+
+---
+
+Source: https://creativemcp.com/features.html
+
+Research inventory · five Adobe apps
+
+# Explore the features.
+
+Search documented capabilities by app, domain, automation route or source. A documented feature is not automatically scriptable or implemented by an MCP tool; open a record to review its evidence.
+
+Adobe application feature inventory
+
+Feature records and source references are drawn from the checked-in Atlas data. For route analysis, implementation mapping and validation methodology, continue to the [Capability Atlas](https://creativemcp.com/capability-atlas.html).
+
+Coverage is a research snapshot, not a guarantee that every feature is exposed by a package or validated in a live Adobe application. See each [implementation guide](https://creativemcp.com/docs/implementations/indesign.html) and the [content and capability guide](https://creativemcp.com/docs/content.html) for interpreting coverage claims.
+
+---
+
+Source: https://creativemcp.com/workflows.html
+
+Examples · real handoffs, honest boundaries
+
+# Creative work, carried forward.
+
+Explore concrete ways to use the tools together. Adobe MCP currently automates two Illustrator-to-InDesign workflows. Blender MCP provides its own Blender tools. Other transitions below are human-managed handoffs unless an implementation explicitly supports them.
+
+Adobe MCP · supported workflows
+
+## Two useful transitions, end to end.
+
+The Adobe coordinator exposes these cross-app actions. It does not claim to connect every Adobe app or send files to Blender automatically.
+
+01
+
+Illustrator → InDesign
+
+### Place artwork in a layout.
+
+Place an Illustrator artboard into an InDesign page as a link to the source `.ai` file. Keep the editable source in Illustrator and arrange the placed artwork in the publication.
+[Read the coordinator guide ↗](https://creativemcp.com/docs/implementations/suite.html)
+
+02
+
+Illustrator → InDesign
+
+### Carry exact swatches across.
+
+Copy supported swatch values from the Illustrator document into InDesign, keeping the color decisions consistent across the artwork and page layout.
+[Read the coordinator guide ↗](https://creativemcp.com/docs/implementations/suite.html)
+
+Creative MCP · independent implementations
+
+## Build a bridge when the tools differ.
+
+These examples pair the independently installed Adobe MCP and Blender MCP projects. Export, import and transfer steps are explicit manual actions; the projects do not share an automatic orchestration layer today.
+
+03
+
+Blender MCP · local scene tools
+
+### Inspect a scene before changing it.
+
+Connect Blender MCP to a supported client, ask for scene information with `get_scene_info`, then use Blender’s own interface or MCP tools for the next edit.
+[Read the Blender guide ↗](https://creativemcp.com/docs/implementations/blender.html)
+
+04
+
+Human-managed handoff
+
+### Take a layout idea into 3D.
+
+Prepare a graphic in Illustrator or InDesign, export an asset in the format you need, then import it into Blender yourself. Ask Blender MCP to inspect the scene or help with supported operations. File movement and app-to-app coordination remain yours.
+[Use the starter brief ↗](https://creativemcp.com/downloads/creative-mcp-starter.zip)
+
+Keep the boundary clear. The browser site does not inspect your computer, open creative applications or transmit local files. MCP servers run locally through the client you configure.
+
+Make your own
+
+## Start with a brief, not a promise.
+
+The starter pack includes a creative brief and reference board for a small layout-to-3D exercise. It leaves the export format, transfer and Blender setup to your chosen workflow.
+[Download the starter pack](https://creativemcp.com/downloads/creative-mcp-starter.zip)

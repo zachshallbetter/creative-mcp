@@ -1,0 +1,149 @@
+# Creative MCP series architecture
+
+Status: **Proposed** (2026-11-03). The catalogue exists as a draft (`registry/`); the installer is Planned and does not exist yet. Author: Zach Shallbetter.
+
+Creative MCP is a series of independent MCP implementations for creative software, presented under one brand, one website and one install path. This document records how the pieces fit today, the decisions for growing the series, and what a new tool needs to join.
+
+## 1. What exists today
+
+| Piece | Where | Visibility | Language | Distribution |
+| --- | --- | --- | --- | --- |
+| Adobe MCP: five app servers, Suite coordinator, shared core | github.com/zachshallbetter/adobe-mcp | Public, MIT | Node.js 18+ | npm (`adobe-mcp-*`), Homebrew `zachshallbetter/tap/adobe-mcp` |
+| Blender MCP: Rust MCP server, CLI, Blender add-on | github.com/zachshallbetter/blender-mcp-rs | Public, MIT OR Apache-2.0 | Rust | Source (`cargo install --git`), Homebrew `zachshallbetter/tap/blender-mcp` (`--HEAD` only until a tagged release) |
+| Homebrew tap | github.com/zachshallbetter/homebrew-tap | Public | Ruby formulae | `brew tap zachshallbetter/tap` then `brew trust zachshallbetter/tap` |
+| Website, docs and catalogue (creativemcp.com) | github.com/zachshallbetter/creative-mcp (`site/`, `registry/`, `docs/`) | Public; MIT for code, content and brand reserved | Static HTML, Python scripts, JSON | Vercel (Root Directory `site`) |
+
+The implementations share no runtime, API or process. A client can load several at once; moving files between them is a user-managed handoff.
+
+The old in-repo formula `adobe-mcp/Formula/adobe-mcp-suite.rb` is being deprecated in favour of the tap (adobe-mcp#430).
+
+## 2. Principles
+
+1. **One repository per tool.** Each implementation keeps its own language, release cycle, issues and licence. The series never forces a monorepo or a shared runtime.
+2. **One catalogue as the source of truth.** Every place that lists tools (site pages, `llms.txt`, the setup builder, the installer, the tap README) reads the same catalogue entry. Adding a tool means adding one entry, not editing a dozen pages.
+3. **One install entry point.** People install the `creative-mcp` installer, which detects their apps and clients and asks what to set up. Per-tool installs (npm, Cargo, Homebrew) keep working for people who want them.
+4. **Claim discipline.** Every capability carries one of Documented, Implemented, Tested or Validated. Planned work is labelled Planned and never presented as shipped (DPP 8.2).
+5. **Local and inspectable.** Detection reads only app bundles, `PATH` and client config files on the user's machine. It sends nothing anywhere. Every change it makes to a client config is shown first and can be undone.
+
+## 3. The catalogue (`registry.json`), draft
+
+A versioned JSON file, one entry per tool. The source is [`registry/registry.json`](../registry/registry.json) with its [schema](../registry/registry.schema.json). `site/scripts/generate-discovery.py` publishes both at `https://creativemcp.com/registry.json`, and the `Validate registry` workflow checks every change. Nothing reads it yet. A shortened example:
+
+```json
+{
+  "schema": 1,
+  "series": "creative-mcp",
+  "updated": "2026-11-03",
+  "tools": [
+    {
+      "id": "adobe",
+      "name": "Adobe MCP",
+      "summary": "Local MCP servers for InDesign, Illustrator, Photoshop, After Effects and Premiere Pro.",
+      "repo": "https://github.com/zachshallbetter/adobe-mcp",
+      "docs": "https://creativemcp.com/apps.html",
+      "license": "MIT",
+      "author": "Zach Shallbetter",
+      "status": "Tested",
+      "install": {
+        "brew": { "formula": "zachshallbetter/tap/adobe-mcp" },
+        "npm": { "package": "adobe-mcp-suite" }
+      },
+      "requires": ["node>=18"],
+      "servers": [
+        { "command": "adobe-mcp-suite", "role": "coordinator", "register_as": "adobe" },
+        { "command": "adobe-mcp-photoshop", "app": "photoshop", "register_as": "photoshop" }
+      ],
+      "targets": [
+        { "app": "photoshop", "name": "Adobe Photoshop",
+          "detect": { "macos": { "bundle_ids": ["com.adobe.Photoshop"] },
+                      "windows": { "globs": ["C:/Program Files/Adobe/Adobe Photoshop */Photoshop.exe"] } } },
+        { "app": "illustrator", "name": "Adobe Illustrator",
+          "detect": { "macos": { "bundle_ids": ["com.adobe.illustrator"] } } },
+        { "app": "aftereffects", "name": "Adobe After Effects",
+          "detect": { "macos": { "bundle_ids": ["com.adobe.AfterEffects.application"] } } }
+      ],
+      "clients": ["claude-code", "claude-desktop", "codex", "cursor", "gemini"]
+    },
+    {
+      "id": "blender",
+      "name": "Blender MCP",
+      "repo": "https://github.com/zachshallbetter/blender-mcp-rs",
+      "docs": "https://creativemcp.com/docs/implementations/blender.html",
+      "license": "MIT OR Apache-2.0",
+      "status": "Implemented",
+      "install": { "brew": { "formula": "zachshallbetter/tap/blender-mcp", "head_only": true },
+                   "cargo": { "git": "https://github.com/zachshallbetter/blender-mcp-rs", "package": "blender-mcp-cli" } },
+      "servers": [{ "command": "blender-mcp", "args": ["serve"], "register_as": "blender" }],
+      "post_install": ["blender-mcp addon install"],
+      "targets": [{ "app": "blender", "name": "Blender",
+                    "detect": { "macos": { "bundle_ids": ["org.blenderfoundation.blender"], "min_version": "4.0" } } }],
+      "clients": ["claude-code", "codex", "cursor", "gemini", "antigravity"]
+    }
+  ],
+  "clients": [
+    { "id": "claude-code", "name": "Claude Code", "detect": { "commands": ["claude"], "files": ["~/.claude.json"] } },
+    { "id": "claude-desktop", "name": "Claude Desktop", "detect": { "files": ["~/Library/Application Support/Claude/claude_desktop_config.json"] } },
+    { "id": "codex", "name": "Codex", "detect": { "commands": ["codex"], "files": ["~/.codex/config.toml"] } },
+    { "id": "cursor", "name": "Cursor", "detect": { "files": ["~/.cursor/mcp.json"] } },
+    { "id": "gemini", "name": "Gemini CLI", "detect": { "commands": ["gemini"] } }
+  ]
+}
+```
+
+The bundle IDs above were checked on a real Mac on 2026-11-03 (Photoshop, Illustrator, After Effects 2026, Blender). InDesign and Premiere Pro IDs still need confirming on a machine that has them. Premiere's ID may include a version suffix, so the detector should match prefixes.
+
+`registry/validate.py` checks the schema plus cross-references (unknown clients or apps, duplicate IDs). CI runs it on every pull request that touches `registry/`. Detection rules carry `"verified": true` only after being checked on a real machine.
+
+## 4. Planned: the `creative-mcp` installer
+
+```text
+brew install zachshallbetter/tap/creative-mcp     # later also: npm, a Windows download
+creative-mcp setup
+```
+
+| Command | Does |
+| --- | --- |
+| `setup` | Detects installed creative apps and MCP clients, shows a checklist with matching tools pre-selected, installs the chosen tools, registers them with the chosen clients, then starts each server once with an MCP `initialize` to confirm it works. |
+| `list` | Shows every tool in the catalogue, what is installed, and which clients each one is registered with. |
+| `doctor` | Re-runs detection and the `initialize` check, and reports missing apps, add-ons, permissions or stale client entries. |
+| `update` | Upgrades installed tools through the method each was installed with. |
+| `add <tool>` / `remove <tool>` | Installs or uninstalls one tool and updates client registrations. |
+
+Flags: `--yes` (accept the detected defaults), `--tools adobe,blender`, `--clients claude-code,codex`, `--dry-run` (print every command and config change without doing it), `--json`.
+
+How it works:
+
+- **Detection.** macOS: Spotlight by bundle ID (`mdfind`), then the app's `Info.plist` for its version. Windows: registry uninstall keys and the catalogue's path globs. Linux: `PATH` and `.desktop` files. Clients: commands on `PATH` and their config files. A client counts as present if either exists, because the `claude` command isn't always on the shell's `PATH` even when Claude Code is set up.
+- **Install method.** Homebrew when `brew` is present (it also supplies Node or Rust). Otherwise the tool's native method (npm or Cargo), after checking the prerequisites in `requires`.
+- **Client registration.** Use the client's own command where one exists (`claude mcp add`, `blender-mcp client add`); otherwise edit its JSON/TOML config. Show a diff, back up the file first, and record what was added so `remove` can undo it.
+- **Privacy.** No telemetry. The only network access is downloading the catalogue and the packages.
+
+Language: **Rust**, so the installer is a single dependency-free binary that works for someone who only wants Blender, and shares tooling with Blender MCP.
+
+## 5. Naming conventions for new tools
+
+| Thing | Rule | Example |
+| --- | --- | --- |
+| Catalogue ID | lowercase subject, one word | `adobe`, `blender` |
+| Repository | `<id>-mcp` (`-rs` etc. only if a second language exists) | `adobe-mcp`; existing `blender-mcp-rs` keeps its name |
+| Homebrew formula | `<id>-mcp` in `zachshallbetter/tap` | `blender-mcp` |
+| Packages | `<id>-mcp` and `<id>-mcp-<app>` for per-app servers | `adobe-mcp-photoshop` |
+| Server command | same as the package name | `adobe-mcp-suite` |
+| Client registration name | `<id>`, or `<app>` for per-app servers | `claude mcp add photoshop -- adobe-mcp-photoshop` |
+| Docs page | `/docs/implementations/<id>.html` (or per app) | `/docs/implementations/blender.html` |
+| Status vocabulary | Documented, Implemented, Tested, Validated | |
+
+## 6. Adding a tool to the series
+
+1. Create the repo with a README, LICENSE files, a CONTRIBUTING guide and tagged releases.
+2. Publish a package (npm, crates or release binaries) and add a formula to `zachshallbetter/tap` with a real `test do` block.
+3. Add the catalogue entry, including detection rules checked on a real machine.
+4. Add the docs page and its card in `site/scripts/generate-social-images.py`, then run that script and `site/scripts/generate-discovery.py`.
+5. Record capability status honestly. Only Validated claims say the workflow was run in the real app.
+
+## 7. Open decisions
+
+- **D1: where the catalogue and installer live. Decided (2026-11-03):** the public `zachshallbetter/creative-mcp` repo holds the site (`site/`), the catalogue (`registry/`), the future installer (`cli/`) and these documents (`docs/`). The earlier private site repo, whose history contained personal data, is archived privately as `creative-mcp-site-archive`.
+- **D2: installer language.** Recommended: Rust (see section 4).
+- **D3: Blender MCP release.** Add `LICENSE-MIT` and `LICENSE-APACHE`, reconcile `VERSION` (0.4.0) with Cargo (0.5.0), then tag `v0.5.0` so Homebrew stops needing `--HEAD`.
+- **D4: site generation.** Once the catalogue exists, generate the Projects grid, setup builder options and `llms.txt` key facts from it rather than hand-editing HTML.

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f0e8">
+<meta name="description" content="Setup, configuration, workflows, troubleshooting and safety guidance for Creative MCP implementations, including Adobe MCP and Blender MCP.">
+<meta name="author" content="Zach Shallbetter">
+<link rel="author" href="https://creativemcp.com/about.html">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icons/icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="application-name" content="Creative MCP">
+<meta name="apple-mobile-web-app-title" content="Creative MCP">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index">
+<link rel="canonical" href="https://creativemcp.com/docs/getting-started.html">
+<meta property="og:type" content="article"><meta property="og:title" content="Getting Started — Creative MCP Docs"><meta property="og:description" content="Setup, configuration, workflows, troubleshooting and safety guidance for Creative MCP implementations, including Adobe MCP and Blender MCP."><meta property="og:url" content="https://creativemcp.com/docs/getting-started.html"><meta property="article:author" content="https://creativemcp.com/about.html"><meta property="article:modified_time" content="2026-11-03"><meta property="og:site_name" content="Creative MCP"><meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://creativemcp.com/assets/social/docs-getting-started.jpg">
+<meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Creative MCP, Docs · Getting started: Get set up. Install the local servers, connect your MCP client and run a first workflow. By Zach Shallbetter.">
+<meta name="twitter:image" content="https://creativemcp.com/assets/social/docs-getting-started.jpg">
+<meta name="twitter:image:alt" content="Creative MCP, Docs · Getting started: Get set up. Install the local servers, connect your MCP client and run a first workflow. By Zach Shallbetter.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Getting Started — Creative MCP Docs"><meta name="twitter:description" content="Setup, configuration, workflows, troubleshooting and safety guidance for Creative MCP implementations, including Adobe MCP and Blender MCP.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://creativemcp.com/docs/getting-started.html#webpage",
+      "url": "https://creativemcp.com/docs/getting-started.html",
+      "name": "Getting Started — Creative MCP Docs",
+      "description": "Setup, configuration, workflows, troubleshooting and safety guidance for Creative MCP implementations, including Adobe MCP and Blender MCP.",
+      "isPartOf": {
+        "@id": "https://creativemcp.com/#website"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "dateModified": "2026-11-03",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://creativemcp.com/assets/social/docs-getting-started.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "headline": "Get set up.",
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "mainEntityOfPage": "https://creativemcp.com/docs/getting-started.html",
+      "creator": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://creativemcp.com/about.html#zach-shallbetter",
+      "name": "Zach Shallbetter",
+      "url": "https://zachshallbetter.com/",
+      "sameAs": [
+        "https://zachshallbetter.com/",
+        "https://github.com/zachshallbetter",
+        "https://linkedin.com/in/zachshallbetter"
+      ]
+    }
+  ]
+}
+</script>
+<title>Getting Started — Creative MCP Docs</title>
+<script>
+try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }
+</script>
+<link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/site-tokens.css?v=14">
+<link rel="stylesheet" href="/docs/docs.css?v=2">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
+  <script src="/analytics.js?v=2" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#top">Skip to main content</a>
+<header class="wrap topbar"><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><nav class="topnav" aria-label="Main navigation"><a href="/projects.html" data-event-id="nav_projects">Projects</a><a href="/how-it-works.html" data-event-id="nav_how_it_works">How it works</a><a href="/docs/" data-event-id="nav_docs" aria-current="page">Docs</a><a href="/about.html" data-event-id="nav_about">About</a><button class="theme-toggle" data-event-id="theme_toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a class="button" href="/docs/getting-started.html" data-event-id="cta_get_started"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav></header>
+<main class="wrap" id="top" tabindex="-1">
+  <div class="eyebrow">Field guide · setup to first workflow</div>
+  <h1>Get set up.</h1>
+  <p class="lede">Install the local servers, connect them to your MCP client, understand which Adobe app each package reaches, and troubleshoot the bridge between your model and your creative work.</p>
+  <p class="doc-meta">LOCAL PROCESS · MCP OVER STDIO · macOS + WINDOWS</p>
+
+  <div class="doc-layout">
+    <nav class="doc-nav" aria-label="Getting started sections">
+      <strong>On this page</strong>
+      <a href="/docs/" data-event-id="nav_docs">Docs home</a><a href="/docs/content.html">Content guide</a><a href="/docs/api.html">MCP API</a><a href="/docs/cli.html">CLI &amp; config</a><a href="/docs/architecture.html">Architecture</a><a href="#overview">How it works</a><a href="#choose">Choose a package</a><a href="#requirements">Requirements</a>
+      <a href="#quickstart">Quick start</a><a href="#clients">MCP client setup</a><a href="#suite">Suite coordinator</a>
+      <a href="#apps">App setup</a><a href="#workflows">First workflows</a><a href="#configuration">Configuration</a>
+      <a href="#safety">Files &amp; safety</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference library</a>
+    </nav>
+    <article class="doc-content">
+      <section class="doc-section" id="overview">
+        <h2>How it works</h2>
+        <p>These are desktop automation servers. Your MCP client starts a Node.js process on the same computer as the Adobe app. The server accepts MCP messages over standard input/output (stdio), translates a tool call into an application script or bridge request, and returns the result to the client.</p>
+        <div class="doc-grid">
+          <div class="doc-card"><span class="tag">01 · Ask</span><h3>Your MCP client</h3><p>Claude Code, Claude Desktop, Cursor, Warp, or another client that can launch an MCP server process.</p></div>
+          <div class="doc-card"><span class="tag">02 · Route</span><h3>Local MCP server</h3><p>Node runs on your machine. The server validates arguments and routes the request to the selected application backend.</p></div>
+          <div class="doc-card"><span class="tag">03 · Act</span><h3>Adobe desktop app</h3><p>The app must be installed and generally open (or launchable). Your client and Adobe files stay in your local workflow.</p></div>
+        </div>
+        <div class="callout"><p><strong>Not a hosted Adobe endpoint.</strong> The public website provides documentation and the capability atlas. Tool execution happens locally through the server process you configure in your MCP client; this website does not proxy MCP calls.</p></div>
+      </section>
+
+      <section class="doc-section" id="choose">
+        <h2>Choose a package</h2>
+        <p>Install one app server for direct control of that application. Add the Suite coordinator when you want its current cross-app workflows. The coordinator does not expose the full tool list of its child servers.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Choose a package table"><table><thead><tr><th>Package</th><th>Use it for</th><th>Connection route</th><th>Install</th></tr></thead><tbody>
+          <tr><td><strong>InDesign</strong><br><code>adobe-mcp-indesign</code></td><td>Documents, pages, typography, tables, long documents and export.</td><td>ExtendScript via AppleScript on macOS or COM/PowerShell on Windows; optional UXP backend.</td><td><code>npx -y adobe-mcp-indesign</code></td></tr>
+          <tr><td><strong>Illustrator</strong><br><code>adobe-mcp-illustrator</code></td><td>Documents, artboards, layers, vectors, typography, effects and export.</td><td>ExtendScript via AppleScript on macOS or COM/PowerShell on Windows.</td><td><code>npx -y adobe-mcp-illustrator</code></td></tr>
+          <tr><td><strong>Photoshop</strong><br><code>adobe-mcp-photoshop</code></td><td>Documents, pixels, layers, selections, adjustments, painting and export.</td><td>ExtendScript through local desktop automation.</td><td><code>npx -y adobe-mcp-photoshop</code></td></tr>
+          <tr><td><strong>After Effects</strong><br><code>adobe-mcp-aftereffects</code></td><td>Projects, footage, compositions, layers, keyframes, effects and render queue.</td><td>ExtendScript through local desktop automation.</td><td><code>npx -y adobe-mcp-aftereffects</code></td></tr>
+          <tr><td><strong>Premiere Pro</strong><br><code>adobe-mcp-premiere</code></td><td>Projects, sequences, timeline edits, markers, effects and export.</td><td>Local WebSocket bridge to a UXP plugin panel in Premiere Pro.</td><td><code>npx -y adobe-mcp-premiere</code></td></tr>
+          <tr><td><strong>Suite coordinator</strong><br><code>adobe-mcp-suite</code></td><td>Two coordinated Illustrator → InDesign handoffs.</td><td>Starts child MCP servers locally and delegates workflow steps.</td><td><code>npx -y adobe-mcp-suite</code></td></tr>
+        </tbody></table></div>
+        <p>Tool counts, exact coverage, evidence levels and known gaps are in the <a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability Atlas</a>. The individual package guides document each package's current tool surfaces and options.</p>
+      </section>
+
+      <section class="doc-section" id="requirements">
+        <h2>Requirements</h2>
+        <ul>
+          <li><strong>Node.js 18 or later.</strong> Use an up-to-date LTS release; <code>npx</code> ships with npm.</li>
+          <li><strong>macOS or Windows</strong> for the listed desktop server integrations. macOS may prompt you to authorize Terminal or Node to control an Adobe app in System Settings → Privacy &amp; Security → Automation.</li>
+          <li><strong>The corresponding Adobe desktop app</strong> installed on the same computer. InDesign, Illustrator, Photoshop and After Effects guides specify 2023+; Premiere Pro requires 25.6+ and its MCP Bridge UXP plugin loaded.</li>
+          <li><strong>An MCP client</strong> that can launch a command with arguments and environment variables and communicate over stdio.</li>
+          <li><strong>Premiere only:</strong> UXP Developer Tool to load the plugin until a published installation path is documented; plugin/server ports and bridge token must match.</li>
+        </ul>
+        <p>Adobe app versions and backend support can differ by operation. Consult the app guide and the tool's <code>help</code> response for version-specific behavior.</p>
+      </section>
+
+      <section class="doc-section" id="quickstart">
+        <h2>Quick start</h2>
+        <ol class="steps">
+          <li>Install Node.js 18 or later and the Adobe application you intend to automate.</li>
+          <li>Register the matching package in your MCP client using the setup below.</li>
+          <li>Restart or reconnect the MCP client so it launches the process and refreshes its tool list.</li>
+          <li>Open the Adobe app and a suitable document (or ask a read-only status tool what is open).</li>
+          <li>Start with a small, reversible request. Confirm the target document, selection, units and output path before asking for a change or export.</li>
+        </ol>
+        <p>For example: “In the active Illustrator document, list the artboards and report their sizes. Don’t make changes.” Once the connection is confirmed, try a bounded edit in a copy of a document.</p>
+      </section>
+
+      <section class="doc-section" id="clients">
+        <h2>MCP client setup</h2>
+        <h3>Claude Code: one app server</h3>
+        <pre tabindex="0"><code>claude mcp add --scope user illustrator -- npx -y adobe-mcp-illustrator</code></pre>
+        <p>Replace <code>illustrator</code> and the package name with the Adobe application you want. Omit <code>--scope user</code> if you prefer the client’s default scope.</p>
+        <h3>Claude Code: the Suite coordinator</h3>
+        <pre tabindex="0"><code>claude mcp add --scope user adobe -- npx -y adobe-mcp-suite</code></pre>
+        <h3>Any client with an <code>mcpServers</code> configuration</h3>
+        <pre tabindex="0"><code>{
+  "mcpServers": {
+    "illustrator": {
+      "command": "npx",
+      "args": ["-y", "adobe-mcp-illustrator"]
+    }
+  }
+}</code></pre>
+        <p>For Claude Desktop, edit its MCP server configuration file. Cursor, Warp and other clients use their own configuration screen or file; follow the client’s current instructions for where to place this block. Do not paste the JSON into a shell command. See the dedicated <a href="/docs/cli.html">CLI and configuration reference</a> for source-checkout launch and environment-variable details.</p>
+        <h3>Run a specific published version</h3>
+        <pre tabindex="0"><code>{
+  "mcpServers": {
+    "illustrator": {
+      "command": "npx",
+      "args": ["-y", "adobe-mcp-illustrator@0.9.0"]
+    }
+  }
+}</code></pre>
+        <p>Pin the package version when you need repeatable team setups; check npm for the current published version before updating the pin.</p>
+        <h3>Install with Homebrew</h3>
+        <p>On macOS or Linux, the Creative MCP tap installs the Suite coordinator and every app server onto your <code>PATH</code>, so clients can launch them without <code>npx</code>. Homebrew 7 and later asks you to trust a third-party tap once.</p>
+        <pre tabindex="0"><code>brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/adobe-mcp
+claude mcp add adobe -- adobe-mcp-suite
+claude mcp add illustrator -- adobe-mcp-illustrator</code></pre>
+      </section>
+
+      <section class="doc-section" id="suite">
+        <h2>Suite coordinator</h2>
+        <p>The coordinator currently offers two workflows across InDesign and Illustrator. It starts the app servers it needs as child MCP processes, then delegates the individual actions. Install an app's standalone package as well if you need its direct tools in your client.</p>
+        <div class="doc-grid">
+          <div class="doc-card"><span class="tag">Illustrator → InDesign</span><h3>Place artwork</h3><p>Place an artboard from the active Illustrator document on an InDesign page as a link to its <code>.ai</code> source. The Illustrator document is saved first by default.</p></div>
+          <div class="doc-card"><span class="tag">Illustrator → InDesign</span><h3>Copy swatches</h3><p>Copy supported process and spot swatches with exact values. Gradients and patterns are reported, not copied; built-in InDesign swatches are preserved.</p></div>
+        </div>
+        <h3>Select which child servers load</h3>
+        <pre tabindex="0"><code>npx -y adobe-mcp-suite --apps indesign,illustrator
+# or set ADOBE_MCP_APPS=indesign,illustrator</code></pre>
+        <p>The supported app IDs are <code>indesign</code>, <code>illustrator</code>, <code>photoshop</code>, <code>aftereffects</code> and <code>premiere</code>. The current coordinator workflows require both InDesign and Illustrator. Selecting other apps does not add new cross-app workflows or re-export their tools.</p>
+        <h3>Allow the files needed by a workflow</h3>
+        <p>File operations are confined to the user’s home directory and any additional per-app allowed directories. For a handoff, configure both participating servers for the directory containing the source artwork and the destination document as needed.</p>
+        <pre tabindex="0"><code>{
+  "mcpServers": {
+    "adobe": {
+      "command": "npx",
+      "args": ["-y", "adobe-mcp-suite", "--apps", "indesign,illustrator"],
+      "env": {
+        "INDESIGN_ALLOWED_DIRS": "/Users/you/Projects",
+        "ILLUSTRATOR_ALLOWED_DIRS": "/Users/you/Projects"
+      }
+    }
+  }
+}</code></pre>
+        <p>On Windows, use a Windows path and separate multiple allowed directories with semicolons. The coordinator forwards each server only the variables it needs.</p>
+      </section>
+
+      <section class="doc-section" id="apps">
+        <h2>Application setup</h2>
+        <p>Each app server has its own behavior, terminology, tool names and supported operations. Its MCP <code>help</code> tool describes parameters and categories from the definitions the server advertises.</p>
+        <div class="doc-grid">
+          <div class="doc-card"><span class="tag">Desktop automation</span><h3>InDesign</h3><p>macOS uses AppleScript; Windows uses COM via PowerShell. Optional UXP bridge support is available. The guide explains page units, document selection, path permissions and backend selection.</p><p><a href="/docs/implementations/indesign.html">Read the InDesign guide ↗</a></p></div>
+          <div class="doc-card"><span class="tag">Desktop automation</span><h3>Illustrator</h3><p>Learn artboard-relative geometry, coordinate direction, item targeting, color formats, fonts and allowed paths before editing artwork.</p><p><a href="/docs/implementations/illustrator.html">Read the Illustrator guide ↗</a></p></div>
+          <div class="doc-card"><span class="tag">Desktop automation</span><h3>Photoshop</h3><p>Review layer and selection identifiers, image dimensions, file operations, export options and its local target/backend settings.</p><p><a href="/docs/implementations/photoshop.html">Read the Photoshop guide ↗</a></p></div>
+          <div class="doc-card"><span class="tag">Desktop automation</span><h3>After Effects</h3><p>Review composition and layer targeting, time/keyframe conventions, render queue behavior, file access and script timeout settings.</p><p><a href="/docs/implementations/aftereffects.html">Read the After Effects guide ↗</a></p></div>
+          <div class="doc-card"><span class="tag">UXP plugin bridge</span><h3>Premiere Pro</h3><p>Load the MCP Bridge panel, match its port and optional token to the server, and understand its tested status and API-version limits.</p><p><a href="/docs/implementations/premiere.html">Read the Premiere Pro guide ↗</a></p></div>
+        </div>
+        <div class="callout"><p><strong>Premiere Pro validation status:</strong> the repository guide says the server has not yet been tested against a real Premiere Pro session. Script checks and a stand-in test DOM do not establish live-app validation. See the guide’s “What is not certain yet” section.</p></div>
+      </section>
+
+      <section class="doc-section" id="workflows">
+        <h2>Plan a first workflow</h2>
+        <ol class="steps">
+          <li><strong>Inspect before editing.</strong> Ask for app status, document/project information, selections and relevant items first.</li>
+          <li><strong>Specify the target.</strong> Name the active document or use stable IDs returned by list tools. Avoid relying on a repeated display name when IDs are available.</li>
+          <li><strong>State units and bounds.</strong> Provide page/artboard dimensions, pixel sizes, frame/time units and a bounded set of objects where the tool requires them.</li>
+          <li><strong>Choose an output path.</strong> Use a path in your home folder or explicitly allowed directory. Do not overwrite an existing deliverable unless you intend to.</li>
+          <li><strong>Review before destructive work.</strong> Duplicate the document or project, check the intended selection, and ask the client to confirm before deleting, closing without saving, or replacing output.</li>
+          <li><strong>Verify in the Adobe app.</strong> Open or inspect the result, check links/fonts/render status as appropriate, and save/export deliberately.</li>
+        </ol>
+        <p>Tool calls are discrete operations. A sequence of calls is not automatically an all-or-nothing transaction; inspect intermediate state when the workflow depends on a prior change.</p>
+      </section>
+
+      <section class="doc-section" id="configuration">
+        <h2>Configuration</h2>
+        <p>Set environment variables in the MCP client’s server entry. Do not set them in a website form or commit real credentials to a repository.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Configuration table"><table><thead><tr><th>Variable family</th><th>Applies to</th><th>Purpose</th></tr></thead><tbody>
+          <tr><td><code>*_ALLOWED_DIRS</code></td><td>Each app server, e.g. <code>PHOTOSHOP_ALLOWED_DIRS</code></td><td>Add directories to the default home-folder file access scope. Delimiter is platform-specific: <code>:</code> on macOS, <code>;</code> on Windows.</td></tr>
+          <tr><td><code>ADOBE_MCP_APPS</code></td><td>Suite coordinator</td><td>Choose which app server IDs the coordinator starts.</td></tr>
+          <tr><td><code>*_APP_NAME</code></td><td>App-specific, where supported</td><td>Select a local Adobe application installation. Availability and behavior vary by package and operating system.</td></tr>
+          <tr><td><code>*_SCRIPT_TIMEOUT_MS</code></td><td>App-specific</td><td>Adjust how long a server waits for a script or bridge response. See the package guide for defaults and exceptions.</td></tr>
+          <tr><td><code>*_TARGET</code>, <code>ADOBE_TARGET</code></td><td>Supported ArtCraft-compatible servers</td><td>Route compatible operations to a named local ArtCraft adapter. Support is app-specific; consult that server’s guide.</td></tr>
+          <tr><td><code>PREMIERE_WS_PORT</code></td><td>Premiere Pro</td><td>Choose the loopback port used by the local server and set the same port in the UXP bridge panel.</td></tr>
+          <tr><td><code>BRIDGE_TOKEN</code>, <code>PREMIERE_BRIDGE_TOKEN</code></td><td>Premiere Pro</td><td>Optional local bridge authentication; use the per-server override when coordinating with another bridge consumer. Keep tokens private.</td></tr>
+          <tr><td><code>UXP_BRIDGE_URL</code></td><td>Packages with a UXP backend</td><td>Set the local bridge address only where the app guide documents that backend.</td></tr>
+        </tbody></table></div>
+        <p>Variable names do not imply every package supports every option. Confirm the exact variable, default, delimiter and forwarding behavior in the package README.</p>
+      </section>
+
+      <section class="doc-section" id="safety">
+        <h2>Files, permissions &amp; safety</h2>
+        <ul>
+          <li><strong>Local process, local authority.</strong> MCP tools can make changes in the desktop application under your user session. Grant only the client permissions needed for the apps you use.</li>
+          <li><strong>File paths are constrained.</strong> Shared path policy confines supported file operations to the home directory and configured allowed directories, and rejects system-directory paths. An app may still interpret its own document references according to its own behavior.</li>
+          <li><strong>Destructive operations need review.</strong> Deleting pages/layers/clips, closing unsaved work, replacing files and similar actions can lose work. Tool annotations help capable clients recognize destructive or open-world calls; review each target and result.</li>
+          <li><strong>Use copies for consequential edits.</strong> Save a working copy, inspect the active document/selection and verify output before relying on an automated result.</li>
+          <li><strong>Premiere bridge stays local.</strong> Its documented server binds to loopback. A bridge token is stored by the plugin panel in local storage; protect access to the machine and do not share the token.</li>
+          <li><strong>Custom code is powerful.</strong> App-specific execution tools that accept code are not equivalent to ordinary constrained editing tools. Read their package security notes before enabling or using them.</li>
+        </ul>
+      </section>
+
+      <section class="doc-section" id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <div class="doc-grid">
+          <div class="doc-card"><h3>The server does not appear in the client</h3><p>Check the client’s MCP configuration syntax, command name and package spelling. Confirm Node/npm are on the client process PATH, then restart or reconnect the client and inspect its MCP logs.</p></div>
+          <div class="doc-card"><h3>The client cannot start <code>npx</code></h3><p>Run <code>node --version</code> and <code>npm --version</code> in a terminal. Install Node.js 18+ and ensure the client app inherits a PATH that includes Node and npm.</p></div>
+          <div class="doc-card"><h3>The server says no document is open</h3><p>Open the target Adobe app and a document/project. Ask for the app’s status or list tools first, then identify the intended active document.</p></div>
+          <div class="doc-card"><h3>macOS asks for Automation permission</h3><p>Approve the prompt for the process actually controlling the Adobe app (often Terminal, the MCP client, or Node). Review it under System Settings → Privacy &amp; Security → Automation.</p></div>
+          <div class="doc-card"><h3>A file path is rejected</h3><p>Use an absolute path inside your home directory or add its parent directory to that server’s <code>*_ALLOWED_DIRS</code>. Restart the MCP server after changing client environment settings.</p></div>
+          <div class="doc-card"><h3>Premiere says the bridge is disconnected</h3><p>Confirm Premiere Pro 25.6+, load the UXP plugin and open its MCP Bridge panel. Match its port and token to the server configuration; then run <code>premiere_status</code>.</p></div>
+          <div class="doc-card"><h3>A call times out</h3><p>Check for a modal dialog in the Adobe app and verify the app is responsive. Some renders and long operations need a longer package-specific timeout; do not blindly retry an operation that may have completed.</p></div>
+          <div class="doc-card"><h3>A tool or parameter is unfamiliar</h3><p>Call <code>help</code> for a tool or category. Use the exact advertised argument names and inspect current document state rather than guessing IDs or enum values.</p></div>
+          <div class="doc-card"><h3>A cross-app workflow is missing</h3><p>The coordinator currently advertises its supported InDesign/Illustrator workflows only when both child servers are loaded. It does not expose standalone app tools.</p></div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="reference">
+        <h2>Reference library</h2>
+        <p>Use the maintained package guides as the source of truth for current tools, configuration, platform behavior and limitations. The site explains the product and common setup; it does not replace the detailed references.</p>
+        <ul class="doc-index">
+          <li><a href="https://github.com/zachshallbetter/adobe-mcp/blob/main/README.md"><strong>Repository overview</strong><span>Packages, install options, client config and development.</span></a></li>
+          <li><a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/suite"><strong>Suite coordinator</strong><span>Cross-app workflows and delegation behavior.</span></a></li>
+          <li><a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign"><strong>InDesign server</strong><span>Tool guide, platform backends, conventions and security.</span></a></li>
+          <li><a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/illustrator"><strong>Illustrator server</strong><span>Artboards, coordinates, targeting, colors and tools.</span></a></li>
+          <li><a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/photoshop"><strong>Photoshop server</strong><span>Document, layer, image, export and configuration reference.</span></a></li>
+          <li><a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/aftereffects"><strong>After Effects server</strong><span>Projects, compositions, timing, scripting and rendering.</span></a></li>
+          <li><a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/premiere"><strong>Premiere Pro server</strong><span>UXP setup, bridge security, API limits and validation status.</span></a></li>
+          <li><a href="https://github.com/zachshallbetter/adobe-mcp/blob/main/SECURITY.md"><strong>Security policy</strong><span>Report security issues through the repository’s stated process.</span></a></li>
+          <li><a href="https://github.com/zachshallbetter/adobe-mcp/blob/main/CONTRIBUTING.md"><strong>Contributing</strong><span>Development and project contribution guidance.</span></a></li>
+          <li><a href="/capability-atlas.html" data-event-id="cta_capability_atlas"><strong>Capability Atlas</strong><span>Detailed feature coverage, routes, evidence and workflows.</span></a></li>
+          <li><a href="https://www.npmjs.com/package/adobe-mcp-suite"><strong>Suite on npm</strong><span>Published package versions and release information.</span></a></li>
+          <li><a href="https://github.com/zachshallbetter/adobe-mcp"><strong>GitHub repository</strong><span>Source, releases and issue tracker.</span></a></li>
+        </ul>
+      </section>
+    </article>
+  </div>
+</main>
+<footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/apps.html" data-event-id="cta_adobe_mcp">Adobe MCP</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/" data-event-id="nav_docs">Docs</a><a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer>
+<script src="/docs/search.js?v=6" defer></script><script src="/theme.js" defer></script>
+<script src="/events.js?v=2" defer></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+# Creative MCP
+
+> Creative MCP is an open collection of local Model Context Protocol (MCP) servers that connect AI agents and MCP clients to creative software: Adobe MCP for InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, and Blender MCP for Blender. Servers run on the user's own machine over stdio; nothing is hosted.
+
+Key facts:
+- Adobe MCP: five app-specific Node.js servers (Node.js 18+, macOS or Windows) plus a Suite coordinator for two documented Illustrator-to-InDesign workflows. npm: `adobe-mcp-suite`; Homebrew: `brew install zachshallbetter/tap/adobe-mcp`. Source: https://github.com/zachshallbetter/adobe-mcp (MIT).
+- Blender MCP: a Rust MCP server and CLI with a companion Blender add-on (Blender 4.0+). Homebrew: `brew install --HEAD zachshallbetter/tap/blender-mcp` (builds the main branch; no tagged release yet). Source: https://github.com/zachshallbetter/blender-mcp-rs (MIT OR Apache-2.0).
+- The projects are independent. A client can load both, but moving files between Adobe apps and Blender is a user-managed handoff.
+- Capability status is reported as Documented, Implemented, Tested or Validated; those levels are distinct and a lower level never implies a higher one.
+- Created by Zach Shallbetter (https://zachshallbetter.com/).
+- Each tool has its own repository and release cycle; they share the Homebrew tap `zachshallbetter/tap`. A series installer (`creative-mcp setup`) and catalogue are planned but not available yet.
+
+The full text of every page below is in [llms-full.txt](https://creativemcp.com/llms-full.txt).
+
+## Start here
+
+- [Creative MCP — creative tools, connected](https://creativemcp.com/): Creative MCP connects local MCP implementations for Adobe and Blender to the creative tools you already use.
+- [Projects](https://creativemcp.com/projects.html): Explore Creative MCP implementations for Adobe creative apps and Blender.
+- [How it works](https://creativemcp.com/how-it-works.html): Learn how Creative MCP connects local implementations, MCP clients and creative applications.
+- [Get started](https://creativemcp.com/start.html): Choose an implementation and MCP client, follow setup steps, and confirm your local Creative MCP connection.
+- [About Zach Shallbetter](https://creativemcp.com/about.html): Creative MCP is an open collection of local tools connecting AI agents with creative software. Meet its creator, artist and creative technologist Zach Shallbetter.
+
+## Documentation
+
+- [Documentation](https://creativemcp.com/docs/): Creative MCP documentation for Adobe MCP and Blender MCP: setup, content guides, MCP API, CLI, configuration and implementation references.
+- [Getting Started](https://creativemcp.com/docs/getting-started.html): Setup, configuration, workflows, troubleshooting and safety guidance for Creative MCP implementations, including Adobe MCP and Blender MCP.
+- [Content & capability guide](https://creativemcp.com/docs/content.html): What each Adobe MCP server works on, and how an Adobe feature, an automation route, an MCP tool and a live-verified workflow differ.
+- [MCP API reference](https://creativemcp.com/docs/api.html): How the Adobe MCP servers expose tools over stdio: discovery, tool metadata, calls, results, execution boundaries and where to find exact parameters.
+- [CLI & configuration](https://creativemcp.com/docs/cli.html): Install and launch commands, Suite coordinator app selection, source checkouts and configuration variables for the Adobe MCP servers.
+- [Architecture & distribution](https://creativemcp.com/docs/architecture.html): How the Creative MCP series is organized: separate repositories per tool, the Homebrew tap, the planned installer and catalogue, and conventions for adding new tools.
+- [Contribute](https://creativemcp.com/docs/contributing.html): Contribute an implementation or workflow to Creative MCP with accurate scope, setup, capability and evidence documentation.
+
+## Implementation guides
+
+- [Adobe MCP](https://creativemcp.com/apps.html): Explore the five app-specific Adobe MCP servers, supported coordinator workflows and implementation guides.
+- [InDesign implementation](https://creativemcp.com/docs/implementations/indesign.html): InDesign MCP implementation guide: content, connection, API conventions and configuration.
+- [Illustrator implementation](https://creativemcp.com/docs/implementations/illustrator.html): Illustrator MCP implementation guide: content, connection, API conventions and configuration.
+- [Photoshop implementation](https://creativemcp.com/docs/implementations/photoshop.html): Photoshop MCP implementation guide: content, connection, API conventions and configuration.
+- [After Effects implementation](https://creativemcp.com/docs/implementations/aftereffects.html): After Effects MCP implementation guide: content, connection, API conventions and configuration.
+- [Premiere Pro implementation](https://creativemcp.com/docs/implementations/premiere.html): Premiere Pro MCP implementation guide: content, connection, API conventions and configuration.
+- [Suite coordinator implementation](https://creativemcp.com/docs/implementations/suite.html): Suite coordinator MCP implementation guide: content, connection, API conventions and configuration.
+- [Shared core implementation](https://creativemcp.com/docs/implementations/core.html): Shared core MCP implementation guide: content, connection, API conventions and configuration.
+- [Blender MCP implementation](https://creativemcp.com/docs/implementations/blender.html): Blender MCP implementation guide: local Rust server, Blender companion add-on, setup requirements and safety notes.
+
+## Optional
+
+- [Capability Atlas](https://creativemcp.com/capability-atlas.html): Explore researched Adobe app capabilities, automation routes, MCP coverage and production workflows.
+- [Features](https://creativemcp.com/features.html): Search the Adobe MCP feature inventory across InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, with routes, tool mapping and evidence.
+- [Workflows](https://creativemcp.com/workflows.html): Practical Adobe MCP and Blender MCP examples with clear notes on supported handoffs and manual steps.

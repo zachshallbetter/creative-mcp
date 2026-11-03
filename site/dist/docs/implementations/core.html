@@ -1,0 +1,106 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f4f0e8"><meta name="description" content="Shared core MCP implementation guide: content, connection, API conventions and configuration.">
+<meta name="author" content="Zach Shallbetter">
+<link rel="author" href="https://creativemcp.com/about.html">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icons/icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="application-name" content="Creative MCP">
+<meta name="apple-mobile-web-app-title" content="Creative MCP">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index">
+<link rel="canonical" href="https://creativemcp.com/docs/implementations/core.html"><meta property="og:type" content="article"><meta property="og:title" content="Shared core implementation — Creative MCP Docs"><meta property="og:description" content="Shared core MCP implementation guide: content, connection, API conventions and configuration."><meta property="og:url" content="https://creativemcp.com/docs/implementations/core.html"><meta property="article:author" content="https://creativemcp.com/about.html"><meta property="article:modified_time" content="2026-11-03"><meta property="og:site_name" content="Creative MCP"><meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://creativemcp.com/assets/social/docs-core.jpg">
+<meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Creative MCP, Implementation guide: Shared core The common infrastructure behind every Adobe MCP server. By Zach Shallbetter.">
+<meta name="twitter:image" content="https://creativemcp.com/assets/social/docs-core.jpg">
+<meta name="twitter:image:alt" content="Creative MCP, Implementation guide: Shared core The common infrastructure behind every Adobe MCP server. By Zach Shallbetter.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Shared core implementation — Creative MCP Docs"><meta name="twitter:description" content="Shared core MCP implementation guide: content, connection, API conventions and configuration.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://creativemcp.com/docs/implementations/core.html#webpage",
+      "url": "https://creativemcp.com/docs/implementations/core.html",
+      "name": "Shared core implementation — Creative MCP Docs",
+      "description": "Shared core MCP implementation guide: content, connection, API conventions and configuration.",
+      "isPartOf": {
+        "@id": "https://creativemcp.com/#website"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "dateModified": "2026-11-03",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://creativemcp.com/assets/social/docs-core.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "headline": "Shared core",
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "mainEntityOfPage": "https://creativemcp.com/docs/implementations/core.html",
+      "about": {
+        "@id": "https://creativemcp.com/apps.html#adobe-mcp"
+      },
+      "breadcrumb": {
+        "@id": "https://creativemcp.com/docs/implementations/core.html#breadcrumb"
+      },
+      "creator": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://creativemcp.com/docs/implementations/core.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Docs",
+          "item": "https://creativemcp.com/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Implementation guides",
+          "item": "https://creativemcp.com/docs/#implementation-guides"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Shared core",
+          "item": "https://creativemcp.com/docs/implementations/core.html"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://creativemcp.com/about.html#zach-shallbetter",
+      "name": "Zach Shallbetter",
+      "url": "https://zachshallbetter.com/",
+      "sameAs": [
+        "https://zachshallbetter.com/",
+        "https://github.com/zachshallbetter",
+        "https://linkedin.com/in/zachshallbetter"
+      ]
+    }
+  ]
+}
+</script>
+<title>Shared core implementation — Creative MCP Docs</title><script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script><link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/site-tokens.css?v=14"><link rel="stylesheet" href="/docs/docs.css?v=2">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
+<script src="/analytics.js?v=2" defer></script>
+</head><body>
+<a class="skip-link" href="#top">Skip to main content</a><header class="wrap topbar"><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><nav class="topnav" aria-label="Main navigation"><a href="/projects.html" data-event-id="nav_projects">Projects</a><a href="/how-it-works.html" data-event-id="nav_how_it_works">How it works</a><a href="/docs/" data-event-id="nav_docs" aria-current="page">Docs</a><a href="/about.html" data-event-id="nav_about">About</a><button class="theme-toggle" data-event-id="theme_toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a class="button" href="/docs/getting-started.html" data-event-id="cta_get_started"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav></header><main class="wrap" id="top" tabindex="-1"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/docs/" data-event-id="nav_docs">Docs</a> / <a href="/docs/#implementation-guides">Implementation guides</a> / <span aria-current="page">Shared core</span></nav><div class="eyebrow">Implementation guide · Shared core</div><h1>Shared core</h1><p class="lede">The shared core package provides infrastructure used by the Adobe app servers: safe argument normalization and script literals, path policy, script execution, structured results, MCP server construction, annotations and static script auditing.</p><nav class="doc-tabs" aria-label="Documentation topics"><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/content.html">Content</a><a href="/docs/api.html">MCP API</a><a href="/docs/cli.html">CLI &amp; config</a><a href="/docs/architecture.html">Architecture</a><a href="/docs/implementations/indesign.html">InDesign</a><a href="/docs/implementations/illustrator.html">Illustrator</a><a href="/docs/implementations/photoshop.html">Photoshop</a><a href="/docs/implementations/aftereffects.html">After Effects</a><a href="/docs/implementations/premiere.html">Premiere</a><a href="/docs/implementations/suite.html">Suite</a></nav>
+<section class="doc-section" id="what-this-implementation-covers"><h2>What this implementation covers</h2><p>safe string/number/enum/path conversion; execution adapters; structured result parsing; failure detection; alias normalization; MCP tools/list and tools/call; annotation metadata; static API audits.</p><p>For feature-level detail and evidence, see the <a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability Atlas</a>.</p></section>
+<section class="doc-section" id="connection-and-requirements"><h2>Connection and requirements</h2><div class="doc-grid"><div class="doc-card"><span class="tag">Runtime route</span><h3>How it reaches the app</h3><p>A JavaScript library dependency, not a standalone MCP server and not a user-facing CLI.</p></div><div class="doc-card"><span class="tag">Prerequisites</span><h3>What you need</h3><p>Node.js 18+ when used by the packages. App runtimes are determined by the consuming server.</p></div></div><p><strong>Package:</strong> <code>adobe-mcp-core</code>. Add it as a local stdio MCP server using <a href="/docs/cli.html">CLI &amp; client configuration</a>.</p></section>
+<section class="doc-section" id="api-and-content-conventions"><h2>API and content conventions</h2><p>For contributors and integrators. The core README documents exports, executor options, error/result shape and tests. It does not provide Adobe app tools directly.</p><p>Discover the running package’s exact tool names and JSON input schemas through MCP <code>tools/list</code>. If the server provides <code>help</code>, use it to inspect a tool or category. Schemas from a different package version may not match.</p><div class="callout"><p><strong>Target and units:</strong> Core helpers are called by consuming packages; behavior such as application backend, paths and protocol is configured at the app-server layer.</p></div></section>
+<section class="doc-section" id="cli-and-configuration"><h2>CLI and configuration</h2><p>This package is launched as a persistent MCP process, not as a conventional one-shot CLI. Relevant settings documented by the package include:</p><div class="callout"><p><code>No standalone CLI configuration. Refer to each consuming package for environment variables and runtime behavior.</code></p></div><p>Variable names and defaults are package-specific; consult the package README before changing them. File-operation permissions and bridge tokens should be configured in the client’s environment, not embedded in prompts or checked into source.</p><pre tabindex="0"><code>claude mcp add core -- npx -y adobe-mcp-core</code></pre><p>For client-neutral JSON configuration and source-checkout commands, see <a href="/docs/cli.html">CLI &amp; configuration</a>.</p></section>
+<section class="doc-section" id="full-reference"><h2>Full reference</h2><p>The repository README is maintained alongside this implementation and covers exact setup, tool families, package-specific behavior, limitations, security and development status.</p><ul><li><a href="https://github.com/zachshallbetter/adobe-mcp/blob/main/packages/core/README.md">Shared core package README ↗</a></li><li><a href="https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/core">Browse package source and supporting docs ↗</a></li><li><a href="/docs/api.html">MCP API conventions ↗</a></li><li><a href="/docs/cli.html">Launch and environment reference ↗</a></li></ul></section></main><footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/apps.html" data-event-id="cta_adobe_mcp">Adobe MCP</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/docs/getting-started.html" data-event-id="cta_get_started">Getting started</a><a href="/docs/" data-event-id="nav_docs">Docs</a><a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer><script src="/docs/search.js?v=6" defer></script><script src="/theme.js" defer></script><script src="/events.js?v=2" defer></script>
+</body></html>

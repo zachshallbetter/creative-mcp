@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f4f0e8"><meta name="description" content="Creative MCP documentation for Adobe MCP and Blender MCP: setup, content guides, MCP API, CLI, configuration and implementation references.">
+<meta name="author" content="Zach Shallbetter">
+<link rel="author" href="https://creativemcp.com/about.html">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icons/icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="application-name" content="Creative MCP">
+<meta name="apple-mobile-web-app-title" content="Creative MCP">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index">
+<link rel="canonical" href="https://creativemcp.com/docs/"><meta property="og:type" content="website"><meta property="og:title" content="Documentation — Creative MCP"><meta property="og:description" content="Creative MCP documentation for Adobe MCP and Blender MCP: setup, content guides, MCP API, CLI, configuration and implementation references."><meta property="og:url" content="https://creativemcp.com/docs/"><meta property="og:site_name" content="Creative MCP"><meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://creativemcp.com/assets/social/docs.jpg">
+<meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Creative MCP, Documentation: Find the right guide. Setup, the MCP tool interface, configuration and a guide for every implementation. By Zach Shallbetter.">
+<meta name="twitter:image" content="https://creativemcp.com/assets/social/docs.jpg">
+<meta name="twitter:image:alt" content="Creative MCP, Documentation: Find the right guide. Setup, the MCP tool interface, configuration and a guide for every implementation. By Zach Shallbetter.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Documentation — Creative MCP"><meta name="twitter:description" content="Creative MCP documentation for Adobe MCP and Blender MCP: setup, content guides, MCP API, CLI, configuration and implementation references.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://creativemcp.com/docs/#webpage",
+      "url": "https://creativemcp.com/docs/",
+      "name": "Documentation — Creative MCP",
+      "description": "Creative MCP documentation for Adobe MCP and Blender MCP: setup, content guides, MCP API, CLI, configuration and implementation references.",
+      "isPartOf": {
+        "@id": "https://creativemcp.com/#website"
+      },
+      "publisher": {
+        "@id": "https://creativemcp.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "dateModified": "2026-11-03",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://creativemcp.com/assets/social/docs.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      },
+      "creator": {
+        "@id": "https://creativemcp.com/about.html#zach-shallbetter"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://creativemcp.com/about.html#zach-shallbetter",
+      "name": "Zach Shallbetter",
+      "url": "https://zachshallbetter.com/",
+      "sameAs": [
+        "https://zachshallbetter.com/",
+        "https://github.com/zachshallbetter",
+        "https://linkedin.com/in/zachshallbetter"
+      ]
+    }
+  ]
+}
+</script>
+<title>Documentation — Creative MCP</title><script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script><link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/site-tokens.css?v=14"><link rel="stylesheet" href="/docs/docs.css?v=2">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
+<script src="/analytics.js?v=2" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#top">Skip to main content</a><header class="wrap topbar"><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><nav class="topnav" aria-label="Main navigation"><a data-event-id="nav_projects" href="/projects.html">Projects</a><a data-event-id="nav_how_it_works" href="/how-it-works.html">How it works</a><a data-event-id="nav_docs" href="/docs/" aria-current="page">Docs</a><a data-event-id="nav_about" href="/about.html">About</a><button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" data-event-id="theme_toggle"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark</span></button><a data-event-id="cta_get_started" class="button" href="/start.html"><span class="button-label">Get started</span><span aria-hidden="true"><span class="button-label">↗</span></span></a></nav></header>
+<main class="wrap" id="top" tabindex="-1"><div class="eyebrow">Documentation · local servers, one guide per surface</div><h1>Find the right guide.</h1><p class="lede">Setup and product concepts, the MCP tool interface, command-line launch and configuration, then detailed references for Adobe MCP and Blender MCP implementations.</p><p class="doc-meta">PRODUCT GUIDES · PROTOCOL REFERENCE · IMPLEMENTATION MANUALS</p>
+<section class="doc-section" id="start-here"><h2>Start here</h2><ul class="doc-index"><li><a data-event-id="cta_get_started" href="/start.html"><strong>Guided setup</strong><span>Choose an implementation and client, then check local prerequisites.</span></a></li><li><a data-event-id="cta_get_started" href="/docs/getting-started.html"><strong>Getting started</strong><span>Requirements, install, client setup and first local workflow.</span></a></li><li><a href="/docs/content.html"><strong>Content &amp; capability guide</strong><span>What the tools work on, how to read coverage and evidence.</span></a></li><li><a href="/docs/api.html"><strong>MCP API reference</strong><span>Initialization, tools/list, tools/call, help and result semantics.</span></a></li><li><a href="/docs/cli.html"><strong>CLI &amp; configuration</strong><span>Launch commands, suite app selection and environment variables.</span></a></li><li><a href="/docs/architecture.html"><strong>Architecture &amp; distribution</strong><span>How the series is organized, the Homebrew tap, the planned installer and conventions for new tools.</span></a></li><li><a data-event-id="cta_capability_atlas" href="/capability-atlas.html"><strong>Capability Atlas</strong><span>Feature-level data, automation routes, tool mapping and evidence.</span></a></li><li><a href="/workflows.html"><strong>Workflow gallery</strong><span>Supported cross-app actions and clearly labeled manual handoffs.</span></a></li></ul></section>
+<section class="doc-section" id="implementation-guides"><h2>Implementation guides</h2><p>Each MCP implementation has a dedicated guide for its content surface, application connection, API conventions and setup. These pages explain how the implementations differ; package READMEs and generated references remain the source for complete tool schemas and options.</p><ul class="doc-index"><li class="doc-app doc-app-indesign"><a href="/docs/implementations/indesign.html"><strong>InDesign</strong><span>Layout, documents, typography, tables, long documents and output.</span></a></li><li class="doc-app doc-app-illustrator"><a href="/docs/implementations/illustrator.html"><strong>Illustrator</strong><span>Artboards, vector artwork, paths, type, effects and export.</span></a></li><li class="doc-app doc-app-photoshop"><a href="/docs/implementations/photoshop.html"><strong>Photoshop</strong><span>Pixels, documents, layers, selections, adjustments and output.</span></a></li><li class="doc-app doc-app-aftereffects"><a href="/docs/implementations/aftereffects.html"><strong>After Effects</strong><span>Projects, compositions, animation, effects and rendering.</span></a></li><li class="doc-app doc-app-premiere"><a href="/docs/implementations/premiere.html"><strong>Premiere Pro</strong><span>Projects, sequences, timeline editing and UXP bridge setup.</span></a></li><li class="doc-app doc-app-suite"><a href="/docs/implementations/suite.html"><strong>Adobe MCP coordinator</strong><span>Cross-app workflows and child-server orchestration.</span></a></li><li><a data-event-id="cta_blender_mcp" href="/docs/implementations/blender.html"><strong>Blender MCP</strong><span>Rust server, Blender add-on, local IPC and 3D workflows.</span></a></li><li><a href="/docs/implementations/core.html"><strong>Shared core</strong><span>Common server infrastructure for contributors and integrators.</span></a></li></ul></section>
+<section class="doc-section" id="choose-by-task"><h2>Choose by task</h2><div class="doc-grid"><div class="doc-card"><span class="tag">I want to install</span><h3>Connect a client</h3><p>Follow <a href="/docs/getting-started.html#clients">MCP client setup</a>, then see <a href="/docs/cli.html">CLI and configuration</a> for launch options.</p></div><div class="doc-card"><span class="tag">I want a tool schema</span><h3>Inspect the API</h3><p>Use the server’s live MCP <code>tools/list</code> or <code>help</code> tool; open the matching <a href="/docs/api.html">API guide</a> for conventions and sources.</p></div><div class="doc-card"><span class="tag">I want to see coverage</span><h3>Browse the Atlas</h3><p>Explore documented features, automation routes, MCP mapping and validation status in the <a data-event-id="cta_capability_atlas" href="/capability-atlas.html">Capability Atlas</a>.</p></div><div class="doc-card"><span class="tag">I want to contribute</span><h3>Make a change</h3><p>Read the <a href="/docs/contributing.html">contribution guide</a> for implementation boundaries and evidence expectations.</p></div></div></section></main>
+<footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a data-event-id="cta_adobe_mcp" href="/apps.html">Adobe MCP</a><a data-event-id="cta_blender_mcp" href="/docs/implementations/blender.html">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a data-event-id="cta_get_started" href="/start.html">Quick setup</a><a href="/workflows.html">Workflow gallery</a><a data-event-id="nav_docs" href="/docs/">Docs &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="/docs/contributing.html">Contribute</a><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer><script src="/docs/search.js?v=6" defer></script><script src="/theme.js" defer></script><script src="/events.js?v=2" defer></script>
+</body></html>

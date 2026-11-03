@@ -1,0 +1,38 @@
+.skip-link { position: fixed; z-index: 20; top: 10px; left: 10px; padding: 10px 14px; transform: translateY(-150%); border-radius: 6px; background: var(--ink); color: var(--paper); }
+.skip-link:focus { transform: translateY(0); }
+.about-page { padding-top: 34px; }
+.about-hero { display: grid; grid-template-columns: minmax(0,1fr) minmax(340px,.92fr); gap: clamp(30px,6vw,80px); align-items: center; }
+.about-intro h1 { max-width: 700px; margin: 18px 0 22px; font-size: clamp(48px,6.1vw,78px); line-height: .96; letter-spacing: -.075em; }
+.about-intro .story-lede { max-width: 62ch; font-size: 16px; }
+.about-intro .story-lede strong { color: var(--ink); }
+.about-cta { display: inline-flex; align-items: center; gap: 12px; margin-top: 24px; padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--radius-control); color: var(--ink); font-size: 13px; font-weight: 650; text-decoration: none; }
+.about-cta:hover { border-color: var(--purple); }
+.about-portrait { position: relative; margin: 0; }
+.about-portrait::before { content: ""; position: absolute; z-index: -1; inset: 12% -5% -5% 12%; border-radius: 18px; background: linear-gradient(130deg, color-mix(in srgb,var(--purple),transparent 76%),color-mix(in srgb,var(--orange),transparent 76%)); transform: rotate(3deg); }
+.about-portrait img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 18px 50px rgba(35,25,16,.12); }
+.about-portrait figcaption { margin-top: 9px; color: var(--muted); font: 10px var(--mono); }
+.about-purpose, .about-special, .about-history { margin-top: 86px; padding-top: 34px; }
+.about-page .story-section h2 { max-width: 830px; margin: 16px 0 22px; font-size: clamp(34px,4.2vw,54px); }
+.about-copy { max-width: 78ch; columns: 2; column-gap: 40px; }
+.about-copy p { break-inside: avoid; margin: 0 0 14px; color: var(--muted); font-size: 14px; line-height: 1.75; }
+.about-principles { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin-top: 34px; }
+.about-principles article { min-height: 190px; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--panel); }
+.principle-index { color: var(--purple); font: 12px var(--mono); }
+.about-principles h3 { margin: 24px 0 8px; font-size: 17px; }
+.about-principles p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+.about-links { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 22px; font-size: 13px; font-weight: 650; }
+.about-links a { text-underline-offset: 4px; }
+.about-author { display: grid; grid-template-columns: minmax(0,1fr) minmax(280px,.75fr); gap: 34px; align-items: end; margin-top: 96px; padding: clamp(24px,4vw,46px); border-radius: 16px; background: #171719; color: #f8f4ec; }
+.about-author .eyebrow { color: #d0c8d4; }
+.about-author .eyebrow::before { background: #bd7ef0; }
+.about-author h2 { margin: 15px 0 12px; font-size: clamp(34px,4.3vw,52px); line-height: 1; letter-spacing: -.06em; }
+.about-author-copy > p { max-width: 60ch; margin: 0; color: #d3ced5; font-size: 14px; line-height: 1.7; }
+.about-author-copy .about-location { margin-top: 18px; color: #bcb4c1; font: 10px/1.6 var(--mono); }
+.about-social { display: grid; border-top: 1px solid rgba(255,255,255,.2); }
+.about-social a { display: grid; grid-template-columns: 1fr auto 16px; gap: 12px; align-items: center; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.2); color: #fff; font-size: 13px; font-weight: 650; text-decoration: none; }
+.about-social a span:first-child { color: #c6bec9; font: 10px var(--mono); }
+.about-social a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.about-social a:focus-visible, .about-cta:focus-visible, .about-links a:focus-visible { outline: 2px solid var(--purple); outline-offset: 4px; }
+@media (max-width: 800px) { .about-hero { grid-template-columns: 1fr; } .about-portrait { max-width: 620px; } .about-portrait::before { right: 0; } .about-author { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .about-page { padding-top: 34px; } .about-purpose, .about-special, .about-history { margin-top: 58px; } .about-copy { columns: 1; } .about-principles { grid-template-columns: 1fr; } .about-principles article { min-height: 0; } .about-principles h3 { margin-top: 16px; } .about-author { margin-top: 64px; padding: 24px; } .about-social a { grid-template-columns: minmax(0, 1fr) 16px; } .about-social a span:first-child { min-width: 0; overflow-wrap: anywhere; grid-column: 1; grid-row: 2; } .about-social a span:last-child { grid-column: 2; grid-row: 1 / span 2; } }
+@media (prefers-reduced-motion: reduce) { .skip-link { transition: none; } }

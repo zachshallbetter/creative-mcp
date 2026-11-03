@@ -1,0 +1,62 @@
+.mock-hero { display: grid; grid-template-columns: 1fr .9fr; gap: clamp(44px, 7vw, 100px); align-items: center; padding-block: 82px 90px; }
+.mock-copy { max-width: 650px; }
+.mock-copy h1 { max-width: 650px; margin: 19px 0 20px; font-size: clamp(48px, 6.5vw, 82px); line-height: .95; letter-spacing: -.078em; }
+.mock-copy h1 span { background: linear-gradient(105deg, var(--purple), #bd3bb6 48%, var(--orange)); color: transparent; background-clip: text; }
+.mock-lede { max-width: 560px; color: var(--muted); font-size: 17px; line-height: 1.7; }
+.mock-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
+.mock-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 25px; color: var(--ink-3); font: 10px var(--mono); letter-spacing: .02em; text-transform: uppercase; }
+.mock-proof i { width: 4px; height: 4px; border-radius: 50%; background: var(--orange); }
+.workspace { position: relative; isolation: isolate; padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: var(--sheet); box-shadow: 0 28px 70px color-mix(in srgb, var(--ink), transparent 91%); }
+.workspace-halo { position: absolute; z-index: -1; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none; }
+.masked-mark { position: absolute; top: -62px; right: -18px; width: 250px; height: 230px; background: linear-gradient(140deg, var(--purple), #c63ab4 53%, var(--orange)); opacity: .13; mask: url('/brand-symbol.svg?v=2') center / contain no-repeat; -webkit-mask: url('/brand-symbol.svg?v=2') center / contain no-repeat; }
+.workspace-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 2px 3px 15px; color: var(--ink-3); font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.connection { display: inline-flex; align-items: center; gap: 7px; color: var(--good); font: 10px var(--mono); letter-spacing: 0; text-transform: none; }
+.connection i { width: 7px; height: 7px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 4px color-mix(in srgb, var(--good), transparent 88%); }
+.workspace-client { display: flex; align-items: center; gap: 12px; padding: 13px; border-radius: 11px; background: var(--ink); color: var(--paper); }
+.client-symbol { display: grid; place-items: center; flex: 0 0 38px; height: 38px; border-radius: 9px; background: var(--sheet); }
+.client-symbol img { width: 27px; height: 27px; }
+.workspace-client strong { display: block; font-size: 13px; }
+.workspace-client small { display: block; margin-top: 4px; color: var(--muted); font: 10px var(--mono); }
+.client-count { margin-left: auto; color: color-mix(in srgb, var(--paper), transparent 42%); font: 12px var(--mono); }
+.workspace-apps { display: grid; gap: 7px; margin-top: 13px; }
+.workspace-apps > div { display: grid; grid-template-columns: 30px 1fr auto auto; gap: 10px; align-items: center; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: color-mix(in srgb, var(--panel), transparent 18%); }
+.app-pin { display: grid; place-items: center; width: 27px; height: 27px; border-radius: 7px; background: color-mix(in srgb, var(--tone), transparent 86%); color: var(--tone); font: 750 9px var(--mono); }
+.workspace-apps strong { font-size: 11px; }
+.workspace-apps small, .app-state { color: var(--ink-3); font: 9px var(--mono); text-transform: uppercase; }
+.app-state { color: var(--good); }
+.workspace-foot { display: flex; justify-content: center; gap: 11px; margin-top: 13px; padding: 10px; border-radius: 7px; background: color-mix(in srgb, var(--purple), transparent 91%); color: var(--muted); font: 9px var(--mono); }
+.mock-section { padding-block: 72px 80px; border-top: 1px solid var(--line); }
+.section-intro { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; }
+.section-intro h2, .transfer-heading h2, .mock-cta h2 { margin: 11px 0 0; font-size: clamp(32px, 4vw, 50px); line-height: 1; letter-spacing: -.065em; }
+.section-link { display: inline-flex; align-items: center; gap: 8px; padding-bottom: 4px; color: var(--ink); font-size: 13px; font-weight: 650; text-decoration-color: var(--line); text-underline-offset: 5px; }
+.surface-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.surface-card { position: relative; display: flex; min-height: 230px; flex-direction: column; padding: 18px; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--sheet); color: var(--ink); text-decoration: none; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.surface-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--tone), var(--line) 42%); box-shadow: 0 12px 30px color-mix(in srgb, var(--tone), transparent 90%); }
+.surface-icon { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 25px; border-radius: 12px; background: color-mix(in srgb, var(--tone), transparent 88%); color: var(--tone); }
+.surface-icon svg { width: 27px; height: 27px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.surface-meta { color: var(--ink-3); font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.surface-card strong { margin-top: 8px; font-size: 16px; letter-spacing: -.03em; }
+.surface-desc { max-width: 22ch; margin-top: 7px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.surface-arrow { position: absolute; top: 20px; right: 18px; color: var(--tone); font-size: 14px; opacity: 0; transform: translate(-3px, 3px); transition: transform .18s ease, opacity .18s ease; }
+.surface-card:hover .surface-arrow, .surface-card:focus-visible .surface-arrow { opacity: 1; transform: none; }
+.transfer-section { display: grid; grid-template-columns: .75fr 1.25fr; gap: 40px; padding-block: 58px 70px; border-top: 1px solid var(--line); }
+.transfer-heading > p:last-child { max-width: 360px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.transfer-cards { display: grid; gap: 10px; }
+.transfer-card { display: grid; grid-template-columns: 30px 60px 1fr auto; gap: 14px; align-items: center; padding: 16px; border: 1px solid var(--line); border-radius: 11px; background: var(--sheet); }
+.transfer-index { color: var(--purple); font: 11px var(--mono); }
+.transfer-glyph { display: flex; align-items: center; justify-content: center; gap: 5px; height: 40px; border-radius: 9px; background: color-mix(in srgb, var(--purple), transparent 91%); color: var(--purple); font: 9px var(--mono); }
+.transfer-glyph span { display: grid; place-items: center; width: 21px; height: 21px; border: 1px solid color-mix(in srgb, currentColor, transparent 55%); border-radius: 6px; background: var(--sheet); }
+.transfer-glyph b { font-weight: 500; }
+.color-glyph { gap: 4px; color: var(--orange); background: color-mix(in srgb, var(--orange), transparent 90%); }
+.color-glyph span { width: 10px; height: 20px; border: 0; border-radius: 4px; background: var(--app-indesign); }
+.color-glyph span:nth-child(2) { background: var(--app-illustrator); }
+.color-glyph span:nth-child(3) { background: var(--app-photoshop); }
+.transfer-card strong { font-size: 13px; }
+.transfer-card p { margin: 4px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.transfer-route { color: var(--ink-3); font: 9px var(--mono); white-space: nowrap; }
+.mock-cta { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 68px; padding: 26px 30px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(110deg, color-mix(in srgb, var(--purple), var(--sheet) 90%), var(--sheet) 55%, color-mix(in srgb, var(--orange), var(--sheet) 91%)); }
+.mock-cta h2 { max-width: 620px; }
+@media (max-width: 1000px) { .mock-hero { grid-template-columns: 1fr 1fr; gap: 32px; padding-block: 60px 70px; } .surface-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .transfer-section { grid-template-columns: 1fr; gap: 20px; } }
+@media (max-width: 700px) { .mock-hero { grid-template-columns: 1fr; gap: 36px; padding-block: 48px 58px; } .mock-copy h1 { font-size: clamp(44px, 12vw, 68px); } .mock-lede { font-size: 15px; } .workspace { padding: 13px; } .mock-section { padding-block: 54px; } .section-intro { align-items: start; flex-direction: column; } .surface-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .surface-card { min-height: 205px; padding: 14px; } .transfer-card { grid-template-columns: 24px 52px 1fr; gap: 10px; padding: 13px; } .transfer-route { grid-column: 3; } .mock-cta { align-items: start; flex-direction: column; margin-bottom: 45px; padding: 22px; } }
+@media (max-width: 420px) { .surface-grid { grid-template-columns: 1fr; } .workspace-apps > div { grid-template-columns: 28px 1fr auto; } .workspace-apps > div small { display: none; } .mock-proof { gap: 8px; font-size: 8px; } }
+@media (prefers-reduced-motion: reduce) { .surface-card, .surface-arrow, .button { transition-duration: .01ms; } }
