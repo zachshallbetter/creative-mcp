@@ -1,6 +1,6 @@
 # Creative MCP series architecture
 
-Status (2026-11-03): the catalogue (`registry/`) and the installer (`cli/`, v0.1.0) are **Implemented and tested**. The installer fully supports macOS only so far. Author: Zach Shallbetter.
+Status (2026-11-03): the catalogue (`registry/`) and the installer (`cli/`, v0.2.0) are **Implemented and tested**. The installer fully supports macOS only so far. Author: Zach Shallbetter.
 
 Creative MCP is a series of independent MCP implementations for creative software, presented under one brand, one website and one install path. This document records how the pieces fit today, the decisions for growing the series, and what a new tool needs to join.
 
@@ -94,9 +94,9 @@ The bundle IDs above were checked on a real Mac on 2026-11-03 (Photoshop, Illust
 
 `registry/validate.py` checks the schema plus cross-references (unknown clients or apps, duplicate IDs). CI runs it on every pull request that touches `registry/`. Detection rules carry `"verified": true` only after being checked on a real machine.
 
-## 4. The `creative-mcp` installer (v0.1.0)
+## 4. The `creative-mcp` installer (v0.2.0)
 
-Implemented in [`cli/`](../cli) and shipped as `brew install zachshallbetter/tap/creative-mcp`. Shipped so far: `setup`, `detect`, `list` and `doctor`, with `--yes`, `--dry-run`, `--tools`, `--clients`, `--no-install`, `--no-verify` and `--json`. Not built yet: `update`, `add` and `remove`, and Windows app detection. The design follows.
+Implemented in [`cli/`](../cli) and shipped as `brew install zachshallbetter/tap/creative-mcp`. Shipped: `setup`, `add`, `update`, `remove`, `doctor`, `detect` and `list`, with `--yes`, `--dry-run`, `--tools`, `--clients`, `--no-install`, `--no-verify` and `--json`. Not built yet: Windows app detection ([#5](https://github.com/zachshallbetter/creative-mcp/issues/5)) and installing Premiere Pro's UXP plugin without the UXP Developer Tool ([#17](https://github.com/zachshallbetter/creative-mcp/issues/17)).
 
 ```text
 brew install zachshallbetter/tap/creative-mcp     # later also: npm, a Windows download
@@ -105,19 +105,20 @@ creative-mcp setup
 
 | Command | Does |
 | --- | --- |
-| `setup` | Detects installed creative apps and MCP clients, shows a checklist with matching tools pre-selected, installs the chosen tools, registers them with the chosen clients, then starts each server once with an MCP `initialize` to confirm it works. |
-| `list` | Shows every tool in the catalogue, what is installed, and which clients each one is registered with. |
-| `doctor` | Re-runs detection and the `initialize` check, and reports missing apps, add-ons, permissions or stale client entries. |
-| `update` | Upgrades installed tools through the method each was installed with. |
-| `add <tool>` / `remove <tool>` | Installs or uninstalls one tool and updates client registrations. |
+| `setup` | Detects installed creative apps and MCP clients, suggests the matching tools, reads what each client already has, shows the plan, installs, registers only what is missing or stale, confirms each server answers MCP `initialize`, then says which clients to restart and what to try. Safe to run again. |
+| `add <tool>` | `setup` for named tools, with or without a detected app. |
+| `update [tool]` | `brew update`, upgrades the installed tools and creative-mcp itself, reruns post-install steps (such as the Blender add-on) and fixes registrations that point at an old command. |
+| `remove <tool>` | Removes the tool's servers from every client, then uninstalls it (`--no-install` keeps it installed). |
+| `doctor` | Checks each server answers; asks each running app's status tool whether the app is reachable (never starting an app); runs catalogue checks such as `blender-mcp addon status`; shows which clients have which servers. Every problem ends with the command that fixes it. |
+| `detect` / `list` | What was found on this machine; every tool in the catalogue and whether it is installed. |
 
 Flags: `--yes` (accept the detected defaults), `--tools adobe,blender`, `--clients claude-code,codex`, `--dry-run` (print every command and config change without doing it), `--json`.
 
 How it works:
 
-- **Detection.** macOS: Spotlight by bundle ID (`mdfind`), then the app's `Info.plist` for its version. Windows: registry uninstall keys and the catalogue's path globs. Linux: `PATH` and `.desktop` files. Clients: commands on `PATH` and their config files. A client counts as present if either exists, because the `claude` command isn't always on the shell's `PATH` even when Claude Code is set up.
+- **Detection.** macOS: Spotlight by bundle ID (`mdfind`, with a time limit), falling back to reading the `Info.plist` of each app in `/Applications` and `~/Applications` when Spotlight is off or stalled. Windows: registry uninstall keys and the catalogue's path globs. Linux: `PATH` and `.desktop` files. Clients: commands on `PATH` and their config files. A client counts as present if either exists. The catalogue can list extra places a client's CLI lives (`detect.paths`), which is how the Claude Code CLI bundled with Claude Desktop is found when `claude` isn't on `PATH`.
 - **Install method.** Homebrew when `brew` is present (it also supplies Node or Rust). Otherwise the tool's native method (npm or Cargo), after checking the prerequisites in `requires`.
-- **Client registration.** Use the client's own command where one exists (`claude mcp add`, `blender-mcp client add`); otherwise edit its JSON/TOML config. Show a diff, back up the file first, and record what was added so `remove` can undo it.
+- **Client registration.** Read the client's user-level config first (JSON `mcpServers`, or Codex's TOML `mcp_servers`) and skip servers already registered with the same command. Use the client's own command where one exists (`claude mcp add --scope user`, `codex mcp add`, `gemini mcp add --scope user`); otherwise edit its JSON config, backing the file up before the first change and keeping every other setting. `remove` only removes entries with the tool's own server name and command.
 - **Privacy.** No telemetry. The only network access is downloading the catalogue and the packages.
 
 Language: **Rust**, so the installer is a single dependency-free binary that works for someone who only wants Blender, and shares tooling with Blender MCP.
@@ -145,13 +146,14 @@ Language: **Rust**, so the installer is a single dependency-free binary that wor
 
 ## 7. Tracked work
 
-- Installer: Windows app detection ([#5](https://github.com/zachshallbetter/creative-mcp/issues/5)); `update`, `add` and `remove` ([#6](https://github.com/zachshallbetter/creative-mcp/issues/6)); Claude Code when `claude` isn't on `PATH` ([#7](https://github.com/zachshallbetter/creative-mcp/issues/7)).
+- Installer: Windows app detection ([#5](https://github.com/zachshallbetter/creative-mcp/issues/5)); Premiere Pro's UXP plugin without the UXP Developer Tool ([#17](https://github.com/zachshallbetter/creative-mcp/issues/17)).
+- Adobe MCP: status tools should not launch their app ([adobe-mcp#431](https://github.com/zachshallbetter/adobe-mcp/issues/431)).
 - Catalogue: verify the InDesign and Premiere Pro detection rules ([#4](https://github.com/zachshallbetter/creative-mcp/issues/4)).
 - Site: generate listings from the catalogue, decision D4 ([#8](https://github.com/zachshallbetter/creative-mcp/issues/8)).
 
 ## 8. Open decisions
 
 - **D1: where the catalogue and installer live. Decided (2026-11-03):** the public `zachshallbetter/creative-mcp` repo holds the site (`site/`), the catalogue (`registry/`), the future installer (`cli/`) and these documents (`docs/`). The earlier private site repo, whose history contained personal data, is archived privately as `creative-mcp-site-archive`.
-- **D2: installer language. Decided:** Rust, shipped as creative-mcp 0.1.0.
+- **D2: installer language. Decided:** Rust, shipped as creative-mcp 0.1.0; 0.2.0 added `add`, `update`, `remove` and the fuller `doctor`.
 - **D3: Blender MCP release. Done (2026-11-03):** licence files added, `VERSION` reconciled, the Windows CI failure fixed, and `v0.5.0` tagged and released. Homebrew installs it without `--HEAD`.
 - **D4: site generation.** Once the catalogue exists, generate the Projects grid, setup builder options and `llms.txt` key facts from it rather than hand-editing HTML.

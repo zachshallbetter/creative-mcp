@@ -1,24 +1,61 @@
 ---
 title: "CLI & configuration"
-description: "Install and launch commands, Suite coordinator app selection, source checkouts and configuration variables for the Adobe MCP servers."
+description: "The creative-mcp installer: setup, doctor, update, add and remove. Plus launch commands, Suite app selection and configuration for each server."
 url: https://creativemcp.com/docs/cli.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T14:32:15-08:00
+modified: 2026-11-03T17:57:16-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
 
 [Docs](https://creativemcp.com/docs/) / CLI & configuration
 
-Launch commands · environment
+Installer · launch commands · environment
 
 # CLI & configuration
 
-These packages are MCP server processes launched by your client. They are not general command-line utilities; only the Suite coordinator currently documents app selection flags.
+One command, `creative-mcp`, installs the servers, registers them with your MCP clients and keeps them healthy. The servers themselves are MCP processes your client launches, not command-line utilities.
 
 [Docs home](https://creativemcp.com/docs/)[Getting started](https://creativemcp.com/docs/getting-started.html)[Content](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)[InDesign](https://creativemcp.com/docs/implementations/indesign.html)[Illustrator](https://creativemcp.com/docs/implementations/illustrator.html)[Photoshop](https://creativemcp.com/docs/implementations/photoshop.html)[After Effects](https://creativemcp.com/docs/implementations/aftereffects.html)[Premiere Pro](https://creativemcp.com/docs/implementations/premiere.html)[Suite](https://creativemcp.com/docs/implementations/suite.html)[Shared core](https://creativemcp.com/docs/implementations/core.html)[Blender MCP](https://creativemcp.com/docs/implementations/blender.html)[Contribute](https://creativemcp.com/docs/contributing.html)
 
-## Install and launch
+## The creative-mcp installer
+
+Install it with Homebrew, then let it find your apps and clients:
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup
+```
+
+Nothing to drag into an app or copy into a config file: `setup` shows its plan, asks once, installs, registers and checks. It ends by telling you which clients to restart and a few requests to try. Run it again at any time; when everything is in place it says so and changes nothing.
+
+| Command | What it does
+
+| `creative-mcp setup` | Detects your creative apps and MCP clients, suggests the matching tools, installs them and registers only what is missing or out of date.
+
+| `creative-mcp doctor` | Checks every server answers, asks each running app whether it is reachable (it never starts an app), runs the Blender add-on check and shows which clients have which servers. Every problem ends with the command that fixes it.
+
+| `creative-mcp update` | Runs `brew update`, upgrades the installed tools and creative-mcp itself, reinstalls the Blender add-on and fixes registrations that point at an old command.
+
+| `creative-mcp add blender` | Sets up named tools even when no matching app was detected.
+
+| `creative-mcp remove blender` | Removes the tool from every client, then uninstalls it. Add `--no-install` to keep it installed.
+
+| `creative-mcp detect`, `list` | What was found on this machine; every tool in the catalogue and whether it is installed.
+
+Options: `--dry-run` prints the plan and changes nothing; `--yes` accepts the suggestions without prompting; `--tools adobe,blender` and `--clients claude-code,codex,cursor` narrow the choice; `--no-install` only registers; `--json` gives machine-readable output for `detect`, `list` and `doctor`.
+
+### How it registers servers
+
+- Claude Code, Codex, Gemini CLI: through their own `mcp add` commands at user scope. When `claude` isn't on your `PATH`, it uses the Claude Code CLI that ships with Claude Desktop.
+- Claude Desktop, Cursor: by adding `mcpServers` entries to their JSON config. The file is backed up once before the first change, and every other setting is kept.
+- Anything else: it prints the exact entry to add.
+
+Detection reads app bundles, `PATH` and client config files on your machine and sends nothing anywhere. Status: Implemented and tested (v0.2.0), fully supported on macOS. Source and changes: [creative-mcp/cli](https://github.com/zachshallbetter/creative-mcp/tree/main/cli).
+
+## Install and launch a server by hand
 
 ### One published app server
 

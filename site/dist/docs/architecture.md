@@ -3,7 +3,7 @@ title: "Architecture & distribution"
 description: "How the Creative MCP series fits together: one repository per tool, the Homebrew tap, the creative-mcp installer, the shared catalogue and rules for new tools."
 url: https://creativemcp.com/docs/architecture.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T14:32:15-08:00
+modified: 2026-11-03T17:57:16-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -47,7 +47,7 @@ Each formula runs a real MCP `initialize` check as its test. Update with `brew u
 
 ## One installer for the series
 
-Status: Implemented and tested (v0.1.0). Fully supported on macOS. Linux detects apps only when their command is on `PATH`. Windows doesn't detect apps yet, so choose tools yourself with `--tools`.
+Status: Implemented and tested (v0.2.0). Fully supported on macOS. Linux detects apps only when their command is on `PATH`. Windows doesn't detect apps yet, so name the tools yourself: `creative-mcp add blender`.
 
 A browser can't see which apps you have installed, so the series has a small local installer that can.
 
@@ -60,15 +60,16 @@ creative-mcp setup
 
 `creative-mcp setup`:
 
-- detects installed creative apps (on macOS by bundle ID, for example `com.adobe.Photoshop` and `org.blenderfoundation.blender`, with their versions) and MCP clients (their command on `PATH` or their config file)
+- detects installed creative apps (on macOS by bundle ID, for example `com.adobe.Photoshop` and `org.blenderfoundation.blender`, with their versions) and MCP clients (their command, including the Claude Code CLI bundled with Claude Desktop, or their config file)
 - suggests the tools that match your apps and asks before choosing any
+- reads what each client already has registered and leaves current entries alone, so running it again changes nothing
 - shows every command it will run and every config entry it will write, and asks again before changing anything
 - installs with Homebrew, or with npm or Cargo when Homebrew isn't available
 - registers servers with Claude Code, Codex and Gemini CLI through their own `mcp add` commands, and with Claude Desktop and Cursor by editing their JSON config. Each file is backed up once before the first change, and other settings are kept.
 - only registers the servers your apps need. The Suite coordinator, for example, is offered only when both Illustrator and InDesign are installed.
-- checks that each server answers MCP `initialize`
+- checks that each server answers MCP `initialize`, then tells you which clients to restart and gives a few requests to try
 
-It also has `detect`, `list` and `doctor`, plus `--dry-run`, `--yes`, `--tools`, `--clients` and `--json`. Detection runs only on your machine and sends nothing anywhere. Source: [creative-mcp/cli](https://github.com/zachshallbetter/creative-mcp/tree/main/cli).
+For everyday use it also has `doctor` (are the servers answering, are the running apps reachable, which clients have which servers, and the command that fixes each problem), `update`, `add <tool>`, `remove <tool>`, `detect` and `list`, plus `--dry-run`, `--yes`, `--tools`, `--clients` and `--json`. The full reference is in [CLI & configuration](https://creativemcp.com/docs/cli.html#installer). Detection runs only on your machine and sends nothing anywhere. Source: [creative-mcp/cli](https://github.com/zachshallbetter/creative-mcp/tree/main/cli).
 
 ## One catalogue for every tool
 

@@ -27,7 +27,7 @@ The full text of every page below is in [llms-full.txt](https://creativemcp.com/
 - [Getting Started](https://creativemcp.com/docs/getting-started.html): Setup, configuration, workflows, troubleshooting and safety guidance for Creative MCP implementations, including Adobe MCP and Blender MCP.
 - [Content & capability guide](https://creativemcp.com/docs/content.html): What each Adobe MCP server works on, and how an Adobe feature, an automation route, an MCP tool and a live-verified workflow differ.
 - [MCP API reference](https://creativemcp.com/docs/api.html): How the Adobe MCP servers expose tools over stdio: discovery, tool metadata, calls, results, execution boundaries and where to find exact parameters.
-- [CLI & configuration](https://creativemcp.com/docs/cli.html): Install and launch commands, Suite coordinator app selection, source checkouts and configuration variables for the Adobe MCP servers.
+- [CLI & configuration](https://creativemcp.com/docs/cli.html): The creative-mcp installer: setup, doctor, update, add and remove. Plus launch commands, Suite app selection and configuration for each server.
 - [Architecture & distribution](https://creativemcp.com/docs/architecture.html): How the Creative MCP series fits together: one repository per tool, the Homebrew tap, the creative-mcp installer, the shared catalogue and rules for new tools.
 - [Contribute](https://creativemcp.com/docs/contributing.html): Contribute an implementation or workflow to Creative MCP with accurate scope, setup, capability and evidence documentation.
 

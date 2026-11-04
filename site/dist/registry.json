@@ -21,11 +21,11 @@
       "requires": ["node>=18"],
       "servers": [
         { "command": "adobe-mcp-suite", "role": "coordinator", "register_as": "adobe", "requires_apps": ["illustrator", "indesign"] },
-        { "command": "adobe-mcp-indesign", "app": "indesign", "register_as": "indesign" },
-        { "command": "adobe-mcp-illustrator", "app": "illustrator", "register_as": "illustrator" },
-        { "command": "adobe-mcp-photoshop", "app": "photoshop", "register_as": "photoshop" },
-        { "command": "adobe-mcp-aftereffects", "app": "aftereffects", "register_as": "aftereffects" },
-        { "command": "adobe-mcp-premiere", "app": "premiere", "register_as": "premiere" }
+        { "command": "adobe-mcp-indesign", "app": "indesign", "register_as": "indesign", "status": "indesign_status" },
+        { "command": "adobe-mcp-illustrator", "app": "illustrator", "register_as": "illustrator", "status": "illustrator_status" },
+        { "command": "adobe-mcp-photoshop", "app": "photoshop", "register_as": "photoshop", "status": "photoshop_status" },
+        { "command": "adobe-mcp-aftereffects", "app": "aftereffects", "register_as": "aftereffects", "status": "aftereffects_status" },
+        { "command": "adobe-mcp-premiere", "app": "premiere", "register_as": "premiere", "status": "premiere_status" }
       ],
       "targets": [
         { "app": "indesign", "name": "Adobe InDesign",
@@ -38,6 +38,11 @@
           "detect": { "macos": { "bundle_ids": ["com.adobe.AfterEffects.application"], "verified": true } } },
         { "app": "premiere", "name": "Adobe Premiere Pro",
           "detect": { "macos": { "bundle_id_prefixes": ["com.adobe.PremierePro"], "verified": false } } }
+      ],
+      "try": [
+        "With Photoshop open: what documents are open, and what layers does the active one have?",
+        "In Illustrator, make a 1080×1080 artboard with a centred circle in the brand colour #7444D8.",
+        "In After Effects, list the compositions in this project with their duration and frame rate."
       ],
       "clients": ["claude-code", "claude-desktop", "codex", "cursor", "gemini"]
     },
@@ -56,9 +61,14 @@
       },
       "requires": [],
       "servers": [
-        { "command": "blender-mcp", "args": ["serve"], "register_as": "blender" }
+        { "command": "blender-mcp", "args": ["serve"], "app": "blender", "register_as": "blender", "status": "get_addon_status" }
       ],
       "post_install": ["blender-mcp addon install"],
+      "checks": ["blender-mcp addon status"],
+      "try": [
+        "With Blender open: list the objects in the current scene and their materials.",
+        "Add a low-poly rock at the origin, give it a rough grey material and frame it in the camera."
+      ],
       "targets": [
         { "app": "blender", "name": "Blender",
           "detect": { "macos": { "bundle_ids": ["org.blenderfoundation.blender"], "min_version": "4.0", "verified": true } } }
@@ -67,11 +77,13 @@
     }
   ],
   "clients": [
-    { "id": "claude-code", "name": "Claude Code", "detect": { "commands": ["claude"], "files": ["~/.claude.json"] } },
-    { "id": "claude-desktop", "name": "Claude Desktop", "detect": { "files": ["~/Library/Application Support/Claude/claude_desktop_config.json"] } },
+    { "id": "claude-code", "name": "Claude Code", "detect": { "commands": ["claude"],
+      "paths": ["~/.claude/local/claude", "~/.local/bin/claude", "~/Library/Application Support/Claude/claude-code/*/*/claude.app/Contents/MacOS/claude"],
+      "files": ["~/.claude.json"] } },
+    { "id": "claude-desktop", "name": "Claude Desktop", "restart": "Quit Claude Desktop (⌘Q) and open it again", "detect": { "files": ["~/Library/Application Support/Claude/claude_desktop_config.json"] } },
     { "id": "codex", "name": "Codex", "detect": { "commands": ["codex"], "files": ["~/.codex/config.toml"] } },
-    { "id": "cursor", "name": "Cursor", "detect": { "commands": ["cursor"], "files": ["~/.cursor/mcp.json"] } },
+    { "id": "cursor", "name": "Cursor", "restart": "Restart Cursor, or reload its window", "detect": { "commands": ["cursor"], "files": ["~/.cursor/mcp.json"] } },
     { "id": "gemini", "name": "Gemini CLI", "detect": { "commands": ["gemini"], "files": ["~/.gemini/settings.json"] } },
-    { "id": "antigravity", "name": "Google Antigravity", "detect": { "commands": ["antigravity"] } }
+    { "id": "antigravity", "name": "Google Antigravity", "restart": "Restart Antigravity", "detect": { "commands": ["antigravity"] } }
   ]
 }

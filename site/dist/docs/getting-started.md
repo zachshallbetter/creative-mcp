@@ -3,7 +3,7 @@ title: "Getting Started"
 description: "Setup, configuration, workflows, troubleshooting and safety guidance for Creative MCP implementations, including Adobe MCP and Blender MCP."
 url: https://creativemcp.com/docs/getting-started.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T14:32:15-08:00
+modified: 2026-11-03T17:57:17-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -90,6 +90,8 @@ brew trust zachshallbetter/tap
 brew install zachshallbetter/tap/creative-mcp
 creative-mcp setup
 ```
+
+It ends by naming the clients to restart and a few requests to try. From then on, `creative-mcp doctor` checks the servers, the open apps and every client's registrations, and `creative-mcp update` keeps everything current. See [all installer commands](https://creativemcp.com/docs/cli.html#installer).
 
 To set things up by hand instead:
 

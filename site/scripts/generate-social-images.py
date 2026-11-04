@@ -70,7 +70,7 @@ CARDS = {
     "docs/api.html": ("docs-api", "Docs · Reference", "MCP API <em>reference</em>",
                       "Discovery, tool metadata, calls, results and execution boundaries for the Adobe MCP servers.", "magenta", []),
     "docs/cli.html": ("docs-cli", "Docs · Reference", "CLI &amp; <em>configuration</em>",
-                      "Install and launch commands, Homebrew, Suite app selection and configuration variables.", "magenta", []),
+                      "setup, doctor, update and remove for the whole series, plus launch commands and configuration.", "magenta", []),
     "docs/architecture.html": ("docs-architecture", "Docs · The series", "Architecture &amp; <em>distribution</em>",
                                "Separate repositories, one Homebrew tap, and the conventions every new tool follows.", "brand", ALL_ADOBE + ["blender"]),
     "docs/contributing.html": ("docs-contributing", "Docs · Contributing", "Make a useful tool easier to <em>reach.</em>",
