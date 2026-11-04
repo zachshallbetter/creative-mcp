@@ -40,7 +40,7 @@
     blender: [
       "Rust and Cargo are installed (or Homebrew, if you install with brew).",
       "Blender 4.0 or later is installed.",
-      "The Blender MCP companion add-on is installed and enabled.",
+      "Blender is closed while you run blender-mcp addon install, so it can turn the add-on on for you.",
       "Your MCP client can launch local stdio servers."
     ]
   };
@@ -91,7 +91,7 @@
       command.textContent = (brew
         ? brewTap + "brew install zachshallbetter/tap/blender-mcp"
         : "cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli") + "\nblender-mcp addon install\nblender-mcp client add " + client;
-      explanation.textContent = (brew ? "Homebrew builds the CLI from the v0.5.0 release, so you don’t need Rust installed. " : "") + "Install the CLI, install and enable its companion add-on in Blender, then register the local server with this client. Blender MCP requires Blender 4.0 or later.";
+      explanation.textContent = (brew ? "Homebrew builds the CLI from the v0.5.1 release, so you don’t need Rust installed. " : "") + "Install the CLI, let it install and turn on the companion add-on (quit Blender first), then register the local server with this client. Blender MCP requires Blender 4.0 or later.";
     }
     copyButton.textContent = "Copy";
   }

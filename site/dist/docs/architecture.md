@@ -3,7 +3,7 @@ title: "Architecture & distribution"
 description: "How the Creative MCP series fits together: one repository per tool, the Homebrew tap, the creative-mcp installer, the shared catalogue and rules for new tools."
 url: https://creativemcp.com/docs/architecture.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T18:21:39-08:00
+modified: 2026-11-03T18:21:43-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---

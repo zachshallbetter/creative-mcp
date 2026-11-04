@@ -3,7 +3,7 @@ title: "Blender MCP implementation"
 description: "Blender MCP pairs a Rust MCP server with a Blender add-on so AI agents can work with scenes and assets. Install with Homebrew; setup and safety notes."
 url: https://creativemcp.com/docs/implementations/blender.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T18:21:40-08:00
+modified: 2026-11-03T18:21:43-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---

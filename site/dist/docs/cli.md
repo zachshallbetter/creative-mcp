@@ -3,7 +3,7 @@ title: "CLI & configuration"
 description: "The creative-mcp installer: setup, doctor, update, add and remove. Plus launch commands, Suite app selection and configuration for each server."
 url: https://creativemcp.com/docs/cli.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T18:21:39-08:00
+modified: 2026-11-03T18:21:43-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
