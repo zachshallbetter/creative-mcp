@@ -1,6 +1,6 @@
 [package]
 name = "creative-mcp"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2021"
 description = "Detects your creative apps and MCP clients, then installs and registers the matching Creative MCP servers"
 authors = ["Zach Shallbetter"]

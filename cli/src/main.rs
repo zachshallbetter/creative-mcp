@@ -153,21 +153,54 @@ fn existing(configs: &BTreeMap<String, String>, clients: &[FoundClient]) -> Exis
         .collect()
 }
 
-/// Whether a detected app is running, by its executable inside the bundle. Never starts it.
+/// Whether a detected app is running, from the process list. Never starts it.
+/// macOS: a process inside the app bundle. Windows: the executable's image name in `tasklist`.
+/// Linux: a process whose program is the detected executable.
 fn app_running(app: &FoundApp) -> Option<bool> {
-    if detect::os_key() != "macos" || !app.path.ends_with(".app") {
-        return None;
+    match detect::os_key() {
+        "macos" if app.path.ends_with(".app") => {
+            let inside = format!("{}/Contents/MacOS/", app.path);
+            Some(
+                process_lines(&["ps", "-axo", "command="])?
+                    .iter()
+                    .any(|l| l.starts_with(&inside)),
+            )
+        }
+        "windows" => {
+            let image = std::path::Path::new(&app.path)
+                .file_name()?
+                .to_string_lossy()
+                .to_lowercase();
+            let filter = format!("IMAGENAME eq {image}");
+            Some(
+                process_lines(&["tasklist", "/FI", &filter, "/NH"])?
+                    .iter()
+                    .any(|l| l.to_lowercase().starts_with(&image)),
+            )
+        }
+        "linux" => {
+            let name = std::path::Path::new(&app.path)
+                .file_name()?
+                .to_string_lossy()
+                .to_string();
+            Some(
+                process_lines(&["ps", "-eo", "comm="])?
+                    .iter()
+                    .any(|l| l.trim() == name),
+            )
+        }
+        _ => None,
     }
-    let out = Command::new("ps")
-        .args(["-axo", "command="])
-        .output()
-        .ok()?;
-    let inside = format!("{}/Contents/MacOS/", app.path);
-    Some(
+}
+
+fn process_lines(command: &[&str]) -> Option<Vec<String>> {
+    let out = Command::new(command[0]).args(&command[1..]).output().ok()?;
+    out.status.success().then(|| {
         String::from_utf8_lossy(&out.stdout)
             .lines()
-            .any(|l| l.starts_with(&inside)),
-    )
+            .map(String::from)
+            .collect()
+    })
 }
 
 /// The error text inside a failed tool reply (`{ success: false, result: { error } }` and similar).
