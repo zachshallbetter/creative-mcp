@@ -150,8 +150,14 @@ def update_graph(path, source, shared):
             defined.add(node_id)
             pending += references(node)
     page_id = SITE + url_path(path)
+    og_image = re.search(r'<meta property="og:image" content="([^"]+)"', source)
     for node in nodes:
         is_page = node.get("url") == page_id and node.get("@type") not in ("Organization", "Person", "SoftwareApplication")
+        # A page shared or crawled on its own should name its image: the same card as og:image.
+        page_type = node.get("@type") in ("WebPage", "AboutPage", "CollectionPage", "ItemPage", "WebSite")
+        if is_page and page_type and og_image and "image" not in node and "primaryImageOfPage" not in node:
+            card = {"@type": "ImageObject", "url": og_image.group(1), "width": 1200, "height": 630}
+            node["image" if node["@type"] == "WebSite" else "primaryImageOfPage"] = card
         if is_page or node.get("@type") == "TechArticle":
             node.setdefault("copyrightHolder", {"@id": PERSON})
             node.setdefault("copyrightYear", YEAR)

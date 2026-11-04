@@ -1,0 +1,18 @@
+name: Site
+# Every sitemap page, its social card, JSON-LD and discovery entries must agree (site/scripts/check-site.py).
+on:
+  pull_request:
+    paths: ["site/**"]
+  push:
+    branches: [main]
+    paths: ["site/**"]
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python3 site/scripts/check-site.py
