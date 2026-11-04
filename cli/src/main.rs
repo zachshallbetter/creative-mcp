@@ -170,6 +170,47 @@ fn app_running(app: &FoundApp) -> Option<bool> {
     )
 }
 
+/// The error text inside a failed tool reply (`{ success: false, result: { error } }` and similar).
+fn failure_message(v: &Value) -> String {
+    [
+        &v["result"]["error"],
+        &v["error"],
+        &v["message"],
+        &v["result"]["message"],
+    ]
+    .into_iter()
+    .find_map(|x| {
+        x.as_str()
+            .map(String::from)
+            .or_else(|| x["message"].as_str().map(String::from))
+    })
+    .unwrap_or_else(|| "see the server log".into())
+}
+
+/// Turn a failed app check into what to do about it.
+fn explain_failure(raw: &str, app: &str) -> String {
+    let message = serde_json::from_str::<Value>(raw)
+        .map(|v| failure_message(&v))
+        .unwrap_or_else(|_| raw.lines().next().unwrap_or(raw).to_string());
+    let lower = message.to_lowercase();
+    if lower.contains("-1743")
+        || lower.contains("not authorized to send apple events")
+        || lower.contains("not allowed to send")
+    {
+        format!(
+            "macOS is blocking automation. Allow your MCP client (and Terminal) to control {app} in System Settings → Privacy & Security → Automation: \
+             open 'x-apple.systempreferences:com.apple.preference.security?Privacy_Automation'"
+        )
+    } else if lower.contains("did not answer")
+        || lower.contains("timed out")
+        || lower.contains("timeout")
+    {
+        format!("did not answer; if {app} is showing a dialog, close it and run doctor again")
+    } else {
+        message
+    }
+}
+
 /// One line from a status tool's reply: version and open documents when it reports them.
 fn summarize_status(text: &str) -> String {
     let Ok(v) = serde_json::from_str::<Value>(text) else {
@@ -182,13 +223,7 @@ fn summarize_status(text: &str) -> String {
             .collect();
     };
     if v["success"] == json!(false) {
-        return format!(
-            "not reachable: {}",
-            v["error"]
-                .as_str()
-                .or(v["message"].as_str())
-                .unwrap_or("see the server log")
-        );
+        return format!("not reachable: {}", failure_message(&v));
     }
     let result = if v["result"].is_object() {
         &v["result"]
@@ -412,8 +447,14 @@ fn cmd_doctor(registry: &Registry, o: &Options) -> ExitCode {
                         match exec::call_tool(&server.command, &server.args, status, VERIFY_TIMEOUT)
                         {
                             Ok(text) => {
-                                let summary = summarize_status(&text);
+                                let mut summary = summarize_status(&text);
                                 let bad = summary.starts_with("not reachable");
+                                if bad {
+                                    summary = format!(
+                                        "not reachable: {}",
+                                        explain_failure(&text, &app.name)
+                                    );
+                                }
                                 say(format!(
                                     "      {} {}: {summary}",
                                     if bad { "✗" } else { "✓" },
@@ -425,12 +466,7 @@ fn cmd_doctor(registry: &Registry, o: &Options) -> ExitCode {
                                 entry["app"] = json!({ "name": app.name, "running": true, "reachable": !bad, "detail": summary });
                             }
                             Err(e) => {
-                                // A running app that doesn't answer is almost always showing a dialog.
-                                let e = if e.contains("did not answer") {
-                                    format!("did not answer; if {} is showing a dialog, close it and run doctor again", app.name)
-                                } else {
-                                    e
-                                };
+                                let e = explain_failure(&e, &app.name);
                                 say(format!("      ✗ {}: {e}", app.name));
                                 problems.push(format!("{} is running but {e}", app.name));
                                 entry["app"] = json!({ "name": app.name, "running": true, "reachable": false, "detail": e });
@@ -1076,11 +1112,21 @@ mod tests {
             summarize_status(ps),
             "reachable, version 27.11.0, 1 open document"
         );
-        let down = r#"{"success":false,"error":"Photoshop did not respond"}"#;
+        let down =
+            r#"{"success":false,"result":{"running":true,"error":"Photoshop did not respond"}}"#;
         assert_eq!(
             summarize_status(down),
             "not reachable: Photoshop did not respond"
         );
+        let denied = r#"{"success":false,"result":{"error":"execution error: Not authorized to send Apple events to Adobe Photoshop 2026. (-1743)"}}"#;
+        assert!(
+            explain_failure(denied, "Adobe Photoshop").contains("Privacy & Security → Automation")
+        );
+        assert!(explain_failure(
+            "photoshop_status did not answer within 20s",
+            "Adobe Photoshop"
+        )
+        .contains("dialog"));
         assert_eq!(
             summarize_status("Addon connected on port 9876\nmore"),
             "Addon connected on port 9876"
