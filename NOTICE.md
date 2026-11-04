@@ -11,4 +11,4 @@ It does **not** apply to the following, which remain © 2026 Zach Shallbetter, a
 
 You may link to and quote the documentation with attribution. For any other use of these assets, contact the author through [zachshallbetter.com](https://zachshallbetter.com/).
 
-Inter is used under the SIL Open Font License; see `site/dist/assets/fonts/inter-LICENSE.txt`. Adobe, InDesign, Illustrator, Photoshop, After Effects and Premiere Pro are trademarks of Adobe. Blender is a trademark of the Blender Foundation. Creative MCP is not affiliated with or endorsed by either.
+Inter is used under the SIL Open Font License; see `site/dist/assets/fonts/inter-LICENSE.txt`. Adobe, InDesign, Illustrator, Photoshop, After Effects and Premiere Pro are trademarks of Adobe. Blender is a trademark of the Blender Foundation. Creative MCP is not affiliated with or endorsed by either. The app icons in `site/dist/assets/logos/` are those companies' marks, used only to identify the apps each server works with; they are not covered by the MIT licence.

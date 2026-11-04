@@ -22,18 +22,20 @@ AUTHOR = "Zach Shallbetter"
 
 # accent: brushes to layer on the right, in paint order; badges: app chips shown over them.
 ACCENTS = {
-    "brand": ["brand-violet", "brand-coral"],
-    "magenta": ["brand-magenta", "brand-violet"],
-    "indesign": ["indesign", "brand-violet"],
-    "illustrator": ["illustrator", "brand-coral"],
-    "photoshop": ["photoshop", "brand-violet"],
-    "aftereffects": ["after-effects", "brand-magenta"],
-    "premiere": ["premiere-pro", "photoshop"],
-    "blender": ["brand-coral", "illustrator"],
-    "adobe": ["indesign", "photoshop"],
+    "brand": ["brand-violet", "brand-coral", "brand-magenta"],
+    "magenta": ["brand-magenta", "brand-violet", "brand-coral"],
+    "indesign": ["indesign", "brand-violet", "brand-magenta"],
+    "illustrator": ["illustrator", "brand-coral", "brand-magenta"],
+    "photoshop": ["photoshop", "brand-violet", "brand-coral"],
+    "aftereffects": ["after-effects", "brand-magenta", "brand-violet"],
+    "premiere": ["premiere-pro", "photoshop", "brand-violet"],
+    "blender": ["brand-coral", "illustrator", "photoshop"],
+    "adobe": ["indesign", "photoshop", "illustrator"],
 }
-BADGES = {"indesign": ("Id", "#7444d8"), "illustrator": ("Ai", "#f06430"), "photoshop": ("Ps", "#3279d5"),
-          "aftereffects": ("Ae", "#d93f36"), "premiere": ("Pr", "#4b8d57"), "blender": ("3D", "#f06430")}
+# Official app marks in assets/logos/ (Adobe's 2025 app icons from adobe.com; the Blender logo).
+# Trademarks of Adobe and the Blender Foundation, used to identify the apps (see NOTICE.md).
+BADGES = {"indesign": "indesign", "illustrator": "illustrator", "photoshop": "photoshop",
+          "aftereffects": "after-effects", "premiere": "premiere-pro", "blender": "blender"}
 ALL_ADOBE = ["indesign", "illustrator", "photoshop", "aftereffects", "premiere"]
 
 # path: (image slug, eyebrow, title, subtitle, accent, badges)
@@ -101,8 +103,10 @@ body {{ position: relative; background: #f4f0e8; color: #171717; font-family: In
 .art img.brush {{ position: absolute; mix-blend-mode: multiply; opacity: .86; }}
 .art .b0 {{ width: 470px; right: -40px; top: 92px; transform: rotate(-8deg); }}
 .art .b1 {{ width: 360px; right: 40px; top: 320px; transform: rotate(12deg); opacity: .62; }}
+.art .b2 {{ width: 240px; right: 290px; top: 470px; transform: rotate(-10deg) scaleX(-1); opacity: .55; }}
 .badges {{ position: absolute; right: 64px; top: 58px; display: flex; gap: 10px; }}
-.badge {{ display: grid; place-items: center; width: 64px; height: 64px; border-radius: 16px; background: #fffdf8; border: 1.5px solid color-mix(in srgb, var(--c), transparent 55%); color: color-mix(in srgb, var(--c), #171717 30%); font: 800 24px ui-monospace, "SF Mono", Menlo, monospace; box-shadow: 0 10px 24px rgba(39,31,22,.12); }}
+.badge {{ display: block; width: 64px; height: 64px; border-radius: 15px; box-shadow: 0 10px 24px rgba(39,31,22,.18); }}
+.badge.tile {{ padding: 10px; background: #fffdf8; border: 1.5px solid rgba(23,23,23,.12); object-fit: contain; }}
 .portrait {{ position: absolute; right: 64px; top: 64px; width: 400px; height: 470px; border-radius: 22px; overflow: hidden; box-shadow: 0 24px 50px rgba(39,31,22,.25); }}
 .portrait img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }}
 .copy {{ position: absolute; left: 72px; top: 64px; bottom: 74px; width: {copy_width}px; display: flex; flex-direction: column; }}
@@ -136,12 +140,14 @@ def render_html(path, card):
     dist = DIST.as_uri()
     if path == "about.html":
         art = (f'<div class="art"><img class="brush b0" src="{dist}/assets/brushes/brand-violet.png" alt="">'
-               f'<img class="brush b1" src="{dist}/assets/brushes/brand-coral.png" alt=""></div>'
+               f'<img class="brush b1" src="{dist}/assets/brushes/brand-coral.png" alt="">'
+               f'<img class="brush b2" src="{dist}/assets/brushes/brand-magenta.png" alt=""></div>'
                f'<div class="portrait"><img src="{dist}/assets/zach-shallbetter-portrait.webp" alt=""></div>')
         copy_width = 620
     else:
         brushes = "".join(f'<img class="brush b{i}" src="{dist}/assets/brushes/{b}.png" alt="">' for i, b in enumerate(ACCENTS[accent]))
-        chips = "".join(f'<span class="badge" style="--c:{BADGES[b][1]}">{BADGES[b][0]}</span>' for b in badges)
+        # Adobe icons are their own rounded tiles; the Blender logo sits on a paper tile to match.
+        chips = "".join(f'<img class="badge{" tile" if b == "blender" else ""}" src="{dist}/assets/logos/{BADGES[b]}.svg" alt="">' for b in badges)
         art = f'<div class="art">{brushes}</div>' + (f'<div class="badges">{chips}</div>' if chips else "")
         copy_width = 690
     url = "creativemcp.com"
