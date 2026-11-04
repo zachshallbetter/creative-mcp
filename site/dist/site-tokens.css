@@ -124,7 +124,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: clip; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scrollbar-color: color-mix(in srgb, var(--ink), transparent 70%) var(--paper); accent-color: var(--purple); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+body { margin: 0; overflow-x: clip; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 .skip-link { position: fixed; z-index: 100; top: 12px; left: 12px; padding: 11px 15px; transform: translateY(calc(-100% - 18px)); border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--ink); color: var(--paper); font-weight: 700; text-decoration: none; }
 .skip-link:focus { transform: translateY(0); outline: 2px solid var(--purple); outline-offset: 3px; }
@@ -148,6 +148,8 @@ main[tabindex="-1"]:focus { outline: none; }
 @media (prefers-reduced-motion: reduce) { .button:hover::after, .button:focus-visible::after { animation: none; opacity: 0; } }
 .button:hover { transform: translateY(-2px); box-shadow: 0 8px 22px color-mix(in srgb, var(--purple), transparent 82%); }
 .button:hover, .topnav a.button:hover { text-decoration: none; }
+/* Every focusable element gets the brand focus ring; :where() keeps it overridable by the rules below. */
+:where(a, button, input, select, textarea, summary, pre, [tabindex]):focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
 .button:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
 .button.light { border-color: var(--line); background: transparent; color: var(--ink); }
 .button.light:hover { background: color-mix(in srgb, var(--sheet), transparent 20%); }
