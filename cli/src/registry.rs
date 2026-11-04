@@ -25,6 +25,12 @@ pub struct Tool {
     pub servers: Vec<Server>,
     #[serde(default)]
     pub post_install: Vec<String>,
+    /// Read-only commands `doctor` runs; a non-zero exit is a problem.
+    #[serde(default)]
+    pub checks: Vec<String>,
+    /// Example requests shown after setup.
+    #[serde(default, rename = "try")]
+    pub examples: Vec<String>,
     pub targets: Vec<Target>,
     pub clients: Vec<String>,
 }
@@ -61,6 +67,9 @@ pub struct Server {
     pub register_as: String,
     #[serde(default)]
     pub requires_apps: Vec<String>,
+    /// A tool on this server that reports whether its app is reachable. Called only while the app runs,
+    /// because some status tools start the app.
+    pub status: Option<String>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -84,6 +93,8 @@ pub struct Detect {
 pub struct Client {
     pub id: String,
     pub name: String,
+    /// How to restart the client so it loads new servers; CLI clients pick them up in a new session.
+    pub restart: Option<String>,
     pub detect: ClientDetect,
 }
 
@@ -91,6 +102,9 @@ pub struct Client {
 pub struct ClientDetect {
     #[serde(default)]
     pub commands: Vec<String>,
+    /// Where the client's CLI may live when it isn't on PATH (`*` matches one path segment; newest wins).
+    #[serde(default)]
+    pub paths: Vec<String>,
     #[serde(default)]
     pub files: Vec<String>,
 }

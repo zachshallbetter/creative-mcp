@@ -12,15 +12,18 @@ creative-mcp setup
 
 `creative-mcp setup`:
 
-1. **Detects** the creative apps on this machine (macOS: Spotlight by bundle ID, with the app version) and the MCP clients you use (their command on `PATH` or their config file).
+1. **Detects** the creative apps on this machine (macOS: Spotlight by bundle ID, falling back to reading the app bundles in `/Applications` when Spotlight is off or slow) and the MCP clients you use (their command, including the copy of Claude Code bundled with Claude Desktop, or their config file).
 2. **Asks** which tools to set up. Tools that match an installed app are suggested; nothing is chosen for you without a prompt unless you pass `--yes`.
-3. **Shows the full plan** (every command it will run and every config entry it will write) and asks before changing anything.
-4. **Installs** each tool with Homebrew, or with npm or Cargo when Homebrew isn't available, then runs post-install steps such as `blender-mcp addon install`.
-5. **Registers** the servers with your clients:
+3. **Reads what is already registered** in each client and leaves it alone. An entry with the same name but another command (an old `npx` line, a path that no longer exists) is replaced, and the plan says so.
+4. **Shows the full plan** (every command it will run and every config entry it will write) and asks before changing anything.
+5. **Installs** each tool with Homebrew, or with npm or Cargo when Homebrew isn't available, then runs post-install steps such as `blender-mcp addon install`. The Homebrew tap is added and trusted only if it isn't already.
+6. **Registers** the servers with your clients:
    - Claude Code, Codex and Gemini CLI through their own `mcp add` commands
-   - Claude Desktop and Cursor by adding `mcpServers` entries to their JSON config. The file is backed up once, before the first change, and every other setting is kept.
-   - Anything else gets the exact command or snippet to add yourself.
-6. **Checks** that every server answers an MCP `initialize` request.
+   - Claude Desktop and Cursor (and Claude Code when its CLI can't be found) by adding `mcpServers` entries to their JSON config. The file is backed up once, before the first change, and every other setting is kept.
+   - Anything else gets the exact snippet to add yourself.
+7. **Checks** that every server answers an MCP `initialize` request, then tells you which clients to restart and gives a few requests to try.
+
+Run it again at any time: when everything is in place it says so and changes nothing.
 
 Only the servers that fit your apps are registered. The Adobe Suite coordinator, for example, is offered only when both Illustrator and InDesign are present.
 
@@ -29,11 +32,16 @@ Only the servers that fit your apps are registered. The Adobe Suite coordinator,
 | Command | What it does |
 | --- | --- |
 | `creative-mcp setup` | Detect, choose, install, register and verify |
+| `creative-mcp add <tools>` | Set up named tools even without a detected app, e.g. `creative-mcp add blender` |
+| `creative-mcp update [tools]` | `brew update`, upgrade the installed tools (and creative-mcp itself), rerun post-install steps and fix registrations that point at an old command |
+| `creative-mcp remove <tools>` | Remove the tools' servers from every client, then uninstall them (`--no-install` keeps them installed; `--clients` limits it to some clients) |
+| `creative-mcp doctor` | Check each server answers, each running app is reachable, and which clients have which servers registered. Every problem ends with the command that fixes it |
 | `creative-mcp detect` | List the creative apps and MCP clients found |
 | `creative-mcp list` | Show every tool in the catalogue and whether it is installed |
-| `creative-mcp doctor` | Check that installed servers answer MCP `initialize` |
 
 Options: `--yes`, `--dry-run`, `--tools adobe,blender`, `--clients claude-code,codex,cursor`, `--no-install`, `--no-verify`, `--json` (detect, list, doctor) and `--registry <file>`.
+
+`doctor` never starts an app. It asks a server's status tool about its app only while the app is already running; otherwise it reports the app as not running.
 
 ## Privacy
 
@@ -41,10 +49,10 @@ Detection reads app bundles, `PATH` and client config files on your machine. Not
 
 ## Status
 
-**Implemented and tested** (version 0.1.0):
+**Implemented and tested** (version 0.2.0):
 
-- **Platforms:** macOS is fully supported. On Linux, apps are detected only when their command is on `PATH`, so app detection there is minimal. Windows app detection isn't implemented yet; use `--tools` to choose tools yourself.
-- **Tests:** unit tests cover catalogue parsing, server selection, install planning, client registration and the config backup.
-- **Manual testing:** on a Mac, detection found Illustrator, Photoshop, After Effects and Blender. Registration with Claude Desktop, Cursor and Codex was tested against a throwaway home directory, and `doctor` confirmed four live servers.
+- **Platforms:** macOS is fully supported. On Linux, apps are detected only when their command is on `PATH`, so app detection there is minimal. Windows app detection isn't implemented yet; use `creative-mcp add <tool>` to choose tools yourself.
+- **Tests:** unit tests cover catalogue parsing, server selection, install planning, reading each client's existing registrations (JSON and Codex TOML), client registration and removal, the config backup, Spotlight timeouts and the bundle-scan fallback.
+- **Manual testing (2026-11-03, macOS):** detection found Illustrator, Photoshop, After Effects and Blender. `setup`, a second `setup` (no changes), `doctor` and `remove` were run end to end against a throwaway home directory with Claude Code (through the CLI bundled with Claude Desktop, and through `~/.claude.json`), Claude Desktop, Codex, Cursor and Gemini CLI. `doctor` reached a running Photoshop through `photoshop_status`.
 
 The tool list comes from the series catalogue, [`registry/registry.json`](../registry/registry.json), which is built into the binary. It is MIT licensed.

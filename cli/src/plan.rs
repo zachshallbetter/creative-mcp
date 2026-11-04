@@ -1,9 +1,11 @@
 //! Turns a selection (tools, detected apps, clients) into an explicit list of steps.
 //! Nothing here touches the system; `exec` carries the plan out.
 
+use crate::clients::{self, Entry, State};
 use crate::detect::{FoundApp, FoundClient};
 use crate::registry::{Server, Tool};
 use serde::Serialize;
+use std::collections::BTreeMap;
 
 pub const TAP: &str = "zachshallbetter/tap";
 
@@ -27,6 +29,12 @@ pub enum Step {
         command: String,
         args: Vec<String>,
     },
+    /// Remove `mcpServers.<name>` from a client's JSON config (after backing it up).
+    RemoveJson {
+        why: String,
+        path: String,
+        name: String,
+    },
     /// Something the user has to do; printed, never executed.
     Manual { why: String, text: String },
 }
@@ -35,6 +43,7 @@ pub enum Step {
 pub struct Environment {
     pub brew: bool,
     pub brew_has_trust: bool,
+    pub tap_trusted: bool,
     pub tap_installed: bool,
     pub npm: bool,
     pub cargo: bool,
@@ -68,7 +77,7 @@ pub fn install_steps(tool: &Tool, env: &Environment, tap_steps_added: &mut bool)
                     &["tap", TAP],
                 ));
             }
-            if env.brew_has_trust {
+            if env.brew_has_trust && !env.tap_trusted {
                 steps.push(run(
                     "Trust the tap (Homebrew 7+ requires this once)",
                     "brew",
@@ -156,58 +165,150 @@ pub fn servers_for<'a>(tool: &'a Tool, apps: &[FoundApp]) -> Vec<&'a Server> {
         .collect()
 }
 
-/// How to register one server with one client.
-pub fn register_step(client: &FoundClient, server: &Server) -> Step {
+/// The CLI-managed clients: (id, add arguments before the name, remove arguments before the name, `--` before the command).
+fn cli_syntax(id: &str) -> Option<(&'static [&'static str], &'static [&'static str], bool)> {
+    match id {
+        "claude-code" => Some((
+            &["mcp", "add", "--scope", "user"],
+            &["mcp", "remove", "--scope", "user"],
+            true,
+        )),
+        "codex" => Some((&["mcp", "add"], &["mcp", "remove"], true)),
+        "gemini" => Some((
+            &["mcp", "add", "--scope", "user"],
+            &["mcp", "remove", "--scope", "user"],
+            false,
+        )),
+        _ => None,
+    }
+}
+
+/// Clients whose user-level servers live in an `mcpServers` JSON file this tool can edit directly.
+fn json_client(id: &str) -> bool {
+    matches!(id, "claude-desktop" | "cursor" | "claude-code")
+}
+
+fn strings(parts: &[&str]) -> Vec<String> {
+    parts.iter().map(|s| s.to_string()).collect()
+}
+
+/// How to register one server with one client. `config` is the client's user-level config file;
+/// `replace` removes an existing entry of the same name first (CLI clients refuse duplicates).
+pub fn register_steps(
+    client: &FoundClient,
+    config: Option<&str>,
+    server: &Server,
+    replace: bool,
+) -> Vec<Step> {
     let name = server.register_as.clone();
     let command = server.command.clone();
     let mut tail: Vec<String> = vec![command.clone()];
     tail.extend(server.args.iter().cloned());
-    let why = format!("Register {name} with {}", client.name);
-    let cli = |program: &str, mut args: Vec<String>| {
-        let server_arg = Some(args.len());
-        args.extend(tail.clone());
-        Step::Run {
-            why: why.clone(),
-            program: program.into(),
-            args,
-            allow_failure: true,
-            server_arg,
+    let why = format!(
+        "{} {name} with {}",
+        if replace { "Re-register" } else { "Register" },
+        client.name
+    );
+    if let (Some((add, remove, dashdash)), Some(program)) =
+        (cli_syntax(&client.id), &client.command)
+    {
+        let mut steps = Vec::new();
+        if replace {
+            let mut args = strings(remove);
+            args.push(name.clone());
+            steps.push(Step::Run {
+                why: format!("Remove the old {name} entry from {}", client.name),
+                program: program.clone(),
+                args,
+                allow_failure: true,
+                server_arg: None,
+            });
         }
-    };
-    match (client.id.as_str(), &client.command) {
-        ("claude-code", Some(_)) => cli("claude", vec!["mcp".into(), "add".into(), "--scope".into(), "user".into(), name, "--".into()]),
-        ("codex", Some(_)) => cli("codex", vec!["mcp".into(), "add".into(), name, "--".into()]),
-        ("gemini", Some(_)) => cli("gemini", vec!["mcp".into(), "add".into(), "--scope".into(), "user".into(), name]),
-        ("claude-desktop", _) | ("cursor", _) if !client.files.is_empty() => Step::WriteJson {
+        let mut args = strings(add);
+        args.push(name);
+        if dashdash {
+            args.push("--".into());
+        }
+        let server_arg = Some(args.len());
+        args.extend(tail);
+        steps.push(Step::Run {
             why,
-            path: client.files[0].clone(),
+            program: program.clone(),
+            args,
+            allow_failure: false,
+            server_arg,
+        });
+        return steps;
+    }
+    if let (true, Some(path)) = (json_client(&client.id), config) {
+        return vec![Step::WriteJson {
+            why,
+            path: path.into(),
             name,
             command,
             args: server.args.clone(),
-        },
-        ("claude-code", None) => Step::Manual {
+        }];
+    }
+    vec![Step::Manual {
+        why,
+        text: format!(
+            "Add to {}'s MCP config: \"{name}\": {{ \"command\": \"{command}\", \"args\": {} }}",
+            client.name,
+            serde_json::to_string(&server.args).unwrap_or_else(|_| "[]".into())
+        ),
+    }]
+}
+
+/// How to remove one registered server from one client.
+pub fn unregister_step(client: &FoundClient, config: Option<&str>, name: &str) -> Step {
+    let why = format!("Remove {name} from {}", client.name);
+    if let (Some((_, remove, _)), Some(program)) = (cli_syntax(&client.id), &client.command) {
+        let mut args = strings(remove);
+        args.push(name.into());
+        return Step::Run {
             why,
-            text: format!("Run in a terminal where `claude` works: claude mcp add --scope user {name} -- {}", tail.join(" ")),
+            program: program.clone(),
+            args,
+            allow_failure: false,
+            server_arg: None,
+        };
+    }
+    match (json_client(&client.id), config) {
+        (true, Some(path)) => Step::RemoveJson {
+            why,
+            path: path.into(),
+            name: name.into(),
         },
         _ => Step::Manual {
             why,
             text: format!(
-                "Add to {}'s MCP config: \"{name}\": {{ \"command\": \"{command}\", \"args\": {} }}",
-                client.name,
-                serde_json::to_string(&server.args).unwrap_or_else(|_| "[]".into())
+                "Delete the \"{name}\" entry from {}'s MCP config",
+                client.name
             ),
         },
     }
+}
+
+/// What a client already has, by server name; `None` when its config can't be read.
+pub type Existing = BTreeMap<String, Option<BTreeMap<String, Entry>>>;
+
+pub struct Plan {
+    pub steps: Vec<Step>,
+    /// (client name, server name) for each registration that is already current.
+    pub already: Vec<(String, String)>,
 }
 
 pub fn build(
     tools: &[&Tool],
     apps: &[FoundApp],
     clients: &[FoundClient],
+    configs: &BTreeMap<String, String>,
+    existing: &Existing,
     env: &Environment,
     install: bool,
-) -> Vec<Step> {
+) -> Plan {
     let mut steps = Vec::new();
+    let mut already = Vec::new();
     let mut tap_added = false;
     if install {
         for tool in tools {
@@ -216,12 +317,30 @@ pub fn build(
     }
     for tool in tools {
         for client in clients.iter().filter(|c| tool.clients.contains(&c.id)) {
+            let have = existing
+                .get(&client.id)
+                .cloned()
+                .flatten()
+                .unwrap_or_default();
             for server in servers_for(tool, apps) {
-                steps.push(register_step(client, server));
+                let replace = match clients::state(&have, server) {
+                    State::Current => {
+                        already.push((client.name.clone(), server.register_as.clone()));
+                        continue;
+                    }
+                    State::Different(_) => true,
+                    State::Missing => false,
+                };
+                steps.extend(register_steps(
+                    client,
+                    configs.get(&client.id).map(String::as_str),
+                    server,
+                    replace,
+                ));
             }
         }
     }
-    steps
+    Plan { steps, already }
 }
 
 #[cfg(test)]
@@ -283,11 +402,38 @@ mod tests {
             ..Default::default()
         };
         let tools = vec![r.tool("adobe").unwrap(), r.tool("blender").unwrap()];
-        let steps = build(&tools, &[], &[], &env, true);
+        let steps = build(
+            &tools,
+            &[],
+            &[],
+            &BTreeMap::new(),
+            &Existing::new(),
+            &env,
+            true,
+        )
+        .steps;
         let taps = steps.iter().filter(|s| matches!(s, Step::Run { args, .. } if args.first().map(String::as_str) == Some("tap"))).count();
         assert_eq!(taps, 1);
+        assert!(steps.iter().any(|s| matches!(s, Step::Run { args, .. } if args.first().map(String::as_str) == Some("trust"))));
         assert!(steps.iter().any(|s| matches!(s, Step::Run { program, args, .. } if program == "brew" && args == &["install", "zachshallbetter/tap/blender-mcp"])));
         assert!(steps.iter().any(|s| matches!(s, Step::Run { program, args, .. } if program == "blender-mcp" && args == &["addon", "install"])));
+
+        let trusted = Environment {
+            tap_trusted: true,
+            tap_installed: true,
+            ..env
+        };
+        let steps = build(
+            &tools,
+            &[],
+            &[],
+            &BTreeMap::new(),
+            &Existing::new(),
+            &trusted,
+            true,
+        )
+        .steps;
+        assert!(!steps.iter().any(|s| matches!(s, Step::Run { args, .. } if matches!(args.first().map(String::as_str), Some("trust" | "tap")))));
     }
 
     #[test]
@@ -295,26 +441,83 @@ mod tests {
         let r = Registry::load(None).unwrap();
         let blender = r.tool("blender").unwrap();
         let server = &blender.servers[0];
-        match register_step(&client("codex", true, None), server) {
-            Step::Run { program, args, .. } => {
-                assert_eq!(program, "codex");
+        match &register_steps(&client("codex", true, None), None, server, false)[..] {
+            [Step::Run { program, args, .. }] => {
+                assert_eq!(
+                    program, "/bin/codex",
+                    "the detected CLI path is used, not PATH"
+                );
                 assert_eq!(
                     args,
-                    vec!["mcp", "add", "blender", "--", "blender-mcp", "serve"]
+                    &vec!["mcp", "add", "blender", "--", "blender-mcp", "serve"]
                 );
             }
             other => panic!("unexpected {other:?}"),
         }
         assert!(matches!(
-            register_step(&client("cursor", false, Some("/tmp/mcp.json")), server),
-            Step::WriteJson { .. }
+            register_steps(
+                &client("cursor", false, Some("/tmp/mcp.json")),
+                Some("/tmp/mcp.json"),
+                server,
+                false
+            )[..],
+            [Step::WriteJson { .. }]
         ));
+        // Claude Code without its CLI anywhere: write the user-scope entry in ~/.claude.json.
         assert!(matches!(
-            register_step(
+            register_steps(
                 &client("claude-code", false, Some("/tmp/.claude.json")),
-                server
-            ),
-            Step::Manual { .. }
+                Some("/tmp/.claude.json"),
+                server,
+                false
+            )[..],
+            [Step::WriteJson { .. }]
         ));
+        // Replacing through a CLI removes the old entry first.
+        let steps = register_steps(&client("gemini", true, None), None, server, true);
+        assert!(
+            matches!(&steps[0], Step::Run { args, allow_failure: true, .. } if args[1] == "remove")
+        );
+        assert_eq!(steps.len(), 2);
+        assert!(matches!(
+            unregister_step(
+                &client("cursor", false, None),
+                Some("/tmp/mcp.json"),
+                "blender"
+            ),
+            Step::RemoveJson { .. }
+        ));
+    }
+
+    #[test]
+    fn current_registrations_are_left_alone() {
+        let r = Registry::load(None).unwrap();
+        let blender = r.tool("blender").unwrap();
+        let codex = client("codex", true, None);
+        let mut have = BTreeMap::new();
+        have.insert(
+            "blender".to_string(),
+            Entry {
+                command: "blender-mcp".into(),
+                args: vec!["serve".into()],
+            },
+        );
+        let mut existing = Existing::new();
+        existing.insert("codex".into(), Some(have));
+        let apps = [app("blender", "blender")];
+        let plan = build(
+            &[blender],
+            &apps,
+            &[codex],
+            &BTreeMap::new(),
+            &existing,
+            &Environment::default(),
+            false,
+        );
+        assert!(plan.steps.is_empty());
+        assert_eq!(
+            plan.already,
+            vec![("codex".to_string(), "blender".to_string())]
+        );
     }
 }
