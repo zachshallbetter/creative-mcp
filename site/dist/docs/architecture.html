@@ -10,7 +10,7 @@
 <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index">
 <link rel="alternate" type="text/markdown" href="/docs/architecture.md" title="This page as Markdown">
 <link rel="author" type="text/plain" href="/humans.txt">
-<link rel="canonical" href="https://creativemcp.com/docs/architecture.html"><meta property="og:type" content="article"><meta property="og:title" content="Architecture & distribution — Creative MCP Docs"><meta property="og:description" content="How the Creative MCP series fits together: one repository per tool, the Homebrew tap, the creative-mcp installer, the shared catalogue and rules for new tools."><meta property="og:url" content="https://creativemcp.com/docs/architecture.html"><meta property="article:author" content="https://creativemcp.com/about.html"><meta property="article:published_time" content="2026-11-03T03:30:41-08:00"><meta property="article:modified_time" content="2026-11-03T18:57:33-08:00"><meta property="og:site_name" content="Creative MCP"><meta property="og:locale" content="en_US">
+<link rel="canonical" href="https://creativemcp.com/docs/architecture.html"><meta property="og:type" content="article"><meta property="og:title" content="Architecture & distribution — Creative MCP Docs"><meta property="og:description" content="How the Creative MCP series fits together: one repository per tool, the Homebrew tap, the creative-mcp installer, the shared catalogue and rules for new tools."><meta property="og:url" content="https://creativemcp.com/docs/architecture.html"><meta property="article:author" content="https://creativemcp.com/about.html"><meta property="article:published_time" content="2026-11-03T03:30:41-08:00"><meta property="article:modified_time" content="2026-11-03T19:04:56-08:00"><meta property="og:site_name" content="Creative MCP"><meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://creativemcp.com/assets/social/docs-architecture.jpg?v=9ed7523bea">
 <meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -35,7 +35,7 @@
         "@id": "https://creativemcp.com/#organization"
       },
       "inLanguage": "en-US",
-      "dateModified": "2026-11-03T18:57:33-08:00",
+      "dateModified": "2026-11-03T19:04:56-08:00",
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "url": "https://creativemcp.com/assets/social/docs-architecture.jpg?v=9ed7523bea",
@@ -72,7 +72,7 @@
         "@id": "https://creativemcp.com/#organization"
       },
       "inLanguage": "en-US",
-      "dateModified": "2026-11-03T18:57:33-08:00",
+      "dateModified": "2026-11-03T19:04:56-08:00",
       "image": "https://creativemcp.com/assets/social/docs-architecture.jpg?v=9ed7523bea",
       "isPartOf": {
         "@id": "https://creativemcp.com/#website"
@@ -197,7 +197,7 @@
 brew trust zachshallbetter/tap        # Homebrew 7+: trust a third-party tap once
 brew install zachshallbetter/tap/adobe-mcp
 brew install zachshallbetter/tap/blender-mcp</code></pre><p>Each formula runs a real MCP <code>initialize</code> check as its test. Update with <code>brew upgrade</code>. </p></section>
-<section class="doc-section" id="installer"><h2>One installer for the series</h2><div class="callout"><p><strong>Status: Implemented and tested (v0.2.1).</strong> Fully supported on macOS. Linux detects apps only when their command is on <code>PATH</code>. Windows looks for the apps in their default install folders (not yet checked on a real Windows machine); anywhere, <code>creative-mcp add blender</code> sets up a tool without detection.</p></div><p>A browser can't see which apps you have installed, so the series has a small local installer that can.</p><pre tabindex="0"><code>brew tap zachshallbetter/tap
+<section class="doc-section" id="installer"><h2>One installer for the series</h2><div class="callout"><p><strong>Status: Implemented and tested (v0.2.2).</strong> Fully supported on macOS. Linux detects apps only when their command is on <code>PATH</code>. Windows looks for the apps in their default install folders (not yet checked on a real Windows machine); anywhere, <code>creative-mcp add blender</code> sets up a tool without detection.</p></div><p>A browser can't see which apps you have installed, so the series has a small local installer that can.</p><pre tabindex="0"><code>brew tap zachshallbetter/tap
 brew trust zachshallbetter/tap
 brew install zachshallbetter/tap/creative-mcp
 creative-mcp setup</code></pre><p><code>creative-mcp setup</code>:</p><ul><li>detects installed creative apps (on macOS by bundle ID, for example <code>com.adobe.Photoshop</code> and <code>org.blenderfoundation.blender</code>, with their versions) and MCP clients (their command, including the Claude Code CLI bundled with Claude Desktop, or their config file)</li><li>suggests the tools that match your apps and asks before choosing any</li><li>reads what each client already has registered and leaves current entries alone, so running it again changes nothing</li><li>shows every command it will run and every config entry it will write, and asks again before changing anything</li><li>installs with Homebrew, or with npm or Cargo when Homebrew isn't available</li><li>registers servers with Claude Code, Codex and Gemini CLI through their own <code>mcp add</code> commands, and with Claude Desktop and Cursor by editing their JSON config. Each file is backed up once before the first change, and other settings are kept.</li><li>only registers the servers your apps need. The Suite coordinator, for example, is offered only when both Illustrator and InDesign are installed.</li><li>checks that each server answers MCP <code>initialize</code>, then tells you which clients to restart and gives a few requests to try</li></ul><p>For everyday use it also has <code>doctor</code> (are the servers answering, are the running apps reachable, which clients have which servers, and the command that fixes each problem), <code>update</code>, <code>add &lt;tool&gt;</code>, <code>remove &lt;tool&gt;</code>, <code>detect</code> and <code>list</code>, plus <code>--dry-run</code>, <code>--yes</code>, <code>--tools</code>, <code>--clients</code> and <code>--json</code>. The full reference is in <a href="/docs/cli.html#installer">CLI &amp; configuration</a>. Detection runs only on your machine and sends nothing anywhere. Source: <a href="https://github.com/zachshallbetter/creative-mcp/tree/main/cli">creative-mcp/cli</a>.</p></section>

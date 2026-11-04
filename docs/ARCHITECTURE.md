@@ -1,6 +1,6 @@
 # Creative MCP series architecture
 
-Status (2026-11-03): the catalogue (`registry/`) and the installer (`cli/`, v0.2.1) are **Implemented and tested**. The installer fully supports macOS only so far. Author: Zach Shallbetter.
+Status (2026-11-03): the catalogue (`registry/`) and the installer (`cli/`, v0.2.2) are **Implemented and tested**. The installer fully supports macOS only so far. Author: Zach Shallbetter.
 
 Creative MCP is a series of independent MCP implementations for creative software, presented under one brand, one website and one install path. This document records how the pieces fit today, the decisions for growing the series, and what a new tool needs to join.
 
@@ -94,7 +94,7 @@ The bundle IDs above were checked on a real Mac on 2026-11-03 (Photoshop, Illust
 
 `registry/validate.py` checks the schema plus cross-references (unknown clients or apps, duplicate IDs). CI runs it on every pull request that touches `registry/`. Detection rules carry `"verified": true` only after being checked on a real machine.
 
-## 4. The `creative-mcp` installer (v0.2.1)
+## 4. The `creative-mcp` installer (v0.2.2)
 
 Implemented in [`cli/`](../cli) and shipped as `brew install zachshallbetter/tap/creative-mcp`. Shipped: `setup`, `add`, `update`, `remove`, `doctor`, `detect` and `list`, with `--yes`, `--dry-run`, `--tools`, `--clients`, `--no-install`, `--no-verify` and `--json`. Windows detects apps in their default install folders but is unverified on real hardware ([#5](https://github.com/zachshallbetter/creative-mcp/issues/5)). Not built yet: installing Premiere Pro's UXP plugin without the UXP Developer Tool ([#17](https://github.com/zachshallbetter/creative-mcp/issues/17)).
 
