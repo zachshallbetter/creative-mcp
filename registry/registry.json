@@ -29,15 +29,20 @@
       ],
       "targets": [
         { "app": "indesign", "name": "Adobe InDesign",
-          "detect": { "macos": { "bundle_ids": ["com.adobe.InDesign"], "verified": false } } },
+          "detect": { "macos": { "bundle_ids": ["com.adobe.InDesign"], "verified": false },
+                     "windows": { "globs": ["C:/Program Files/Adobe/Adobe InDesign */InDesign.exe"], "verified": false } } },
         { "app": "illustrator", "name": "Adobe Illustrator",
-          "detect": { "macos": { "bundle_ids": ["com.adobe.illustrator"], "verified": true } } },
+          "detect": { "macos": { "bundle_ids": ["com.adobe.illustrator"], "verified": true },
+                     "windows": { "globs": ["C:/Program Files/Adobe/Adobe Illustrator */Support Files/Contents/Windows/Illustrator.exe"], "verified": false } } },
         { "app": "photoshop", "name": "Adobe Photoshop",
-          "detect": { "macos": { "bundle_ids": ["com.adobe.Photoshop"], "verified": true } } },
+          "detect": { "macos": { "bundle_ids": ["com.adobe.Photoshop"], "verified": true },
+                     "windows": { "globs": ["C:/Program Files/Adobe/Adobe Photoshop */Photoshop.exe"], "verified": false } } },
         { "app": "aftereffects", "name": "Adobe After Effects",
-          "detect": { "macos": { "bundle_ids": ["com.adobe.AfterEffects.application"], "verified": true } } },
+          "detect": { "macos": { "bundle_ids": ["com.adobe.AfterEffects.application"], "verified": true },
+                     "windows": { "globs": ["C:/Program Files/Adobe/Adobe After Effects */Support Files/AfterFX.exe"], "verified": false } } },
         { "app": "premiere", "name": "Adobe Premiere Pro",
-          "detect": { "macos": { "bundle_id_prefixes": ["com.adobe.PremierePro"], "verified": false } } }
+          "detect": { "macos": { "bundle_id_prefixes": ["com.adobe.PremierePro"], "verified": false },
+                     "windows": { "globs": ["C:/Program Files/Adobe/Adobe Premiere Pro */Adobe Premiere Pro.exe"], "verified": false } } }
       ],
       "try": [
         "With Photoshop open: what documents are open, and what layers does the active one have?",
@@ -71,7 +76,9 @@
       ],
       "targets": [
         { "app": "blender", "name": "Blender",
-          "detect": { "macos": { "bundle_ids": ["org.blenderfoundation.blender"], "min_version": "4.0", "verified": true } } }
+          "detect": { "macos": { "bundle_ids": ["org.blenderfoundation.blender"], "min_version": "4.0", "verified": true },
+                     "windows": { "globs": ["C:/Program Files/Blender Foundation/Blender */blender.exe"], "verified": false },
+                     "linux": { "commands": ["blender"], "verified": false } } }
       ],
       "clients": ["claude-code", "codex", "cursor", "gemini", "antigravity"]
     }
@@ -80,7 +87,7 @@
     { "id": "claude-code", "name": "Claude Code", "detect": { "commands": ["claude"],
       "paths": ["~/.claude/local/claude", "~/.local/bin/claude", "~/Library/Application Support/Claude/claude-code/*/*/claude.app/Contents/MacOS/claude"],
       "files": ["~/.claude.json"] } },
-    { "id": "claude-desktop", "name": "Claude Desktop", "restart": "Quit Claude Desktop (⌘Q) and open it again", "detect": { "files": ["~/Library/Application Support/Claude/claude_desktop_config.json"] } },
+    { "id": "claude-desktop", "name": "Claude Desktop", "restart": "Quit Claude Desktop (⌘Q) and open it again", "detect": { "files": ["~/Library/Application Support/Claude/claude_desktop_config.json", "~/AppData/Roaming/Claude/claude_desktop_config.json"] } },
     { "id": "codex", "name": "Codex", "detect": { "commands": ["codex"], "files": ["~/.codex/config.toml"] } },
     { "id": "cursor", "name": "Cursor", "restart": "Restart Cursor, or reload its window", "detect": { "commands": ["cursor"], "files": ["~/.cursor/mcp.json"] } },
     { "id": "gemini", "name": "Gemini CLI", "detect": { "commands": ["gemini"], "files": ["~/.gemini/settings.json"] } },

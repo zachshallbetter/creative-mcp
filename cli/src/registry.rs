@@ -87,6 +87,9 @@ pub struct Detect {
     pub bundle_id_prefixes: Vec<String>,
     #[serde(default)]
     pub commands: Vec<String>,
+    /// Install locations (`*` matches one path segment, e.g. a year or version); the newest match wins.
+    #[serde(default)]
+    pub globs: Vec<String>,
 }
 
 #[derive(Debug, Clone, Deserialize)]

@@ -3,7 +3,7 @@ title: "CLI & configuration"
 description: "The creative-mcp installer: setup, doctor, update, add and remove. Plus launch commands, Suite app selection and configuration for each server."
 url: https://creativemcp.com/docs/cli.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T17:57:16-08:00
+modified: 2026-11-03T18:21:39-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -53,7 +53,7 @@ Options: `--dry-run` prints the plan and changes nothing; `--yes` accepts the su
 - Claude Desktop, Cursor: by adding `mcpServers` entries to their JSON config. The file is backed up once before the first change, and every other setting is kept.
 - Anything else: it prints the exact entry to add.
 
-Detection reads app bundles, `PATH` and client config files on your machine and sends nothing anywhere. Status: Implemented and tested (v0.2.0), fully supported on macOS. Source and changes: [creative-mcp/cli](https://github.com/zachshallbetter/creative-mcp/tree/main/cli).
+Detection reads app bundles, `PATH` and client config files on your machine and sends nothing anywhere. Status: Implemented and tested (v0.2.1). fully supported on macOS. Source and changes: [creative-mcp/cli](https://github.com/zachshallbetter/creative-mcp/tree/main/cli).
 
 ## Install and launch a server by hand
 

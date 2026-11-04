@@ -228,6 +228,11 @@ fn detect_target(tool: &str, target: &Target) -> Option<FoundApp> {
             paths.push(p.display().to_string());
         }
     }
+    for pattern in &rule.globs {
+        if let Some(p) = glob(pattern).pop() {
+            paths.push(p.display().to_string());
+        }
+    }
     // Prefer apps installed in /Applications over copies inside other bundles or build folders.
     paths.sort_by_key(|p| (!p.starts_with("/Applications"), p.len()));
     let path = paths.into_iter().next()?;
@@ -350,6 +355,13 @@ mod tests {
         assert_eq!(found.len(), 3);
         assert!(found.last().unwrap().to_string_lossy().contains("2.1.10"));
         assert!(glob(&format!("{}/*/none", dir.display())).is_empty());
+        // A wildcard inside a name, as in "Adobe Photoshop *" or "Blender *".
+        std::fs::create_dir_all(dir.join("Blender 4.2")).unwrap();
+        std::fs::create_dir_all(dir.join("Blender 5.2")).unwrap();
+        std::fs::write(dir.join("Blender 5.2/blender.exe"), "").unwrap();
+        let found = glob(&format!("{}/Blender */blender.exe", dir.display()));
+        assert_eq!(found.len(), 1);
+        assert!(found[0].to_string_lossy().contains("Blender 5.2"));
         std::fs::remove_dir_all(&dir).unwrap();
     }
 

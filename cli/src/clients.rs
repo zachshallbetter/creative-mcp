@@ -25,12 +25,17 @@ pub enum State {
     Different(Entry),
 }
 
-/// The config file that holds a client's user-level servers: the first file in its catalogue entry.
+/// The config file that holds a client's user-level servers: the first of its catalogue files that
+/// exists (they differ by platform), or the first one listed.
 pub fn config_path(registry: &Registry, client_id: &str) -> Option<PathBuf> {
-    registry
-        .client(client_id)
-        .and_then(|c| c.detect.files.first())
+    let files: Vec<PathBuf> = registry
+        .client(client_id)?
+        .detect
+        .files
+        .iter()
         .map(|f| expand(f))
+        .collect();
+    files.iter().find(|p| p.exists()).or(files.first()).cloned()
 }
 
 /// Registered servers by name. `None` when the client keeps its config somewhere this tool can't read.

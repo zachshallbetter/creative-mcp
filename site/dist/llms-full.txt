@@ -1061,7 +1061,7 @@ Options: `--dry-run` prints the plan and changes nothing; `--yes` accepts the su
 - Claude Desktop, Cursor: by adding `mcpServers` entries to their JSON config. The file is backed up once before the first change, and every other setting is kept.
 - Anything else: it prints the exact entry to add.
 
-Detection reads app bundles, `PATH` and client config files on your machine and sends nothing anywhere. Status: Implemented and tested (v0.2.0), fully supported on macOS. Source and changes: [creative-mcp/cli](https://github.com/zachshallbetter/creative-mcp/tree/main/cli).
+Detection reads app bundles, `PATH` and client config files on your machine and sends nothing anywhere. Status: Implemented and tested (v0.2.1). fully supported on macOS. Source and changes: [creative-mcp/cli](https://github.com/zachshallbetter/creative-mcp/tree/main/cli).
 
 ## Install and launch a server by hand
 
@@ -1177,7 +1177,7 @@ Each implementation is a separate project with its own language, licence and rel
 
 | [Adobe MCP](https://creativemcp.com/apps.html): five app servers, Suite coordinator, shared core | [adobe-mcp](https://github.com/zachshallbetter/adobe-mcp) | Node.js 18+ | Homebrew `zachshallbetter/tap/adobe-mcp`, npm `adobe-mcp-*` | MIT
 
-| [Blender MCP](https://creativemcp.com/docs/implementations/blender.html): Rust server, CLI and Blender add-on | [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) | Rust | Homebrew `zachshallbetter/tap/blender-mcp` (v0.5.0), Cargo from source | MIT OR Apache-2.0
+| [Blender MCP](https://creativemcp.com/docs/implementations/blender.html): Rust server, CLI and Blender add-on | [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) | Rust | Homebrew `zachshallbetter/tap/blender-mcp` (v0.5.1), Cargo from source | MIT OR Apache-2.0
 
 | Website, docs and series catalogue | [creative-mcp](https://github.com/zachshallbetter/creative-mcp) | HTML, Python, JSON | Served at creativemcp.com | MIT for code; content and brand reserved
 
@@ -1198,7 +1198,7 @@ Each formula runs a real MCP `initialize` check as its test. Update with `brew u
 
 ## One installer for the series
 
-Status: Implemented and tested (v0.2.0). Fully supported on macOS. Linux detects apps only when their command is on `PATH`. Windows doesn't detect apps yet, so name the tools yourself: `creative-mcp add blender`.
+Status: Implemented and tested (v0.2.1). Fully supported on macOS. Linux detects apps only when their command is on `PATH`. Windows looks for the apps in their default install folders (not yet checked on a real Windows machine); anywhere, `creative-mcp add blender` sets up a tool without detection.
 
 A browser can't see which apps you have installed, so the series has a small local installer that can.
 
@@ -1898,7 +1898,7 @@ Prerequisites
 
 ### Blender and Rust
 
-Install Rust with rustup. Blender 4.0 or later is required, and the companion add-on must be installed and enabled.
+Install Rust with rustup. Blender 4.0 or later is required, and the companion add-on must be installed and enabled (`blender-mcp addon install` does both).
 
 Source package: `blender-mcp-cli` in the [blender-mcp-rs repository](https://github.com/zachshallbetter/blender-mcp-rs).
 
@@ -1910,7 +1910,7 @@ Install the CLI from the project’s Git repository:
 cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli
 ```
 
-Or install with Homebrew. Homebrew builds the v0.5.0 release for you, so you don’t need Rust installed:
+Or install with Homebrew. Homebrew builds the v0.5.1 release for you, so you don’t need Rust installed:
 
 ```
 brew tap zachshallbetter/tap
@@ -1919,7 +1919,7 @@ brew install zachshallbetter/tap/blender-mcp
 blender-mcp addon install
 ```
 
-Install and enable the Blender companion add-on before starting a workflow. The project CLI can add configuration for supported clients, including Codex, Claude Code, Cursor, Gemini CLI and Antigravity:
+`blender-mcp addon install` copies the companion add-on into each Blender version on your Mac and turns it on, so it loads and listens on `127.0.0.1:9876` whenever Blender opens. There is nothing to enable in Preferences. Quit Blender before running it; if Blender is open, the command leaves its preferences alone and tells you. The project CLI can add configuration for supported clients, including Codex, Claude Code, Cursor, Gemini CLI and Antigravity:
 
 ```
 blender-mcp client add codex

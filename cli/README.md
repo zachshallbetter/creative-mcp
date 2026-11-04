@@ -49,9 +49,9 @@ Detection reads app bundles, `PATH` and client config files on your machine. Not
 
 ## Status
 
-**Implemented and tested** (version 0.2.0):
+**Implemented and tested** (version 0.2.1):
 
-- **Platforms:** macOS is fully supported. On Linux, apps are detected only when their command is on `PATH`, so app detection there is minimal. Windows app detection isn't implemented yet; use `creative-mcp add <tool>` to choose tools yourself.
+- **Platforms:** macOS is fully supported. Windows detects the Adobe apps and Blender in their default install folders under `C:\Program Files` and finds Claude Desktop's config under `%APPDATA%`; this hasn't been checked on a real Windows machine yet, and `doctor` can't tell whether an app is running there. Linux detects Blender when `blender` is on `PATH`. Anywhere, `creative-mcp add <tool>` sets up a tool without detection.
 - **Tests:** unit tests cover catalogue parsing, server selection, install planning, reading each client's existing registrations (JSON and Codex TOML), client registration and removal, the config backup, Spotlight timeouts and the bundle-scan fallback.
 - **Manual testing (2026-11-03, macOS):** detection found Illustrator, Photoshop, After Effects and Blender. `setup`, a second `setup` (no changes), `doctor` and `remove` were run end to end against a throwaway home directory with Claude Code (through the CLI bundled with Claude Desktop, and through `~/.claude.json`), Claude Desktop, Codex, Cursor and Gemini CLI. `doctor` reached a running Photoshop through `photoshop_status`.
 

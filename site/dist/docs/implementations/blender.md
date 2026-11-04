@@ -3,7 +3,7 @@ title: "Blender MCP implementation"
 description: "Blender MCP pairs a Rust MCP server with a Blender add-on so AI agents can work with scenes and assets. Install with Homebrew; setup and safety notes."
 url: https://creativemcp.com/docs/implementations/blender.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T14:32:15-08:00
+modified: 2026-11-03T18:21:40-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -36,7 +36,7 @@ Prerequisites
 
 ### Blender and Rust
 
-Install Rust with rustup. Blender 4.0 or later is required, and the companion add-on must be installed and enabled.
+Install Rust with rustup. Blender 4.0 or later is required, and the companion add-on must be installed and enabled (`blender-mcp addon install` does both).
 
 Source package: `blender-mcp-cli` in the [blender-mcp-rs repository](https://github.com/zachshallbetter/blender-mcp-rs).
 
@@ -48,7 +48,7 @@ Install the CLI from the project’s Git repository:
 cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli
 ```
 
-Or install with Homebrew. Homebrew builds the v0.5.0 release for you, so you don’t need Rust installed:
+Or install with Homebrew. Homebrew builds the v0.5.1 release for you, so you don’t need Rust installed:
 
 ```
 brew tap zachshallbetter/tap
@@ -57,7 +57,7 @@ brew install zachshallbetter/tap/blender-mcp
 blender-mcp addon install
 ```
 
-Install and enable the Blender companion add-on before starting a workflow. The project CLI can add configuration for supported clients, including Codex, Claude Code, Cursor, Gemini CLI and Antigravity:
+`blender-mcp addon install` copies the companion add-on into each Blender version on your Mac and turns it on, so it loads and listens on `127.0.0.1:9876` whenever Blender opens. There is nothing to enable in Preferences. Quit Blender before running it; if Blender is open, the command leaves its preferences alone and tells you. The project CLI can add configuration for supported clients, including Codex, Claude Code, Cursor, Gemini CLI and Antigravity:
 
 ```
 blender-mcp client add codex

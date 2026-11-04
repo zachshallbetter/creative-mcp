@@ -1,6 +1,6 @@
 # Creative MCP series architecture
 
-Status (2026-11-03): the catalogue (`registry/`) and the installer (`cli/`, v0.2.0) are **Implemented and tested**. The installer fully supports macOS only so far. Author: Zach Shallbetter.
+Status (2026-11-03): the catalogue (`registry/`) and the installer (`cli/`, v0.2.1) are **Implemented and tested**. The installer fully supports macOS only so far. Author: Zach Shallbetter.
 
 Creative MCP is a series of independent MCP implementations for creative software, presented under one brand, one website and one install path. This document records how the pieces fit today, the decisions for growing the series, and what a new tool needs to join.
 
@@ -94,9 +94,9 @@ The bundle IDs above were checked on a real Mac on 2026-11-03 (Photoshop, Illust
 
 `registry/validate.py` checks the schema plus cross-references (unknown clients or apps, duplicate IDs). CI runs it on every pull request that touches `registry/`. Detection rules carry `"verified": true` only after being checked on a real machine.
 
-## 4. The `creative-mcp` installer (v0.2.0)
+## 4. The `creative-mcp` installer (v0.2.1)
 
-Implemented in [`cli/`](../cli) and shipped as `brew install zachshallbetter/tap/creative-mcp`. Shipped: `setup`, `add`, `update`, `remove`, `doctor`, `detect` and `list`, with `--yes`, `--dry-run`, `--tools`, `--clients`, `--no-install`, `--no-verify` and `--json`. Not built yet: Windows app detection ([#5](https://github.com/zachshallbetter/creative-mcp/issues/5)) and installing Premiere Pro's UXP plugin without the UXP Developer Tool ([#17](https://github.com/zachshallbetter/creative-mcp/issues/17)).
+Implemented in [`cli/`](../cli) and shipped as `brew install zachshallbetter/tap/creative-mcp`. Shipped: `setup`, `add`, `update`, `remove`, `doctor`, `detect` and `list`, with `--yes`, `--dry-run`, `--tools`, `--clients`, `--no-install`, `--no-verify` and `--json`. Windows detects apps in their default install folders but is unverified on real hardware ([#5](https://github.com/zachshallbetter/creative-mcp/issues/5)). Not built yet: installing Premiere Pro's UXP plugin without the UXP Developer Tool ([#17](https://github.com/zachshallbetter/creative-mcp/issues/17)).
 
 ```text
 brew install zachshallbetter/tap/creative-mcp     # later also: npm, a Windows download
@@ -116,7 +116,7 @@ Flags: `--yes` (accept the detected defaults), `--tools adobe,blender`, `--clien
 
 How it works:
 
-- **Detection.** macOS: Spotlight by bundle ID (`mdfind`, with a time limit), falling back to reading the `Info.plist` of each app in `/Applications` and `~/Applications` when Spotlight is off or stalled. Windows: registry uninstall keys and the catalogue's path globs. Linux: `PATH` and `.desktop` files. Clients: commands on `PATH` and their config files. A client counts as present if either exists. The catalogue can list extra places a client's CLI lives (`detect.paths`), which is how the Claude Code CLI bundled with Claude Desktop is found when `claude` isn't on `PATH`.
+- **Detection.** macOS: Spotlight by bundle ID (`mdfind`, with a time limit), falling back to reading the `Info.plist` of each app in `/Applications` and `~/Applications` when Spotlight is off or stalled. Windows: the catalogue's install-path globs (`C:/Program Files/Adobe/Adobe Photoshop */Photoshop.exe`). Linux: `PATH`. Clients: commands on `PATH` and their config files. A client counts as present if either exists. The catalogue can list extra places a client's CLI lives (`detect.paths`), which is how the Claude Code CLI bundled with Claude Desktop is found when `claude` isn't on `PATH`.
 - **Install method.** Homebrew when `brew` is present (it also supplies Node or Rust). Otherwise the tool's native method (npm or Cargo), after checking the prerequisites in `requires`.
 - **Client registration.** Read the client's user-level config first (JSON `mcpServers`, or Codex's TOML `mcp_servers`) and skip servers already registered with the same command. Use the client's own command where one exists (`claude mcp add --scope user`, `codex mcp add`, `gemini mcp add --scope user`); otherwise edit its JSON config, backing the file up before the first change and keeping every other setting. `remove` only removes entries with the tool's own server name and command.
 - **Privacy.** No telemetry. The only network access is downloading the catalogue and the packages.

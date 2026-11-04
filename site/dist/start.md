@@ -3,7 +3,7 @@ title: "Get started"
 description: "Get exact setup commands for Adobe MCP or Blender MCP in your MCP client, or let the Homebrew installer detect your apps and set everything up."
 url: https://creativemcp.com/start.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T17:57:22-08:00
+modified: 2026-11-03T17:58:55-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
