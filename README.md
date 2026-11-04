@@ -3,12 +3,12 @@
 **Local MCP servers that connect AI agents to the creative tools you already use.**
 Created by [Zach Shallbetter](https://zachshallbetter.com/) · [creativemcp.com](https://creativemcp.com)
 
-Creative MCP is a series of independent, open [Model Context Protocol](https://modelcontextprotocol.io) implementations for creative software. Each tool lives in its own repository. This repository is the series' home: the website and docs, the catalogue of tools, the planned installer and the conventions every tool follows.
+Creative MCP is a series of independent, open [Model Context Protocol](https://modelcontextprotocol.io) implementations for creative software. Each tool lives in its own repository. This repository is the series' home: the website and docs, the catalogue of tools, the `creative-mcp` installer and the conventions every tool follows.
 
 | Tool | Repository | Install |
 | --- | --- | --- |
 | **Adobe MCP**: InDesign, Illustrator, Photoshop, After Effects, Premiere Pro, plus a cross-app coordinator | [adobe-mcp](https://github.com/zachshallbetter/adobe-mcp) | `brew install zachshallbetter/tap/adobe-mcp` or `npx -y adobe-mcp-suite` |
-| **Blender MCP**: Rust MCP server and companion Blender add-on | [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) | `brew install zachshallbetter/tap/blender-mcp` (v0.5.0) |
+| **Blender MCP**: Rust MCP server and companion Blender add-on | [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) | `brew install zachshallbetter/tap/blender-mcp` (v0.5.1) |
 
 Homebrew needs the tap first, once:
 
@@ -23,6 +23,8 @@ Or set up everything at once on a Mac. The installer detects your apps and MCP c
 brew install zachshallbetter/tap/creative-mcp
 creative-mcp setup
 ```
+
+Afterwards, `creative-mcp doctor` checks that every server answers, that each open app is reachable and which clients have which servers; `creative-mcp update` keeps everything current; `creative-mcp remove <tool>` takes a tool out again. See [the installer reference](https://creativemcp.com/docs/cli.html#installer).
 
 To do it by hand, start at [creativemcp.com/start.html](https://creativemcp.com/start.html) for the exact commands for your app and MCP client.
 
@@ -43,11 +45,14 @@ The site is plain HTML, CSS and JavaScript with no build step. Preview it with a
 python3 -m http.server 4173 --directory site/dist
 ```
 
-After changing page content, commit, then regenerate the derived files:
+After changing the catalogue or page content, regenerate the derived files and check the result (CI runs the last step on every push):
 
 ```sh
-python3 site/scripts/generate-discovery.py      # sitemap, llms.txt, llms-full.txt, registry copy
-python3 site/scripts/generate-social-images.py  # social cards (needs Google Chrome)
+python3 site/scripts/generate-catalogue.py      # Projects grid, series table, setup builder data, from registry/registry.json
+python3 site/scripts/generate-social-images.py  # social cards (needs Google Chrome), only when a title or card changes
+python3 site/scripts/apply-shell.py             # shared head, JSON-LD, docs tabs, footer
+python3 site/scripts/generate-discovery.py      # sitemap, llms.txt, llms-full.txt, Markdown copies
+python3 site/scripts/check-site.py              # every page, card, JSON-LD and CSP hash agrees
 ```
 
 ## Status vocabulary
