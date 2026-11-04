@@ -65,6 +65,22 @@
         "license": { "type": "string" },
         "author": { "type": "string" },
         "status": { "enum": ["Planned", "Documented", "Implemented", "Tested", "Validated"] },
+        "version": { "type": "string", "description": "Latest released version, as published (shown on the site)" },
+        "language": { "type": "string" },
+        "register_command": { "type": "string", "description": "The tool's own command for registering with a client; {client} is the catalogue client id" },
+        "site": {
+          "type": "object",
+          "description": "How the website lists the tool; site/scripts/generate-catalogue.py renders the Projects grid, the setup builder, the series table and llms.txt facts from it",
+          "required": ["page", "mark", "tone", "parts", "bullets", "fact", "setup_note", "readiness"],
+          "additionalProperties": false,
+          "properties": {
+            "page": { "type": "string" }, "event": { "type": "string" }, "mark": { "type": "string" },
+            "tone": { "enum": ["purple", "orange", "magenta", "blue", "green"] },
+            "parts": { "type": "string" }, "bullets": { "type": "array", "items": { "type": "string" } },
+            "fact": { "type": "string" }, "setup_note": { "type": "string" },
+            "readiness": { "type": "array", "items": { "type": "string" } }
+          }
+        },
         "install": {
           "type": "object",
           "minProperties": 1,

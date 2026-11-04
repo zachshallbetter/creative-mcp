@@ -1,0 +1,221 @@
+{
+  "catalogue": "2026-11-03",
+  "tools": [
+    {
+      "id": "adobe",
+      "name": "Adobe MCP",
+      "methods": [
+        {
+          "id": "brew",
+          "label": "Homebrew (macOS, Linux)"
+        },
+        {
+          "id": "npm",
+          "label": "npm / npx (macOS, Windows)"
+        }
+      ],
+      "clients": [
+        {
+          "id": "claude-code",
+          "label": "Claude Code"
+        },
+        {
+          "id": "claude-desktop",
+          "label": "Claude Desktop"
+        },
+        {
+          "id": "codex",
+          "label": "Codex"
+        },
+        {
+          "id": "cursor",
+          "label": "Cursor"
+        },
+        {
+          "id": "gemini",
+          "label": "Gemini CLI"
+        },
+        {
+          "id": "other",
+          "label": "Another client with MCP server configuration"
+        }
+      ],
+      "readiness": [
+        "Node.js 18 or later is installed (Homebrew installs it for you).",
+        "The Adobe app you want to use is installed on this computer.",
+        "Your MCP client can launch local stdio servers.",
+        "You know which project folders the server should be allowed to access."
+      ],
+      "entries": {
+        "claude-code|brew": {
+          "kicker": "Adobe MCP · Claude Code · Homebrew",
+          "command": "brew tap zachshallbetter/tap\nbrew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/adobe-mcp\nclaude mcp add --scope user adobe -- adobe-mcp-suite",
+          "explanation": "Homebrew installs Node.js 18 or later for you. Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps."
+        },
+        "claude-code|npm": {
+          "kicker": "Adobe MCP · Claude Code · npx",
+          "command": "claude mcp add --scope user adobe -- npx -y adobe-mcp-suite",
+          "explanation": "Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps."
+        },
+        "claude-desktop|brew": {
+          "kicker": "Adobe MCP · Claude Desktop · Homebrew",
+          "command": "brew tap zachshallbetter/tap\nbrew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/adobe-mcp\n\n{\n  \"mcpServers\": {\n    \"adobe\": {\n      \"command\": \"/opt/homebrew/bin/adobe-mcp-suite\",\n      \"args\": []\n    }\n  }\n}",
+          "explanation": "Homebrew installs Node.js 18 or later for you. Add this entry to Claude Desktop's config file (~/Library/Application Support/Claude/claude_desktop_config.json), keeping any servers already there. The path is Homebrew's on Apple silicon; on an Intel Mac it is /usr/local/bin. Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps."
+        },
+        "claude-desktop|npm": {
+          "kicker": "Adobe MCP · Claude Desktop · npx",
+          "command": "\n{\n  \"mcpServers\": {\n    \"adobe\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"adobe-mcp-suite\"\n      ]\n    }\n  }\n}",
+          "explanation": "Add this entry to Claude Desktop's config file (~/Library/Application Support/Claude/claude_desktop_config.json), keeping any servers already there. If the client can't start npx, replace it with the full path that \"which npx\" prints. Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps."
+        },
+        "codex|brew": {
+          "kicker": "Adobe MCP · Codex · Homebrew",
+          "command": "brew tap zachshallbetter/tap\nbrew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/adobe-mcp\ncodex mcp add adobe -- adobe-mcp-suite",
+          "explanation": "Homebrew installs Node.js 18 or later for you. Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps."
+        },
+        "codex|npm": {
+          "kicker": "Adobe MCP · Codex · npx",
+          "command": "codex mcp add adobe -- npx -y adobe-mcp-suite",
+          "explanation": "Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps."
+        },
+        "cursor|brew": {
+          "kicker": "Adobe MCP · Cursor · Homebrew",
+          "command": "brew tap zachshallbetter/tap\nbrew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/adobe-mcp\n\n{\n  \"mcpServers\": {\n    \"adobe\": {\n      \"command\": \"/opt/homebrew/bin/adobe-mcp-suite\",\n      \"args\": []\n    }\n  }\n}",
+          "explanation": "Homebrew installs Node.js 18 or later for you. Add this entry to Cursor's config file (~/.cursor/mcp.json), keeping any servers already there. The path is Homebrew's on Apple silicon; on an Intel Mac it is /usr/local/bin. Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps."
+        },
+        "cursor|npm": {
+          "kicker": "Adobe MCP · Cursor · npx",
+          "command": "\n{\n  \"mcpServers\": {\n    \"adobe\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"adobe-mcp-suite\"\n      ]\n    }\n  }\n}",
+          "explanation": "Add this entry to Cursor's config file (~/.cursor/mcp.json), keeping any servers already there. If the client can't start npx, replace it with the full path that \"which npx\" prints. Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps."
+        },
+        "gemini|brew": {
+          "kicker": "Adobe MCP · Gemini CLI · Homebrew",
+          "command": "brew tap zachshallbetter/tap\nbrew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/adobe-mcp\ngemini mcp add --scope user adobe adobe-mcp-suite",
+          "explanation": "Homebrew installs Node.js 18 or later for you. Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps."
+        },
+        "gemini|npm": {
+          "kicker": "Adobe MCP · Gemini CLI · npx",
+          "command": "gemini mcp add --scope user adobe npx -y adobe-mcp-suite",
+          "explanation": "Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps."
+        },
+        "other|brew": {
+          "kicker": "Adobe MCP · Another client with MCP server configuration · Homebrew",
+          "command": "brew tap zachshallbetter/tap\nbrew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/adobe-mcp\n\n{\n  \"mcpServers\": {\n    \"adobe\": {\n      \"command\": \"/opt/homebrew/bin/adobe-mcp-suite\",\n      \"args\": []\n    }\n  }\n}",
+          "explanation": "Homebrew installs Node.js 18 or later for you. Add this entry to your client's MCP configuration, keeping any servers already there. The path is Homebrew's on Apple silicon; on an Intel Mac it is /usr/local/bin. Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps."
+        },
+        "other|npm": {
+          "kicker": "Adobe MCP · Another client with MCP server configuration · npx",
+          "command": "\n{\n  \"mcpServers\": {\n    \"adobe\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"adobe-mcp-suite\"\n      ]\n    }\n  }\n}",
+          "explanation": "Add this entry to your client's MCP configuration, keeping any servers already there. If the client can't start npx, replace it with the full path that \"which npx\" prints. Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps."
+        }
+      }
+    },
+    {
+      "id": "blender",
+      "name": "Blender MCP",
+      "methods": [
+        {
+          "id": "brew",
+          "label": "Homebrew (macOS, Linux)"
+        },
+        {
+          "id": "cargo",
+          "label": "Cargo, from source"
+        }
+      ],
+      "clients": [
+        {
+          "id": "claude-code",
+          "label": "Claude Code"
+        },
+        {
+          "id": "codex",
+          "label": "Codex"
+        },
+        {
+          "id": "cursor",
+          "label": "Cursor"
+        },
+        {
+          "id": "gemini",
+          "label": "Gemini CLI"
+        },
+        {
+          "id": "antigravity",
+          "label": "Google Antigravity"
+        },
+        {
+          "id": "other",
+          "label": "Another client with MCP server configuration"
+        }
+      ],
+      "readiness": [
+        "Homebrew is installed (or Rust and Cargo, to build from source).",
+        "Blender 4.0 or later is installed.",
+        "Blender is closed while you run blender-mcp addon install, so it can turn the add-on on for you.",
+        "Your MCP client can launch local stdio servers."
+      ],
+      "entries": {
+        "claude-code|brew": {
+          "kicker": "Blender MCP · Claude Code · Homebrew",
+          "command": "brew tap zachshallbetter/tap\nbrew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/blender-mcp\nblender-mcp addon install\nblender-mcp client add claude-code",
+          "explanation": "Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+        },
+        "claude-code|cargo": {
+          "kicker": "Blender MCP · Claude Code · Cargo",
+          "command": "cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli\nblender-mcp addon install\nblender-mcp client add claude-code",
+          "explanation": "Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+        },
+        "codex|brew": {
+          "kicker": "Blender MCP · Codex · Homebrew",
+          "command": "brew tap zachshallbetter/tap\nbrew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/blender-mcp\nblender-mcp addon install\nblender-mcp client add codex",
+          "explanation": "Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+        },
+        "codex|cargo": {
+          "kicker": "Blender MCP · Codex · Cargo",
+          "command": "cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli\nblender-mcp addon install\nblender-mcp client add codex",
+          "explanation": "Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+        },
+        "cursor|brew": {
+          "kicker": "Blender MCP · Cursor · Homebrew",
+          "command": "brew tap zachshallbetter/tap\nbrew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/blender-mcp\nblender-mcp addon install\nblender-mcp client add cursor",
+          "explanation": "Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+        },
+        "cursor|cargo": {
+          "kicker": "Blender MCP · Cursor · Cargo",
+          "command": "cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli\nblender-mcp addon install\nblender-mcp client add cursor",
+          "explanation": "Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+        },
+        "gemini|brew": {
+          "kicker": "Blender MCP · Gemini CLI · Homebrew",
+          "command": "brew tap zachshallbetter/tap\nbrew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/blender-mcp\nblender-mcp addon install\nblender-mcp client add gemini",
+          "explanation": "Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+        },
+        "gemini|cargo": {
+          "kicker": "Blender MCP · Gemini CLI · Cargo",
+          "command": "cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli\nblender-mcp addon install\nblender-mcp client add gemini",
+          "explanation": "Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+        },
+        "antigravity|brew": {
+          "kicker": "Blender MCP · Google Antigravity · Homebrew",
+          "command": "brew tap zachshallbetter/tap\nbrew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/blender-mcp\nblender-mcp addon install\nblender-mcp client add antigravity",
+          "explanation": "Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+        },
+        "antigravity|cargo": {
+          "kicker": "Blender MCP · Google Antigravity · Cargo",
+          "command": "cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli\nblender-mcp addon install\nblender-mcp client add antigravity",
+          "explanation": "Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+        },
+        "other|brew": {
+          "kicker": "Blender MCP · Another client with MCP server configuration · Homebrew",
+          "command": "brew tap zachshallbetter/tap\nbrew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/blender-mcp\nblender-mcp addon install\n\n{\n  \"mcpServers\": {\n    \"blender\": {\n      \"command\": \"/opt/homebrew/bin/blender-mcp\",\n      \"args\": [\n        \"serve\"\n      ]\n    }\n  }\n}",
+          "explanation": "Add this entry to your client's MCP configuration, keeping any servers already there. The path is Homebrew's on Apple silicon; on an Intel Mac it is /usr/local/bin. Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+        },
+        "other|cargo": {
+          "kicker": "Blender MCP · Another client with MCP server configuration · Cargo",
+          "command": "cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli\nblender-mcp addon install\n\n{\n  \"mcpServers\": {\n    \"blender\": {\n      \"command\": \"blender-mcp\",\n      \"args\": [\n        \"serve\"\n      ]\n    }\n  }\n}",
+          "explanation": "Add this entry to your client's MCP configuration, keeping any servers already there. If the client can't start npx, replace it with the full path that \"which npx\" prints. Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+        }
+      }
+    }
+  ]
+}

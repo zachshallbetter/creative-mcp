@@ -1,11 +1,12 @@
 name: Site
-# Every sitemap page, its social card, JSON-LD and discovery entries must agree (site/scripts/check-site.py).
+# Site listings must match the catalogue (generate-catalogue.py), and every sitemap page, its social card,
+# JSON-LD and discovery entries must agree (check-site.py).
 on:
   pull_request:
-    paths: ["site/**"]
+    paths: ["site/**", "registry/**"]
   push:
     branches: [main]
-    paths: ["site/**"]
+    paths: ["site/**", "registry/**"]
   workflow_dispatch:
 jobs:
   check:
@@ -15,4 +16,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+      - name: Listings match the catalogue
+        run: |
+          python3 site/scripts/generate-catalogue.py
+          git diff --exit-code -- site/dist || { echo "::error::Run site/scripts/generate-catalogue.py and commit the result"; exit 1; }
       - run: python3 site/scripts/check-site.py

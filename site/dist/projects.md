@@ -3,7 +3,7 @@ title: "Projects"
 description: "Adobe MCP and Blender MCP compared: what each open MCP implementation connects to, what it needs and where to start. Both run locally on your machine."
 url: https://creativemcp.com/projects.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T18:50:40-08:00
+modified: 2026-11-03T18:57:39-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -18,21 +18,21 @@ Creative MCP brings together independent implementations for the creative applic
 
 ### Adobe MCP
 
-Connect an MCP client to InDesign, Illustrator, Photoshop, After Effects and Premiere Pro through local servers.
+Local MCP servers for InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, with a coordinator for two documented cross-app workflows.
 
 - Five application-specific implementations
 - One suite coordinator for two documented cross-app workflows
 - Node.js 18+, macOS or Windows
-- Install with npx or `brew install zachshallbetter/tap/adobe-mcp`
+- Install with `brew install zachshallbetter/tap/adobe-mcp` or npx
 [Explore Adobe MCP →](https://creativemcp.com/apps.html)
 
 ### Blender MCP
 
-A Rust MCP server and companion Blender add-on for working with scenes, objects, materials and 3D asset pipelines.
+A Rust MCP server and companion Blender add-on for scenes, objects, materials and 3D asset pipelines.
 
 - Stdio MCP server with local Blender IPC
 - Blender 4.0+ and the companion add-on
-- Install with Homebrew or from source with Rust
+- Install with `brew install zachshallbetter/tap/blender-mcp` or Cargo from source
 [Explore Blender MCP →](https://creativemcp.com/docs/implementations/blender.html)
 
 These projects are separate MCP implementations. They can be configured in a compatible client at the same time, but direct Adobe-to-Blender orchestration is not currently part of either project.

@@ -141,7 +141,7 @@ Language: **Rust**, so the installer is a single dependency-free binary that wor
 1. Create the repo with a README, LICENSE files, a CONTRIBUTING guide and tagged releases.
 2. Publish a package (npm, crates or release binaries) and add a formula to `zachshallbetter/tap` with a real `test do` block.
 3. Add the catalogue entry, including detection rules checked on a real machine.
-4. Add the docs page and its card in `site/scripts/generate-social-images.py`, then run that script and `site/scripts/generate-discovery.py`.
+4. Fill in the catalogue entry's `site` block (card text, mark, tone, setup note, readiness checklist). Add the docs page and its card in `site/scripts/generate-social-images.py`, then run `generate-catalogue.py`, `generate-social-images.py`, `apply-shell.py`, `generate-discovery.py` and `check-site.py` in `site/scripts/`.
 5. Record capability status honestly. Only Validated claims say the workflow was run in the real app.
 
 ## 7. Tracked work
@@ -149,11 +149,10 @@ Language: **Rust**, so the installer is a single dependency-free binary that wor
 - Installer: Windows app detection ([#5](https://github.com/zachshallbetter/creative-mcp/issues/5)); Premiere Pro's UXP plugin without the UXP Developer Tool ([#17](https://github.com/zachshallbetter/creative-mcp/issues/17)).
 - Adobe MCP: status tools should not launch their app ([adobe-mcp#431](https://github.com/zachshallbetter/adobe-mcp/issues/431)).
 - Catalogue: verify the InDesign and Premiere Pro detection rules ([#4](https://github.com/zachshallbetter/creative-mcp/issues/4)).
-- Site: generate listings from the catalogue, decision D4 ([#8](https://github.com/zachshallbetter/creative-mcp/issues/8)).
 
 ## 8. Open decisions
 
 - **D1: where the catalogue and installer live. Decided (2026-11-03):** the public `zachshallbetter/creative-mcp` repo holds the site (`site/`), the catalogue (`registry/`), the future installer (`cli/`) and these documents (`docs/`). The earlier private site repo, whose history contained personal data, is archived privately as `creative-mcp-site-archive`.
 - **D2: installer language. Decided:** Rust, shipped as creative-mcp 0.1.0; 0.2.0 added `add`, `update`, `remove` and the fuller `doctor`.
 - **D3: Blender MCP release. Done (2026-11-03):** licence files added, `VERSION` reconciled, the Windows CI failure fixed, and `v0.5.0` tagged and released. Homebrew installs it without `--HEAD`.
-- **D4: site generation.** Once the catalogue exists, generate the Projects grid, setup builder options and `llms.txt` key facts from it rather than hand-editing HTML.
+- **D4: site generation. Done (2026-11-03):** `site/scripts/generate-catalogue.py` renders the Projects grid, the series table on `/docs/architecture.html`, the setup builder (`data/setup.json`, every tool × client × install method) and its options from the catalogue's `site` block; `generate-discovery.py` takes the `llms.txt` tool facts and `apply-shell.py` the JSON-LD versions from the same file. Adding a tool to `registry/registry.json` and running the generators updates every listing.

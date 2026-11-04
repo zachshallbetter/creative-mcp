@@ -3,7 +3,7 @@ title: "Architecture & distribution"
 description: "How the Creative MCP series fits together: one repository per tool, the Homebrew tap, the creative-mcp installer, the shared catalogue and rules for new tools."
 url: https://creativemcp.com/docs/architecture.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T18:21:43-08:00
+modified: 2026-11-03T18:57:33-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -24,7 +24,7 @@ Each implementation is a separate project with its own language, licence and rel
 
 | Project | Source | Language | Install | Licence
 
-| [Adobe MCP](https://creativemcp.com/apps.html): five app servers, Suite coordinator, shared core | [adobe-mcp](https://github.com/zachshallbetter/adobe-mcp) | Node.js 18+ | Homebrew `zachshallbetter/tap/adobe-mcp`, npm `adobe-mcp-*` | MIT
+| [Adobe MCP](https://creativemcp.com/apps.html): five app servers, Suite coordinator, shared core | [adobe-mcp](https://github.com/zachshallbetter/adobe-mcp) | Node.js 18+ | Homebrew `zachshallbetter/tap/adobe-mcp` (v0.3.0), npm `adobe-mcp-suite` | MIT
 
 | [Blender MCP](https://creativemcp.com/docs/implementations/blender.html): Rust server, CLI and Blender add-on | [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) | Rust | Homebrew `zachshallbetter/tap/blender-mcp` (v0.5.1), Cargo from source | MIT OR Apache-2.0
 

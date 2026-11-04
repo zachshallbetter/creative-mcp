@@ -30,13 +30,12 @@ SECTIONS = [
     ("Optional", ["capability-atlas.html", "features.html", "workflows.html", "privacy.html"]),
 ]
 
-LLMS_HEADER = """# Creative MCP
+LLMS_TEMPLATE = """# Creative MCP
 
 > Creative MCP is an open collection of local Model Context Protocol (MCP) servers that connect AI agents and MCP clients to creative software: Adobe MCP for InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, and Blender MCP for Blender. Servers run on the user's own machine over stdio; nothing is hosted.
 
 Key facts:
-- Adobe MCP: five app-specific Node.js servers (Node.js 18+, macOS or Windows) plus a Suite coordinator for two documented Illustrator-to-InDesign workflows. npm: `adobe-mcp-suite`; Homebrew: `brew install zachshallbetter/tap/adobe-mcp`. Source: https://github.com/zachshallbetter/adobe-mcp (MIT).
-- Blender MCP: a Rust MCP server and CLI with a companion Blender add-on (Blender 4.0+). Homebrew: `brew install zachshallbetter/tap/blender-mcp` (v0.5.1); `blender-mcp addon install` installs and turns on the add-on. Source: https://github.com/zachshallbetter/blender-mcp-rs (MIT OR Apache-2.0).
+{tool_facts}
 - The projects are independent. A client can load both, but moving files between Adobe apps and Blender is a user-managed handoff.
 - Capability status is reported as Documented, Implemented, Tested or Validated; those levels are distinct and a lower level never implies a higher one.
 - Created by Zach Shallbetter (https://zachshallbetter.com/).
@@ -45,6 +44,21 @@ Key facts:
 
 The full text of every page below is in [llms-full.txt](https://creativemcp.com/llms-full.txt).
 """
+
+
+
+def tool_facts():
+    """One key-fact line per tool, from the series catalogue (decision D4)."""
+    registry = json.loads((ROOT.parent / "registry" / "registry.json").read_text())
+    lines = []
+    for t in registry["tools"]:
+        brew = t["install"].get("brew")
+        install = f" Homebrew: `brew install {brew['formula']}`" + (f" (v{t['version']})" if t.get("version") else "") + "." if brew else ""
+        lines.append(f"- {t['name']}: {t['site']['fact']}{install} Source: {t['repo']} ({t['license']}).")
+    return "\n".join(lines)
+
+
+LLMS_HEADER = LLMS_TEMPLATE.replace("{tool_facts}", tool_facts())
 
 SKIP_TAGS = {"script", "style", "svg", "button", "noscript", "template", "header", "footer", "select", "input", "label"}
 BLOCK_TAGS = {"p", "div", "section", "article", "aside", "figure", "figcaption", "blockquote", "dl", "dt", "dd", "details", "summary", "nav", "ul", "ol", "table", "thead", "tbody", "tr"}

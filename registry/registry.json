@@ -14,6 +14,28 @@
       "license": "MIT",
       "author": "Zach Shallbetter",
       "status": "Tested",
+      "version": "0.3.0",
+      "language": "Node.js 18+",
+      "site": {
+        "page": "/apps.html",
+        "event": "cta_adobe_mcp",
+        "mark": "/brand-symbol.svg",
+        "tone": "purple",
+        "parts": "five app servers, Suite coordinator, shared core",
+        "bullets": [
+          "Five application-specific implementations",
+          "One suite coordinator for two documented cross-app workflows",
+          "Node.js 18+, macOS or Windows"
+        ],
+        "fact": "five app-specific Node.js servers (Node.js 18+, macOS or Windows) plus a Suite coordinator for two documented Illustrator-to-InDesign workflows. npm: `adobe-mcp-suite`.",
+        "setup_note": "Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps.",
+        "readiness": [
+          "Node.js 18 or later is installed (Homebrew installs it for you).",
+          "The Adobe app you want to use is installed on this computer.",
+          "Your MCP client can launch local stdio servers.",
+          "You know which project folders the server should be allowed to access."
+        ]
+      },
       "install": {
         "brew": { "formula": "zachshallbetter/tap/adobe-mcp" },
         "npm": { "package": "adobe-mcp-suite" }
@@ -60,6 +82,28 @@
       "license": "MIT OR Apache-2.0",
       "author": "Zach Shallbetter",
       "status": "Implemented",
+      "version": "0.5.1",
+      "language": "Rust",
+      "register_command": "blender-mcp client add {client}",
+      "site": {
+        "page": "/docs/implementations/blender.html",
+        "event": "cta_blender_mcp",
+        "mark": "/assets/logos/blender.svg",
+        "tone": "orange",
+        "parts": "Rust server, CLI and Blender add-on",
+        "bullets": [
+          "Stdio MCP server with local Blender IPC",
+          "Blender 4.0+ and the companion add-on"
+        ],
+        "fact": "a Rust MCP server and CLI with a companion Blender add-on (Blender 4.0+); `blender-mcp addon install` installs and turns on the add-on.",
+        "setup_note": "Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later.",
+        "readiness": [
+          "Homebrew is installed (or Rust and Cargo, to build from source).",
+          "Blender 4.0 or later is installed.",
+          "Blender is closed while you run blender-mcp addon install, so it can turn the add-on on for you.",
+          "Your MCP client can launch local stdio servers."
+        ]
+      },
       "install": {
         "brew": { "formula": "zachshallbetter/tap/blender-mcp" },
         "cargo": { "git": "https://github.com/zachshallbetter/blender-mcp-rs", "package": "blender-mcp-cli" }

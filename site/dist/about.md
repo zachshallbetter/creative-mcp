@@ -3,7 +3,7 @@ title: "About Zach Shallbetter"
 description: "Meet Zach Shallbetter, the artist, designer and creative technologist behind Creative MCP, open local tools that connect AI agents to creative software."
 url: https://creativemcp.com/about.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T18:50:31-08:00
+modified: 2026-11-03T18:50:41-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---

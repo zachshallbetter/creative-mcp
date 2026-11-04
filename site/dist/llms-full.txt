@@ -3,8 +3,8 @@
 > Creative MCP is an open collection of local Model Context Protocol (MCP) servers that connect AI agents and MCP clients to creative software: Adobe MCP for InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, and Blender MCP for Blender. Servers run on the user's own machine over stdio; nothing is hosted.
 
 Key facts:
-- Adobe MCP: five app-specific Node.js servers (Node.js 18+, macOS or Windows) plus a Suite coordinator for two documented Illustrator-to-InDesign workflows. npm: `adobe-mcp-suite`; Homebrew: `brew install zachshallbetter/tap/adobe-mcp`. Source: https://github.com/zachshallbetter/adobe-mcp (MIT).
-- Blender MCP: a Rust MCP server and CLI with a companion Blender add-on (Blender 4.0+). Homebrew: `brew install zachshallbetter/tap/blender-mcp` (v0.5.1); `blender-mcp addon install` installs and turns on the add-on. Source: https://github.com/zachshallbetter/blender-mcp-rs (MIT OR Apache-2.0).
+- Adobe MCP: five app-specific Node.js servers (Node.js 18+, macOS or Windows) plus a Suite coordinator for two documented Illustrator-to-InDesign workflows. npm: `adobe-mcp-suite`. Homebrew: `brew install zachshallbetter/tap/adobe-mcp` (v0.3.0). Source: https://github.com/zachshallbetter/adobe-mcp (MIT).
+- Blender MCP: a Rust MCP server and CLI with a companion Blender add-on (Blender 4.0+); `blender-mcp addon install` installs and turns on the add-on. Homebrew: `brew install zachshallbetter/tap/blender-mcp` (v0.5.1). Source: https://github.com/zachshallbetter/blender-mcp-rs (MIT OR Apache-2.0).
 - The projects are independent. A client can load both, but moving files between Adobe apps and Blender is a user-managed handoff.
 - Capability status is reported as Documented, Implemented, Tested or Validated; those levels are distinct and a lower level never implies a higher one.
 - Created by Zach Shallbetter (https://zachshallbetter.com/).
@@ -216,21 +216,21 @@ Creative MCP brings together independent implementations for the creative applic
 
 ### Adobe MCP
 
-Connect an MCP client to InDesign, Illustrator, Photoshop, After Effects and Premiere Pro through local servers.
+Local MCP servers for InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, with a coordinator for two documented cross-app workflows.
 
 - Five application-specific implementations
 - One suite coordinator for two documented cross-app workflows
 - Node.js 18+, macOS or Windows
-- Install with npx or `brew install zachshallbetter/tap/adobe-mcp`
+- Install with `brew install zachshallbetter/tap/adobe-mcp` or npx
 [Explore Adobe MCP →](https://creativemcp.com/apps.html)
 
 ### Blender MCP
 
-A Rust MCP server and companion Blender add-on for working with scenes, objects, materials and 3D asset pipelines.
+A Rust MCP server and companion Blender add-on for scenes, objects, materials and 3D asset pipelines.
 
 - Stdio MCP server with local Blender IPC
 - Blender 4.0+ and the companion add-on
-- Install with Homebrew or from source with Rust
+- Install with `brew install zachshallbetter/tap/blender-mcp` or Cargo from source
 [Explore Blender MCP →](https://creativemcp.com/docs/implementations/blender.html)
 
 These projects are separate MCP implementations. They can be configured in a compatible client at the same time, but direct Adobe-to-Blender orchestration is not currently part of either project.
@@ -1201,7 +1201,7 @@ Each implementation is a separate project with its own language, licence and rel
 
 | Project | Source | Language | Install | Licence
 
-| [Adobe MCP](https://creativemcp.com/apps.html): five app servers, Suite coordinator, shared core | [adobe-mcp](https://github.com/zachshallbetter/adobe-mcp) | Node.js 18+ | Homebrew `zachshallbetter/tap/adobe-mcp`, npm `adobe-mcp-*` | MIT
+| [Adobe MCP](https://creativemcp.com/apps.html): five app servers, Suite coordinator, shared core | [adobe-mcp](https://github.com/zachshallbetter/adobe-mcp) | Node.js 18+ | Homebrew `zachshallbetter/tap/adobe-mcp` (v0.3.0), npm `adobe-mcp-suite` | MIT
 
 | [Blender MCP](https://creativemcp.com/docs/implementations/blender.html): Rust server, CLI and Blender add-on | [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) | Rust | Homebrew `zachshallbetter/tap/blender-mcp` (v0.5.1), Cargo from source | MIT OR Apache-2.0
 

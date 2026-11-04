@@ -3,7 +3,7 @@ title: "Features"
 description: "Search the Adobe MCP feature inventory across InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, with routes, tool mapping and evidence."
 url: https://creativemcp.com/features.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T18:50:39-08:00
+modified: 2026-11-03T18:50:41-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---

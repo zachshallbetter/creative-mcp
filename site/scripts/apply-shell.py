@@ -54,23 +54,26 @@ PUBLISHED = {
     "workflows.html": "2026-11-02T17:05:54-08:00",
 }
 
+CATALOGUE = {t["id"]: t for t in json.loads((ROOT.parent / "registry" / "registry.json").read_text())["tools"]}
+INSTALLER_VERSION = re.search(r'^version = "([^"]+)"', (ROOT.parent / "cli" / "Cargo.toml").read_text(), re.M).group(1)
 FREE = {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}
-# Facts about the shipped software, merged into every copy of these nodes. Update versions on release.
+# Facts about the shipped software, merged into every copy of these nodes. Versions come from the
+# catalogue (registry/registry.json) and cli/Cargo.toml.
 # Free offers are truthful (open source); ratings and reviews are never added (DPP E3, decision in #10).
 SOFTWARE = {
     f"{SITE}/apps.html#adobe-mcp": {
-        "softwareVersion": "0.3.0", "operatingSystem": "macOS, Windows", "offers": FREE,
+        "softwareVersion": CATALOGUE["adobe"]["version"], "operatingSystem": "macOS, Windows", "offers": FREE,
         "downloadUrl": "https://www.npmjs.com/package/adobe-mcp-suite", "installUrl": f"{SITE}/start.html",
     },
     f"{SITE}/docs/implementations/blender.html#blender-mcp": {
-        "softwareVersion": "0.5.1", "operatingSystem": "macOS, Linux, Windows", "offers": FREE,
+        "softwareVersion": CATALOGUE["blender"]["version"], "operatingSystem": "macOS, Linux, Windows", "offers": FREE,
         "downloadUrl": "https://github.com/zachshallbetter/blender-mcp-rs/releases", "installUrl": f"{SITE}/start.html",
     },
     f"{SITE}/docs/cli.html#creative-mcp": {
         "@type": "SoftwareApplication", "@id": f"{SITE}/docs/cli.html#creative-mcp", "name": "creative-mcp",
         "description": "Installer for the Creative MCP series: detects creative apps and MCP clients, installs the matching servers, registers them and checks they answer.",
         "url": f"{SITE}/docs/cli.html#installer", "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "macOS (fully supported), Windows, Linux", "softwareVersion": "0.2.1",
+        "operatingSystem": "macOS (fully supported), Windows, Linux", "softwareVersion": INSTALLER_VERSION,
         "softwareRequirements": "Homebrew", "license": "https://opensource.org/license/mit", "isAccessibleForFree": True,
         "offers": FREE, "installUrl": f"{SITE}/docs/cli.html#installer",
         "downloadUrl": "https://github.com/zachshallbetter/creative-mcp/tree/main/cli",
