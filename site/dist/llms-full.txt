@@ -1087,7 +1087,7 @@ Options: `--dry-run` prints the plan and changes nothing; `--yes` accepts the su
 - Claude Desktop, Cursor: by adding `mcpServers` entries to their JSON config. The file is backed up once before the first change, and every other setting is kept.
 - Anything else: it prints the exact entry to add.
 
-Detection reads app bundles, `PATH` and client config files on your machine and sends nothing anywhere. Status: Implemented and tested (v0.2.2). fully supported on macOS. Source and changes: [creative-mcp/cli](https://github.com/zachshallbetter/creative-mcp/tree/main/cli).
+Detection reads app bundles, `PATH` and client config files on your machine and sends nothing anywhere. Status: Implemented and tested (v0.2.3). fully supported on macOS. Source and changes: [creative-mcp/cli](https://github.com/zachshallbetter/creative-mcp/tree/main/cli).
 
 ## Install and launch a server by hand
 
@@ -1224,7 +1224,7 @@ Each formula runs a real MCP `initialize` check as its test. Update with `brew u
 
 ## One installer for the series
 
-Status: Implemented and tested (v0.2.2). Fully supported on macOS. Linux detects apps only when their command is on `PATH`. Windows looks for the apps in their default install folders (not yet checked on a real Windows machine); anywhere, `creative-mcp add blender` sets up a tool without detection.
+Status: Implemented and tested (v0.2.3). Fully supported on macOS. Linux detects apps only when their command is on `PATH`. Windows looks for the apps in their default install folders (not yet checked on a real Windows machine); anywhere, `creative-mcp add blender` sets up a tool without detection.
 
 A browser can't see which apps you have installed, so the series has a small local installer that can.
 

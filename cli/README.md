@@ -49,7 +49,7 @@ Detection reads app bundles, `PATH` and client config files on your machine. Not
 
 ## Status
 
-**Implemented and tested** (version 0.2.2):
+**Implemented and tested** (version 0.2.3):
 
 - **Platforms:** macOS is fully supported. Windows detects the Adobe apps and Blender in their default install folders under `C:\Program Files` and finds Claude Desktop's config under `%APPDATA%`; this hasn't been checked on a real Windows machine yet, and `doctor` checks whether an app is running with `tasklist`. Linux detects Blender when `blender` is on `PATH`. Anywhere, `creative-mcp add <tool>` sets up a tool without detection.
 - **Tests:** unit tests cover catalogue parsing, server selection, install planning, reading each client's existing registrations (JSON and Codex TOML), client registration and removal, the config backup, Spotlight timeouts and the bundle-scan fallback.

@@ -3,7 +3,7 @@ title: "Architecture & distribution"
 description: "How the Creative MCP series fits together: one repository per tool, the Homebrew tap, the creative-mcp installer, the shared catalogue and rules for new tools."
 url: https://creativemcp.com/docs/architecture.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T19:04:56-08:00
+modified: 2026-11-03T19:18:21-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -47,7 +47,7 @@ Each formula runs a real MCP `initialize` check as its test. Update with `brew u
 
 ## One installer for the series
 
-Status: Implemented and tested (v0.2.2). Fully supported on macOS. Linux detects apps only when their command is on `PATH`. Windows looks for the apps in their default install folders (not yet checked on a real Windows machine); anywhere, `creative-mcp add blender` sets up a tool without detection.
+Status: Implemented and tested (v0.2.3). Fully supported on macOS. Linux detects apps only when their command is on `PATH`. Windows looks for the apps in their default install folders (not yet checked on a real Windows machine); anywhere, `creative-mcp add blender` sets up a tool without detection.
 
 A browser can't see which apps you have installed, so the series has a small local installer that can.
 
