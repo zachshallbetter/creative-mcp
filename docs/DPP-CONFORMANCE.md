@@ -65,7 +65,7 @@ Verdicts use DPP terms: SATISFIED, VIOLATED, GRAY (unresolved evidence), NOT_APP
 
 ## DAP: access and headers
 
-`site/vercel.json` sets `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options` and `Permissions-Policy`, a 7-day cache on `/assets/`, `X-Robots-Tag: noindex` on the mockups and 404 page, and correct content types for `llms*.txt` and the manifest. HSTS is already served by Vercel. A Content-Security-Policy is not set: it would need nonces or hashes for the inline theme script and gtag, so it's left as a follow-up.
+`site/vercel.json` sets `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options` and `Permissions-Policy`, a 7-day cache on `/assets/`, `X-Robots-Tag: noindex` on the mockups and 404 page, and correct content types for `llms*.txt` and the manifest. HSTS is already served by Vercel. A Content-Security-Policy (2026-11-03) allows scripts only from the site, five SHA-256 hashes for the inline theme and page scripts, and Google Tag Manager; styles from the site plus inline `style` attributes; images, connections and beacons only from the site and Google Analytics' documented origins; and no plugins, framing by other sites, `<base>` changes or off-site form posts. `site/scripts/check-site.py` fails when a page has an inline script whose hash isn't in the policy. Before deploying, every page was loaded in headless Chrome under the exact header with no violations; a control page with an unlisted inline script was blocked.
 
 ## Distribution: Homebrew (DIS)
 
@@ -102,7 +102,6 @@ Each item still GRAY or pending above is tracked as an issue:
 | [#2](https://github.com/zachshallbetter/creative-mcp/issues/2) | Indexing, queries and the AI-answer panel at 7, 28 and 90 days (P07, ASI) |
 | [#3](https://github.com/zachshallbetter/creative-mcp/issues/3) | Social-network preview tools |
 | [#4](https://github.com/zachshallbetter/creative-mcp/issues/4) | Unverified InDesign and Premiere Pro detection rules |
-| [#9](https://github.com/zachshallbetter/creative-mcp/issues/9) | Content-Security-Policy (DAP headers) |
 | [#10](https://github.com/zachshallbetter/creative-mcp/issues/10) | SoftwareApplication `offers` decision (E6) |
 
 ## Maintenance

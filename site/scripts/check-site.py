@@ -11,8 +11,10 @@ The inventory is the sitemap. For each page it checks:
   its hash matches the ?v= in the URL, and it has alt text
 - JSON-LD parses, every referenced @id is defined on the page, and the page node names an image
 - the page is listed in llms.txt and has a Markdown copy
+Every inline script on every page must be allowed by its hash in vercel.json's Content-Security-Policy.
 Pages outside the sitemap (404, design mockups) must be noindex.
 """
+import base64
 import hashlib
 import html
 import json
@@ -149,6 +151,23 @@ def check_page(url, llms, problems):
         say(f"no Markdown copy ({md.relative_to(DIST)})")
 
 
+def check_csp(problems):
+    """Every inline script on every page must be allowed by its hash in vercel.json's Content-Security-Policy."""
+    vercel = json.loads((DIST.parent / "vercel.json").read_text())
+    csp = next((h["value"] for rule in vercel["headers"] if rule["source"] == "/(.*)"
+                for h in rule["headers"] if h["key"] == "Content-Security-Policy"), None)
+    if not csp:
+        problems.append("vercel.json: no Content-Security-Policy header")
+        return
+    for file in sorted(DIST.rglob("*.html")):
+        for m in re.finditer(r"<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>", file.read_text(), re.S):
+            if "ld+json" in m.group(1):
+                continue
+            digest = base64.b64encode(hashlib.sha256(m.group(2).encode()).digest()).decode()
+            if f"'sha256-{digest}'" not in csp:
+                problems.append(f"{file.relative_to(DIST)}: inline script not in the CSP; add 'sha256-{digest}' to script-src in vercel.json")
+
+
 def main():
     sitemap = (DIST / "sitemap.xml").read_text()
     urls = re.findall(r"<loc>([^<]+)</loc>", sitemap)
@@ -163,6 +182,7 @@ def main():
         head = file.read_text().split("</head>", 1)[0]
         if not re.search(r'name="robots" content="[^"]*noindex', head):
             problems.append(f"{file.relative_to(DIST)}: not in the sitemap and not marked noindex")
+    check_csp(problems)
     if problems:
         print(f"{len(problems)} problem{'s' if len(problems) != 1 else ''}:")
         for p in problems:
