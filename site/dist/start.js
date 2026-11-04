@@ -88,7 +88,12 @@
       copyButton.textContent = "Copied";
       window.setTimeout(function () { copyButton.textContent = "Copy"; }, 1400);
     } catch (error) {
-      copyButton.textContent = "Select text";
+      // Clipboard blocked: select the command so the keyboard shortcut copies it.
+      var range = document.createRange();
+      range.selectNodeContents(command);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      copyButton.textContent = /Mac|iP/.test(navigator.platform) ? "Press ⌘C" : "Press Ctrl+C";
     }
   });
 
