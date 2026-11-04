@@ -4,6 +4,7 @@
 Run after changing a page title or adding a page: python3 scripts/generate-social-images.py
 Needs Google Chrome (headless) and macOS `sips` for JPEG conversion.
 """
+import hashlib
 import html
 import json
 import re
@@ -155,6 +156,22 @@ def render_html(path, card):
                            subtitle=subtitle, url=html.escape(url), author=AUTHOR)
 
 
+def card_url(slug):
+    # A content hash in the URL makes LinkedIn, X and others fetch a changed card instead of their cached copy.
+    digest = hashlib.sha256((OUT / f"{slug}.jpg").read_bytes()).hexdigest()[:10]
+    return f"{SITE}/assets/social/{slug}.jpg?v={digest}"
+
+
+def version_references():
+    """Point every reference to a card (og:image, JSON-LD logos and images) at its current versioned URL."""
+    pattern = re.compile(re.escape(SITE) + r"/assets/social/([\w-]+)\.jpg(?:\?v=\w+)?")
+    for page in DIST.rglob("*.html"):
+        s = page.read_text()
+        updated = pattern.sub(lambda m: card_url(m.group(1)) if (OUT / f"{m.group(1)}.jpg").exists() else m.group(0), s)
+        if updated != s:
+            page.write_text(updated)
+
+
 def alt_text(card):
     _, eyebrow, title, subtitle, _, _ = card
     plain = html.unescape(re.sub(r"<[^>]+>", "", title))
@@ -164,7 +181,7 @@ def alt_text(card):
 def update_page(path, card):
     page = DIST / path
     s = page.read_text()
-    image = f"{SITE}/assets/social/{card[0]}.jpg"
+    image = card_url(card[0])
     alt = html.escape(alt_text(card), quote=True)
     s = re.sub(r'(<meta property="og:image" content=")[^"]*', rf"\g<1>{image}", s)
     s = re.sub(r'(<meta name="twitter:image" content=")[^"]*', rf"\g<1>{image}", s)
@@ -208,6 +225,7 @@ def main():
                            check=True, capture_output=True)
             update_page(path, card)
             print(f"{card[0]}.jpg  ←  {path}")
+    version_references()
     old = OUT / "creative-mcp-og.jpg"
     if old.exists() and not only:
         old.unlink()
