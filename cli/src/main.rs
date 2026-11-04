@@ -615,6 +615,14 @@ fn cmd_doctor(registry: &Registry, o: &Options) -> ExitCode {
             "  ✓ registered   – not registered   ≠ registered with another command   ✗ broken"
                 .into(),
         );
+        let gaps = registrations_report.iter().any(|r| {
+            r["servers"]
+                .as_array()
+                .is_some_and(|s| s.iter().any(|x| x["state"] != "current"))
+        });
+        if gaps {
+            say("  To add the missing ones (it shows the plan first): creative-mcp setup --no-install".into());
+        }
     }
 
     if o.json {
