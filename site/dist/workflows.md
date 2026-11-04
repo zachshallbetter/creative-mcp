@@ -3,7 +3,7 @@ title: "Workflows"
 description: "Worked examples of Adobe MCP and Blender MCP in real creative projects, with automated steps and human-managed handoffs clearly marked."
 url: https://creativemcp.com/workflows.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T03:44:30-08:00
+modified: 2026-11-03T18:50:41-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -70,3 +70,16 @@ Make your own
 
 The starter pack includes a creative brief and reference board for a small layout-to-3D exercise. It leaves the export format, transfer and Blender setup to your chosen workflow.
 [Download the starter pack](https://creativemcp.com/downloads/creative-mcp-starter.zip)
+
+## Ready to try it?
+
+On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, registers and checks every server.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup
+```
+
+[Every setup option →](https://creativemcp.com/start.html)[What the installer does →](https://creativemcp.com/docs/cli.html#installer)

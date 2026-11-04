@@ -237,3 +237,10 @@ pre::-webkit-scrollbar-thumb, .table-scroll::-webkit-scrollbar-thumb { border-co
   pre { white-space: pre-wrap; border: 1px solid #bbb; }
   @page { margin: 18mm 16mm; }
 }
+
+/* "Ready to try it?" band at the end of pages that otherwise stop without a route to setup (apply-shell.py). */
+.next-step { margin: 56px 0 24px; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+.next-step h2 { margin: 0; font-size: 22px; letter-spacing: -.03em; }
+.next-step p { margin: 8px 0 0; color: var(--muted); }
+.next-step pre { overflow-x: auto; margin: 14px 0 0; padding: 15px; border-radius: 8px; background: #202024; color: #f5d59f; font: 13px/1.7 var(--mono); }
+.next-step .next-step-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 14px; font-weight: 600; }

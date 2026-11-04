@@ -3,7 +3,7 @@ title: "About Zach Shallbetter"
 description: "Meet Zach Shallbetter, the artist, designer and creative technologist behind Creative MCP, open local tools that connect AI agents to creative software."
 url: https://creativemcp.com/about.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T03:44:30-08:00
+modified: 2026-11-03T18:50:31-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -70,3 +70,16 @@ Zach approaches creative software as an artist who builds his own tools. He want
 Artist · Designer · Creative technologist · Spokane, Washington
 
 [Portfolio zachshallbetter.com](https://zachshallbetter.com/) [GitHub github.com/zachshallbetter](https://github.com/zachshallbetter) [LinkedIn linkedin.com/in/zachshallbetter](https://linkedin.com/in/zachshallbetter)
+
+## Ready to try it?
+
+On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, registers and checks every server.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup
+```
+
+[Every setup option →](https://creativemcp.com/start.html)[What the installer does →](https://creativemcp.com/docs/cli.html#installer)

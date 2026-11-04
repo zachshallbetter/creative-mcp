@@ -54,6 +54,33 @@ PUBLISHED = {
     "workflows.html": "2026-11-02T17:05:54-08:00",
 }
 
+FREE = {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}
+# Facts about the shipped software, merged into every copy of these nodes. Update versions on release.
+# Free offers are truthful (open source); ratings and reviews are never added (DPP E3, decision in #10).
+SOFTWARE = {
+    f"{SITE}/apps.html#adobe-mcp": {
+        "softwareVersion": "0.3.0", "operatingSystem": "macOS, Windows", "offers": FREE,
+        "downloadUrl": "https://www.npmjs.com/package/adobe-mcp-suite", "installUrl": f"{SITE}/start.html",
+    },
+    f"{SITE}/docs/implementations/blender.html#blender-mcp": {
+        "softwareVersion": "0.5.1", "operatingSystem": "macOS, Linux, Windows", "offers": FREE,
+        "downloadUrl": "https://github.com/zachshallbetter/blender-mcp-rs/releases", "installUrl": f"{SITE}/start.html",
+    },
+    f"{SITE}/docs/cli.html#creative-mcp": {
+        "@type": "SoftwareApplication", "@id": f"{SITE}/docs/cli.html#creative-mcp", "name": "creative-mcp",
+        "description": "Installer for the Creative MCP series: detects creative apps and MCP clients, installs the matching servers, registers them and checks they answer.",
+        "url": f"{SITE}/docs/cli.html#installer", "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "macOS (fully supported), Windows, Linux", "softwareVersion": "0.2.1",
+        "softwareRequirements": "Homebrew", "license": "https://opensource.org/license/mit", "isAccessibleForFree": True,
+        "offers": FREE, "installUrl": f"{SITE}/docs/cli.html#installer",
+        "downloadUrl": "https://github.com/zachshallbetter/creative-mcp/tree/main/cli",
+        "author": {"@id": PERSON}, "publisher": {"@id": f"{SITE}/#organization"},
+        "sameAs": ["https://github.com/zachshallbetter/creative-mcp"],
+    },
+}
+# Pages that carry a software node of their own.
+SOFTWARE_PAGES = {"docs/cli.html": f"{SITE}/docs/cli.html#creative-mcp"}
+
 THEME = ('<meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">'
          '<meta name="theme-color" content="#111417" media="(prefers-color-scheme: dark)">'
          '<meta name="color-scheme" content="light dark">')
@@ -65,6 +92,15 @@ BYLINE = (f'<p class="footer-byline">Created by <a href="/about.html" rel="autho
           f'Code is <a href="https://github.com/zachshallbetter/creative-mcp/blob/main/LICENSE">MIT licensed</a>; '
           f'site content and images © {YEAR} Zach Shallbetter. '
           f'<a href="/privacy.html">Privacy</a> · <a href="/humans.txt">humans.txt</a></p>')
+
+# Pages that would otherwise end without a route to setup get the same closing step.
+NEXT_STEP_PAGES = {"projects.html", "features.html", "capability-atlas.html", "workflows.html", "about.html"}
+NEXT_STEP = ('<section class="next-step" aria-labelledby="next-step-title"><h2 id="next-step-title">Ready to try it?</h2>'
+             '<p>On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, '
+             'registers and checks every server.</p><pre tabindex="0"><code>brew tap zachshallbetter/tap\n'
+             'brew trust zachshallbetter/tap\nbrew install zachshallbetter/tap/creative-mcp\ncreative-mcp setup</code></pre>'
+             '<p class="next-step-links"><a href="/start.html" data-event-id="cta_get_started">Every setup option →</a>'
+             '<a href="/docs/cli.html#installer">What the installer does →</a></p></section>')
 
 DOC_TABS = [
     ("/docs/", "Docs home"), ("/docs/getting-started.html", "Getting started"), ("/docs/content.html", "Content"),
@@ -140,6 +176,11 @@ def update_graph(path, source, shared):
     # Use the fullest author node, then add every node the page refers to but doesn't define
     # (the site, the publisher, the software a guide is about), so the page stands on its own.
     nodes[:] = [copy.deepcopy(shared[PERSON]) if n.get("@id") == PERSON else n for n in nodes]
+    if path in SOFTWARE_PAGES and SOFTWARE_PAGES[path] not in {n.get("@id") for n in nodes}:
+        nodes.append(copy.deepcopy(SOFTWARE[SOFTWARE_PAGES[path]]))
+    for node in nodes:
+        if node.get("@id") in SOFTWARE:
+            node.update(copy.deepcopy(SOFTWARE[node["@id"]]))
     defined = {n.get("@id") for n in nodes}
     pending = [f"{SITE}/#website", f"{SITE}/#organization", *references(nodes)]
     while pending:
@@ -196,6 +237,14 @@ def update_docs(path, source):
     return source
 
 
+def update_next_step(path, source):
+    if path not in NEXT_STEP_PAGES:
+        return source
+    if '<section class="next-step"' in source:
+        return re.sub(r'<section class="next-step".*?</section>', lambda m: NEXT_STEP, source, count=1, flags=re.S)
+    return source.replace("</main>", NEXT_STEP + "</main>", 1)
+
+
 def update_footer(source):
     return re.sub(r'<p class="footer-byline">.*?</p>', lambda m: BYLINE, source, count=1, flags=re.S)
 
@@ -206,7 +255,7 @@ def main():
     for file in sorted(DIST.rglob("*.html")):
         path = file.relative_to(DIST).as_posix()
         source = file.read_text()
-        updated = update_footer(update_docs(path, update_graph(path, update_head(path, source), shared)))
+        updated = update_footer(update_next_step(path, update_docs(path, update_graph(path, update_head(path, source), shared))))
         if updated != source:
             file.write_text(updated)
             changed += 1

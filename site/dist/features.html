@@ -49,7 +49,7 @@
         "@id": "https://creativemcp.com/#organization"
       },
       "inLanguage": "en-US",
-      "dateModified": "2026-11-03T03:44:30-08:00",
+      "dateModified": "2026-11-03T18:50:39-08:00",
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "url": "https://creativemcp.com/assets/social/features.jpg?v=49a2416736",
@@ -166,7 +166,16 @@
       "sameAs": [
         "https://github.com/zachshallbetter/adobe-mcp",
         "https://www.npmjs.com/package/adobe-mcp-suite"
-      ]
+      ],
+      "softwareVersion": "0.3.0",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "downloadUrl": "https://www.npmjs.com/package/adobe-mcp-suite",
+      "installUrl": "https://creativemcp.com/start.html"
     },
     {
       "@type": "Organization",
@@ -251,7 +260,7 @@
   <noscript><style>.theme-toggle, button.copy, .needs-js { display: none !important; }</style></noscript><title>Features — Creative MCP</title>
   <script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script>
   <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/site-tokens.css?v=17">
+  <link rel="stylesheet" href="/site-tokens.css?v=18">
   <link rel="stylesheet" href="/features.css?v=2">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBJ1NMP96V"></script>
   <script src="/analytics.js?v=2" defer></script>
@@ -268,7 +277,10 @@
       <div class="inventory-list" id="inventory-apps"></div><noscript><p class="noscript-note">The searchable inventory needs JavaScript. The same research is in the <a href="/capability-atlas.html">Capability Atlas</a>, and the records are available as JSON for <a href="/data/indesign.json">InDesign</a>, <a href="/data/illustrator.json">Illustrator</a>, <a href="/data/photoshop.json">Photoshop</a>, <a href="/data/aftereffects.json">After Effects</a> and <a href="/data/premiere.json">Premiere Pro</a>.</p></noscript>
     </section>
     <p class="features-footer">Coverage is a research snapshot, not a guarantee that every feature is exposed by a package or validated in a live Adobe application. See each <a href="/docs/implementations/indesign.html">implementation guide</a> and the <a href="/docs/content.html">content and capability guide</a> for interpreting coverage claims.</p>
-  </main>
+  <section class="next-step" aria-labelledby="next-step-title"><h2 id="next-step-title">Ready to try it?</h2><p>On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, registers and checks every server.</p><pre tabindex="0"><code>brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup</code></pre><p class="next-step-links"><a href="/start.html" data-event-id="cta_get_started">Every setup option →</a><a href="/docs/cli.html#installer">What the installer does →</a></p></section></main>
   <footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a>. Code is <a href="https://github.com/zachshallbetter/creative-mcp/blob/main/LICENSE">MIT licensed</a>; site content and images © 2026 Zach Shallbetter. <a href="/privacy.html">Privacy</a> · <a href="/humans.txt">humans.txt</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a data-event-id="cta_adobe_mcp" href="/apps.html">Adobe MCP</a><a data-event-id="cta_blender_mcp" href="/docs/implementations/blender.html">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a data-event-id="cta_get_started" href="/docs/getting-started.html">Getting started</a><a data-event-id="nav_docs" href="/docs/">Docs</a><a data-event-id="cta_capability_atlas" href="/capability-atlas.html">Capability &amp; evidence</a></nav><nav class="footer-col" aria-label="Community"><strong>Community</strong><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer>
   <script src="/features.js?v=2" defer></script>
   <script src="/theme.js" defer></script>

@@ -3,7 +3,7 @@ title: "Features"
 description: "Search the Adobe MCP feature inventory across InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, with routes, tool mapping and evidence."
 url: https://creativemcp.com/features.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T03:44:30-08:00
+modified: 2026-11-03T18:50:39-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -19,3 +19,16 @@ Adobe application feature inventory
 Feature records and source references are drawn from the checked-in Atlas data. For route analysis, implementation mapping and validation methodology, continue to the [Capability Atlas](https://creativemcp.com/capability-atlas.html).
 
 Coverage is a research snapshot, not a guarantee that every feature is exposed by a package or validated in a live Adobe application. See each [implementation guide](https://creativemcp.com/docs/implementations/indesign.html) and the [content and capability guide](https://creativemcp.com/docs/content.html) for interpreting coverage claims.
+
+## Ready to try it?
+
+On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, registers and checks every server.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup
+```
+
+[Every setup option →](https://creativemcp.com/start.html)[What the installer does →](https://creativemcp.com/docs/cli.html#installer)

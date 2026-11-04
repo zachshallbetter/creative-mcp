@@ -39,7 +39,7 @@
   <noscript><style>.theme-toggle, button.copy, .needs-js { display: none !important; }</style></noscript><title>About Zach Shallbetter — Creative MCP</title>
   <script>try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.documentElement.dataset.theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }</script>
   <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/site-tokens.css?v=17">
+  <link rel="stylesheet" href="/site-tokens.css?v=18">
   <link rel="stylesheet" href="/creative-pages.css?v=4">
   <link rel="stylesheet" href="/about.css?v=3">
   <script type="application/ld+json">
@@ -208,7 +208,10 @@
         <a href="https://linkedin.com/in/zachshallbetter" rel="me" data-event-id="about_profile_linkedin">LinkedIn <span>linkedin.com/in/zachshallbetter</span><span aria-hidden="true">↗</span></a>
       </nav>
     </section>
-  </main>
+  <section class="next-step" aria-labelledby="next-step-title"><h2 id="next-step-title">Ready to try it?</h2><p>On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, registers and checks every server.</p><pre tabindex="0"><code>brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup</code></pre><p class="next-step-links"><a href="/start.html" data-event-id="cta_get_started">Every setup option →</a><a href="/docs/cli.html#installer">What the installer does →</a></p></section></main>
   <footer class="wrap site-footer"><div><a class="brand" href="/" aria-label="Creative MCP home"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg?v=2" alt=""></span><span>Creative MCP</span></a><p>Open implementations that connect creative tools to agent workflows.</p><p class="footer-byline">Created by <a href="/about.html" rel="author">Zach Shallbetter</a>. Code is <a href="https://github.com/zachshallbetter/creative-mcp/blob/main/LICENSE">MIT licensed</a>; site content and images © 2026 Zach Shallbetter. <a href="/privacy.html">Privacy</a> · <a href="/humans.txt">humans.txt</a></p></div><nav class="footer-col" aria-label="Projects"><strong>Projects</strong><a href="/projects.html" data-event-id="nav_projects">All projects</a><a href="/apps.html" data-event-id="cta_adobe_mcp">Adobe MCP</a><a href="/docs/implementations/blender.html" data-event-id="cta_blender_mcp">Blender MCP</a></nav><nav class="footer-col" aria-label="Documentation"><strong>Documentation</strong><a href="/start.html" data-event-id="cta_get_started">Quick setup</a><a href="/docs/" data-event-id="nav_docs">Docs &amp; evidence</a><a href="/capability-atlas.html" data-event-id="cta_capability_atlas">Capability Atlas</a></nav><nav class="footer-col" aria-label="About"><strong>About</strong><a href="/about.html" data-event-id="nav_about" aria-current="page">Zach Shallbetter</a><a href="https://github.com/zachshallbetter/creative-mcp">Creative MCP source</a><a href="https://github.com/zachshallbetter/adobe-mcp">Adobe MCP source</a><a href="https://github.com/zachshallbetter/blender-mcp-rs">Blender MCP source</a></nav></footer>
   <script src="/theme.js" defer></script>
 <script src="/events.js?v=2" defer></script>

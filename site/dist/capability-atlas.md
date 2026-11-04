@@ -3,7 +3,7 @@ title: "Capability Atlas"
 description: "A researched map of 12,014 documented features across five Adobe apps: which can be automated, by what route, which MCP tools cover them, and the evidence."
 url: https://creativemcp.com/capability-atlas.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T03:44:30-08:00
+modified: 2026-11-03T18:50:32-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -437,3 +437,16 @@ Real jobs composed of atlas features, each step with the state it must leave and
 - Implemented and tested come from running every tool of adobe-mcp-indesign 2.4.0, adobe-mcp-illustrator 0.9.0, adobe-mcp-photoshop 0.1.0, adobe-mcp-aftereffects 0.1.0 and adobe-mcp-premiere 0.1.0 (all in the adobe-mcp repository) with the application stubbed, recording the calls each generated script makes and checking each script: ExtendScript against the application's object model, and Premiere Pro's UXP JavaScript against its UXP DOM. Nothing has been validated against a running application yet.
 - Community scripts were parsed for the members and menu commands they use; no script was copied, and repositories without a licence are counted as evidence only.
 - Menu commands are listed from published references and are unverified until run: Illustrator silently ignores a command string it does not know. Photoshop's Action Manager events come from Adobe's UXP event table, Adobe's bundled scripts and open-source helper libraries, and are unverified in the same way.
+
+## Ready to try it?
+
+On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, registers and checks every server.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup
+```
+
+[Every setup option →](https://creativemcp.com/start.html)[What the installer does →](https://creativemcp.com/docs/cli.html#installer)

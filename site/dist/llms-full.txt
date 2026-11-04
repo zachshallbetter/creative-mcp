@@ -249,6 +249,19 @@ An open collection
 
 New projects will be added as their implementations, documentation and evidence are ready to share. [Explore workflows across the current projects →](https://creativemcp.com/workflows.html)
 
+## Ready to try it?
+
+On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, registers and checks every server.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup
+```
+
+[Every setup option →](https://creativemcp.com/start.html)[What the installer does →](https://creativemcp.com/docs/cli.html#installer)
+
 ---
 
 Source: https://creativemcp.com/how-it-works.html
@@ -466,6 +479,19 @@ Zach approaches creative software as an artist who builds his own tools. He want
 Artist · Designer · Creative technologist · Spokane, Washington
 
 [Portfolio zachshallbetter.com](https://zachshallbetter.com/) [GitHub github.com/zachshallbetter](https://github.com/zachshallbetter) [LinkedIn linkedin.com/in/zachshallbetter](https://linkedin.com/in/zachshallbetter)
+
+## Ready to try it?
+
+On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, registers and checks every server.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup
+```
+
+[Every setup option →](https://creativemcp.com/start.html)[What the installer does →](https://creativemcp.com/docs/cli.html#installer)
 
 ---
 
@@ -2374,6 +2400,19 @@ Real jobs composed of atlas features, each step with the state it must leave and
 - Community scripts were parsed for the members and menu commands they use; no script was copied, and repositories without a licence are counted as evidence only.
 - Menu commands are listed from published references and are unverified until run: Illustrator silently ignores a command string it does not know. Photoshop's Action Manager events come from Adobe's UXP event table, Adobe's bundled scripts and open-source helper libraries, and are unverified in the same way.
 
+## Ready to try it?
+
+On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, registers and checks every server.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup
+```
+
+[Every setup option →](https://creativemcp.com/start.html)[What the installer does →](https://creativemcp.com/docs/cli.html#installer)
+
 ---
 
 Source: https://creativemcp.com/features.html
@@ -2389,6 +2428,19 @@ Adobe application feature inventory
 Feature records and source references are drawn from the checked-in Atlas data. For route analysis, implementation mapping and validation methodology, continue to the [Capability Atlas](https://creativemcp.com/capability-atlas.html).
 
 Coverage is a research snapshot, not a guarantee that every feature is exposed by a package or validated in a live Adobe application. See each [implementation guide](https://creativemcp.com/docs/implementations/indesign.html) and the [content and capability guide](https://creativemcp.com/docs/content.html) for interpreting coverage claims.
+
+## Ready to try it?
+
+On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, registers and checks every server.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup
+```
+
+[Every setup option →](https://creativemcp.com/start.html)[What the installer does →](https://creativemcp.com/docs/cli.html#installer)
 
 ---
 
@@ -2456,6 +2508,19 @@ Make your own
 
 The starter pack includes a creative brief and reference board for a small layout-to-3D exercise. It leaves the export format, transfer and Blender setup to your chosen workflow.
 [Download the starter pack](https://creativemcp.com/downloads/creative-mcp-starter.zip)
+
+## Ready to try it?
+
+On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, registers and checks every server.
+
+```
+brew tap zachshallbetter/tap
+brew trust zachshallbetter/tap
+brew install zachshallbetter/tap/creative-mcp
+creative-mcp setup
+```
+
+[Every setup option →](https://creativemcp.com/start.html)[What the installer does →](https://creativemcp.com/docs/cli.html#installer)
 
 ---
 
