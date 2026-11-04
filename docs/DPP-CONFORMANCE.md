@@ -121,6 +121,31 @@ Every public page is meant to stand on its own when shared, crawled or read in i
 - **Accessibility:** axe-core WCAG 2.0/2.1/2.2 A and AA rules, light and dark themes, 375 px: 0 violations on all 25 pages. Forced-colours and print styles are included.
 - **One inventory check:** `site/scripts/check-site.py` takes the sitemap as the page inventory and checks, for each page: the file exists and is indexable; the canonical URL is itself; title and description exist and the description is 110-160 characters; `og:` and `twitter:` copies match them; `og:image` and `twitter:image` are the same versioned card, which exists, is a 1200×630 JPEG whose hash matches its `?v=` and has alt text; JSON-LD parses, has no dangling `@id` and the page node names an image; the page is in `llms.txt` and has a Markdown copy. HTML files outside the sitemap must be `noindex` (today: `404.html`, `brand-study.html`, `style-mockup.html`). Result on 2026-11-03: all 25 pass. It found that the home and About page nodes named no image; `apply-shell.py` now adds the page's card as `primaryImageOfPage` (or `image` on the `WebSite` node).
 
+## WCAG 2.0 A and AA, by criterion (2026-11-03)
+
+Scope: all 25 sitemap pages plus `404.html`, light and dark themes. "axe" means axe-core 4.10 with the wcag2a, wcag2aa, wcag21aa and wcag22aa tags, run at 320 px (and earlier at 375 px). Automated checks don't establish conformance on their own, so each row says what else was done.
+
+| Criterion | Method | Result |
+| --- | --- | --- |
+| 1.1.1 Non-text content | axe; manual review of decorative brushes (`alt=""`), icons and social-card alt text | Pass |
+| 1.3.1 Info and relationships | axe; heading order, landmarks, breadcrumbs as `nav`, data tables with headers, labelled form controls | Pass |
+| 1.3.2 Meaningful sequence | Reader view (Mozilla Readability) and keyboard order | Pass |
+| 1.4.3 Contrast (minimum) | axe, light and dark | Pass |
+| 1.4.4 Resize text | Every computed font size doubled (text-only 200%) on home, Projects, Adobe MCP, Features, Atlas, Get started, Getting started and CLI at 1280 px: no text clipped, no sideways scroll. Cropping on home is limited to decorative brush art | Pass |
+| 2.1.1 Keyboard / 2.1.2 No trap | Tab through the home page (22 stops), the setup builder, the docs search and the Atlas tabs | Pass |
+| 2.2.2 Pause, stop, hide | Home animations stop under `prefers-reduced-motion`; nothing auto-updates | Pass |
+| 2.4.1 Bypass blocks | Skip link on every page, first in tab order | Pass |
+| 2.4.2 Page titled / 2.4.4 Link purpose | `check-site.py` (unique titles); axe | Pass |
+| 2.4.3 Focus order / 2.4.7 Focus visible | Keyboard pass; one 2 px focus ring for every focusable element (`:where(...):focus-visible`) | Pass |
+| 3.1.1 Language of page | `lang="en"` on every page (axe) | Pass |
+| 3.2.1 / 3.2.2 On focus, on input | Builder and filters change only their own output; no navigation on focus or input | Pass |
+| 3.3.1 / 3.3.2 Errors, labels | Docs search, feature search and route filter are labelled; no forms submit | Pass |
+| 4.1.1 Parsing / 4.1.2 Name, role, value | axe; theme toggle exposes `aria-pressed`; tabs use `role="tab"` with `aria-selected` | Pass |
+| Status messages (2.1 4.1.3) | Docs search count, setup output and readiness summary are `aria-live="polite"`; the feature count is now an explicit `role="status"` live region | Pass |
+| 1.4.10 Reflow (2.1) | All 26 pages at 320 px: no sideways scroll (the home page brush layer is now clipped by `body`) | Pass |
+
+Not done: a live screen-reader session (VoiceOver) through the docs search, feature filters, setup builder and readiness checklist. The semantics those depend on are checked above, but how they are announced has not been heard. Tracked in [#12](https://github.com/zachshallbetter/creative-mcp/issues/12).
+
 ## Assets and attribution (2026-11-03)
 
 | Asset | Source | Licence or credit |

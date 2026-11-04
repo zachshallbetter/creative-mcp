@@ -77,6 +77,9 @@
         routeFilter.append(option);
       });
       var count = element("output", "", data.featureCount + " features");
+      // <output> is a status region in most browsers; say so explicitly for VoiceOver.
+      count.setAttribute("role", "status");
+      count.setAttribute("aria-live", "polite");
       controls.append(search, routeFilter, count);
       container.append(controls);
 
