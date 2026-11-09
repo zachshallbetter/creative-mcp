@@ -3,6 +3,8 @@
 Thanks for helping. This repository holds the website, docs and catalogue for the series. Changes to a tool's code belong in that tool's own repository:
 [adobe-mcp](https://github.com/zachshallbetter/adobe-mcp) · [blender-mcp-rs](https://github.com/zachshallbetter/blender-mcp-rs) · [homebrew-tap](https://github.com/zachshallbetter/homebrew-tap).
 
+Maintainers and coding agents: [docs/MAINTAINING.md](docs/MAINTAINING.md) has the site pipeline, release steps and where open work is tracked.
+
 ## Good changes here
 
 - Fixing or clarifying documentation in `site/dist/docs/`.

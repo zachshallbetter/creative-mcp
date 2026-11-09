@@ -1,6 +1,6 @@
 # Creative MCP series architecture
 
-Status (2026-11-03): the catalogue (`registry/`) and the installer (`cli/`, v0.2.3) are **Implemented and tested**. The installer fully supports macOS only so far. Author: Zach Shallbetter.
+Status (2026-11-08): the catalogue (`registry/`) and the installer (`cli/`, v0.2.3) are **Implemented and tested**. The installer fully supports macOS only so far. Author: Zach Shallbetter.
 
 Creative MCP is a series of independent MCP implementations for creative software, presented under one brand, one website and one install path. This document records how the pieces fit today, the decisions for growing the series, and what a new tool needs to join.
 
@@ -9,13 +9,13 @@ Creative MCP is a series of independent MCP implementations for creative softwar
 | Piece | Where | Visibility | Language | Distribution |
 | --- | --- | --- | --- | --- |
 | Adobe MCP: five app servers, Suite coordinator, shared core | github.com/zachshallbetter/adobe-mcp | Public, MIT | Node.js 18+ | npm (`adobe-mcp-*`), Homebrew `zachshallbetter/tap/adobe-mcp` |
-| Blender MCP: Rust MCP server, CLI, Blender add-on | github.com/zachshallbetter/blender-mcp-rs | Public, MIT OR Apache-2.0 | Rust | Source (`cargo install --git`), Homebrew `zachshallbetter/tap/blender-mcp` (v0.5.0) |
+| Blender MCP: Rust MCP server, CLI, Blender add-on | github.com/zachshallbetter/blender-mcp-rs | Public, MIT OR Apache-2.0 | Rust | Source (`cargo install --git`), Homebrew `zachshallbetter/tap/blender-mcp` (v0.5.1) |
 | Homebrew tap | github.com/zachshallbetter/homebrew-tap | Public | Ruby formulae | `brew tap zachshallbetter/tap` then `brew trust zachshallbetter/tap` |
 | Website, docs and catalogue (creativemcp.com) | github.com/zachshallbetter/creative-mcp (`site/`, `registry/`, `docs/`) | Public; MIT for code, content and brand reserved | Static HTML, Python scripts, JSON | Vercel (Root Directory `site`) |
 
 The implementations share no runtime, API or process. A client can load several at once; moving files between them is a user-managed handoff.
 
-The old in-repo formula `adobe-mcp/Formula/adobe-mcp-suite.rb` is being deprecated in favour of the tap (adobe-mcp#430).
+The old in-repo formula `adobe-mcp/Formula/adobe-mcp-suite.rb` is deprecated; Homebrew users are pointed at the tap (adobe-mcp#430, merged).
 
 ## 2. Principles
 
@@ -147,12 +147,13 @@ Language: **Rust**, so the installer is a single dependency-free binary that wor
 ## 7. Tracked work
 
 - Installer: Windows app detection ([#5](https://github.com/zachshallbetter/creative-mcp/issues/5)); Premiere Pro's UXP plugin without the UXP Developer Tool ([#17](https://github.com/zachshallbetter/creative-mcp/issues/17)).
-- Adobe MCP: status tools should not launch their app ([adobe-mcp#431](https://github.com/zachshallbetter/adobe-mcp/issues/431)).
+- Adobe MCP: release 0.3.1 (the status-tool fix from adobe-mcp#432 plus the 0.3.0 coordinator work, which is not yet on `main`), blocked on npm trusted publishing for the Photoshop and After Effects packages ([adobe-mcp#433](https://github.com/zachshallbetter/adobe-mcp/issues/433)); then the tap's `adobe-mcp` formula moves to suite 0.3.1. Premiere plugin installer draft ([adobe-mcp#434](https://github.com/zachshallbetter/adobe-mcp/pull/434), unverified). Photoshop round 2 ([adobe-mcp#407](https://github.com/zachshallbetter/adobe-mcp/issues/407)).
+- Site: GA4 key events ([#1](https://github.com/zachshallbetter/creative-mcp/issues/1)), post-launch search and AI-answer reviews ([#2](https://github.com/zachshallbetter/creative-mcp/issues/2)), share previews ([#3](https://github.com/zachshallbetter/creative-mcp/issues/3)), live VoiceOver pass ([#12](https://github.com/zachshallbetter/creative-mcp/issues/12)).
 - Catalogue: verify the InDesign and Premiere Pro detection rules ([#4](https://github.com/zachshallbetter/creative-mcp/issues/4)).
 
 ## 8. Open decisions
 
 - **D1: where the catalogue and installer live. Decided (2026-11-03):** the public `zachshallbetter/creative-mcp` repo holds the site (`site/`), the catalogue (`registry/`), the future installer (`cli/`) and these documents (`docs/`). The earlier private site repo, whose history contained personal data, is archived privately as `creative-mcp-site-archive`.
 - **D2: installer language. Decided:** Rust, shipped as creative-mcp 0.1.0; 0.2.0 added `add`, `update`, `remove` and the fuller `doctor`.
-- **D3: Blender MCP release. Done (2026-11-03):** licence files added, `VERSION` reconciled, the Windows CI failure fixed, and `v0.5.0` tagged and released. Homebrew installs it without `--HEAD`.
+- **D3: Blender MCP release. Done (2026-11-03):** licence files added, `VERSION` reconciled, the Windows CI failure fixed, and `v0.5.0` tagged and released. Homebrew installs it without `--HEAD`. `v0.5.1` (2026-11-03) makes `addon install` turn the add-on on.
 - **D4: site generation. Done (2026-11-03):** `site/scripts/generate-catalogue.py` renders the Projects grid, the series table on `/docs/architecture.html`, the setup builder (`data/setup.json`, every tool × client × install method) and its options from the catalogue's `site` block; `generate-discovery.py` takes the `llms.txt` tool facts and `apply-shell.py` the JSON-LD versions from the same file. Adding a tool to `registry/registry.json` and running the generators updates every listing.
