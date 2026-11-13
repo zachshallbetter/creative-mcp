@@ -58,7 +58,7 @@ python3 site/scripts/check-site.py              # every sitemap page, card, JSON
 
 Open work lives in GitHub issues, not in chat history:
 
-- Here: installer (Windows detection #5, the Premiere UXP plugin without the UXP Developer Tool #17), catalogue detection rules (#4), and site follow-ups (GA4 key events #1, post-launch reviews #2, share previews #3, VoiceOver pass #12).
-- adobe-mcp: the 0.3.1 release blocked on npm trusted publishing (#433), the Premiere plugin installer draft (#434), the Photoshop round 2 tickets (epic #407).
+- Here: installer (Windows detection #5, the Premiere UXP plugin without the UXP Developer Tool #17), and site follow-ups (GA4 key events #1, post-launch reviews #2, share previews #3, VoiceOver pass #12).
+- adobe-mcp: live validation against the 2027 apps (harness in #439), the 0.3.1 release blocked on npm trusted publishing (#433), the Premiere plugin installer draft (#434), the Photoshop round 2 tickets (epic #407).
 
 [ARCHITECTURE.md §7](ARCHITECTURE.md#7-tracked-work) keeps the cross-repo list.

@@ -51,7 +51,7 @@
       ],
       "targets": [
         { "app": "indesign", "name": "Adobe InDesign",
-          "detect": { "macos": { "bundle_ids": ["com.adobe.InDesign"], "verified": false },
+          "detect": { "macos": { "bundle_ids": ["com.adobe.InDesign"], "verified": true },
                      "windows": { "globs": ["C:/Program Files/Adobe/Adobe InDesign */InDesign.exe"], "verified": false } } },
         { "app": "illustrator", "name": "Adobe Illustrator",
           "detect": { "macos": { "bundle_ids": ["com.adobe.illustrator"], "verified": true },
@@ -63,7 +63,7 @@
           "detect": { "macos": { "bundle_ids": ["com.adobe.AfterEffects.application"], "verified": true },
                      "windows": { "globs": ["C:/Program Files/Adobe/Adobe After Effects */Support Files/AfterFX.exe"], "verified": false } } },
         { "app": "premiere", "name": "Adobe Premiere Pro",
-          "detect": { "macos": { "bundle_id_prefixes": ["com.adobe.PremierePro"], "verified": false },
+          "detect": { "macos": { "bundle_id_prefixes": ["com.adobe.PremierePro"], "verified": true },
                      "windows": { "globs": ["C:/Program Files/Adobe/Adobe Premiere Pro */Adobe Premiere Pro.exe"], "verified": false } } }
       ],
       "try": [

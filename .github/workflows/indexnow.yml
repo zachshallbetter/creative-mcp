@@ -5,9 +5,13 @@ on:
     branches: [main]
     paths: ["site/dist/sitemap.xml"]
   workflow_dispatch:
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
   submit:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
         with:

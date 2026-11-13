@@ -147,9 +147,9 @@ Language: **Rust**, so the installer is a single dependency-free binary that wor
 ## 7. Tracked work
 
 - Installer: Windows app detection ([#5](https://github.com/zachshallbetter/creative-mcp/issues/5)); Premiere Pro's UXP plugin without the UXP Developer Tool ([#17](https://github.com/zachshallbetter/creative-mcp/issues/17)).
+- Adobe MCP: live validation of every tool against the 2027 apps, recorded in the atlas ([adobe-mcp#439](https://github.com/zachshallbetter/adobe-mcp/pull/439)).
 - Adobe MCP: release 0.3.1 (the status-tool fix from adobe-mcp#432 plus the 0.3.0 coordinator work, which is not yet on `main`), blocked on npm trusted publishing for the Photoshop and After Effects packages ([adobe-mcp#433](https://github.com/zachshallbetter/adobe-mcp/issues/433)); then the tap's `adobe-mcp` formula moves to suite 0.3.1. Premiere plugin installer draft ([adobe-mcp#434](https://github.com/zachshallbetter/adobe-mcp/pull/434), unverified). Photoshop round 2 ([adobe-mcp#407](https://github.com/zachshallbetter/adobe-mcp/issues/407)).
 - Site: GA4 key events ([#1](https://github.com/zachshallbetter/creative-mcp/issues/1)), post-launch search and AI-answer reviews ([#2](https://github.com/zachshallbetter/creative-mcp/issues/2)), share previews ([#3](https://github.com/zachshallbetter/creative-mcp/issues/3)), live VoiceOver pass ([#12](https://github.com/zachshallbetter/creative-mcp/issues/12)).
-- Catalogue: verify the InDesign and Premiere Pro detection rules ([#4](https://github.com/zachshallbetter/creative-mcp/issues/4)).
 
 ## 8. Open decisions
 

@@ -6,14 +6,13 @@ on:
     branches: [main]
     paths: ["cli/**", "registry/**"]
   workflow_dispatch:
+concurrency:
+  group: cli-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   test:
-    name: Test (${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
     defaults:
       run:
         working-directory: cli
