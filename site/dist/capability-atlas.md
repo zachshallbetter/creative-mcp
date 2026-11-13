@@ -3,7 +3,7 @@ title: "Capability Atlas"
 description: "A researched map of 12,014 documented features across five Adobe apps: which can be automated, by what route, which MCP tools cover them, and the evidence."
 url: https://creativemcp.com/capability-atlas.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T18:50:41-08:00
+modified: 2026-11-13T13:34:05-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -34,7 +34,7 @@ Coverage by application
 
 | Illustrator  | 2,540  | 1,951 77%  | 1,562 61%  | 1,561  | 0  | 308
 
-| Photoshop  | 2,609  | 1,720 66%  | 1,413 54%  | 1,410  | 0  | 205
+| Photoshop  | 2,609  | 1,720 66%  | 1,584 61%  | 1,581  | 0  | 207
 
 | After Effects  | 3,198  | 2,595 81%  | 2,555 80%  | 2,553  | 0  | 164
 
@@ -434,7 +434,7 @@ Real jobs composed of atlas features, each step with the state it must leave and
 
 - Features come from Adobe's user guides and shortcut references; each record cites its source and is written in our own words. Third-party parity checklists were used only to spot omissions.
 - Object models are generated from types-for-adobe (MIT), and for InDesign and Illustrator also from Gregor Fellenz's per-version references: InDesign 2023 to 2026, Illustrator 2022 to 2025, Photoshop 2015.5, After Effects 2026 and Premiere Pro 2024. No public object model exists yet for Illustrator 2026.
-- Implemented and tested come from running every tool of adobe-mcp-indesign 2.4.0, adobe-mcp-illustrator 0.9.0, adobe-mcp-photoshop 0.1.0, adobe-mcp-aftereffects 0.1.0 and adobe-mcp-premiere 0.1.0 (all in the adobe-mcp repository) with the application stubbed, recording the calls each generated script makes and checking each script: ExtendScript against the application's object model, and Premiere Pro's UXP JavaScript against its UXP DOM. Nothing has been validated against a running application yet.
+- Implemented and tested come from running every tool of adobe-mcp-indesign 2.5.0, adobe-mcp-illustrator 0.9.0, adobe-mcp-photoshop 0.1.0, adobe-mcp-aftereffects 0.1.0 and adobe-mcp-premiere 0.1.0 (all in the adobe-mcp repository) with the application stubbed, recording the calls each generated script makes and checking each script: ExtendScript against the application's object model, and Premiere Pro's UXP JavaScript against its UXP DOM. Nothing has been validated against a running application yet.
 - Community scripts were parsed for the members and menu commands they use; no script was copied, and repositories without a licence are counted as evidence only.
 - Menu commands are listed from published references and are unverified until run: Illustrator silently ignores a command string it does not know. Photoshop's Action Manager events come from Adobe's UXP event table, Adobe's bundled scripts and open-source helper libraries, and are unverified in the same way.
 
