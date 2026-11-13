@@ -48,7 +48,7 @@ Verdicts use DPP terms: SATISFIED, VIOLATED, GRAY (unresolved evidence), NOT_APP
 | Machine-readable discovery routes (DAP) | SATISFIED | `sitemap.xml`; `llms.txt` (curated index, linked from every page with `rel="alternate"`); `llms-full.txt` (Markdown text of every public page's main content). These are access routes only: DPP states they don't guarantee inclusion in AI answers. |
 | No hidden or machine-only instructions | SATISFIED | No hidden prompt text. `llms.txt` contains only facts that are also visible on the pages. |
 | Crawler policy | SATISFIED (as declared) | All crawlers allowed, AI crawlers included. Change `robots.txt` if the licensing decision changes. |
-| Answer monitoring (fixed prompt panel) | GRAY | Not started. Suggested panel: "What is Creative MCP?", "How do I connect Claude to InDesign?", "Is there an MCP server for Blender written in Rust?", "Who makes Adobe MCP?" |
+| Answer monitoring (fixed prompt panel) | GRAY | Five fixed prompts (listed in [#2](https://github.com/zachshallbetter/creative-mcp/issues/2)), run at each post-launch review. First run 2026-11-13: see [Post-launch reviews](#post-launch-reviews). |
 
 ## Accessibility (P01 T9, P02 C10)
 
@@ -90,7 +90,34 @@ Deployed 2026-11-03 from `zachshallbetter/creative-mcp` (Vercel, Root Directory 
 | Accessibility on production | axe-core WCAG 2.2 AA: 0 violations on five key pages at 1280px and 375px. |
 | Rich Results Test | Run 2026-11-03 (see E5/E6): Article and Breadcrumbs valid; SoftwareApplication ineligible by design. |
 | Social-network preview tools | **Facebook Sharing Debugger** (2026-11-03): all 25 pages scraped, 0 issues in the Batch Invalidator; each page shows its own card, title and description. The only note is the optional `fb:app_id`, which needs a Meta app and is not required for link previews. **LinkedIn Post Inspector** (2026-11-03): all 25 pages scraped; large card, title, description and author (Zach Shallbetter) detected. It reported no publication date, so `datePublished` and `article:published_time` were added from the original site's history. **X** (2026-11-03): a real post of the home page (https://x.com/zachshallbetter/status/2117777531021783538) shows the large card with the page's own image, title and "From creativemcp.com". **Slack, iMessage:** need a real share; GRAY until one is observed. |
-| Indexing, queries, AI answer panel | GRAY. Re-review at 7, 28 and 90 days and record observations, not targets. |
+| Indexing, queries, AI answer panel | GRAY. Reviewed at 7, 28 and 90 days; observations are in [Post-launch reviews](#post-launch-reviews). |
+
+## Post-launch reviews
+
+Observations, not targets ([#2](https://github.com/zachshallbetter/creative-mcp/issues/2)). Verdicts above stay GRAY until all three reviews are recorded.
+
+### 7 days (recorded 2026-11-13, ten days after launch)
+
+| Source | Observation |
+| --- | --- |
+| Google Search Console, indexing (report updated 2026-11-08) | 26 indexed: all 25 sitemap pages plus `humans.txt`. 10 not indexed, none of them pages: 3 "Page with redirect" (the `http://` and `www.` variants, as intended) and 7 "Crawled, currently not indexed" (`/data/*.json`, `favicon.ico`, and a `www` URL with a tracking parameter from May 2026). |
+| Google Search Console, performance (data to 2026-11-10) | Last 7 days: 1 click, 126 impressions, CTR 0.8%, average position 9.7. Last 28 days: 1 click, 136 impressions. Top pages by impressions: `/` (47, position 3.8), `/capability-atlas.html` (39, 5.6), `/about.html` (17, 3.3); the one click went to `/workflows.html`. Top queries: "mcp creative" (7 impressions, position 2.7), "adobe creative mcp" (3, 7.0), then single impressions for Illustrator, InDesign and Blender MCP queries at positions 26–89. |
+| Bing | Webmaster Tools not checked (needs the owner's sign-in). Public search: no creativemcp.com page is in Bing's index; `site:creativemcp.com` returns an unrelated domain, and "Creative MCP Zach Shallbetter" finds only the GitHub repos, zachshallbetter.com and MCP directories. All five IndexNow submissions since launch returned HTTP 200 and the key file is served. |
+| GA4 (16 Oct–12 Nov, internal and developer traffic excluded) | 72 sessions: Direct 61, Referral 6, Organic Search 4, Organic Social 1. `copy_command` has been received (1); `setup_ready` has not ([#1](https://github.com/zachshallbetter/creative-mcp/issues/1)). |
+
+AI answer panel, 2026-11-13, Google Search (US English, signed in) and Claude (`claude-opus-5-5`, no search):
+
+| Prompt | Google AI Overview | creativemcp.com cited or ranked | Accurate about Creative MCP |
+| --- | --- | --- | --- |
+| What is Creative MCP? | Describes the generic idea and Adobe's own Creative Cloud MCP integrations announced at Adobe MAX (Adobe Newsroom, TechCrunch 2026-11-10) | No; not on the first page | Not about this project |
+| How do I connect Claude to InDesign? | Points to Adobe's connector help pages and a third-party plugin | No | Not about this project |
+| Is there an MCP server for Blender written in Rust? | Cites a different `blender-mcp-rs` (crate on docs.rs and lib.rs, GitHub JLFN) | No | Names another project with the same name |
+| Who makes Adobe MCP? | Adobe's own announcement (Adobe Newsroom, TechCrunch, CNET) | No | Not about this project |
+| How do I install Creative MCP with Homebrew? | Correct commands (`brew tap`, `brew trust`, `brew install zachshallbetter/tap/creative-mcp`, `creative-mcp setup`), credited to Zach Shallbetter, citing the `homebrew-tap` GitHub repo | Yes: `/start.html` is the first web result and `/how-it-works.html` the fourth | Yes |
+
+Claude without search knows none of these facts: its training data predates the launch.
+
+Two things changed around the project since launch: Adobe now ships its own "Creative Cloud MCP" integrations, which take over the generic queries, and another project publishes a crate named `blender-mcp-rs`.
 
 ## Open work
 
