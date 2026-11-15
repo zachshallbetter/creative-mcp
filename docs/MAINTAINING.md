@@ -36,7 +36,7 @@ python3 site/scripts/check-site.py              # every sitemap page, card, JSON
 - **`dateModified` and `lastmod` come from git and file times.** `generate-discovery.py` and `apply-shell.py` rewrite them on pages you didn't mean to touch. Revert that churn (`git checkout -- <file>`) before committing, and commit content changes before regenerating the sitemap.
 - **Keep each JSON-LD block formatted** as `<script type="application/ld+json">`, a newline, the JSON, a newline, then `</script>`. `check-site.py` finds blocks by that shape and reports "no JSON-LD" if the newlines go.
 - Every page has a `WebPage`-type node (`#webpage`) that `apply-shell.py` gives `primaryImageOfPage`, `copyrightHolder`, `copyrightYear` and `datePublished` from its `PUBLISHED` table. Add new pages there.
-- `404.html`, `brand-study.html` and `style-mockup.html` are noindex and stay out of the sitemap.
+- `404.html` is noindex and stays out of the sitemap. The design mockups (`brand-study.html`, `style-mockup.html`) live in `site/design/`, outside what Vercel serves.
 - Preview with `.claude/launch.json` (`python3 -m http.server 4180 --directory site/dist`).
 - Pushing to `main` deploys through Vercel. The `Site` workflow checks it, and the `IndexNow` workflow tells search engines which sitemap URLs changed (`site/scripts/indexnow.py`).
 

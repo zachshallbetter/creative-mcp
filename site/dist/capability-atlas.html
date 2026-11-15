@@ -425,7 +425,7 @@ table { border-collapse: collapse; width: 100%; }
   <div class="compare scroll">
     <table>
       <caption class="sr">Coverage by application</caption>
-      <thead><tr><th scope="col">Application</th><th scope="col" class="num">Features</th><th scope="col" class="num">Scriptable</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Static checks</th><th scope="col" class="num">Live validated</th><th scope="col" class="num">MCP tools</th></tr></thead>
+      <thead><tr><th scope="col">Application</th><th scope="col" class="num">Features</th><th scope="col" class="num">Scriptable</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Tested</th><th scope="col" class="num">Validated</th><th scope="col" class="num">MCP tools</th></tr></thead>
       <tbody><tr class="app-indesign">
         <th scope="row"><a href="#indesign"><i class="sw" aria-hidden="true"></i>InDesign</a></th>
         <td class="num">2,742</td>
@@ -471,7 +471,7 @@ table { border-collapse: collapse; width: 100%; }
   </div>
 
   <div class="coverage-key" role="group" aria-label="Coverage stage colors"><span><i class="key-implemented"></i>Implemented in MCP tools</span><span><i class="key-tested"></i>Passed automated static checks</span><span><i class="key-validated"></i>Validated in the running app</span></div>
-  <p class="coverage-caption">Percentages use each app’s documented feature count as the denominator. Static checks run generated scripts against a stubbed app and API definitions; live validation requires running the workflow in the actual Adobe app and checking the result.</p>
+  <p class="coverage-caption">Percentages use each app’s documented feature count as the denominator. Tested means static checks: generated scripts run against a stubbed app and API definitions. Validated requires running the workflow in the actual Adobe app and checking the result.</p>
   </section>
 
   <nav class="tabs needs-js" role="tablist" aria-label="Application">
@@ -486,7 +486,7 @@ table { border-collapse: collapse; width: 100%; }
     <div class="split">
       <div class="col">
         <h3>Support, step by step</h3>
-        <p class="lede">Each stage is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live InDesign session.</p>
+        <p class="lede">Each stage is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live InDesign session.</p>
         <ol class="ladder">
     <li><span class="lk">Documented</span><span class="lv">2,742</span><span class="lp">100%</span><span class="ln">features Adobe documents</span>
     <span class="lbar"><span style="width:100%"></span></span></li>
@@ -494,9 +494,9 @@ table { border-collapse: collapse; width: 100%; }
     <span class="lbar"><span style="width:95.14952589350838%"></span></span></li>
     <li><span class="lk">Implemented</span><span class="lv">2,524</span><span class="lp">92%</span><span class="ln">claimed by our 423 MCP tools</span>
     <span class="lbar"><span style="width:92.04959883296864%"></span></span></li>
-    <li><span class="lk">Static checks</span><span class="lv">2,523</span><span class="lp">92%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
+    <li><span class="lk">Tested</span><span class="lv">2,523</span><span class="lp">92%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
     <span class="lbar"><span style="width:92.01312910284464%"></span></span></li>
-    <li><span class="lk">Live validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
+    <li><span class="lk">Validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
     <span class="lbar"><span style="width:0%"></span></span></li></ol>
       </div>
       <div class="col">
@@ -510,7 +510,7 @@ table { border-collapse: collapse; width: 100%; }
 
     <h3>By domain</h3>
     <div class="scroll" tabindex="0" role="region" aria-label="InDesign: By domain table"><table class="domains">
-  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Static checks</th><th scope="col" class="num">Live validated</th><th scope="col" class="num">Not established</th></tr></thead>
+  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Tested</th><th scope="col" class="num">Validated</th><th scope="col" class="num">Not established</th></tr></thead>
   <tbody><tr>
     <th scope="row"><span class="dn">Typography</span><span class="dc">Character and paragraph formatting, fonts, OpenType, special characters, lists, composers and non-Latin script features.</span></th>
     <td class="num">307</td>
@@ -717,12 +717,12 @@ table { border-collapse: collapse; width: 100%; }
     <div class="split">
       <div class="col">
         <h3>Object model by version</h3>
-        <div class="scroll" tabindex="0" role="region" aria-label="InDesign: Object model by version table"><table class="plain"><thead><tr><th>Version</th><th class="num">Classes</th><th class="num">Enums</th><th class="num">Members</th></tr></thead><tbody><tr><td>Adobe InDesign 2023 (18.x)</td><td class="num">659</td><td class="num">420</td><td class="num">26,944</td></tr><tr><td>Adobe InDesign 2024 (19.2.0.46)</td><td class="num">659</td><td class="num">420</td><td class="num">26,952</td></tr><tr><td>Adobe InDesign 2025 (20.0.0.95)</td><td class="num">661</td><td class="num">420</td><td class="num">27,034</td></tr><tr><td>Adobe InDesign 2026 (21.0.0.192)</td><td class="num">664</td><td class="num">427</td><td class="num">27,372</td></tr><tr><td>Adobe InDesign 2026 (21.5.1.73)</td><td class="num">665</td><td class="num">432</td><td class="num">27,439</td></tr></tbody></table></div>
+        <div class="scroll" tabindex="0" role="region" aria-label="InDesign: Object model by version table"><table class="plain"><thead><tr><th scope="col">Version</th><th scope="col" class="num">Classes</th><th scope="col" class="num">Enums</th><th scope="col" class="num">Members</th></tr></thead><tbody><tr><td>Adobe InDesign 2023 (18.x)</td><td class="num">659</td><td class="num">420</td><td class="num">26,944</td></tr><tr><td>Adobe InDesign 2024 (19.2.0.46)</td><td class="num">659</td><td class="num">420</td><td class="num">26,952</td></tr><tr><td>Adobe InDesign 2025 (20.0.0.95)</td><td class="num">661</td><td class="num">420</td><td class="num">27,034</td></tr><tr><td>Adobe InDesign 2026 (21.0.0.192)</td><td class="num">664</td><td class="num">427</td><td class="num">27,372</td></tr><tr><td>Adobe InDesign 2026 (21.5.1.73)</td><td class="num">665</td><td class="num">432</td><td class="num">27,439</td></tr></tbody></table></div>
         <ul class="adds"><li><b>2025</b> added <code>MathObject</code>, <code>MathObjects</code></li><li><b>2026-21.0</b> added <code>FlexLayoutAttributeOption</code>, <code>FlexObject</code>, <code>FlexObjects</code></li><li><b>2026</b> added <code>Html5ExportPreference</code></li></ul>
       </div>
       <div class="col">
         <h3>Other ways in</h3>
-        <div class="scroll" tabindex="0" role="region" aria-label="InDesign: Other ways in table"><table class="plain"><thead><tr><th>Surface</th><th class="num">Entries</th><th>Status</th><th class="num">Beyond the object model</th></tr></thead><tbody><tr><td>AppleScript</td><td class="num">639</td><td><span class="chip">current <b>636</b></span> <span class="chip">removed <b>3</b></span></td><td class="num">2</td></tr><tr><td>CEP</td><td class="num">15</td><td><span class="chip">deprecated <b>13</b></span> <span class="chip">current <b>2</b></span></td><td class="num">6</td></tr><tr><td>C++ SDK</td><td class="num">40</td><td><span class="chip">current <b>39</b></span> <span class="chip">beta <b>1</b></span></td><td class="num">28</td></tr><tr><td>UXP</td><td class="num">121</td><td><span class="chip">current <b>118</b></span> <span class="chip">beta <b>2</b></span> <span class="chip">unavailable <b>1</b></span></td><td class="num">22</td></tr><tr><td>VBScript / COM</td><td class="num">672</td><td><span class="chip">current <b>672</b></span></td><td class="num">1</td></tr></tbody></table></div>
+        <div class="scroll" tabindex="0" role="region" aria-label="InDesign: Other ways in table"><table class="plain"><thead><tr><th scope="col">Surface</th><th scope="col" class="num">Entries</th><th scope="col">Status</th><th scope="col" class="num">Beyond the object model</th></tr></thead><tbody><tr><td>AppleScript</td><td class="num">639</td><td><span class="chip">current <b>636</b></span> <span class="chip">removed <b>3</b></span></td><td class="num">2</td></tr><tr><td>CEP</td><td class="num">15</td><td><span class="chip">deprecated <b>13</b></span> <span class="chip">current <b>2</b></span></td><td class="num">6</td></tr><tr><td>C++ SDK</td><td class="num">40</td><td><span class="chip">current <b>39</b></span> <span class="chip">beta <b>1</b></span></td><td class="num">28</td></tr><tr><td>UXP</td><td class="num">121</td><td><span class="chip">current <b>118</b></span> <span class="chip">beta <b>2</b></span> <span class="chip">unavailable <b>1</b></span></td><td class="num">22</td></tr><tr><td>VBScript / COM</td><td class="num">672</td><td><span class="chip">current <b>672</b></span></td><td class="num">1</td></tr></tbody></table></div>
       </div>
     </div>
   </section>
@@ -731,7 +731,7 @@ table { border-collapse: collapse; width: 100%; }
     <div class="split">
       <div class="col">
         <h3>Support, step by step</h3>
-        <p class="lede">Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Illustrator session.</p>
+        <p class="lede">Each step is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live Illustrator session.</p>
         <ol class="ladder">
     <li><span class="lk">Documented</span><span class="lv">2,540</span><span class="lp">100%</span><span class="ln">features Adobe documents</span>
     <span class="lbar"><span style="width:100%"></span></span></li>
@@ -739,9 +739,9 @@ table { border-collapse: collapse; width: 100%; }
     <span class="lbar"><span style="width:76.81102362204724%"></span></span></li>
     <li><span class="lk">Implemented</span><span class="lv">1,562</span><span class="lp">61%</span><span class="ln">claimed by our 308 MCP tools</span>
     <span class="lbar"><span style="width:61.496062992125985%"></span></span></li>
-    <li><span class="lk">Static checks</span><span class="lv">1,561</span><span class="lp">61%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
+    <li><span class="lk">Tested</span><span class="lv">1,561</span><span class="lp">61%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
     <span class="lbar"><span style="width:61.45669291338583%"></span></span></li>
-    <li><span class="lk">Live validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
+    <li><span class="lk">Validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
     <span class="lbar"><span style="width:0%"></span></span></li></ol>
       </div>
       <div class="col">
@@ -755,7 +755,7 @@ table { border-collapse: collapse; width: 100%; }
 
     <h3>By domain</h3>
     <div class="scroll" tabindex="0" role="region" aria-label="Illustrator: By domain table"><table class="domains">
-  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Static checks</th><th scope="col" class="num">Live validated</th><th scope="col" class="num">Not established</th></tr></thead>
+  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Tested</th><th scope="col" class="num">Validated</th><th scope="col" class="num">Not established</th></tr></thead>
   <tbody><tr>
     <th scope="row"><span class="dn">Import and export</span><span class="dc">File formats Illustrator opens, places, saves and exports, and the options each format offers.</span></th>
     <td class="num">298</td>
@@ -980,12 +980,12 @@ table { border-collapse: collapse; width: 100%; }
     <div class="split">
       <div class="col">
         <h3>Object model by version</h3>
-        <div class="scroll" tabindex="0" role="region" aria-label="Illustrator: Object model by version table"><table class="plain"><thead><tr><th>Version</th><th class="num">Classes</th><th class="num">Enums</th><th class="num">Members</th></tr></thead><tbody><tr><td>Adobe Illustrator 2022 (26.x)</td><td class="num">140</td><td class="num">128</td><td class="num">2,593</td></tr><tr><td>Adobe Illustrator 2023 (27)</td><td class="num">158</td><td class="num">133</td><td class="num">2,871</td></tr><tr><td>Adobe Illustrator 2024 (28)</td><td class="num">158</td><td class="num">133</td><td class="num">2,875</td></tr><tr><td>Adobe Illustrator 2025 (29)</td><td class="num">158</td><td class="num">134</td><td class="num">2,882</td></tr></tbody></table></div>
+        <div class="scroll" tabindex="0" role="region" aria-label="Illustrator: Object model by version table"><table class="plain"><thead><tr><th scope="col">Version</th><th scope="col" class="num">Classes</th><th scope="col" class="num">Enums</th><th scope="col" class="num">Members</th></tr></thead><tbody><tr><td>Adobe Illustrator 2022 (26.x)</td><td class="num">140</td><td class="num">128</td><td class="num">2,593</td></tr><tr><td>Adobe Illustrator 2023 (27)</td><td class="num">158</td><td class="num">133</td><td class="num">2,871</td></tr><tr><td>Adobe Illustrator 2024 (28)</td><td class="num">158</td><td class="num">133</td><td class="num">2,875</td></tr><tr><td>Adobe Illustrator 2025 (29)</td><td class="num">158</td><td class="num">134</td><td class="num">2,882</td></tr></tbody></table></div>
         
       </div>
       <div class="col">
         <h3>Other ways in</h3>
-        <div class="scroll" tabindex="0" role="region" aria-label="Illustrator: Other ways in table"><table class="plain"><thead><tr><th>Surface</th><th class="num">Entries</th><th>Status</th><th class="num">Beyond the object model</th></tr></thead><tbody><tr><td>AppleScript</td><td class="num">245</td><td><span class="chip">current <b>244</b></span> <span class="chip">deprecated <b>1</b></span></td><td class="num">1</td></tr><tr><td>CEP</td><td class="num">15</td><td><span class="chip">current <b>15</b></span></td><td class="num">6</td></tr><tr><td>C++ SDK</td><td class="num">251</td><td><span class="chip">current <b>238</b></span> <span class="chip">deprecated <b>9</b></span> <span class="chip">removed <b>2</b></span> <span class="chip">unavailable <b>2</b></span></td><td class="num">180</td></tr><tr><td>UXP</td><td class="num">4</td><td><span class="chip">unavailable <b>4</b></span></td><td class="num">0</td></tr><tr><td>VBScript / COM</td><td class="num">161</td><td><span class="chip">current <b>161</b></span></td><td class="num">1</td></tr></tbody></table></div>
+        <div class="scroll" tabindex="0" role="region" aria-label="Illustrator: Other ways in table"><table class="plain"><thead><tr><th scope="col">Surface</th><th scope="col" class="num">Entries</th><th scope="col">Status</th><th scope="col" class="num">Beyond the object model</th></tr></thead><tbody><tr><td>AppleScript</td><td class="num">245</td><td><span class="chip">current <b>244</b></span> <span class="chip">deprecated <b>1</b></span></td><td class="num">1</td></tr><tr><td>CEP</td><td class="num">15</td><td><span class="chip">current <b>15</b></span></td><td class="num">6</td></tr><tr><td>C++ SDK</td><td class="num">251</td><td><span class="chip">current <b>238</b></span> <span class="chip">deprecated <b>9</b></span> <span class="chip">removed <b>2</b></span> <span class="chip">unavailable <b>2</b></span></td><td class="num">180</td></tr><tr><td>UXP</td><td class="num">4</td><td><span class="chip">unavailable <b>4</b></span></td><td class="num">0</td></tr><tr><td>VBScript / COM</td><td class="num">161</td><td><span class="chip">current <b>161</b></span></td><td class="num">1</td></tr></tbody></table></div>
       </div>
     </div>
   </section>
@@ -994,7 +994,7 @@ table { border-collapse: collapse; width: 100%; }
     <div class="split">
       <div class="col">
         <h3>Support, step by step</h3>
-        <p class="lede">Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Photoshop session.</p>
+        <p class="lede">Each step is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live Photoshop session.</p>
         <ol class="ladder">
     <li><span class="lk">Documented</span><span class="lv">2,609</span><span class="lp">100%</span><span class="ln">features Adobe documents</span>
     <span class="lbar"><span style="width:100%"></span></span></li>
@@ -1002,9 +1002,9 @@ table { border-collapse: collapse; width: 100%; }
     <span class="lbar"><span style="width:65.92564200843235%"></span></span></li>
     <li><span class="lk">Implemented</span><span class="lv">1,584</span><span class="lp">61%</span><span class="ln">claimed by our 207 MCP tools</span>
     <span class="lbar"><span style="width:60.712916826370254%"></span></span></li>
-    <li><span class="lk">Static checks</span><span class="lv">1,581</span><span class="lp">61%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
+    <li><span class="lk">Tested</span><span class="lv">1,581</span><span class="lp">61%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
     <span class="lbar"><span style="width:60.59793024147183%"></span></span></li>
-    <li><span class="lk">Live validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
+    <li><span class="lk">Validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
     <span class="lbar"><span style="width:0%"></span></span></li></ol>
       </div>
       <div class="col">
@@ -1018,7 +1018,7 @@ table { border-collapse: collapse; width: 100%; }
 
     <h3>By domain</h3>
     <div class="scroll" tabindex="0" role="region" aria-label="Photoshop: By domain table"><table class="domains">
-  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Static checks</th><th scope="col" class="num">Live validated</th><th scope="col" class="num">Not established</th></tr></thead>
+  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Tested</th><th scope="col" class="num">Validated</th><th scope="col" class="num">Not established</th></tr></thead>
   <tbody><tr>
     <th scope="row"><span class="dn">Filters</span><span class="dc">The Filter menu: blur, sharpen, noise, distort, render, stylize, pixelate, other, Filter Gallery, Liquify, Lens Correction, Adaptive Wide Angle, Vanishing Point and Camera Raw as a filter.</span></th>
     <td class="num">395</td>
@@ -1225,12 +1225,12 @@ table { border-collapse: collapse; width: 100%; }
     <div class="split">
       <div class="col">
         <h3>Object model by version</h3>
-        <div class="scroll" tabindex="0" role="region" aria-label="Photoshop: Object model by version table"><table class="plain"><thead><tr><th>Version</th><th class="num">Classes</th><th class="num">Enums</th><th class="num">Members</th></tr></thead><tbody><tr><td>Adobe Photoshop CC 2015.5 (17.x)</td><td class="num">92</td><td class="num">132</td><td class="num">1,856</td></tr></tbody></table></div>
+        <div class="scroll" tabindex="0" role="region" aria-label="Photoshop: Object model by version table"><table class="plain"><thead><tr><th scope="col">Version</th><th scope="col" class="num">Classes</th><th scope="col" class="num">Enums</th><th scope="col" class="num">Members</th></tr></thead><tbody><tr><td>Adobe Photoshop CC 2015.5 (17.x)</td><td class="num">92</td><td class="num">132</td><td class="num">1,856</td></tr></tbody></table></div>
         
       </div>
       <div class="col">
         <h3>Other ways in</h3>
-        <div class="scroll" tabindex="0" role="region" aria-label="Photoshop: Other ways in table"><table class="plain"><thead><tr><th>Surface</th><th class="num">Entries</th><th>Status</th><th class="num">Beyond the object model</th></tr></thead><tbody><tr><td>AppleScript</td><td class="num">221</td><td><span class="chip">current <b>220</b></span> <span class="chip">unavailable <b>1</b></span></td><td class="num">0</td></tr><tr><td>CEP</td><td class="num">8</td><td><span class="chip">current <b>7</b></span> <span class="chip">deprecated <b>1</b></span></td><td class="num">1</td></tr><tr><td>C++ SDK</td><td class="num">44</td><td><span class="chip">current <b>44</b></span></td><td class="num">36</td></tr><tr><td>UXP</td><td class="num">53</td><td><span class="chip">current <b>53</b></span></td><td class="num">8</td></tr><tr><td>VBScript / COM</td><td class="num">88</td><td><span class="chip">current <b>88</b></span></td><td class="num">0</td></tr></tbody></table></div>
+        <div class="scroll" tabindex="0" role="region" aria-label="Photoshop: Other ways in table"><table class="plain"><thead><tr><th scope="col">Surface</th><th scope="col" class="num">Entries</th><th scope="col">Status</th><th scope="col" class="num">Beyond the object model</th></tr></thead><tbody><tr><td>AppleScript</td><td class="num">221</td><td><span class="chip">current <b>220</b></span> <span class="chip">unavailable <b>1</b></span></td><td class="num">0</td></tr><tr><td>CEP</td><td class="num">8</td><td><span class="chip">current <b>7</b></span> <span class="chip">deprecated <b>1</b></span></td><td class="num">1</td></tr><tr><td>C++ SDK</td><td class="num">44</td><td><span class="chip">current <b>44</b></span></td><td class="num">36</td></tr><tr><td>UXP</td><td class="num">53</td><td><span class="chip">current <b>53</b></span></td><td class="num">8</td></tr><tr><td>VBScript / COM</td><td class="num">88</td><td><span class="chip">current <b>88</b></span></td><td class="num">0</td></tr></tbody></table></div>
       </div>
     </div>
   </section>
@@ -1239,7 +1239,7 @@ table { border-collapse: collapse; width: 100%; }
     <div class="split">
       <div class="col">
         <h3>Support, step by step</h3>
-        <p class="lede">Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live After Effects session.</p>
+        <p class="lede">Each step is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live After Effects session.</p>
         <ol class="ladder">
     <li><span class="lk">Documented</span><span class="lv">3,198</span><span class="lp">100%</span><span class="ln">features Adobe documents</span>
     <span class="lbar"><span style="width:100%"></span></span></li>
@@ -1247,9 +1247,9 @@ table { border-collapse: collapse; width: 100%; }
     <span class="lbar"><span style="width:81.14446529080675%"></span></span></li>
     <li><span class="lk">Implemented</span><span class="lv">2,555</span><span class="lp">80%</span><span class="ln">claimed by our 164 MCP tools</span>
     <span class="lbar"><span style="width:79.89368355222014%"></span></span></li>
-    <li><span class="lk">Static checks</span><span class="lv">2,553</span><span class="lp">80%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
+    <li><span class="lk">Tested</span><span class="lv">2,553</span><span class="lp">80%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
     <span class="lbar"><span style="width:79.8311444652908%"></span></span></li>
-    <li><span class="lk">Live validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
+    <li><span class="lk">Validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
     <span class="lbar"><span style="width:0%"></span></span></li></ol>
       </div>
       <div class="col">
@@ -1263,7 +1263,7 @@ table { border-collapse: collapse; width: 100%; }
 
     <h3>By domain</h3>
     <div class="scroll" tabindex="0" role="region" aria-label="After Effects: By domain table"><table class="domains">
-  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Static checks</th><th scope="col" class="num">Live validated</th><th scope="col" class="num">Not established</th></tr></thead>
+  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Tested</th><th scope="col" class="num">Validated</th><th scope="col" class="num">Not established</th></tr></thead>
   <tbody><tr>
     <th scope="row"><span class="dn">Effects</span><span class="dc">The Effect menu and the Effects &amp; Presets panel: every effect category and animation presets.</span></th>
     <td class="num">1,490</td>
@@ -1425,7 +1425,7 @@ table { border-collapse: collapse; width: 100%; }
     <div class="split">
       <div class="col">
         <h3>Object model by version</h3>
-        <div class="scroll" tabindex="0" role="region" aria-label="After Effects: Object model by version table"><table class="plain"><thead><tr><th>Version</th><th class="num">Classes</th><th class="num">Enums</th><th class="num">Members</th></tr></thead><tbody><tr><td>Adobe After Effects 2026 (26.x)</td><td class="num">84</td><td class="num">56</td><td class="num">2,777</td></tr></tbody></table></div>
+        <div class="scroll" tabindex="0" role="region" aria-label="After Effects: Object model by version table"><table class="plain"><thead><tr><th scope="col">Version</th><th scope="col" class="num">Classes</th><th scope="col" class="num">Enums</th><th scope="col" class="num">Members</th></tr></thead><tbody><tr><td>Adobe After Effects 2026 (26.x)</td><td class="num">84</td><td class="num">56</td><td class="num">2,777</td></tr></tbody></table></div>
         
       </div>
       <div class="col">
@@ -1439,7 +1439,7 @@ table { border-collapse: collapse; width: 100%; }
     <div class="split">
       <div class="col">
         <h3>Support, step by step</h3>
-        <p class="lede">Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Premiere Pro session.</p>
+        <p class="lede">Each step is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live Premiere Pro session.</p>
         <ol class="ladder">
     <li><span class="lk">Documented</span><span class="lv">925</span><span class="lp">100%</span><span class="ln">features Adobe documents</span>
     <span class="lbar"><span style="width:100%"></span></span></li>
@@ -1447,9 +1447,9 @@ table { border-collapse: collapse; width: 100%; }
     <span class="lbar"><span style="width:53.4054054054054%"></span></span></li>
     <li><span class="lk">Implemented</span><span class="lv">413</span><span class="lp">45%</span><span class="ln">claimed by our 96 MCP tools</span>
     <span class="lbar"><span style="width:44.648648648648646%"></span></span></li>
-    <li><span class="lk">Static checks</span><span class="lv">413</span><span class="lp">45%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
+    <li><span class="lk">Tested</span><span class="lv">413</span><span class="lp">45%</span><span class="ln">scripts pass automated checks with the app stubbed</span>
     <span class="lbar"><span style="width:44.648648648648646%"></span></span></li>
-    <li><span class="lk">Live validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
+    <li><span class="lk">Validated</span><span class="lv">0</span><span class="lp">0%</span><span class="ln">run and checked in the actual app</span>
     <span class="lbar"><span style="width:0%"></span></span></li></ol>
       </div>
       <div class="col">
@@ -1463,7 +1463,7 @@ table { border-collapse: collapse; width: 100%; }
 
     <h3>By domain</h3>
     <div class="scroll" tabindex="0" role="region" aria-label="Premiere Pro: By domain table"><table class="domains">
-  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Static checks</th><th scope="col" class="num">Live validated</th><th scope="col" class="num">Not established</th></tr></thead>
+  <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Features</th><th scope="col" class="barcol">How it can be automated</th><th scope="col" class="num">Implemented</th><th scope="col" class="num">Tested</th><th scope="col" class="num">Validated</th><th scope="col" class="num">Not established</th></tr></thead>
   <tbody><tr>
     <th scope="row"><span class="dn">Effects and transitions</span><span class="dc">Video and audio effects and transitions, the Effect Controls panel, keyframes and presets.</span></th>
     <td class="num">133</td>
@@ -1595,12 +1595,12 @@ table { border-collapse: collapse; width: 100%; }
     <div class="split">
       <div class="col">
         <h3>Object model by version</h3>
-        <div class="scroll" tabindex="0" role="region" aria-label="Premiere Pro: Object model by version table"><table class="plain"><thead><tr><th>Version</th><th class="num">Classes</th><th class="num">Enums</th><th class="num">Members</th></tr></thead><tbody><tr><td>Adobe Premiere Pro 2024 (24.x)</td><td class="num">35</td><td class="num">2</td><td class="num">488</td></tr></tbody></table></div>
+        <div class="scroll" tabindex="0" role="region" aria-label="Premiere Pro: Object model by version table"><table class="plain"><thead><tr><th scope="col">Version</th><th scope="col" class="num">Classes</th><th scope="col" class="num">Enums</th><th scope="col" class="num">Members</th></tr></thead><tbody><tr><td>Adobe Premiere Pro 2024 (24.x)</td><td class="num">35</td><td class="num">2</td><td class="num">488</td></tr></tbody></table></div>
         
       </div>
       <div class="col">
         <h3>Other ways in</h3>
-        <div class="scroll" tabindex="0" role="region" aria-label="Premiere Pro: Other ways in table"><table class="plain"><thead><tr><th>Surface</th><th class="num">Entries</th><th>Status</th><th class="num">Beyond the object model</th></tr></thead><tbody><tr><td>AppleScript</td><td class="num">2</td><td><span class="chip">unavailable <b>1</b></span> <span class="chip">current <b>1</b></span></td><td class="num">0</td></tr><tr><td>CEP</td><td class="num">14</td><td><span class="chip">current <b>14</b></span></td><td class="num">2</td></tr><tr><td>C++ SDK</td><td class="num">36</td><td><span class="chip">current <b>36</b></span></td><td class="num">9</td></tr><tr><td>UXP</td><td class="num">77</td><td><span class="chip">current <b>75</b></span> <span class="chip">unavailable <b>2</b></span></td><td class="num">19</td></tr><tr><td>VBScript / COM</td><td class="num">1</td><td><span class="chip">unavailable <b>1</b></span></td><td class="num">0</td></tr></tbody></table></div>
+        <div class="scroll" tabindex="0" role="region" aria-label="Premiere Pro: Other ways in table"><table class="plain"><thead><tr><th scope="col">Surface</th><th scope="col" class="num">Entries</th><th scope="col">Status</th><th scope="col" class="num">Beyond the object model</th></tr></thead><tbody><tr><td>AppleScript</td><td class="num">2</td><td><span class="chip">unavailable <b>1</b></span> <span class="chip">current <b>1</b></span></td><td class="num">0</td></tr><tr><td>CEP</td><td class="num">14</td><td><span class="chip">current <b>14</b></span></td><td class="num">2</td></tr><tr><td>C++ SDK</td><td class="num">36</td><td><span class="chip">current <b>36</b></span></td><td class="num">9</td></tr><tr><td>UXP</td><td class="num">77</td><td><span class="chip">current <b>75</b></span> <span class="chip">unavailable <b>2</b></span></td><td class="num">19</td></tr><tr><td>VBScript / COM</td><td class="num">1</td><td><span class="chip">unavailable <b>1</b></span></td><td class="num">0</td></tr></tbody></table></div>
       </div>
     </div>
   </section>
@@ -1608,7 +1608,7 @@ table { border-collapse: collapse; width: 100%; }
   <section class="section">
     <h2>What InDesign is missing</h2>
     <p class="lede">The scriptable InDesign features our server does not cover yet, ranked by how often community scripts need them and how much work each is.</p>
-    <div class="scroll" tabindex="0" role="region" aria-label="Premiere Pro: What InDesign is missing table"><table class="plain gaps"><thead><tr><th class="num">#</th><th>Proposed tool</th><th>Features it covers</th><th>Demand evidence</th><th>Effort</th></tr></thead>
+    <div class="scroll" tabindex="0" role="region" aria-label="Premiere Pro: What InDesign is missing table"><table class="plain gaps"><thead><tr><th scope="col" class="num">#</th><th scope="col">Proposed tool</th><th scope="col">Features it covers</th><th scope="col">Demand evidence</th><th scope="col">Effort</th></tr></thead>
     <tbody><tr><td class="num">1</td><td><code>create_line</code></td><td>2: <code>frames_objects.graphic_line</code>, <code>frames_objects.line_tool</code></td><td>43 scripts / 15 repos use <code>add (with GraphicLines access)</code> *(generic)*; core</td><td>S</td></tr><tr><td class="num">2</td><td><code>thread_text_frames</code></td><td>3: <code>text_frames.thread_text_frames</code>, <code>text_frames.unthread</code>, <code>text_frames.thread_navigation</code></td><td>35 scripts / 13 repos use <code>nextTextFrame (with TextFrame access)</code>; core</td><td>S</td></tr><tr><td class="num">3</td><td><code>set_character_formatting</code></td><td>36: <code>typography.basic_char_kerning</code>, <code>typography.basic_char_tracking</code>, <code>typography.basic_char_case</code>, <code>typography.basic_char_position</code>, <code>typography.basic_char_ligatures</code>, +31 more</td><td>119 scripts / 20 repos use <code>pointSize (with Text access)</code>; core</td><td>M</td></tr><tr><td class="num">4</td><td><code>arrange_page_item</code></td><td>3: <code>frames_objects.bring_to_front</code>, <code>frames_objects.bring_forward</code>, <code>frames_objects.send_backward</code></td><td>15 scripts / 10 repos use <code>bringToFront (with SplineItem access)</code>; core</td><td>S</td></tr><tr><td class="num">5</td><td><code>find_change_formatting</code></td><td>13: <code>find_change.fc_option_include_locked_layers_and_locked_objects</code>, <code>find_change.fc_option_include_locked_stories</code>, <code>find_change.fc_option_include_hidden_layers_and_hidden_objects</code>, <code>find_change.fc_option_include_parent_pages</code>, <code>find_change.fc_option_include_footnotes</code>, +8 more</td><td>82 scripts / 16 repos use <code>fonts</code>; core</td><td>M</td></tr><tr><td class="num">6</td><td><code>set_text_frame_options</code></td><td>38: <code>text_frames.text_frame_options</code>, <code>text_frames.tfo_general_columns_fixed_number_fixed_width_flexible_width</code>, <code>text_frames.tfo_general_number</code>, <code>text_frames.tfo_general_width</code>, <code>text_frames.tfo_general_maximum</code>, +33 more</td><td>79 scripts / 23 repos use <code>textFramePreferences (with TextFrame access)</code>; core</td><td>M</td></tr><tr><td class="num">7</td><td><code>set_stroke_options</code></td><td>10: <code>frames_objects.stroke_panel</code>, <code>frames_objects.stroke_type</code>, <code>frames_objects.stroke_cap</code>, <code>frames_objects.stroke_join</code>, <code>frames_objects.stroke_align</code>, +5 more</td><td>77 scripts / 19 repos use <code>strokeWeight (with PageItem access)</code>; core</td><td>M</td></tr><tr><td class="num">8</td><td><code>list_links</code></td><td>7: <code>images_links.link</code>, <code>images_links.link_metadata</code>, <code>images_links.links_menu_go_to_link</code>, <code>images_links.links_menu_go_to_source</code>, <code>images_links.links_menu_utilities_xmp_file_info</code>, +2 more</td><td>70 scripts / 16 repos use <code>links</code>; core</td><td>M</td></tr><tr><td class="num">9</td><td><code>move_items_to_layer</code></td><td>4: <code>layers.paste_remembers_layers</code>, <code>layers.move_to_layer</code>, <code>layers.select_items_on_layer</code>, <code>layers.layer_objects_list</code></td><td>65 scripts / 18 repos use <code>itemLayer (with PageItem access)</code>; core</td><td>M</td></tr><tr><td class="num">10</td><td><code>edit_table_structure</code></td><td>27: <code>tables.row</code>, <code>tables.column</code>, <code>tables.table_panel</code>, <code>tables.insert_table</code>, <code>tables.nested_table</code>, +22 more</td><td>60 scripts / 17 repos use <code>tables (with InsertionPoint access)</code>; core</td><td>M</td></tr><tr><td class="num">11</td><td><code>manage_parent_pages</code></td><td>6: <code>pages_spreads.parent_based_on</code>, <code>pages_spreads.load_parent_pages</code>, <code>pages_spreads.allow_parent_item_overrides</code>, <code>pages_spreads.parent_overlay</code>, <code>pages_spreads.move_parent</code>, +1 more</td><td>48 scripts / 15 repos use <code>appliedMaster (with MasterSpread access)</code>; core</td><td>M</td></tr><tr><td class="num">12</td><td><code>set_paragraph_formatting</code></td><td>26: <code>tables.table_alignment</code>, <code>typography.story_panel</code>, <code>typography.optical_margin_alignment</code>, <code>typography.ignore_optical_margin</code>, <code>typography.para_indents_balance_ragged_lines</code>, +21 more</td><td>46 scripts / 14 repos use <code>justification (with Text access)</code>; core</td><td>M</td></tr><tr><td class="num">13</td><td><code>create_cross_reference</code></td><td>7: <code>long_documents.cross_references_panel</code>, <code>long_documents.insert_cross_reference</code>, <code>long_documents.cross_reference_formats</code>, <code>long_documents.load_cross_reference_formats</code>, <code>long_documents.update_cross_references</code>, +2 more</td><td>43 scripts / 15 repos use <code>hyperlinks</code>; core</td><td>M</td></tr><tr><td class="num">14</td><td><code>set_measurement_units</code></td><td>18: <code>documents.zero_point</code>, <code>documents.newdoc_units_new_document</code>, <code>layout_tools.rulers</code>, <code>layout_tools.ruler_units</code>, <code>layout_tools.cycle_units</code>, +13 more</td><td>330 scripts / 44 repos use <code>viewPreferences</code>; core</td><td>L</td></tr><tr><td class="num">15</td><td><code>insert_special_character</code></td><td>25: <code>pages_spreads.current_page_number</code>, <code>pages_spreads.next_page_number</code>, <code>pages_spreads.previous_page_number</code>, <code>pages_spreads.section_marker</code>, <code>typography.glyphs_panel</code>, +20 more</td><td>38 scripts use <code>SpecialCharacters.* enum</code>; core</td><td>M</td></tr><tr><td class="num">16</td><td><code>load_styles</code></td><td>10: <code>styles.load_styles</code>, <code>styles.paragraph_styles_menu_load_paragraph_styles</code>, <code>styles.paragraph_styles_menu_load_all_text_styles</code>, <code>styles.character_styles_menu_load_character_styles</code>, <code>styles.character_styles_menu_load_all_text_styles</code>, +5 more</td><td>7 scripts / 6 repos use <code>importStyles</code>; core</td><td>S</td></tr><tr><td class="num">17</td><td><code>clear_style_overrides</code></td><td>16: <code>styles.clear_overrides</code>, <code>styles.clear_character_overrides</code>, <code>styles.clear_paragraph_overrides</code>, <code>styles.clear_all_overrides</code>, <code>styles.clear_object_style_overrides</code>, +11 more</td><td>33 scripts / 14 repos use <code>applyParagraphStyle (with Text access)</code>; core</td><td>M</td></tr><tr><td class="num">18</td><td><code>update_links</code></td><td>2: <code>images_links.links_menu_update_link</code>, <code>images_links.links_menu_update_all_links</code></td><td>29 scripts / 6 repos use <code>update (with Link access)</code> *(generic)*; core</td><td>M</td></tr><tr><td class="num">19</td><td><code>align_distribute</code></td><td>6: <code>transformations.align_panel</code>, <code>transformations.align_objects</code>, <code>transformations.distribute_objects</code>, <code>transformations.distribute_spacing</code>, <code>transformations.key_object</code>, +1 more</td><td>27 scripts / 6 repos use <code>align</code>; core</td><td>M</td></tr><tr><td class="num">20</td><td><code>anchor_object</code></td><td>4: <code>frames_objects.anchored_object_insert</code>, <code>frames_objects.anchored_object_options</code>, <code>frames_objects.anchored_object_release</code>, <code>frames_objects.anchored_object_defaults</code></td><td>26 scripts / 12 repos use <code>anchoredObjectSettings (with SplineItem access)</code>; core</td><td>M</td></tr><tr><td class="num">21</td><td><code>relink_links</code></td><td>4: <code>images_links.links_menu_relink</code>, <code>images_links.links_menu_relink_to_folder</code>, <code>images_links.links_menu_relink_file_extension</code>, <code>interactive.relink_legacy_media</code></td><td>26 scripts / 8 repos use <code>relink (with Link access)</code> *(generic)*; core</td><td>M</td></tr><tr><td class="num">22</td><td><code>manage_footnotes</code></td><td>22: <code>long_documents.footnote</code>, <code>long_documents.insert_footnote</code>, <code>long_documents.document_footnote_options</code>, <code>long_documents.fn_num_style_footnote_numbering</code>, <code>long_documents.fn_num_start_at_footnotes</code>, +17 more</td><td>22 scripts / 12 repos use <code>footnotes (with InsertionPoint access)</code>; core</td><td>M</td></tr><tr><td class="num">23</td><td><code>run_script_file</code></td><td>6: <code>automation.scripts_panel</code>, <code>automation.scripts_menu_run_script</code>, <code>automation.scripts_menu_enable_redraw</code>, <code>automation.script_preferences</code>, <code>automation.script_args</code>, +1 more</td><td>430 scripts / 43 repos use <code>doScript</code></td><td>M</td></tr><tr><td class="num">24</td><td><code>transform_page_item</code></td><td>32: <code>transformations.reference_point</code>, <code>transformations.rotate_tool</code>, <code>transformations.scale_tool</code>, <code>transformations.shear_tool</code>, <code>transformations.free_transform_tool</code>, +27 more</td><td>18 scripts / 8 repos use <code>transformReferencePoint (with LayoutWindow access)</code>; core</td><td>M</td></tr><tr><td class="num">25</td><td><code>set_hyphenation_and_justification</code></td><td>25: <code>typography.auto_hyphenate_shortcut</code>, <code>typography.para_hyph_hyphenate</code>, <code>typography.para_hyph_words_with_at_least</code>, <code>typography.para_hyph_after_first</code>, <code>typography.para_hyph_before_last</code>, +20 more</td><td>15 scripts / 10 repos use <code>autoLeading (with Text access)</code>; core</td><td>M</td></tr><tr><td class="num">26</td><td><code>set_bullets_and_numbering</code></td><td>23: <code>styles.paragraph_styles_menu_convert_bullets_and_numbering_to_text</code>, <code>typography.bullets_list_type</code>, <code>typography.bullets_list</code>, <code>typography.bullets_level</code>, <code>typography.bullets_bullet_character</code>, +18 more</td><td>14 scripts / 7 repos use <code>firstLineIndent (with Text access)</code>; core</td><td>M</td></tr><tr><td class="num">27</td><td><code>set_script_label</code></td><td>1: <code>automation.script_label_panel</code></td><td>79 scripts / 16 repos use <code>extractLabel (with PageItem access)</code></td><td>S</td></tr><tr><td class="num">28</td><td><code>set_drop_caps_and_nested_styles</code></td><td>14: <code>styles.sequential_styles</code>, <code>styles.nested_styles</code>, <code>styles.nested_line_styles</code>, <code>styles.grep_styles</code>, <code>styles.end_nested_style</code>, +9 more</td><td>13 scripts / 6 repos use <code>appliedCharacterStyle (with NestedGrepStyle access)</code>; core</td><td>M</td></tr><tr><td class="num">29</td><td><code>create_table_style</code></td><td>17: <code>styles.tbs_style_name_table_style</code>, <code>styles.tbs_based_on_table_style</code>, <code>styles.tbs_cell_styles_header_rows_footer_rows_body_rows_left_column_right_column</code>, <code>styles.tbs_table_setup_table_style</code>, <code>styles.tbs_row_strokes_table_style</code>, +12 more</td><td>12 scripts / 8 repos use <code>appliedTableStyle (with Table access)</code>; core</td><td>M</td></tr><tr><td class="num">30</td><td><code>set_object_transparency</code></td><td>12: <code>effects_transparency.effects_panel</code>, <code>effects_transparency.effects_dialog</code>, <code>effects_transparency.transparency_setting</code>, <code>effects_transparency.fx_transparency_blending_mode</code>, <code>effects_transparency.fx_transparency_isolate_blending</code>, +7 more</td><td>12 scripts / 7 repos use <code>transparencySettings (with PageItem access)</code>; core</td><td>M</td></tr></tbody></table></div>
   </section>
 

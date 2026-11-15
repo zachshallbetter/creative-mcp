@@ -42,7 +42,6 @@ def code(text):
 
 def setup_entry(tool, client, method, clients):
     """Kicker, commands and explanation for one builder choice."""
-    server = tool["servers"][0]
     lines = []
     if method == "brew":
         lines += [f"brew tap {TAP}", f"brew trust {TAP}", f"brew install {tool['install']['brew']['formula']}"]
@@ -51,29 +50,32 @@ def setup_entry(tool, client, method, clients):
         lines.append("cargo install --locked" + (f" --git {cargo['git']}" if cargo.get("git") else "") + f" --package {cargo['package']}")
     if method != "npm":
         lines += tool.get("post_install", [])
-    # npm installs nothing up front: clients start the server with npx.
-    command, args = (("npx", ["-y", server["command"], *server.get("args", [])]) if method == "npm"
-                     else (server["command"], server.get("args", [])))
-    name = server["register_as"]
-    tail = " ".join([command, *args])
+
+    # Every server the tool ships, as creative-mcp setup registers them (the Adobe coordinator and
+    # one server per app). npm installs nothing up front: clients start each server with npx.
+    def launch(server):
+        if method == "npm":
+            return "npx", ["-y", server["command"], *server.get("args", [])]
+        return server["command"], server.get("args", [])
+    servers = [(s["register_as"], *launch(s)) for s in tool["servers"]]
+    command = servers[0][1]
     client_name = clients.get(client, {}).get("name", OTHER[1])
     json_note = ""
     if tool.get("register_command") and client in tool["clients"] and method != "npm":
         lines.append(tool["register_command"].format(client=client))
-    elif client == "claude-code":
-        lines.append(f"claude mcp add --scope user {name} -- {tail}")
-    elif client == "codex":
-        lines.append(f"codex mcp add {name} -- {tail}")
-    elif client == "gemini":
-        lines.append(f"gemini mcp add --scope user {name} {tail}")
+    elif client in ("claude-code", "codex", "gemini"):
+        for name, cmd, args in servers:
+            tail = " ".join([cmd, *args])
+            lines.append({"claude-code": f"claude mcp add --scope user {name} -- {tail}",
+                          "codex": f"codex mcp add {name} -- {tail}",
+                          "gemini": f"gemini mcp add --scope user {name} {tail}"}[client])
     else:
-        # Desktop apps don't read the shell's PATH, so name the program by its full path.
-        full = f"{HOMEBREW_BIN}/{command}" if method == "brew" else command
-        snippet = json.dumps({"mcpServers": {name: {"command": full, "args": args}}}, indent=2)
-        lines += ["", snippet]
+        # Desktop apps don't read the shell's PATH, so name each program by its full path.
+        entries = {name: {"command": f"{HOMEBREW_BIN}/{cmd}" if method == "brew" else cmd, "args": args} for name, cmd, args in servers}
+        lines += ["", json.dumps({"mcpServers": entries}, indent=2)]
         files = clients.get(client, {}).get("detect", {}).get("files", [])
         where = f"{client_name}'s config file ({files[0]})" if files else "your client's MCP configuration"
-        json_note = f"Add this entry to {where}, keeping any servers already there. "
+        json_note = f"Add {'these entries' if len(entries) > 1 else 'this entry'} to {where}, keeping any servers already there. "
         json_note += ("The path is Homebrew's on Apple silicon; on an Intel Mac it is /usr/local/bin. " if method == "brew"
                       else f"If the client can't start {command}, replace it with the full path that \"which {command}\" prints. ")
     requires = tool.get("requires", [])
@@ -86,6 +88,16 @@ def setup_entry(tool, client, method, clients):
     }
 
 
+def method_label(tool, method):
+    """The builder's label for an install method. Homebrew runs on macOS and Linux; name only the
+    ones where the tool's apps run too, from the platforms its detection rules cover."""
+    if method != "brew":
+        return METHODS[method][0]
+    platforms = {p for target in tool.get("targets", []) for p in target.get("detect", {})}
+    names = [n for p, n in (("macos", "macOS"), ("linux", "Linux")) if p in platforms]
+    return f"Homebrew ({', '.join(names)})" if names else METHODS[method][0]
+
+
 def setup_data(registry):
     clients = {c["id"]: c for c in registry["clients"]}
     tools = []
@@ -94,7 +106,7 @@ def setup_data(registry):
         client_ids = [c for c in tool["clients"] if c in clients] + [OTHER[0]]
         tools.append({
             "id": tool["id"], "name": tool["name"],
-            "methods": [{"id": m, "label": METHODS[m][0]} for m in methods],
+            "methods": [{"id": m, "label": method_label(tool, m)} for m in methods],
             "clients": [{"id": c, "label": clients[c]["name"] if c in clients else OTHER[1]} for c in client_ids],
             "readiness": tool["site"]["readiness"],
             "entries": {f"{c}|{m}": setup_entry(tool, c, m, clients) for c in client_ids for m in methods},

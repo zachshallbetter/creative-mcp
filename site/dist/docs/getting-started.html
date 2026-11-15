@@ -215,14 +215,14 @@ try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.docume
   <div class="doc-layout">
     <nav class="doc-nav" aria-label="Getting started sections">
       <strong>On this page</strong>
-      <a href="/docs/" data-event-id="nav_docs">Docs home</a><a href="/docs/content.html">Content guide</a><a href="/docs/api.html">MCP API</a><a href="/docs/cli.html">CLI &amp; config</a><a href="/docs/architecture.html">Architecture</a><a href="#overview">How it works</a><a href="#choose">Choose a package</a><a href="#requirements">Requirements</a>
+      <a href="/docs/" data-event-id="nav_docs">Docs home</a><a href="/docs/content.html">Content guide</a><a href="/docs/api.html">MCP API</a><a href="/docs/cli.html">CLI &amp; config</a><a href="/docs/architecture.html">Architecture</a><a href="#overview">How the servers connect</a><a href="#choose">Choose a package</a><a href="#requirements">Requirements</a>
       <a href="#quickstart">Quick start</a><a href="#clients">MCP client setup</a><a href="#suite">Suite coordinator</a>
       <a href="#apps">App setup</a><a href="#workflows">First workflows</a><a href="#configuration">Configuration</a>
       <a href="#safety">Files &amp; safety</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference library</a>
     </nav>
     <article class="doc-content">
       <section class="doc-section" id="overview">
-        <h2>How it works</h2>
+        <h2>How the servers connect</h2>
         <p>These are desktop automation servers. Your MCP client starts a Node.js process on the same computer as the Adobe app. The server accepts MCP messages over standard input/output (stdio), translates a tool call into an application script or bridge request, and returns the result to the client.</p>
         <div class="doc-grid">
           <div class="doc-card"><span class="tag">01 · Ask</span><h3>Your MCP client</h3><p>Claude Code, Claude Desktop, Cursor, Warp, or another client that can launch an MCP server process.</p></div>
@@ -235,7 +235,8 @@ try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.docume
       <section class="doc-section" id="choose">
         <h2>Choose a package</h2>
         <p>Install one app server for direct control of that application. Add the Suite coordinator when you want its current cross-app workflows. The coordinator does not expose the full tool list of its child servers.</p>
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Choose a package table"><table><thead><tr><th>Package</th><th>Use it for</th><th>Connection route</th><th>Install</th></tr></thead><tbody>
+        <p>This guide covers the Adobe servers. For Blender, the <a href="/docs/implementations/blender.html">Blender MCP guide</a> has its install, add-on and client steps.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Choose a package table"><table><thead><tr><th scope="col">Package</th><th scope="col">Use it for</th><th scope="col">Connection route</th><th scope="col">Install</th></tr></thead><tbody>
           <tr><td><strong>InDesign</strong><br><code>adobe-mcp-indesign</code></td><td>Documents, pages, typography, tables, long documents and export.</td><td>ExtendScript via AppleScript on macOS or COM/PowerShell on Windows; optional UXP backend.</td><td><code>npx -y adobe-mcp-indesign</code></td></tr>
           <tr><td><strong>Illustrator</strong><br><code>adobe-mcp-illustrator</code></td><td>Documents, artboards, layers, vectors, typography, effects and export.</td><td>ExtendScript via AppleScript on macOS or COM/PowerShell on Windows.</td><td><code>npx -y adobe-mcp-illustrator</code></td></tr>
           <tr><td><strong>Photoshop</strong><br><code>adobe-mcp-photoshop</code></td><td>Documents, pixels, layers, selections, adjustments, painting and export.</td><td>ExtendScript through local desktop automation.</td><td><code>npx -y adobe-mcp-photoshop</code></td></tr>
@@ -253,7 +254,7 @@ try { var storedTheme = localStorage.getItem("adobe-mcp-theme"); document.docume
           <li><strong>macOS or Windows</strong> for the listed desktop server integrations. macOS may prompt you to authorize Terminal or Node to control an Adobe app in System Settings → Privacy &amp; Security → Automation.</li>
           <li><strong>The corresponding Adobe desktop app</strong> installed on the same computer. InDesign, Illustrator, Photoshop and After Effects guides specify 2023+; Premiere Pro requires 25.6+ and its MCP Bridge UXP plugin loaded.</li>
           <li><strong>An MCP client</strong> that can launch a command with arguments and environment variables and communicate over stdio.</li>
-          <li><strong>Premiere only:</strong> UXP Developer Tool to load the plugin until a published installation path is documented; plugin/server ports and bridge token must match.</li>
+          <li><strong>Premiere Pro only:</strong> the UXP Developer Tool, to load the server’s plugin. The plugin’s port and bridge token must match the server’s. The <a href="/docs/implementations/premiere.html">Premiere Pro guide</a> walks through it.</li>
         </ul>
         <p>Adobe app versions and backend support can differ by operation. Consult the app guide and the tool's <code>help</code> response for version-specific behavior.</p>
       </section>
@@ -305,12 +306,16 @@ creative-mcp setup</code></pre>
 }</code></pre>
         <p>Pin the package version when you need repeatable team setups; check npm for the current published version before updating the pin.</p>
         <h3>Install with Homebrew</h3>
-        <p>On macOS or Linux, the Creative MCP tap installs the Suite coordinator and every app server onto your <code>PATH</code>, so clients can launch them without <code>npx</code>. Homebrew 7 and later asks you to trust a third-party tap once.</p>
+        <p>On macOS, the Creative MCP tap installs the Suite coordinator and every app server onto your <code>PATH</code>, so clients can launch them without <code>npx</code>. On Windows, use the npx setup above. Homebrew 7 and later asks you to trust a third-party tap once.</p>
         <pre tabindex="0"><code>brew tap zachshallbetter/tap
 brew trust zachshallbetter/tap
 brew install zachshallbetter/tap/adobe-mcp
 claude mcp add adobe -- adobe-mcp-suite
-claude mcp add illustrator -- adobe-mcp-illustrator</code></pre>
+claude mcp add indesign -- adobe-mcp-indesign
+claude mcp add illustrator -- adobe-mcp-illustrator
+claude mcp add photoshop -- adobe-mcp-photoshop
+claude mcp add aftereffects -- adobe-mcp-aftereffects
+claude mcp add premiere -- adobe-mcp-premiere</code></pre><p>Register only the servers for the apps you have; <code>creative-mcp setup</code> does that for you.</p>
       </section>
 
       <section class="doc-section" id="suite">
@@ -370,12 +375,12 @@ claude mcp add illustrator -- adobe-mcp-illustrator</code></pre>
       <section class="doc-section" id="configuration">
         <h2>Configuration</h2>
         <p>Set environment variables in the MCP client’s server entry. Do not set them in a website form or commit real credentials to a repository.</p>
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Configuration table"><table><thead><tr><th>Variable family</th><th>Applies to</th><th>Purpose</th></tr></thead><tbody>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Configuration table"><table><thead><tr><th scope="col">Variable family</th><th scope="col">Applies to</th><th scope="col">Purpose</th></tr></thead><tbody>
           <tr><td><code>*_ALLOWED_DIRS</code></td><td>Each app server, e.g. <code>PHOTOSHOP_ALLOWED_DIRS</code></td><td>Add directories to the default home-folder file access scope. Delimiter is platform-specific: <code>:</code> on macOS, <code>;</code> on Windows.</td></tr>
           <tr><td><code>ADOBE_MCP_APPS</code></td><td>Suite coordinator</td><td>Choose which app server IDs the coordinator starts.</td></tr>
           <tr><td><code>*_APP_NAME</code></td><td>App-specific, where supported</td><td>Select a local Adobe application installation. Availability and behavior vary by package and operating system.</td></tr>
           <tr><td><code>*_SCRIPT_TIMEOUT_MS</code></td><td>App-specific</td><td>Adjust how long a server waits for a script or bridge response. See the package guide for defaults and exceptions.</td></tr>
-          <tr><td><code>*_TARGET</code>, <code>ADOBE_TARGET</code></td><td>Supported ArtCraft-compatible servers</td><td>Route compatible operations to a named local ArtCraft adapter. Support is app-specific; consult that server’s guide.</td></tr>
+          <tr><td><code>*_TARGET</code>, <code>ADOBE_TARGET</code></td><td>Supported ArtCraft-compatible servers</td><td>Route compatible operations to a local ArtCraft app instead of the Adobe app. ArtCraft is a family of separate desktop apps (PhotoCraft, VectorCraft, DesignCraft, EffectCraft and FilmCraft) that a server can drive instead of the Adobe app, over a local control channel. Leave this unset unless you use them. Support is app-specific; see that server’s guide.</td></tr>
           <tr><td><code>PREMIERE_WS_PORT</code></td><td>Premiere Pro</td><td>Choose the loopback port used by the local server and set the same port in the UXP bridge panel.</td></tr>
           <tr><td><code>BRIDGE_TOKEN</code>, <code>PREMIERE_BRIDGE_TOKEN</code></td><td>Premiere Pro</td><td>Optional local bridge authentication; use the per-server override when coordinating with another bridge consumer. Keep tokens private.</td></tr>
           <tr><td><code>UXP_BRIDGE_URL</code></td><td>Packages with a UXP backend</td><td>Set the local bridge address only where the app guide documents that backend.</td></tr>

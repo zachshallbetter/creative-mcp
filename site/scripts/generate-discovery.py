@@ -17,7 +17,7 @@ from pathlib import Path
 SITE = "https://creativemcp.com"
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
-EXCLUDED = {"brand-study.html", "style-mockup.html", "404.html"}
+EXCLUDED = {"404.html"}
 
 # llms.txt sections, in reading order. Every public page must appear in exactly one.
 SECTIONS = [

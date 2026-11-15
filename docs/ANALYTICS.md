@@ -4,7 +4,7 @@ Property: Creative MCP · Web stream `web` → https://creativemcp.com · Measur
 
 ## How it is wired
 
-- Every public page loads `gtag.js` and `/analytics.js` in `<head>`. `brand-study.html` and `style-mockup.html` (noindex mockups) are excluded.
+- Every public page loads `gtag.js` and `/analytics.js` in `<head>`.
 - `/events.js` turns clicks on any `[data-event-id]` element into a `creative-mcp:interaction` event and exposes `window.creativeMcpInteraction(name, params)` for components.
 - `/analytics.js` forwards those to GA4. On `localhost` or with `?debug_analytics` in the URL it sets `debug_mode`, so hits show in **Admin → DebugView**.
 - The Measurement Protocol API secret is server-only. It is not in this repo and must never go in `dist/`.

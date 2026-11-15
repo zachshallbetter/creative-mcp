@@ -200,7 +200,7 @@ def main():
     missing = [p for p in CARDS if not (DIST / p).exists()]
     if missing:
         raise SystemExit(f"CARDS lists missing pages: {missing}")
-    public = {p.relative_to(DIST).as_posix() for p in DIST.rglob("*.html")} - {"404.html", "brand-study.html", "style-mockup.html"}
+    public = {p.relative_to(DIST).as_posix() for p in DIST.rglob("*.html")} - {"404.html"}
     if public - set(CARDS):
         raise SystemExit(f"Add a card for: {sorted(public - set(CARDS))}")
     OUT.mkdir(parents=True, exist_ok=True)

@@ -20,7 +20,7 @@ from pathlib import Path
 SITE = "https://creativemcp.com"
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
-NOINDEX = {"brand-study.html", "style-mockup.html", "404.html"}
+NOINDEX = {"404.html"}
 PERSON = f"{SITE}/about.html#zach-shallbetter"
 LD = re.compile(r'(<script type="application/ld\+json">\n)(.*?)(\n</script>)', re.S)
 YEAR = 2026

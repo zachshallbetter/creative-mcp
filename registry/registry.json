@@ -28,7 +28,7 @@
           "Node.js 18+, macOS or Windows"
         ],
         "fact": "five app-specific Node.js servers (Node.js 18+, macOS or Windows) plus a Suite coordinator for two documented Illustrator-to-InDesign workflows. npm: `adobe-mcp-suite`.",
-        "setup_note": "Registers the Adobe MCP coordinator, which provides two Illustrator-to-InDesign workflows. To use an app's own tools, register its server too (adobe-mcp-photoshop and so on), or let creative-mcp setup pick the servers that match your apps.",
+        "setup_note": "Registers every Adobe MCP server: one per app, plus the coordinator (adobe) for two Illustrator-to-InDesign workflows. Leave out the lines for apps you don't have, or let creative-mcp setup register only the servers that match your apps.",
         "readiness": [
           "Node.js 18 or later is installed (Homebrew installs it for you).",
           "The Adobe app you want to use is installed on this computer.",
