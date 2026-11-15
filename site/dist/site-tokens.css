@@ -21,6 +21,7 @@
   --panel: #fffdf8;
   --purple: #7444d8;
   --orange: #f06430;
+  --orange-text: #d4561f; /* orange used as text: 3.6:1 on --paper, where #f06430 is 2.8:1 */
   --red: #d93f36;
   --blue: #3279d5;
   --green: #4b8d57;
@@ -63,6 +64,7 @@
   --panel: #181c20;
   --purple: #b49cf2;
   --orange: #e6a24a;
+  --orange-text: #e6a24a;
   --red: #e88473;
   --blue: #6fa6f0;
   --green: #74c97a;
@@ -99,6 +101,7 @@
     --panel: #181c20;
     --purple: #b49cf2;
     --orange: #e6a24a;
+    --orange-text: #e6a24a;
     --red: #e88473;
     --blue: #6fa6f0;
     --green: #74c97a;

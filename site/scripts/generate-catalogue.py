@@ -75,7 +75,7 @@ def setup_entry(tool, client, method, clients):
         where = f"{client_name}'s config file ({files[0]})" if files else "your client's MCP configuration"
         json_note = f"Add this entry to {where}, keeping any servers already there. "
         json_note += ("The path is Homebrew's on Apple silicon; on an Intel Mac it is /usr/local/bin. " if method == "brew"
-                      else "If the client can't start npx, replace it with the full path that \"which npx\" prints. ")
+                      else f"If the client can't start {command}, replace it with the full path that \"which {command}\" prints. ")
     requires = tool.get("requires", [])
     readable = [re.sub(r"^node>=(\d+)$", r"Node.js \1 or later", r) for r in requires]
     brew_note = f"Homebrew installs {', '.join(readable)} for you. " if method == "brew" and requires else ""

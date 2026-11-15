@@ -213,7 +213,7 @@
         "other|cargo": {
           "kicker": "Blender MCP · Another client with MCP server configuration · Cargo",
           "command": "cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli\nblender-mcp addon install\n\n{\n  \"mcpServers\": {\n    \"blender\": {\n      \"command\": \"blender-mcp\",\n      \"args\": [\n        \"serve\"\n      ]\n    }\n  }\n}",
-          "explanation": "Add this entry to your client's MCP configuration, keeping any servers already there. If the client can't start npx, replace it with the full path that \"which npx\" prints. Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
+          "explanation": "Add this entry to your client's MCP configuration, keeping any servers already there. If the client can't start blender-mcp, replace it with the full path that \"which blender-mcp\" prints. Installs the CLI, lets it install and turn on the companion add-on (quit Blender first), then registers the local server with your client. Blender MCP requires Blender 4.0 or later."
         }
       }
     }

@@ -296,11 +296,11 @@ code { font-family: var(--mono); font-size: 0.85em; }
 .tabs button[aria-selected="true"] .tc { color: var(--ink-2); }
 .tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .tabs button .tc { font: 400 0.78rem var(--mono); color: var(--ink-3); margin-left: 6px; }
-#tab-indesign, #panel-indesign, .app-indesign { --accent: var(--app-indesign); }
-#tab-illustrator, #panel-illustrator, .app-illustrator { --accent: var(--app-illustrator); }
-#tab-photoshop, #panel-photoshop, .app-photoshop { --accent: var(--app-photoshop); }
-#tab-aftereffects, #panel-aftereffects, .app-aftereffects { --accent: var(--app-aftereffects); }
-#tab-premiere, #panel-premiere, .app-premiere { --accent: var(--app-premiere); }
+#tab-indesign, #indesign, .app-indesign { --accent: var(--app-indesign); }
+#tab-illustrator, #illustrator, .app-illustrator { --accent: var(--app-illustrator); }
+#tab-photoshop, #photoshop, .app-photoshop { --accent: var(--app-photoshop); }
+#tab-aftereffects, #aftereffects, .app-aftereffects { --accent: var(--app-aftereffects); }
+#tab-premiere, #premiere, .app-premiere { --accent: var(--app-premiere); }
 .panel:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .section-heading { display: grid; grid-template-columns: 1fr .65fr; gap: 48px; align-items: end; margin: 8px 0 24px; }
 .section-heading h2 { margin: 12px 0 0; font-size: clamp(34px, 4.2vw, 55px); line-height: 1.02; letter-spacing: -.06em; }
@@ -470,19 +470,19 @@ table { border-collapse: collapse; width: 100%; }
     </table>
   </div>
 
-  <div class="coverage-key" aria-label="Coverage stage colors"><span><i class="key-implemented"></i>Implemented in MCP tools</span><span><i class="key-tested"></i>Passed automated static checks</span><span><i class="key-validated"></i>Validated in the running app</span></div>
+  <div class="coverage-key" role="group" aria-label="Coverage stage colors"><span><i class="key-implemented"></i>Implemented in MCP tools</span><span><i class="key-tested"></i>Passed automated static checks</span><span><i class="key-validated"></i>Validated in the running app</span></div>
   <p class="coverage-caption">Percentages use each app’s documented feature count as the denominator. Static checks run generated scripts against a stubbed app and API definitions; live validation requires running the workflow in the actual Adobe app and checking the result.</p>
   </section>
 
-  <nav class="tabs" role="tablist" aria-label="Application">
-    <button role="tab" id="tab-indesign" aria-controls="panel-indesign" aria-selected="true">InDesign<span class="tc">2,742</span></button>
-    <button role="tab" id="tab-illustrator" aria-controls="panel-illustrator" aria-selected="false" tabindex="-1">Illustrator<span class="tc">2,540</span></button>
-    <button role="tab" id="tab-photoshop" aria-controls="panel-photoshop" aria-selected="false" tabindex="-1">Photoshop<span class="tc">2,609</span></button>
-    <button role="tab" id="tab-aftereffects" aria-controls="panel-aftereffects" aria-selected="false" tabindex="-1">After Effects<span class="tc">3,198</span></button>
-    <button role="tab" id="tab-premiere" aria-controls="panel-premiere" aria-selected="false" tabindex="-1">Premiere Pro<span class="tc">925</span></button>
+  <nav class="tabs needs-js" role="tablist" aria-label="Application">
+    <button role="tab" id="tab-indesign" aria-controls="indesign" aria-selected="true">InDesign<span class="tc">2,742</span></button>
+    <button role="tab" id="tab-illustrator" aria-controls="illustrator" aria-selected="false" tabindex="-1">Illustrator<span class="tc">2,540</span></button>
+    <button role="tab" id="tab-photoshop" aria-controls="photoshop" aria-selected="false" tabindex="-1">Photoshop<span class="tc">2,609</span></button>
+    <button role="tab" id="tab-aftereffects" aria-controls="aftereffects" aria-selected="false" tabindex="-1">After Effects<span class="tc">3,198</span></button>
+    <button role="tab" id="tab-premiere" aria-controls="premiere" aria-selected="false" tabindex="-1">Premiere Pro<span class="tc">925</span></button>
   </nav>
   
-  <section class="panel" id="panel-indesign" role="tabpanel" aria-labelledby="tab-indesign" tabindex="0" >
+  <section class="panel" id="indesign" role="tabpanel" aria-labelledby="tab-indesign" tabindex="0">
     <div class="split">
       <div class="col">
         <h3>Support, step by step</h3>
@@ -727,7 +727,7 @@ table { border-collapse: collapse; width: 100%; }
     </div>
   </section>
 
-  <section class="panel" id="panel-illustrator" role="tabpanel" aria-labelledby="tab-illustrator" tabindex="0" hidden>
+  <section class="panel" id="illustrator" role="tabpanel" aria-labelledby="tab-illustrator" tabindex="0">
     <div class="split">
       <div class="col">
         <h3>Support, step by step</h3>
@@ -990,7 +990,7 @@ table { border-collapse: collapse; width: 100%; }
     </div>
   </section>
 
-  <section class="panel" id="panel-photoshop" role="tabpanel" aria-labelledby="tab-photoshop" tabindex="0" hidden>
+  <section class="panel" id="photoshop" role="tabpanel" aria-labelledby="tab-photoshop" tabindex="0">
     <div class="split">
       <div class="col">
         <h3>Support, step by step</h3>
@@ -1235,7 +1235,7 @@ table { border-collapse: collapse; width: 100%; }
     </div>
   </section>
 
-  <section class="panel" id="panel-aftereffects" role="tabpanel" aria-labelledby="tab-aftereffects" tabindex="0" hidden>
+  <section class="panel" id="aftereffects" role="tabpanel" aria-labelledby="tab-aftereffects" tabindex="0">
     <div class="split">
       <div class="col">
         <h3>Support, step by step</h3>
@@ -1435,7 +1435,7 @@ table { border-collapse: collapse; width: 100%; }
     </div>
   </section>
 
-  <section class="panel" id="panel-premiere" role="tabpanel" aria-labelledby="tab-premiere" tabindex="0" hidden>
+  <section class="panel" id="premiere" role="tabpanel" aria-labelledby="tab-premiere" tabindex="0">
     <div class="split">
       <div class="col">
         <h3>Support, step by step</h3>
@@ -1673,7 +1673,8 @@ table { border-collapse: collapse; width: 100%; }
     var tab = fromHash();
     if (tab) tab.scrollIntoView({ block: 'start' });
   });
-  fromHash();
+  // Every panel is visible without JavaScript; show only the selected one.
+  if (!fromHash()) select(tabs[0], false);
 })();
 </script>
 <section class="next-step" aria-labelledby="next-step-title"><h2 id="next-step-title">Ready to try it?</h2><p>On a Mac, one installer finds your creative apps and MCP clients, shows its plan, then installs, registers and checks every server.</p><pre tabindex="0"><code>brew tap zachshallbetter/tap
