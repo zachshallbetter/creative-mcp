@@ -3,7 +3,7 @@ title: "Capability Atlas"
 description: "A researched map of 12,014 documented features across five Adobe apps: which can be automated, by what route, which MCP tools cover them, and the evidence."
 url: https://creativemcp.com/capability-atlas.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-13T13:34:05-08:00
+modified: 2026-11-14T18:19:47-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -266,6 +266,738 @@ How many published scripts invoke each command. A command a script relies on has
 | UXP | 121 | current 118 beta 2 unavailable 1 | 22
 
 | VBScript / COM | 672 | current 672 | 1
+
+### Support, step by step
+
+Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Illustrator session.
+
+- Documented2,540100%features Adobe documents
+- Scriptable1,95177%reachable by object model, menu command or recorded Action
+- Implemented1,56261%claimed by our 308 MCP tools
+- Static checks1,56161%scripts pass automated checks with the app stubbed
+- Live validated00%run and checked in the actual app
+
+### What kind of features
+
+setting 943 menu command 889 workflow 272 dialog 115 file format 98 tool 91 object type 68 panel 64
+
+### Automation routes
+
+Object model 1,269Menu command 669Recorded Action 13C++ SDK only 37Not automatable 510Not established 42
+
+Illustrator's object model is a fifth the size of InDesign's, so far more of its features are reached only through menu commands, recorded Actions or the C++ SDK. Preference keys and Live Effect definitions used by published scripts reach many settings the object model does not list.
+
+### By domain
+
+| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+
+| Import and exportFile formats Illustrator opens, places, saves and exports, and the options each format offers.  | 298  |
+
+| 274 92% | 274 | 0  | 1
+
+| TypographyType objects and text formatting: type tools, fonts, character and paragraph settings, styles, glyphs, spelling and Asian type.  | 277  |
+
+| 234 84% | 234 | 0  | 1
+
+| ColorColor models, swatches, color groups, gradients, color editing and recoloring, and color management.  | 239  |
+
+| 72 30% | 72 | 0  | 1
+
+| EffectsLive effects from the Effect menu, including Illustrator vector effects, Photoshop raster effects, warps and SVG filters.  | 163  |
+
+| 102 63% | 102 | 0  | 0
+
+| AppearanceHow objects are painted: fills, strokes, stroke styles, multiple appearance attributes, graphic styles, transparency and Live Paint.  | 131  |
+
+| 73 56% | 73 | 0  | 9
+
+| ApplicationLaunching and quitting Illustrator, preferences, workspaces, keyboard shortcut sets, plug-ins, help and account items.  | 107  |
+
+| 23 21% | 23 | 0  | 3
+
+| GeometryPaths, anchor points and segments: drawing them, editing them and combining them with path and pathfinder operations.  | 107  |
+
+| 69 64% | 69 | 0  | 0
+
+| TransformationsMoving, rotating, reflecting, scaling, shearing, aligning, distributing and distorting objects.  | 101  |
+
+| 65 64% | 65 | 0  | 0
+
+| User interfaceViewing and navigating the canvas and arranging the workspace: zoom, preview modes, rulers, guides, grids, snapping and panels.  | 97  |
+
+| 1 1% | 1 | 0  | 0
+
+| PrepressGetting artwork ready for print: printing, separations, overprint, trapping, flattening, marks, bleeds and packaging.  | 96  |
+
+| 82 85% | 82 | 0  | 0
+
+| DocumentsCreating, opening, saving, closing and configuring documents, including templates, presets, color mode and metadata.  | 85  |
+
+| 62 73% | 62 | 0  | 0
+
+| SelectionChoosing which objects or anchor points are active, including selection tools, the Select menu, isolation mode, locking and hiding.  | 78  |
+
+| 60 77% | 60 | 0  | 0
+
+| BrushesBrush tools, the five brush types, brush libraries and brush stroke editing.  | 77  |
+
+| 41 53% | 41 | 0  | 23
+
+| SymbolsReusable symbol definitions, their instances, symbol libraries and the symbolism tools.  | 70  |
+
+| 46 66% | 46 | 0  | 0
+
+| ImagesPlaced and embedded raster or vector files, links, cropping, rasterizing, mockups and image cleanup.  | 65  |
+
+| 45 69% | 45 | 0  | 0
+
+| AutomationActions, batch processing, scripts, variables and data sets for repeating or data-driven work.  | 63  |
+
+| 42 67% | 41 | 0  | 1
+
+| ShapesPrimitive and live shapes such as rectangles, ellipses, polygons, stars, lines, arcs, spirals, grids and flares.  | 60  |
+
+| 47 78% | 47 | 0  | 0
+
+| Asset exportProducing screen and web assets: Export for Screens, the Asset Export panel, slices and legacy web export.  | 47  |
+
+| 31 66% | 31 | 0  | 0
+
+| LayersOrganizing artwork into layers and sublayers, stacking order, and layer-level visibility, locking and printing.  | 43  |
+
+| 38 88% | 38 | 0  | 1
+
+| 3DThree-dimensional effects, materials, lighting and rendering applied to vector artwork.  | 41  |
+
+| 15 37% | 15 | 0  | 0
+
+| GraphsData-driven column, bar, line, area, scatter, pie and radar graphs, their data and their designs.  | 39  |
+
+| 14 36% | 14 | 0  | 0
+
+| PatternsPattern swatches, pattern editing mode and repeat objects (radial, grid and mirror).  | 38  |
+
+| 22 58% | 22 | 0  | 0
+
+| Image TraceConverting raster images into vector paths with Image Trace and its presets and options.  | 38  |
+
+| 30 79% | 30 | 0  | 0
+
+| Generative AIFirefly-powered commands that create or modify vector artwork, patterns, colors and text from prompts or references.  | 36  |
+
+| 0 0% | 0 | 0  | 0
+
+| ArtboardsCreating, sizing, arranging, naming and exporting the artboards that make up a document's pages.  | 34  |
+
+| 30 88% | 30 | 0  | 1
+
+| PerspectiveThe perspective grid and drawing or attaching artwork in one-, two- or three-point perspective.  | 34  |
+
+| 19 56% | 19 | 0  | 0
+
+| BlendsBlend objects that interpolate shape and color between objects, and their options and spines.  | 20  |
+
+| 15 75% | 15 | 0  | 0
+
+| InteroperabilityWorking with other Adobe apps and services: Creative Cloud Libraries, Bridge, Stock, Fonts, sharing, comments and external AI tools.  | 20  |
+
+| 0 0% | 0 | 0  | 1
+
+| ClippingClipping masks, opacity masks and drawing modes that confine artwork to a shape.  | 14  |
+
+| 8 57% | 8 | 0  | 0
+
+| MeshesGradient mesh objects and the tools and commands that create and edit them.  | 13  |
+
+| 2 15% | 2 | 0  | 0
+
+| HistoryUndo and redo, the History panel, version history and recovery of unsaved work.  | 9  |
+
+| 0 0% | 0 | 0  | 0
+
+#### Menu commands
+
+859
+
+847 linked to features · 0 verified by running them
+
+134 seen working in community scripts
+
+#### Limitations
+
+133
+
+misleads 53 inconvenience 31 blocks 30 corrupts 13 slows 6
+
+54 documented by Adobe · 79 reported by the community
+
+#### Community scripts
+
+1,563
+
+from 64 repositories · 99% parsed
+
+Most used: `activeDocument` `selection` `documents` `typename` `name` `preferences`
+
+### Commands seen in real scripts
+
+How many published scripts invoke each command. A command a script relies on has at least been seen to do something.
+
+- `group`64
+- `deselectall`59
+- `expandStyle`54
+- `ungroup`39
+- `noCompoundPath`33
+- `Live Pathfinder Add`26
+- `copy`23
+- `fitall`15
+- `selectallinartboard`15
+- `edge`14
+- `outline`14
+- `preview`13
+- `selectall`13
+- `compoundPath`12
+- `showHiddenChar`12
+
+### What stops a script
+
+- BlocksDocument colour mode is set at creationCreate documents with the right colour space in documents.add, or use executeMenuCommand('doc-color-cmyk'/'doc-color-rgb') and verify.
+- CorruptsColours in the other model are converted lossilyCheck documentColorSpace and create colours in the matching class.
+- BlocksAdding a spot with an existing name failsLook the spot up in try/catch first and reuse it.
+- BlocksNo scripting access to the Appearance panelApply graphic styles prepared by hand, or use actions.
+- BlocksIllustrator runs one script at a timeSerialise jobs in a queue outside Illustrator and use generous timeouts.
+- BlocksIntermittent 'MRAP' errorsRetry the failing call, reduce work per run, and restart Illustrator between large batches.
+- BlocksReferences to closed documents must not be usedNull references after closing and re-fetch documents by path when needed.
+- CorruptsRemoving items while iterating forward skips itemsIterate from the end towards the start.
+- BlocksPDF presets are selected by exact nameCheck app.PDFPresetsList for the name before saving, and ship custom presets.
+- BlocksRaster export scale is cappedUse imageCapture, exportForScreens with resolution settings, or scale the artwork.
+
+### Object model by version
+
+| Version | Classes | Enums | Members
+
+| Adobe Illustrator 2022 (26.x) | 140 | 128 | 2,593
+
+| Adobe Illustrator 2023 (27) | 158 | 133 | 2,871
+
+| Adobe Illustrator 2024 (28) | 158 | 133 | 2,875
+
+| Adobe Illustrator 2025 (29) | 158 | 134 | 2,882
+
+### Other ways in
+
+| Surface | Entries | Status | Beyond the object model
+
+| AppleScript | 245 | current 244 deprecated 1 | 1
+
+| CEP | 15 | current 15 | 6
+
+| C++ SDK | 251 | current 238 deprecated 9 removed 2 unavailable 2 | 180
+
+| UXP | 4 | unavailable 4 | 0
+
+| VBScript / COM | 161 | current 161 | 1
+
+### Support, step by step
+
+Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Photoshop session.
+
+- Documented2,609100%features Adobe documents
+- Scriptable1,72066%reachable by object model, menu command, Action Manager or recorded Action
+- Implemented1,58461%claimed by our 207 MCP tools
+- Static checks1,58161%scripts pass automated checks with the app stubbed
+- Live validated00%run and checked in the actual app
+
+### What kind of features
+
+setting 1,374 menu command 509 dialog 295 workflow 155 object type 89 tool 82 panel 64 file format 41
+
+### Automation routes
+
+Object model 787Menu command 3Action Manager 928Recorded Action 2Not automatable 456Not established 433
+
+Photoshop's object model leaves out most adjustments, filters and settings, so many of its features are reached only through the Action Manager: executeAction with an event id and a descriptor of its settings. Those are counted as their own route, scriptable but outside the object model.
+
+### By domain
+
+| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+
+| FiltersThe Filter menu: blur, sharpen, noise, distort, render, stylize, pixelate, other, Filter Gallery, Liquify, Lens Correction, Adaptive Wide Angle, Vanishing Point and Camera Raw as a filter.  | 395  |
+
+| 276 70% | 276 | 0  | 33
+
+| PaintingBrush, pencil, mixer brush, eraser, gradient and paint bucket tools, brush settings and presets, and fill and stroke.  | 211  |
+
+| 141 67% | 141 | 0  | 69
+
+| AdjustmentsImage adjustments and adjustment layers: levels, curves, hue/saturation, colour balance, black and white, photo filter, channel mixer, gradient map and the rest, plus auto tone, colour and contrast.  | 178  |
+
+| 107 60% | 107 | 0  | 30
+
+| User interfaceWorkspaces, panels, tools panel, views, zoom, rulers, guides, grid, smart guides, screen modes and the contextual task bar.  | 163  |
+
+| 90 55% | 90 | 0  | 25
+
+| Import and exportOpen, Place, Save As and Export formats and their options: Export As, Quick Export, Save for Web, Generate Image Assets, layers to files and PDF presentation.  | 144  |
+
+| 121 84% | 121 | 0  | 15
+
+| TypePoint and paragraph type, character and paragraph formatting, styles, OpenType, type on a path, warp text, fonts and spelling.  | 133  |
+
+| 81 61% | 81 | 0  | 26
+
+| Camera Raw and neural filtersCamera Raw, the Neural Filters workspace and other AI-assisted image filters.  | 125  |
+
+| 60 48% | 60 | 0  | 43
+
+| ApplicationLaunching and quitting Photoshop, preferences, plug-ins, help, account and Creative Cloud items, and performance settings.  | 122  |
+
+| 70 57% | 69 | 0  | 24
+
+| RetouchingHealing, spot healing, patch, content-aware move and fill, clone stamp, red eye, and the dodge, burn, sponge, blur, sharpen and smudge tools.  | 99  |
+
+| 37 37% | 37 | 0  | 5
+
+| ColourChoosing colours: foreground and background, Color and Swatches panels, colour pickers, gradients and patterns as colours.  | 95  |
+
+| 34 36% | 34 | 0  | 21
+
+| DocumentsCreating, opening, saving, closing and configuring documents: presets, templates, metadata (File Info) and recovery.  | 89  |
+
+| 52 58% | 52 | 0  | 14
+
+| Video and animationThe Timeline panel, video layers, frame animation and rendering video.  | 89  |
+
+| 55 62% | 55 | 0  | 13
+
+| AutomationActions, batch, droplets, scripts, variables and data sets, image processor, photomerge, merge to HDR, contact sheets and other File > Automate and Scripts items.  | 85  |
+
+| 42 49% | 40 | 0  | 21
+
+| ImageWhole-image operations: image size and resampling, canvas size, crop and trim, rotate canvas, colour mode and bit depth, duplicate and reveal all.  | 82  |
+
+| 63 77% | 63 | 0  | 2
+
+| LayersLayers and groups: creating, stacking, linking, locking, blending, opacity, fill, merging, flattening, layer comps and the Layers panel.  | 78  |
+
+| 70 90% | 70 | 0  | 5
+
+| TransformationsFree transform, warp, perspective warp, puppet warp, content-aware scale, align and distribute, and auto-align layers.  | 74  |
+
+| 35 47% | 35 | 0  | 13
+
+| Generative AIGenerative Fill, Generative Expand, Generate Image, Generate Background, Remove tool and other Firefly-powered features.  | 63  |
+
+| 4 6% | 4 | 0  | 40
+
+| Shapes and pathsShape layers and tools, the pen and path tools, the Paths panel, path operations and vector strokes.  | 61  |
+
+| 40 66% | 40 | 0  | 7
+
+| 3D3D layers and features, including those Adobe has removed.  | 53  |
+
+| 0 0% | 0 | 0  | 2
+
+| SelectionSelection tools and the Select menu: marquee, lasso, magic wand, object and subject selection, colour range, focus area, modify and transform selection, saving and loading selections.  | 42  |
+
+| 31 74% | 31 | 0  | 3
+
+| ArtboardsCreating, sizing, arranging and exporting artboards.  | 37  |
+
+| 19 51% | 19 | 0  | 9
+
+| Layer stylesLayer effects (drop shadow, strokes, glows, bevel and emboss, overlays) and saved styles.  | 37  |
+
+| 28 76% | 28 | 0  | 2
+
+| MasksLayer masks, vector masks, clipping masks, Quick Mask and Select and Mask.  | 34  |
+
+| 27 79% | 27 | 0  | 3
+
+| Colour managementColour settings, profiles (assign, convert), proof setup and gamut warnings.  | 29  |
+
+| 22 76% | 22 | 0  | 2
+
+| Smart objectsSmart objects, linked smart objects, smart filters and editing their contents.  | 28  |
+
+| 23 82% | 23 | 0  | 2
+
+| HistoryUndo and redo, the History panel, snapshots, the history brush and Revert.  | 25  |
+
+| 21 84% | 21 | 0  | 4
+
+| ChannelsColour, alpha and spot channels, the Channels panel, Calculations and Apply Image.  | 20  |
+
+| 19 95% | 19 | 0  | 0
+
+| PrintThe Print dialog and its colour management and output options.  | 18  |
+
+| 16 89% | 16 | 0  | 0
+
+#### Events and menu commands
+
+443
+
+396 linked to features · 0 verified by running them
+
+104 seen working in community scripts
+
+#### Limitations
+
+44
+
+inconvenience 14 blocks 11 misleads 10 slows 5 corrupts 4
+
+40 documented by Adobe · 4 reported by the community
+
+#### Community scripts
+
+417
+
+from 61 repositories · 89% parsed
+
+Most used: `name` `activeDocument` `putEnumerated` `putReference` `putBoolean` `putObject`
+
+### Commands seen in real scripts
+
+How many published scripts invoke each command. A command a script relies on has at least been seen to do something.
+
+- `set`100
+- `select`73
+- `make`59
+- `open`53
+- `duplicate`27
+- `delete`22
+- `move`21
+- `placeEvent`15
+- `transform`15
+- `convertMode`13
+- `fill`13
+- `save`12
+- `export`11
+- `get`11
+- `groupEvent`10
+
+### What stops a script
+
+- BlocksUXP changes to Photoshop must run inside executeAsModalWrap every modifying batchPlay or DOM call in await core.executeAsModal(fn, {commandName}); read-only calls may run outside.
+- BlocksOnly one plugin can hold the modal scopeAlways await executeAsModal, catch error number 9, raise timeOut where waiting is acceptable, and retry or report.
+- CorruptsUn-awaited calls and swallowed exceptions defeat cancellationawait every Photoshop call, rethrow exceptions inside the target function, and check executionContext.isCancelled in long computations.
+- BlocksbatchPlay throws more often since 23.4.1Guard batchPlay calls with try/catch, or use DOM methods where they exist.
+- BlocksDialogs stop an unattended scriptSet app.displayDialogs = DialogModes.NO for the job (DisplayDialogs = 3 in VBScript, display dialogs to never in AppleScript) and restore the previous value afterwards.
+- BlocksexecuteAction shows the command's own dialog unless told not toPass DialogModes.NO as the third argument and supply every parameter in the descriptor.
+- CorruptsA UXP dialog's showModal does not lock PhotoshopCall showModal({lockDocumentFocus: true}).
+- BlocksLetting the user work in a dialog during executeAsModal needs interactive modePass {interactive: true} to executeAsModal (Photoshop 23.3+); the user cancels through Plugins > Cancel Plugin Command instead of the progress dialog.
+- BlocksAppleScript has no Action ManagerWrite the Action Manager part in JavaScript and run it with do javascript (with arguments for parameters).
+- BlocksGenerative features need a connection, a signed-in account and creditsCheck connectivity and sign-in before a job, budget credits, and keep generative steps out of offline batch pipelines. In UXP, Document.generativeUpscale (27.2) is the one documented generative method.
+
+### Object model by version
+
+| Version | Classes | Enums | Members
+
+| Adobe Photoshop CC 2015.5 (17.x) | 92 | 132 | 1,856
+
+### Other ways in
+
+| Surface | Entries | Status | Beyond the object model
+
+| AppleScript | 221 | current 220 unavailable 1 | 0
+
+| CEP | 8 | current 7 deprecated 1 | 1
+
+| C++ SDK | 44 | current 44 | 36
+
+| UXP | 53 | current 53 | 8
+
+| VBScript / COM | 88 | current 88 | 0
+
+### Support, step by step
+
+Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live After Effects session.
+
+- Documented3,198100%features Adobe documents
+- Scriptable2,59581%reachable by object model or menu command
+- Implemented2,55580%claimed by our 164 MCP tools
+- Static checks2,55380%scripts pass automated checks with the app stubbed
+- Live validated00%run and checked in the actual app
+
+### What kind of features
+
+setting 1,883 menu command 712 workflow 214 object type 138 file format 93 dialog 76 panel 42 tool 40
+
+### Automation routes
+
+Object model 2,409Menu command 186C++ SDK only 2Not automatable 410Not established 191
+
+### By domain
+
+| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+
+| EffectsThe Effect menu and the Effects & Presets panel: every effect category and animation presets.  | 1,490  |
+
+| 1,426 96% | 1,426 | 0  | 2
+
+| LayersLayer types (solid, null, adjustment, shape, text, camera, light), layer properties and switches, parenting, blending modes, track mattes and arrangement.  | 165  |
+
+| 153 93% | 153 | 0  | 4
+
+| 3D3D layers, cameras, lights, the 3D renderers, 3D models and environment lights.  | 164  |
+
+| 104 63% | 104 | 0  | 32
+
+| User interfaceWorkspaces, panels, viewers, the timeline, guides and grids, and preview controls.  | 160  |
+
+| 64 40% | 64 | 0  | 38
+
+| Footage and importImporting footage, image sequences, layered files and other formats, and Interpret Footage (alpha, frame rate, fields, pixel aspect, colour).  | 137  |
+
+| 111 81% | 111 | 0  | 13
+
+| TextText layers, character and paragraph formatting, text animators and selectors, and fonts.  | 129  |
+
+| 119 92% | 119 | 0  | 5
+
+| Keyframes and animationKeyframes, interpolation, the Graph Editor, motion paths, easing, wiggle and smoothing, and Animation menu commands.  | 116  |
+
+| 60 52% | 60 | 0  | 16
+
+| Masks and shapesMasks and mask modes, shape layers, shape groups and operators, and the pen and shape tools.  | 115  |
+
+| 96 83% | 96 | 0  | 0
+
+| Render and exportThe Render Queue, render settings and output modules, Adobe Media Encoder, and rendering templates.  | 110  |
+
+| 79 72% | 79 | 0  | 22
+
+| ApplicationLaunching and quitting After Effects, preferences, plug-ins, memory and performance, help and account items.  | 92  |
+
+| 29 32% | 29 | 0  | 12
+
+| Tracking and stabilizationMotion tracking, 3D camera tracking, warp stabilizer, mocha and face tracking.  | 91  |
+
+| 44 48% | 44 | 0  | 1
+
+| Paint and rotoscopingPaint tools, Roto Brush, Refine Edge, rotobezier and Content-Aware Fill.  | 72  |
+
+| 31 43% | 31 | 0  | 1
+
+| CompositionsCreating and setting compositions, nesting and pre-composing, the work area, composition flowchart and markers.  | 61  |
+
+| 46 75% | 46 | 0  | 5
+
+| ExpressionsExpressions and the expression language, the expression controls effects, and the expression editor.  | 55  |
+
+| 44 80% | 44 | 0  | 6
+
+| ProjectsProjects and the Project panel: creating, opening, saving, folders, items, dependencies, collect files, reduce and consolidate.  | 54  |
+
+| 41 76% | 41 | 0  | 5
+
+| ColourColour management, project colour settings, working space and colour depth, and colour correction effects in workflow.  | 44  |
+
+| 25 57% | 25 | 0  | 14
+
+| Essential GraphicsMotion Graphics templates, the Essential Graphics panel, essential properties and responsive design.  | 44  |
+
+| 29 66% | 29 | 0  | 5
+
+| CollaborationTeam Projects, Frame.io review, Creative Cloud Libraries and Dynamic Link.  | 26  |
+
+| 9 35% | 9 | 0  | 0
+
+| TimeTime remapping, time stretch, frame blending, time-reverse and frame rate conversion.  | 25  |
+
+| 20 80% | 20 | 0  | 3
+
+| AudioAudio layers, the Audio panel, audio effects and waveforms.  | 24  |
+
+| 13 54% | 13 | 0  | 5
+
+| AutomationScripts, the Scripts menu and ScriptUI panels, and other automation features.  | 24  |
+
+| 12 50% | 10 | 0  | 2
+
+#### Menu commands
+
+1,082
+
+794 linked to features · 0 verified by running them
+
+0 seen working in community scripts
+
+#### Limitations
+
+0
+
+Not researched yet.
+
+#### Community scripts
+
+0
+
+Not collected yet.
+
+### Commands seen in real scripts
+
+No community scripts for After Effects have been collected yet.
+
+### What stops a script
+
+Automation limitations for After Effects have not been researched yet.
+
+### Object model by version
+
+| Version | Classes | Enums | Members
+
+| Adobe After Effects 2026 (26.x) | 84 | 56 | 2,777
+
+### Other ways in
+
+Other automation surfaces for After Effects have not been researched yet.
+
+### Support, step by step
+
+Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Premiere Pro session.
+
+- Documented925100%features Adobe documents
+- Scriptable49453%reachable by object model or UXP API
+- Implemented41345%claimed by our 96 MCP tools
+- Static checks41345%scripts pass automated checks with the app stubbed
+- Live validated00%run and checked in the actual app
+
+### What kind of features
+
+setting 228 workflow 186 object type 167 menu command 166 dialog 75 file format 43 panel 40 tool 20
+
+### Automation routes
+
+Object model 82UXP API 412C++ SDK only 8Not automatable 177Not established 246
+
+Premiere Pro is reached through a UXP plugin running inside the application; it has no AppleScript dictionary and no COM interface. A feature's route is the UXP API when a UXP plugin reaches it unattended (the members are in uxp_refs). Features only ExtendScript or the QE DOM reach keep the object model route, with a note that UXP does not reach them; our server cannot use that route. Our server's scripts are UXP JavaScript, and its tested state comes from checking each script against Premiere Pro's UXP DOM.
+
+### By domain
+
+| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+
+| Effects and transitionsVideo and audio effects and transitions, the Effect Controls panel, keyframes and presets.  | 133  |
+
+| 103 77% | 103 | 0  | 18
+
+| EditingTimeline editing: insert, overwrite, ripple and roll edits, trimming, slip and slide, razor, tracks and targeting.  | 96  |
+
+| 40 42% | 40 | 0  | 28
+
+| Media and importImporting media, the Import and Media Browser, ingest, proxies and transcoding, and interpreting footage.  | 82  |
+
+| 65 79% | 65 | 0  | 9
+
+| AudioAudio tracks, the Audio Track Mixer, Essential Sound, audio effects and auto ducking.  | 77  |
+
+| 38 49% | 38 | 0  | 32
+
+| User interfaceWorkspaces, panels, monitors, the timeline display and keyboard shortcuts.  | 74  |
+
+| 6 8% | 6 | 0  | 6
+
+| Graphics and captionsThe Essential Graphics panel, text and shape layers, Motion Graphics templates, captions and subtitles, speech to text.  | 71  |
+
+| 11 15% | 11 | 0  | 46
+
+| SequencesCreating sequences, sequence settings and presets, nesting, and sequence markers.  | 65  |
+
+| 39 60% | 39 | 0  | 17
+
+| ProjectsProjects, bins and the Project panel: project items, metadata, labels, search bins and project settings.  | 64  |
+
+| 33 52% | 33 | 0  | 10
+
+| ExportExport mode, export presets and settings, Adobe Media Encoder and publishing destinations.  | 45  |
+
+| 29 64% | 29 | 0  | 9
+
+| ApplicationLaunching and quitting Premiere Pro, preferences, plug-ins, performance, help and account items.  | 44  |
+
+| 3 7% | 3 | 0  | 27
+
+| ColourLumetri Color, colour management and settings, scopes and LUTs.  | 43  |
+
+| 11 26% | 11 | 0  | 13
+
+| CollaborationProductions, Team Projects, Frame.io and Dynamic Link.  | 41  |
+
+| 3 7% | 3 | 0  | 10
+
+| MarkersClip and sequence markers, marker types and the Markers panel.  | 30  |
+
+| 22 73% | 22 | 0  | 3
+
+| AutomationScripting (ExtendScript and UXP), the QE DOM, and other automation features.  | 24  |
+
+| 3 13% | 3 | 0  | 1
+
+| AI featuresAuto Reframe, Scene Edit Detection, Generative Extend, speech to text, enhance speech and other Sensei and Firefly features.  | 24  |
+
+| 4 17% | 4 | 0  | 12
+
+| Multi-cameraMulti-camera source sequences and editing, and synchronising clips.  | 12  |
+
+| 3 25% | 3 | 0  | 5
+
+#### Menu commands
+
+0
+
+Premiere Pro offers scripts no way to run a menu item.
+
+#### Limitations
+
+22
+
+blocks 9 inconvenience 6 misleads 6 slows 1
+
+19 documented by Adobe · 3 reported by the community
+
+#### Community scripts
+
+0
+
+Not collected yet.
+
+### Commands seen in real scripts
+
+Premiere Pro offers scripts no way to run a menu item.
+
+### What stops a script
+
+- BlocksUXP edits must be built inside lockedAccessWrap action creation in lockedAccess and group them in one executeTransaction per undo step.
+- BlocksNo API to run menu commandsUse a composite of members, the QE DOM where it covers the operation, or keyboard shortcuts sent by OS-level UI automation (fragile).
+- BlocksSome members show dialogs unless told not toPass openDocument(path, true, true, true, true), importFiles(..., suppressUI=true, ...), exportFinalCutProXML(path, 1); save before quit; create sequences from presets (UXP createSequenceWithPresetPath or the QE newSequence) instead of createNewSequence.
+- BlocksCommand-line script execution is unsupported and launch-onlyUse only for one-shot start-up jobs; for request/response automation use a panel bridge. Modifying the application folder may need administrator rights and is undone by updates.
+- BlocksNo AppleScript route into PremiereUse a resident CEP or UXP plugin as a bridge; Apple events can still launch Premiere or open a .prproj.
+- BlocksNo COM or VBScript route into PremiereUse a resident CEP or UXP plugin as a bridge.
+- BlocksUXP plugins cannot listen for connectionsRun the server outside Premiere (in the MCP server or a small proxy) and have the plugin connect to it with WebSocket, as adb-mcp does. Declare the localhost domain in the manifest network permission. A hybrid plugin's native addon is not bound by this, but Adobe documents no server pattern.
+- BlocksUXP launching external processes needs user consentStart helpers from the outside process, not from the plugin.
+- BlocksCEP is being retired in PremierePlan a UXP bridge (WebSocket client) for 2028 onward; keep the CEP bridge for older versions.
+
+### Object model by version
+
+| Version | Classes | Enums | Members
+
+| Adobe Premiere Pro 2024 (24.x) | 35 | 2 | 488
+
+### Other ways in
+
+| Surface | Entries | Status | Beyond the object model
+
+| AppleScript | 2 | unavailable 1 current 1 | 0
+
+| CEP | 14 | current 14 | 2
+
+| C++ SDK | 36 | current 36 | 9
+
+| UXP | 77 | current 75 unavailable 2 | 19
+
+| VBScript / COM | 1 | unavailable 1 | 0
 
 ## What InDesign is missing
 

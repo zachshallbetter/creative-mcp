@@ -3,7 +3,7 @@ title: "Shared core implementation"
 description: "The shared core behind every Adobe MCP server: argument and path safety, script execution, structured results, tool annotations and static script auditing."
 url: https://creativemcp.com/docs/implementations/core.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T14:32:15-08:00
+modified: 2026-11-14T18:19:47-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -50,15 +50,7 @@ Target and units: Core helpers are called by consuming packages; behavior such a
 
 ## CLI and configuration
 
-This package is launched as a persistent MCP process, not as a conventional one-shot CLI. Relevant settings documented by the package include:
-
-`No standalone CLI configuration. Refer to each consuming package for environment variables and runtime behavior.`
-
-Variable names and defaults are package-specific; consult the package README before changing them. File-operation permissions and bridge tokens should be configured in the client’s environment, not embedded in prompts or checked into source.
-
-```
-claude mcp add core -- npx -y adobe-mcp-core
-```
+`adobe-mcp-core` is a library the app servers depend on, not an MCP server: you don’t install or register it yourself. npm installs it with each server, and Homebrew’s `adobe-mcp` formula includes it. Each app server documents its own environment variables.
 
 For client-neutral JSON configuration and source-checkout commands, see [CLI & configuration](https://creativemcp.com/docs/cli.html).
 

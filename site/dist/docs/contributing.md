@@ -3,7 +3,7 @@ title: "Contribute"
 description: "Contribute an implementation or workflow to Creative MCP with accurate scope, setup, capability and evidence documentation."
 url: https://creativemcp.com/docs/contributing.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T14:32:15-08:00
+modified: 2026-11-14T18:19:47-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -38,7 +38,7 @@ Proposing a new tool
 
 ## Join the series with the same conventions.
 
-A new implementation gets its own repository, published package, Homebrew formula in `zachshallbetter/tap`, implementation guide and, a catalogue entry with detection rules checked on a real machine. Names follow one pattern: `<id>-mcp` for the repository, formula and package, and `<id>-mcp-<app>` for per-app servers.
+A new implementation gets its own repository, published package, Homebrew formula in `zachshallbetter/tap`, implementation guide and a catalogue entry with detection rules checked on a real machine. Names follow one pattern: `<id>-mcp` for the repository, formula and package, and `<id>-mcp-<app>` for per-app servers.
 [Read the architecture & conventions →](https://creativemcp.com/docs/architecture.html#adding-a-tool)
 
 Site, docs and catalogue changes go to the public [creative-mcp repository](https://github.com/zachshallbetter/creative-mcp); see its [contribution guide](https://github.com/zachshallbetter/creative-mcp/blob/main/CONTRIBUTING.md).

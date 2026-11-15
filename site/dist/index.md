@@ -3,7 +3,7 @@ title: "Creative MCP — creative tools, connected"
 description: "Open, local MCP servers that let AI agents work in Adobe InDesign, Illustrator, Photoshop, After Effects, Premiere Pro and Blender. Install with Homebrew."
 url: https://creativemcp.com/
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T04:34:20-08:00
+modified: 2026-11-14T18:19:47-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -129,6 +129,7 @@ Blender MCP · Rust install
 
 ```
 cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli
+blender-mcp addon install
 ```
 
 Your instructionsbriefs · files · context

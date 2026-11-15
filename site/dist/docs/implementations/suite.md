@@ -3,7 +3,7 @@ title: "Suite coordinator implementation"
 description: "The Adobe MCP Suite coordinator runs the app servers together and automates two handoffs: placing Illustrator artwork and copying swatches into InDesign."
 url: https://creativemcp.com/docs/implementations/suite.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T14:32:15-08:00
+modified: 2026-11-14T18:19:47-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -57,7 +57,7 @@ This package is launched as a persistent MCP process, not as a conventional one-
 Variable names and defaults are package-specific; consult the package README before changing them. File-operation permissions and bridge tokens should be configured in the client’s environment, not embedded in prompts or checked into source.
 
 ```
-claude mcp add suite -- npx -y adobe-mcp-suite
+claude mcp add adobe -- npx -y adobe-mcp-suite
 ```
 
 With Homebrew, the coordinator and every app server are installed on your `PATH`:
@@ -66,7 +66,7 @@ With Homebrew, the coordinator and every app server are installed on your `PATH`
 brew tap zachshallbetter/tap
 brew trust zachshallbetter/tap
 brew install zachshallbetter/tap/adobe-mcp
-claude mcp add suite -- adobe-mcp-suite
+claude mcp add adobe -- adobe-mcp-suite
 ```
 
 For client-neutral JSON configuration and source-checkout commands, see [CLI & configuration](https://creativemcp.com/docs/cli.html).

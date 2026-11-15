@@ -3,7 +3,7 @@ title: "About Zach Shallbetter"
 description: "Meet Zach Shallbetter, the artist, designer and creative technologist behind Creative MCP, open local tools that connect AI agents to creative software."
 url: https://creativemcp.com/about.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T18:50:41-08:00
+modified: 2026-11-14T18:19:47-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -12,7 +12,7 @@ The person behind Creative MCP
 
 # An artist who builds creative software.
 
-Zach Shallbetter is an artist, designer, and creative technologist based in Spokane, Washington. He founded Snack Studio and created Creative MCP. It brings his Adobe MCP and Blender MCP projects together. The tools connect AI agents with creative software.
+Zach Shallbetter is an artist, designer, and creative technologist based in Spokane, Washington. He founded Snack Studio and created Creative MCP, which brings his Adobe MCP and Blender MCP projects together. The tools connect AI agents with creative software.
 Meet Zach
 
 [Image: Illustrated portrait of Zach Shallbetter seated in a vivid, paint-filled creative studio]
@@ -57,7 +57,7 @@ A practice across art and technology
 
 Zach’s practice began with drawing, illustration, comics, and murals. It grew into interface design, interactive media, and creative production software.
 
-For more than twenty years, he has worked between visual storytelling and technical implementation. Recent projects include computer-vision tools for video production. They support rotoscoping, object callouts, and masking. His [InDesign MCP server exposes 137 tools](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign).
+For more than twenty years, he has worked between visual storytelling and technical implementation. Recent projects include computer-vision tools for video production. They support rotoscoping, object callouts, and masking. His [InDesign MCP server exposes 423 tools](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign).
 
 Creative MCP extends that work across Adobe applications and Blender. It connects code and conversation to the tools artists and designers use.
 

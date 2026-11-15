@@ -3,7 +3,7 @@ title: "Getting Started"
 description: "Setup, configuration, workflows, troubleshooting and safety guidance for Creative MCP implementations, including Adobe MCP and Blender MCP."
 url: https://creativemcp.com/docs/getting-started.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T17:58:55-08:00
+modified: 2026-11-14T18:19:47-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -141,7 +141,7 @@ For Claude Desktop, edit its MCP server configuration file. Cursor, Warp and oth
 "mcpServers": {
 "illustrator": {
 "command": "npx",
-"args": ["-y", "adobe-mcp-illustrator@0.9.0"]
+"args": ["-y", "adobe-mcp-illustrator@0.9.1"]
 }
 }
 }

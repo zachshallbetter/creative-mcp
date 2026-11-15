@@ -3,7 +3,7 @@ title: "How it works"
 description: "How Creative MCP works: your MCP client starts a local server, the server talks to your creative app, and your files never leave your computer."
 url: https://creativemcp.com/how-it-works.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T04:21:18-08:00
+modified: 2026-11-14T18:19:47-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -52,7 +52,7 @@ brew install zachshallbetter/tap/adobe-mcp
 
 ### Blender MCP
 
-Install the Rust CLI and its Blender companion add-on. The add-on must be enabled in Blender 4.0 or later.
+Install the Rust CLI, then run `blender-mcp addon install`: it installs the companion add-on in Blender 4.0 or later and turns it on, so there is nothing to enable by hand.
 
 ```
 cargo install --locked --git https://github.com/zachshallbetter/blender-mcp-rs --package blender-mcp-cli
