@@ -3,7 +3,7 @@ title: "Adobe MCP for InDesign, Photoshop and more"
 description: "Adobe MCP gives InDesign, Illustrator, Photoshop, After Effects and Premiere Pro their own local MCP servers, plus a coordinator for two cross-app handoffs."
 url: https://creativemcp.com/apps.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T03:44:30-08:00
+modified: 2026-11-14T23:15:20-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -19,27 +19,27 @@ Each Adobe app has its own local MCP server, tools and workflow. The Adobe MCP c
 ## InDesign
 
 Pages, layouts, typography, tables, styles, long documents and export.
-adobe-mcp-indesignImplementation guide ↗](https://creativemcp.com/docs/implementations/indesign.html) [AI
+adobe-mcp-indesign423 tools · 119 validatedImplementation guide ↗](https://creativemcp.com/docs/implementations/indesign.html) [AI
 
 ## Illustrator
 
 Artboards, vector shapes, paths, layers, type, color and artwork export.
-adobe-mcp-illustratorImplementation guide ↗](https://creativemcp.com/docs/implementations/illustrator.html) [PS
+adobe-mcp-illustrator308 tools · testedImplementation guide ↗](https://creativemcp.com/docs/implementations/illustrator.html) [PS
 
 ## Photoshop
 
 Documents, pixels, layers, selections, adjustments, filters and export.
-adobe-mcp-photoshopImplementation guide ↗](https://creativemcp.com/docs/implementations/photoshop.html) [Ae
+adobe-mcp-photoshop207 tools · testedImplementation guide ↗](https://creativemcp.com/docs/implementations/photoshop.html) [Ae
 
 ## After Effects
 
 Projects, footage, compositions, keyframes, effects and rendering.
-adobe-mcp-aftereffectsImplementation guide ↗](https://creativemcp.com/docs/implementations/aftereffects.html) [Pr
+adobe-mcp-aftereffects164 tools · testedImplementation guide ↗](https://creativemcp.com/docs/implementations/aftereffects.html) [Pr
 
 ## Premiere Pro
 
 Projects, bins, sequences, timeline edits, markers, effects and exports.
-adobe-mcp-premiereImplementation guide ↗](https://creativemcp.com/docs/implementations/premiere.html)
+adobe-mcp-premiere96 tools · testedImplementation guide ↗](https://creativemcp.com/docs/implementations/premiere.html)
 
 Beyond separate tools
 

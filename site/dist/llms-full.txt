@@ -1368,27 +1368,27 @@ Each Adobe app has its own local MCP server, tools and workflow. The Adobe MCP c
 ## InDesign
 
 Pages, layouts, typography, tables, styles, long documents and export.
-adobe-mcp-indesignImplementation guide ↗](https://creativemcp.com/docs/implementations/indesign.html) [AI
+adobe-mcp-indesign423 tools · 119 validatedImplementation guide ↗](https://creativemcp.com/docs/implementations/indesign.html) [AI
 
 ## Illustrator
 
 Artboards, vector shapes, paths, layers, type, color and artwork export.
-adobe-mcp-illustratorImplementation guide ↗](https://creativemcp.com/docs/implementations/illustrator.html) [PS
+adobe-mcp-illustrator308 tools · testedImplementation guide ↗](https://creativemcp.com/docs/implementations/illustrator.html) [PS
 
 ## Photoshop
 
 Documents, pixels, layers, selections, adjustments, filters and export.
-adobe-mcp-photoshopImplementation guide ↗](https://creativemcp.com/docs/implementations/photoshop.html) [Ae
+adobe-mcp-photoshop207 tools · testedImplementation guide ↗](https://creativemcp.com/docs/implementations/photoshop.html) [Ae
 
 ## After Effects
 
 Projects, footage, compositions, keyframes, effects and rendering.
-adobe-mcp-aftereffectsImplementation guide ↗](https://creativemcp.com/docs/implementations/aftereffects.html) [Pr
+adobe-mcp-aftereffects164 tools · testedImplementation guide ↗](https://creativemcp.com/docs/implementations/aftereffects.html) [Pr
 
 ## Premiere Pro
 
 Projects, bins, sequences, timeline edits, markers, effects and exports.
-adobe-mcp-premiereImplementation guide ↗](https://creativemcp.com/docs/implementations/premiere.html)
+adobe-mcp-premiere96 tools · testedImplementation guide ↗](https://creativemcp.com/docs/implementations/premiere.html)
 
 Beyond separate tools
 
@@ -1993,7 +1993,7 @@ Coverage by application
 
 | Application | Features | Scriptable | Implemented | Tested | Validated | MCP tools
 
-| InDesign  | 2,742  | 2,609 95%  | 2,524 92%  | 2,523  | 0  | 423
+| InDesign  | 2,742  | 2,609 95%  | 2,524 92%  | 2,523  | 627  | 423
 
 | Illustrator  | 2,540  | 1,951 77%  | 1,562 61%  | 1,561  | 0  | 308
 
@@ -2015,7 +2015,7 @@ Each stage is separate evidence. Tested means static checks that exercise script
 - Scriptable2,60995%reachable by object model or menu command
 - Implemented2,52492%claimed by our 423 MCP tools
 - Tested2,52392%scripts pass automated checks with the app stubbed
-- Validated00%run and checked in the actual app
+- Validated62723%run and checked in the actual app
 
 ### What kind of features
 
@@ -2031,83 +2031,83 @@ Object model 2,431Menu command 178Not automatable 125Not established 8
 
 | TypographyCharacter and paragraph formatting, fonts, OpenType, special characters, lists, composers and non-Latin script features.  | 307  |
 
-| 298 97% | 298 | 0  | 0
+| 298 97% | 298 | 174  | 0
 
 | Import and exportSupported file formats and the options for placing content in and exporting PDF, EPUB, HTML, images and interchange files.  | 301  |
 
-| 291 97% | 291 | 0  | 4
+| 291 97% | 291 | 112  | 4
 
 | Long documentsBooks, tables of contents, indexes, footnotes, endnotes, cross-references, hyperlinks, bookmarks, captions, text variables and conditional text.  | 212  |
 
-| 212 100% | 212 | 0  | 0
+| 212 100% | 212 | 20  | 0
 
 | StylesParagraph, character, object, table, cell and table-of-contents styles and the panels that manage them.  | 195  |
 
-| 189 97% | 189 | 0  | 0
+| 189 97% | 189 | 12  | 0
 
 | InterfaceWorkspaces, panels, preferences, view modes, zooming, display performance and other on-screen aids.  | 191  |
 
-| 120 63% | 120 | 0  | 0
+| 120 63% | 120 | 1  | 0
 
 | Preflight and prepressPreflight checks, separations and overprint preview, inks, trapping, packaging and printing.  | 169  |
 
-| 162 96% | 162 | 0  | 0
+| 162 96% | 162 | 29  | 0
 
 | Effects and transparencyOpacity, blending modes and the drop shadow, glow, feather and other effects, plus flattening presets.  | 126  |
 
-| 125 99% | 125 | 0  | 0
+| 125 99% | 125 | 2  | 0
 
 | TablesCreating, editing and formatting tables, rows, columns and cells.  | 124  |
 
-| 120 97% | 120 | 0  | 0
+| 120 97% | 120 | 51  | 0
 
 | InteractiveButtons, form fields, object states, animation, timing, media and page transitions for digital output.  | 111  |
 
-| 108 97% | 108 | 0  | 0
+| 108 97% | 108 | 5  | 0
 
 | Text frames and storiesText frames, threading, frame options, text wrap, the Story Editor, editorial notes and tracked changes.  | 109  |
 
-| 104 95% | 104 | 0  | 2
+| 104 95% | 104 | 11  | 2
 
 | ColourSwatches, colour models, tints, gradients, mixed inks and colour management.  | 89  |
 
-| 82 92% | 82 | 0  | 0
+| 82 92% | 82 | 15  | 0
 
 | Layout toolsRulers, guides, grids, smart guides, measuring, the Gap tool, liquid and flex layout, alternate layouts and content linking.  | 85  |
 
-| 82 96% | 82 | 0  | 1
+| 82 96% | 82 | 5  | 1
 
 | Frames and objectsFrames, shapes, groups and other page items, with their stacking, locking, fitting, strokes, anchoring and object libraries.  | 78  |
 
-| 73 94% | 73 | 0  | 0
+| 73 94% | 73 | 17  | 0
 
 | DocumentsCreating, opening, saving, closing and configuring whole documents, including size, intent, bleed, slug and windows onto them.  | 75  |
 
-| 72 96% | 72 | 0  | 0
+| 72 96% | 72 | 18  | 0
 
 | Images and linksPlacing graphics, managing linked and embedded files, image layers and generative image features.  | 74  |
 
-| 65 88% | 65 | 0  | 0
+| 65 88% | 65 | 52  | 0
 
 | XMLTagging content, the structure view, importing and exporting XML, DTDs and XML rules.  | 74  |
 
-| 74 100% | 74 | 0  | 0
+| 74 100% | 74 | 28  | 0
 
 | InteroperabilityWorking with other Adobe apps and services: InCopy, Creative Cloud Libraries, Bridge, Stock, Express, Illustrator and shared reviews.  | 67  |
 
-| 34 51% | 34 | 0  | 1
+| 34 51% | 34 | 8  | 1
 
 | Pages and spreadsPages, spreads, parent pages, page navigation, sections and page numbering.  | 66  |
 
-| 65 98% | 65 | 0  | 0
+| 65 98% | 65 | 8  | 0
 
 | Paths and geometryDrawing and editing paths and anchor points, compound paths, Pathfinder operations, shape conversion and corner effects.  | 52  |
 
-| 40 77% | 40 | 0  | 0
+| 40 77% | 40 | 2  | 0
 
 | TransformationsMoving, scaling, rotating, shearing, flipping, aligning and distributing objects.  | 50  |
 
-| 50 100% | 50 | 0  | 0
+| 50 100% | 50 | 39  | 0
 
 | Data mergeMerging records from a data source into placeholders to produce many document variants.  | 30  |
 
@@ -2115,19 +2115,19 @@ Object model 2,431Menu command 178Not automatable 125Not established 8
 
 | Find and changeSearching and replacing text, GREP patterns, glyphs, objects, colours and fonts, with saved queries.  | 30  |
 
-| 29 97% | 29 | 0  | 0
+| 29 97% | 29 | 4  | 0
 
 | Selection and clipboardPicking objects and text, moving through stacked or nested items, and cut, copy and paste of the selection.  | 28  |
 
-| 28 100% | 28 | 0  | 0
+| 28 100% | 28 | 1  | 0
 
 | AutomationScripts, the Scripts and Script Label panels, menu actions, events and the scripting environment.  | 26  |
 
-| 24 92% | 23 | 0  | 0
+| 24 92% | 23 | 3  | 0
 
 | LayersDocument layers and the controls that show, lock, order and merge them.  | 24  |
 
-| 24 100% | 24 | 0  | 0
+| 24 100% | 24 | 10  | 0
 
 | ApplicationThe program itself: launching, version, help, user identity, add-ons, AI assistant and app-wide utilities.  | 21  |
 
@@ -3129,7 +3129,8 @@ Real jobs composed of atlas features, each step with the state it must leave and
 
 - Features come from Adobe's user guides and shortcut references; each record cites its source and is written in our own words. Third-party parity checklists were used only to spot omissions.
 - Object models are generated from types-for-adobe (MIT), and for InDesign and Illustrator also from Gregor Fellenz's per-version references: InDesign 2023 to 2026, Illustrator 2022 to 2025, Photoshop 2015.5, After Effects 2026 and Premiere Pro 2024. No public object model exists yet for Illustrator 2026.
-- Implemented and tested come from running every tool of adobe-mcp-indesign 2.5.0, adobe-mcp-illustrator 0.9.0, adobe-mcp-photoshop 0.1.0, adobe-mcp-aftereffects 0.1.0 and adobe-mcp-premiere 0.1.0 (all in the adobe-mcp repository) with the application stubbed, recording the calls each generated script makes and checking each script: ExtendScript against the application's object model, and Premiere Pro's UXP JavaScript against its UXP DOM. Nothing has been validated against a running application yet.
+- Implemented and tested come from running every tool of adobe-mcp-indesign 2.5.0, adobe-mcp-illustrator 0.9.0, adobe-mcp-photoshop 0.1.0, adobe-mcp-aftereffects 0.1.0 and adobe-mcp-premiere 0.1.0 (all in the adobe-mcp repository) with the application stubbed, recording the calls each generated script makes and checking each script: ExtendScript against the application's object model, and Premiere Pro's UXP JavaScript against its UXP DOM.
+- Validated means a live run called the tool in the real application, read its effect back another way and checked it: 119 InDesign tools, against InDesign 2027 on macOS, on 13 November 2026. The other four applications have not been validated yet.
 - Community scripts were parsed for the members and menu commands they use; no script was copied, and repositories without a licence are counted as evidence only.
 - Menu commands are listed from published references and are unverified until run: Illustrator silently ignores a command string it does not know. Photoshop's Action Manager events come from Adobe's UXP event table, Adobe's bundled scripts and open-source helper libraries, and are unverified in the same way.
 
