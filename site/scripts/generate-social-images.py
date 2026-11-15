@@ -140,13 +140,13 @@ def render_html(path, card):
     slug, eyebrow, title, subtitle, accent, badges = card
     dist = DIST.as_uri()
     if path == "about.html":
-        art = (f'<div class="art"><img class="brush b0" src="{dist}/assets/brushes/brand-violet.png" alt="">'
-               f'<img class="brush b1" src="{dist}/assets/brushes/brand-coral.png" alt="">'
-               f'<img class="brush b2" src="{dist}/assets/brushes/brand-magenta.png" alt=""></div>'
+        art = (f'<div class="art"><img class="brush b0" src="{dist}/assets/brushes/brand-violet.webp" alt="">'
+               f'<img class="brush b1" src="{dist}/assets/brushes/brand-coral.webp" alt="">'
+               f'<img class="brush b2" src="{dist}/assets/brushes/brand-magenta.webp" alt=""></div>'
                f'<div class="portrait"><img src="{dist}/assets/zach-shallbetter-portrait.webp" alt=""></div>')
         copy_width = 620
     else:
-        brushes = "".join(f'<img class="brush b{i}" src="{dist}/assets/brushes/{b}.png" alt="">' for i, b in enumerate(ACCENTS[accent]))
+        brushes = "".join(f'<img class="brush b{i}" src="{dist}/assets/brushes/{b}.webp" alt="">' for i, b in enumerate(ACCENTS[accent]))
         # Adobe icons are their own rounded tiles; the Blender logo sits on a paper tile to match.
         chips = "".join(f'<img class="badge{" tile" if b == "blender" else ""}" src="{dist}/assets/logos/{BADGES[b]}.svg" alt="">' for b in badges)
         art = f'<div class="art">{brushes}</div>' + (f'<div class="badges">{chips}</div>' if chips else "")

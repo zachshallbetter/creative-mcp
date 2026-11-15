@@ -143,7 +143,7 @@ main[tabindex="-1"]:focus { outline: none; }
 .topnav a:hover, .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .topnav a[aria-current="page"] { color: var(--ink); font-weight: 700; }
 .button { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 46px; padding: 0 18px; border: 1px solid var(--ink); border-radius: var(--radius-control); background: var(--button-bg); color: var(--button-fg); font: 650 14px var(--sans); text-decoration: none; transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
-.button::after { content: ""; position: absolute; z-index: 0; inset: 5px 2%; border-radius: 5px; pointer-events: none; opacity: 0; transform: scaleX(0) rotate(16deg); transform-origin: left center; background: url("/assets/brushes/brand-magenta.png") center / 135% 120% no-repeat; mix-blend-mode: screen; filter: saturate(1.55); }
+.button::after { content: ""; position: absolute; z-index: 0; inset: 5px 2%; border-radius: 5px; pointer-events: none; opacity: 0; transform: scaleX(0) rotate(16deg); transform-origin: left center; background: url("/assets/brushes/brand-magenta.webp") center / 135% 120% no-repeat; mix-blend-mode: screen; filter: saturate(1.55); }
 .button:hover::after, .button:focus-visible::after { animation: button-brush 2.4s cubic-bezier(.2,.72,.25,1) both; }
 .button.light::after { mix-blend-mode: multiply; }
 .button > *, .button-label { position: relative; z-index: 1; }
@@ -159,7 +159,7 @@ main[tabindex="-1"]:focus { outline: none; }
 :root[data-theme="dark"] .button:not(.light)::after { mix-blend-mode: multiply; }
 :root[data-theme="dark"] .button.light::after { mix-blend-mode: screen; }
 .section-heading h2, .story-section > h2, .doc-section > h2 { position: relative; }
-.section-heading h2::after, .story-section > h2::after, .doc-section > h2::after { content: ""; position: absolute; left: -10px; bottom: -17px; width: clamp(100px, 16vw, 170px); height: 18px; pointer-events: none; background: url("/assets/brushes/brand-violet.png") center / 100% 100% no-repeat; opacity: .48; transform: rotate(-3deg); }
+.section-heading h2::after, .story-section > h2::after, .doc-section > h2::after { content: ""; position: absolute; left: -10px; bottom: -17px; width: clamp(100px, 16vw, 170px); height: 18px; pointer-events: none; background: url("/assets/brushes/brand-violet.webp") center / 100% 100% no-repeat; opacity: .48; transform: rotate(-3deg); }
 :root[data-theme="dark"] .section-heading h2::after, :root[data-theme="dark"] .story-section > h2::after, :root[data-theme="dark"] .doc-section > h2::after { mix-blend-mode: screen; opacity: .42; }
 .theme-toggle { display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border: 1px solid var(--line); border-radius: var(--radius-control); background: transparent; color: var(--ink); font: 11px var(--mono); cursor: pointer; }
 .theme-toggle:hover { background: var(--sheet); }
