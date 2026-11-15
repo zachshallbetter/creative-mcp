@@ -1,5 +1,5 @@
 ---
-title: "Workflows"
+title: "Worked examples of creative workflows"
 description: "Worked examples of Adobe MCP and Blender MCP in real creative projects, with automated steps and human-managed handoffs clearly marked."
 url: https://creativemcp.com/workflows.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)

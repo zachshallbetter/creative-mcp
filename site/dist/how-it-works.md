@@ -1,5 +1,5 @@
 ---
-title: "How it works"
+title: "How local MCP servers reach your apps"
 description: "How Creative MCP works: your MCP client starts a local server, the server talks to your creative app, and your files never leave your computer."
 url: https://creativemcp.com/how-it-works.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)

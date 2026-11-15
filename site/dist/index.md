@@ -3,7 +3,7 @@ title: "Creative MCP — creative tools, connected"
 description: "Open, local MCP servers that let AI agents work in Adobe InDesign, Illustrator, Photoshop, After Effects, Premiere Pro and Blender. Install with Homebrew."
 url: https://creativemcp.com/
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-14T18:19:47-08:00
+modified: 2026-11-14T18:34:36-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -12,7 +12,7 @@ Creative tools, connected
 
 # Make more with the tools you already use.
 
-Local MCP servers connect your creative applications to agent workflows, so your tools, files and context can work together.
+Local MCP servers connect InDesign, Illustrator, Photoshop, After Effects, Premiere Pro and Blender to AI assistants such as Claude, Codex, Cursor and Gemini. MCP, the Model Context Protocol, is the open standard those assistants use to call tools, and everything runs on your own machine.
 
 [Get started](https://creativemcp.com/start.html)[Explore implementations](https://creativemcp.com/projects.html)
 

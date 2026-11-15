@@ -3,7 +3,7 @@ title: "Getting Started"
 description: "Setup, configuration, workflows, troubleshooting and safety guidance for Creative MCP implementations, including Adobe MCP and Blender MCP."
 url: https://creativemcp.com/docs/getting-started.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-14T18:19:47-08:00
+modified: 2026-11-14T18:34:36-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -18,9 +18,9 @@ Install the local servers, connect them to your MCP client, understand which Ado
 
 LOCAL PROCESS · MCP OVER STDIO · macOS + WINDOWS
 
-On this page [Docs home](https://creativemcp.com/docs/)[Content guide](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)How it worksChoose a packageRequirements Quick startMCP client setupSuite coordinator App setupFirst workflowsConfiguration Files & safetyTroubleshootingReference library
+On this page [Docs home](https://creativemcp.com/docs/)[Content guide](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)How the servers connectChoose a packageRequirements Quick startMCP client setupSuite coordinator App setupFirst workflowsConfiguration Files & safetyTroubleshootingReference library
 
-## How it works
+## How the servers connect
 
 These are desktop automation servers. Your MCP client starts a Node.js process on the same computer as the Adobe app. The server accepts MCP messages over standard input/output (stdio), translates a tool call into an application script or bridge request, and returns the result to the client.
 
@@ -47,6 +47,8 @@ Not a hosted Adobe endpoint. The public website provides documentation and the c
 ## Choose a package
 
 Install one app server for direct control of that application. Add the Suite coordinator when you want its current cross-app workflows. The coordinator does not expose the full tool list of its child servers.
+
+This guide covers the Adobe servers. For Blender, the [Blender MCP guide](https://creativemcp.com/docs/implementations/blender.html) has its install, add-on and client steps.
 
 | Package | Use it for | Connection route | Install
 
@@ -76,7 +78,7 @@ Tool counts, exact coverage, evidence levels and known gaps are in the [Capabili
 - macOS or Windows for the listed desktop server integrations. macOS may prompt you to authorize Terminal or Node to control an Adobe app in System Settings → Privacy & Security → Automation.
 - The corresponding Adobe desktop app installed on the same computer. InDesign, Illustrator, Photoshop and After Effects guides specify 2023+; Premiere Pro requires 25.6+ and its MCP Bridge UXP plugin loaded.
 - An MCP client that can launch a command with arguments and environment variables and communicate over stdio.
-- Premiere only: UXP Developer Tool to load the plugin until a published installation path is documented; plugin/server ports and bridge token must match.
+- Premiere Pro only: the UXP Developer Tool, to load the server’s plugin. The plugin’s port and bridge token must match the server’s. The [Premiere Pro guide](https://creativemcp.com/docs/implementations/premiere.html) walks through it.
 
 Adobe app versions and backend support can differ by operation. Consult the app guide and the tool's `help` response for version-specific behavior.
 
@@ -151,15 +153,21 @@ Pin the package version when you need repeatable team setups; check npm for the 
 
 ### Install with Homebrew
 
-On macOS or Linux, the Creative MCP tap installs the Suite coordinator and every app server onto your `PATH`, so clients can launch them without `npx`. Homebrew 7 and later asks you to trust a third-party tap once.
+On macOS, the Creative MCP tap installs the Suite coordinator and every app server onto your `PATH`, so clients can launch them without `npx`. On Windows, use the npx setup above. Homebrew 7 and later asks you to trust a third-party tap once.
 
 ```
 brew tap zachshallbetter/tap
 brew trust zachshallbetter/tap
 brew install zachshallbetter/tap/adobe-mcp
 claude mcp add adobe -- adobe-mcp-suite
+claude mcp add indesign -- adobe-mcp-indesign
 claude mcp add illustrator -- adobe-mcp-illustrator
+claude mcp add photoshop -- adobe-mcp-photoshop
+claude mcp add aftereffects -- adobe-mcp-aftereffects
+claude mcp add premiere -- adobe-mcp-premiere
 ```
+
+Register only the servers for the apps you have; `creative-mcp setup` does that for you.
 
 ## Suite coordinator
 
@@ -278,7 +286,7 @@ Set environment variables in the MCP client’s server entry. Do not set them in
 
 | `*_SCRIPT_TIMEOUT_MS` | App-specific | Adjust how long a server waits for a script or bridge response. See the package guide for defaults and exceptions.
 
-| `*_TARGET`, `ADOBE_TARGET` | Supported ArtCraft-compatible servers | Route compatible operations to a named local ArtCraft adapter. Support is app-specific; consult that server’s guide.
+| `*_TARGET`, `ADOBE_TARGET` | Supported ArtCraft-compatible servers | Route compatible operations to a local ArtCraft app instead of the Adobe app. ArtCraft is a family of separate desktop apps (PhotoCraft, VectorCraft, DesignCraft, EffectCraft and FilmCraft) that a server can drive instead of the Adobe app, over a local control channel. Leave this unset unless you use them. Support is app-specific; see that server’s guide.
 
 | `PREMIERE_WS_PORT` | Premiere Pro | Choose the loopback port used by the local server and set the same port in the UXP bridge panel.
 

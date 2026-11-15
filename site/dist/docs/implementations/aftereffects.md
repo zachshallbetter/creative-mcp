@@ -3,7 +3,7 @@ title: "After Effects implementation"
 description: "Drive After Effects from an AI agent: compositions, layers, keyframes, expressions, effects, text and the render queue. Setup, connection and configuration."
 url: https://creativemcp.com/docs/implementations/aftereffects.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T14:32:15-08:00
+modified: 2026-11-14T18:34:36-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -30,7 +30,7 @@ Runtime route
 
 ### How it reaches the app
 
-ExtendScript through local desktop automation; Windows may use AfterFX.exe to run scripts. Compatible operations can route to EffectCraft.
+ExtendScript through local desktop automation; Windows may use AfterFX.exe to run scripts. Compatible operations can route to EffectCraft, a separate desktop app from the ArtCraft family (see [Configuration in Getting started](https://creativemcp.com/docs/getting-started.html#configuration)), instead of After Effects.
 
 Prerequisites
 

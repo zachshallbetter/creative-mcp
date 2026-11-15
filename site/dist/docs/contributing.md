@@ -1,5 +1,5 @@
 ---
-title: "Contribute"
+title: "Contribute a tool or workflow"
 description: "Contribute an implementation or workflow to Creative MCP with accurate scope, setup, capability and evidence documentation."
 url: https://creativemcp.com/docs/contributing.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)

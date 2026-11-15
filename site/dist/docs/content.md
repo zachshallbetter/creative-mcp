@@ -3,7 +3,7 @@ title: "Content & capability guide"
 description: "What each Adobe MCP server works on, and how an Adobe feature, an automation route, an MCP tool and a live-verified workflow differ."
 url: https://creativemcp.com/docs/content.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-14T18:19:47-08:00
+modified: 2026-11-14T18:34:36-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -28,9 +28,9 @@ Understand the difference between an Adobe feature, an automation route, an MCP 
 
 | Implemented | An MCP tool is mapped to the feature in the atlas dataset. | That the mapping is complete, the app accepted the operation, or the result is correct.
 
-| Static checks | Generated scripts were exercised with a stubbed application and checked against the relevant API/type information. | Live behavior, application version compatibility, visual quality or successful production output.
+| Tested | Generated scripts were exercised with a stubbed application and checked against the relevant API/type information. | Live behavior, application version compatibility, visual quality or successful production output.
 
-| Live validated | A workflow was run in the actual Adobe app and its result checked. | Universal behavior beyond the tested version, document, platform and conditions.
+| Validated | A workflow was run in the actual Adobe app and its result checked. | Universal behavior beyond the tested version, document, platform and conditions.
 
 Atlas percentages use that app’s documented feature count as the denominator. Tool counts represent MCP tools mapped in that dataset. Read the snapshot date and methodology before comparing releases.
 

@@ -1,5 +1,5 @@
 ---
-title: "Adobe MCP"
+title: "Adobe MCP for InDesign, Photoshop and more"
 description: "Adobe MCP gives InDesign, Illustrator, Photoshop, After Effects and Premiere Pro their own local MCP servers, plus a coordinator for two cross-app handoffs."
 url: https://creativemcp.com/apps.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)

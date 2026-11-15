@@ -1,5 +1,5 @@
 ---
-title: "Get started"
+title: "Get started: setup commands for your client"
 description: "Get exact setup commands for Adobe MCP or Blender MCP in your MCP client, or let the Homebrew installer detect your apps and set everything up."
 url: https://creativemcp.com/start.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)

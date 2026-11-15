@@ -1,5 +1,5 @@
 ---
-title: "Privacy"
+title: "Privacy and site analytics"
 description: "What creativemcp.com measures with Google Analytics, what it stores in your browser, and how to opt out. The local tools send nothing to this site."
 url: https://creativemcp.com/privacy.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)

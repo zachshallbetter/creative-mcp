@@ -3,7 +3,7 @@ title: "CLI & configuration"
 description: "The creative-mcp installer: setup, doctor, update, add and remove. Plus launch commands, Suite app selection and configuration for each server."
 url: https://creativemcp.com/docs/cli.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-14T18:19:47-08:00
+modified: 2026-11-14T18:34:36-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -139,7 +139,7 @@ For the app servers, the documented interface is the MCP protocol, not shell fla
 
 | `*_SCRIPT_TIMEOUT_MS` | App-specific | Script/operation wait limit; defaults vary by package.
 
-| `*_BACKEND`, `*_TARGET` | Supported packages only | Select documented backend or compatible local ArtCraft target.
+| `*_BACKEND`, `*_TARGET` | Supported packages only | Select a documented backend, or a local ArtCraft app as the target. ArtCraft is a family of separate desktop apps (PhotoCraft, VectorCraft, DesignCraft, EffectCraft and FilmCraft) that a server can drive instead of the Adobe app, over a local control channel. Leave this unset unless you use them.
 
 | `PREMIERE_WS_PORT` | Premiere | Loopback bridge port; configure the same value in the plugin panel.
 

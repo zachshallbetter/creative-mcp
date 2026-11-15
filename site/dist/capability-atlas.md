@@ -3,7 +3,7 @@ title: "Capability Atlas"
 description: "A researched map of 12,014 documented features across five Adobe apps: which can be automated, by what route, which MCP tools cover them, and the evidence."
 url: https://creativemcp.com/capability-atlas.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-14T18:19:47-08:00
+modified: 2026-11-14T18:34:36-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -28,7 +28,7 @@ Counts move through distinct evidence stages: features Adobe documents, reachabl
 
 Coverage by application
 
-| Application | Features | Scriptable | Implemented | Static checks | Live validated | MCP tools
+| Application | Features | Scriptable | Implemented | Tested | Validated | MCP tools
 
 | InDesign  | 2,742  | 2,609 95%  | 2,524 92%  | 2,523  | 0  | 423
 
@@ -42,17 +42,17 @@ Coverage by application
 
 Implemented in MCP toolsPassed automated static checksValidated in the running app
 
-Percentages use each app’s documented feature count as the denominator. Static checks run generated scripts against a stubbed app and API definitions; live validation requires running the workflow in the actual Adobe app and checking the result.
+Percentages use each app’s documented feature count as the denominator. Tested means static checks: generated scripts run against a stubbed app and API definitions. Validated requires running the workflow in the actual Adobe app and checking the result.
 
 ### Support, step by step
 
-Each stage is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live InDesign session.
+Each stage is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live InDesign session.
 
 - Documented2,742100%features Adobe documents
 - Scriptable2,60995%reachable by object model or menu command
 - Implemented2,52492%claimed by our 423 MCP tools
-- Static checks2,52392%scripts pass automated checks with the app stubbed
-- Live validated00%run and checked in the actual app
+- Tested2,52392%scripts pass automated checks with the app stubbed
+- Validated00%run and checked in the actual app
 
 ### What kind of features
 
@@ -64,7 +64,7 @@ Object model 2,431Menu command 178Not automatable 125Not established 8
 
 ### By domain
 
-| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+| Domain | Features | How it can be automated | Implemented | Tested | Validated | Not established
 
 | TypographyCharacter and paragraph formatting, fonts, OpenType, special characters, lists, composers and non-Latin script features.  | 307  |
 
@@ -269,13 +269,13 @@ How many published scripts invoke each command. A command a script relies on has
 
 ### Support, step by step
 
-Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Illustrator session.
+Each step is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live Illustrator session.
 
 - Documented2,540100%features Adobe documents
 - Scriptable1,95177%reachable by object model, menu command or recorded Action
 - Implemented1,56261%claimed by our 308 MCP tools
-- Static checks1,56161%scripts pass automated checks with the app stubbed
-- Live validated00%run and checked in the actual app
+- Tested1,56161%scripts pass automated checks with the app stubbed
+- Validated00%run and checked in the actual app
 
 ### What kind of features
 
@@ -289,7 +289,7 @@ Illustrator's object model is a fifth the size of InDesign's, so far more of its
 
 ### By domain
 
-| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+| Domain | Features | How it can be automated | Implemented | Tested | Validated | Not established
 
 | Import and exportFile formats Illustrator opens, places, saves and exports, and the options each format offers.  | 298  |
 
@@ -500,13 +500,13 @@ How many published scripts invoke each command. A command a script relies on has
 
 ### Support, step by step
 
-Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Photoshop session.
+Each step is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live Photoshop session.
 
 - Documented2,609100%features Adobe documents
 - Scriptable1,72066%reachable by object model, menu command, Action Manager or recorded Action
 - Implemented1,58461%claimed by our 207 MCP tools
-- Static checks1,58161%scripts pass automated checks with the app stubbed
-- Live validated00%run and checked in the actual app
+- Tested1,58161%scripts pass automated checks with the app stubbed
+- Validated00%run and checked in the actual app
 
 ### What kind of features
 
@@ -520,7 +520,7 @@ Photoshop's object model leaves out most adjustments, filters and settings, so m
 
 ### By domain
 
-| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+| Domain | Features | How it can be automated | Implemented | Tested | Validated | Not established
 
 | FiltersThe Filter menu: blur, sharpen, noise, distort, render, stylize, pixelate, other, Filter Gallery, Liquify, Lens Correction, Adaptive Wide Angle, Vanishing Point and Camera Raw as a filter.  | 395  |
 
@@ -713,13 +713,13 @@ How many published scripts invoke each command. A command a script relies on has
 
 ### Support, step by step
 
-Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live After Effects session.
+Each step is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live After Effects session.
 
 - Documented3,198100%features Adobe documents
 - Scriptable2,59581%reachable by object model or menu command
 - Implemented2,55580%claimed by our 164 MCP tools
-- Static checks2,55380%scripts pass automated checks with the app stubbed
-- Live validated00%run and checked in the actual app
+- Tested2,55380%scripts pass automated checks with the app stubbed
+- Validated00%run and checked in the actual app
 
 ### What kind of features
 
@@ -731,7 +731,7 @@ Object model 2,409Menu command 186C++ SDK only 2Not automatable 410Not establish
 
 ### By domain
 
-| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+| Domain | Features | How it can be automated | Implemented | Tested | Validated | Not established
 
 | EffectsThe Effect menu and the Effects & Presets panel: every effect category and animation presets.  | 1,490  |
 
@@ -857,13 +857,13 @@ Other automation surfaces for After Effects have not been researched yet.
 
 ### Support, step by step
 
-Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Premiere Pro session.
+Each step is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live Premiere Pro session.
 
 - Documented925100%features Adobe documents
 - Scriptable49453%reachable by object model or UXP API
 - Implemented41345%claimed by our 96 MCP tools
-- Static checks41345%scripts pass automated checks with the app stubbed
-- Live validated00%run and checked in the actual app
+- Tested41345%scripts pass automated checks with the app stubbed
+- Validated00%run and checked in the actual app
 
 ### What kind of features
 
@@ -877,7 +877,7 @@ Premiere Pro is reached through a UXP plugin running inside the application; it 
 
 ### By domain
 
-| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+| Domain | Features | How it can be automated | Implemented | Tested | Validated | Not established
 
 | Effects and transitionsVideo and audio effects and transitions, the Effect Controls panel, keyframes and presets.  | 133  |
 

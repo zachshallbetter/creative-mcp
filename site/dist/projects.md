@@ -1,5 +1,5 @@
 ---
-title: "Projects"
+title: "Adobe MCP and Blender MCP compared"
 description: "Adobe MCP and Blender MCP compared: what each open MCP implementation connects to, what it needs and where to start. Both run locally on your machine."
 url: https://creativemcp.com/projects.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)

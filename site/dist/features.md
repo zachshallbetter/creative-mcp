@@ -1,5 +1,5 @@
 ---
-title: "Features"
+title: "Adobe app feature inventory"
 description: "Search the Adobe MCP feature inventory across InDesign, Illustrator, Photoshop, After Effects and Premiere Pro, with routes, tool mapping and evidence."
 url: https://creativemcp.com/features.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)

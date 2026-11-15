@@ -1,5 +1,5 @@
 ---
-title: "Documentation"
+title: "Documentation and setup guides"
 description: "Creative MCP documentation for Adobe MCP and Blender MCP: setup, content guides, MCP API, CLI, configuration and implementation references."
 url: https://creativemcp.com/docs/
 author: Zach Shallbetter (https://creativemcp.com/about.html)

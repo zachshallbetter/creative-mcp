@@ -3,7 +3,7 @@ title: "MCP API reference"
 description: "How the Adobe MCP servers expose tools over stdio: discovery, tool metadata, calls, results, execution boundaries and where to find exact parameters."
 url: https://creativemcp.com/docs/api.html
 author: Zach Shallbetter (https://creativemcp.com/about.html)
-modified: 2026-11-03T14:32:15-08:00
+modified: 2026-11-14T18:34:36-08:00
 site: Creative MCP (https://creativemcp.com/, index: https://creativemcp.com/llms.txt)
 copyright: © 2026 Zach Shallbetter (https://github.com/zachshallbetter/creative-mcp/blob/main/NOTICE.md)
 ---
@@ -57,7 +57,7 @@ call tool with arguments matching that tool's input schema
 inspect isError and returned content before continuing
 ```
 
-Use the package tool references for full parameter tables: [InDesign generated tool reference](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign/docs), and the [Illustrator](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/illustrator), [Photoshop](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/photoshop), [After Effects](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/aftereffects), [Premiere](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/premiere) and [Suite](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/suite) READMEs.
+Use the package tool references for full parameter tables: [InDesign generated tool reference](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign/docs), and the READMEs on GitHub for [the Illustrator package](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/illustrator), [the Photoshop package](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/photoshop), [the After Effects package](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/aftereffects), [the Premiere Pro package](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/premiere) and [the Suite package](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/suite).
 
 ## Tool metadata and results
 

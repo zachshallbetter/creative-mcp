@@ -19,7 +19,7 @@ Creative tools, connected
 
 # Make more with the tools you already use.
 
-Local MCP servers connect your creative applications to agent workflows, so your tools, files and context can work together.
+Local MCP servers connect InDesign, Illustrator, Photoshop, After Effects, Premiere Pro and Blender to AI assistants such as Claude, Codex, Cursor and Gemini. MCP, the Model Context Protocol, is the open standard those assistants use to call tools, and everything runs on your own machine.
 
 [Get started](https://creativemcp.com/start.html)[Explore implementations](https://creativemcp.com/projects.html)
 
@@ -570,9 +570,9 @@ Install the local servers, connect them to your MCP client, understand which Ado
 
 LOCAL PROCESS · MCP OVER STDIO · macOS + WINDOWS
 
-On this page [Docs home](https://creativemcp.com/docs/)[Content guide](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)How it worksChoose a packageRequirements Quick startMCP client setupSuite coordinator App setupFirst workflowsConfiguration Files & safetyTroubleshootingReference library
+On this page [Docs home](https://creativemcp.com/docs/)[Content guide](https://creativemcp.com/docs/content.html)[MCP API](https://creativemcp.com/docs/api.html)[CLI & config](https://creativemcp.com/docs/cli.html)[Architecture](https://creativemcp.com/docs/architecture.html)How the servers connectChoose a packageRequirements Quick startMCP client setupSuite coordinator App setupFirst workflowsConfiguration Files & safetyTroubleshootingReference library
 
-## How it works
+## How the servers connect
 
 These are desktop automation servers. Your MCP client starts a Node.js process on the same computer as the Adobe app. The server accepts MCP messages over standard input/output (stdio), translates a tool call into an application script or bridge request, and returns the result to the client.
 
@@ -599,6 +599,8 @@ Not a hosted Adobe endpoint. The public website provides documentation and the c
 ## Choose a package
 
 Install one app server for direct control of that application. Add the Suite coordinator when you want its current cross-app workflows. The coordinator does not expose the full tool list of its child servers.
+
+This guide covers the Adobe servers. For Blender, the [Blender MCP guide](https://creativemcp.com/docs/implementations/blender.html) has its install, add-on and client steps.
 
 | Package | Use it for | Connection route | Install
 
@@ -628,7 +630,7 @@ Tool counts, exact coverage, evidence levels and known gaps are in the [Capabili
 - macOS or Windows for the listed desktop server integrations. macOS may prompt you to authorize Terminal or Node to control an Adobe app in System Settings → Privacy & Security → Automation.
 - The corresponding Adobe desktop app installed on the same computer. InDesign, Illustrator, Photoshop and After Effects guides specify 2023+; Premiere Pro requires 25.6+ and its MCP Bridge UXP plugin loaded.
 - An MCP client that can launch a command with arguments and environment variables and communicate over stdio.
-- Premiere only: UXP Developer Tool to load the plugin until a published installation path is documented; plugin/server ports and bridge token must match.
+- Premiere Pro only: the UXP Developer Tool, to load the server’s plugin. The plugin’s port and bridge token must match the server’s. The [Premiere Pro guide](https://creativemcp.com/docs/implementations/premiere.html) walks through it.
 
 Adobe app versions and backend support can differ by operation. Consult the app guide and the tool's `help` response for version-specific behavior.
 
@@ -703,15 +705,21 @@ Pin the package version when you need repeatable team setups; check npm for the 
 
 ### Install with Homebrew
 
-On macOS or Linux, the Creative MCP tap installs the Suite coordinator and every app server onto your `PATH`, so clients can launch them without `npx`. Homebrew 7 and later asks you to trust a third-party tap once.
+On macOS, the Creative MCP tap installs the Suite coordinator and every app server onto your `PATH`, so clients can launch them without `npx`. On Windows, use the npx setup above. Homebrew 7 and later asks you to trust a third-party tap once.
 
 ```
 brew tap zachshallbetter/tap
 brew trust zachshallbetter/tap
 brew install zachshallbetter/tap/adobe-mcp
 claude mcp add adobe -- adobe-mcp-suite
+claude mcp add indesign -- adobe-mcp-indesign
 claude mcp add illustrator -- adobe-mcp-illustrator
+claude mcp add photoshop -- adobe-mcp-photoshop
+claude mcp add aftereffects -- adobe-mcp-aftereffects
+claude mcp add premiere -- adobe-mcp-premiere
 ```
+
+Register only the servers for the apps you have; `creative-mcp setup` does that for you.
 
 ## Suite coordinator
 
@@ -830,7 +838,7 @@ Set environment variables in the MCP client’s server entry. Do not set them in
 
 | `*_SCRIPT_TIMEOUT_MS` | App-specific | Adjust how long a server waits for a script or bridge response. See the package guide for defaults and exceptions.
 
-| `*_TARGET`, `ADOBE_TARGET` | Supported ArtCraft-compatible servers | Route compatible operations to a named local ArtCraft adapter. Support is app-specific; consult that server’s guide.
+| `*_TARGET`, `ADOBE_TARGET` | Supported ArtCraft-compatible servers | Route compatible operations to a local ArtCraft app instead of the Adobe app. ArtCraft is a family of separate desktop apps (PhotoCraft, VectorCraft, DesignCraft, EffectCraft and FilmCraft) that a server can drive instead of the Adobe app, over a local control channel. Leave this unset unless you use them. Support is app-specific; see that server’s guide.
 
 | `PREMIERE_WS_PORT` | Premiere Pro | Choose the loopback port used by the local server and set the same port in the UXP bridge panel.
 
@@ -928,9 +936,9 @@ Understand the difference between an Adobe feature, an automation route, an MCP 
 
 | Implemented | An MCP tool is mapped to the feature in the atlas dataset. | That the mapping is complete, the app accepted the operation, or the result is correct.
 
-| Static checks | Generated scripts were exercised with a stubbed application and checked against the relevant API/type information. | Live behavior, application version compatibility, visual quality or successful production output.
+| Tested | Generated scripts were exercised with a stubbed application and checked against the relevant API/type information. | Live behavior, application version compatibility, visual quality or successful production output.
 
-| Live validated | A workflow was run in the actual Adobe app and its result checked. | Universal behavior beyond the tested version, document, platform and conditions.
+| Validated | A workflow was run in the actual Adobe app and its result checked. | Universal behavior beyond the tested version, document, platform and conditions.
 
 Atlas percentages use that app’s documented feature count as the denominator. Tool counts represent MCP tools mapped in that dataset. Read the snapshot date and methodology before comparing releases.
 
@@ -1023,7 +1031,7 @@ call tool with arguments matching that tool's input schema
 inspect isError and returned content before continuing
 ```
 
-Use the package tool references for full parameter tables: [InDesign generated tool reference](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign/docs), and the [Illustrator](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/illustrator), [Photoshop](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/photoshop), [After Effects](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/aftereffects), [Premiere](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/premiere) and [Suite](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/suite) READMEs.
+Use the package tool references for full parameter tables: [InDesign generated tool reference](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/indesign/docs), and the READMEs on GitHub for [the Illustrator package](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/illustrator), [the Photoshop package](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/photoshop), [the After Effects package](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/aftereffects), [the Premiere Pro package](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/premiere) and [the Suite package](https://github.com/zachshallbetter/adobe-mcp/tree/main/packages/suite).
 
 ## Tool metadata and results
 
@@ -1174,7 +1182,7 @@ For the app servers, the documented interface is the MCP protocol, not shell fla
 
 | `*_SCRIPT_TIMEOUT_MS` | App-specific | Script/operation wait limit; defaults vary by package.
 
-| `*_BACKEND`, `*_TARGET` | Supported packages only | Select documented backend or compatible local ArtCraft target.
+| `*_BACKEND`, `*_TARGET` | Supported packages only | Select a documented backend, or a local ArtCraft app as the target. ArtCraft is a family of separate desktop apps (PhotoCraft, VectorCraft, DesignCraft, EffectCraft and FilmCraft) that a server can drive instead of the Adobe app, over a local control channel. Leave this unset unless you use them.
 
 | `PREMIERE_WS_PORT` | Premiere | Loopback bridge port; configure the same value in the plugin panel.
 
@@ -1575,7 +1583,7 @@ Runtime route
 
 ### How it reaches the app
 
-ExtendScript through local desktop automation, with documented local ArtCraft adapter support for compatible tools.
+ExtendScript through local desktop automation, with optional support for PhotoCraft, a separate desktop app from the ArtCraft family, for compatible tools.
 
 Prerequisites
 
@@ -1642,7 +1650,7 @@ Runtime route
 
 ### How it reaches the app
 
-ExtendScript through local desktop automation; Windows may use AfterFX.exe to run scripts. Compatible operations can route to EffectCraft.
+ExtendScript through local desktop automation; Windows may use AfterFX.exe to run scripts. Compatible operations can route to EffectCraft, a separate desktop app from the ArtCraft family (see [Configuration in Getting started](https://creativemcp.com/docs/getting-started.html#configuration)), instead of After Effects.
 
 Prerequisites
 
@@ -1983,7 +1991,7 @@ Counts move through distinct evidence stages: features Adobe documents, reachabl
 
 Coverage by application
 
-| Application | Features | Scriptable | Implemented | Static checks | Live validated | MCP tools
+| Application | Features | Scriptable | Implemented | Tested | Validated | MCP tools
 
 | InDesign  | 2,742  | 2,609 95%  | 2,524 92%  | 2,523  | 0  | 423
 
@@ -1997,17 +2005,17 @@ Coverage by application
 
 Implemented in MCP toolsPassed automated static checksValidated in the running app
 
-Percentages use each app’s documented feature count as the denominator. Static checks run generated scripts against a stubbed app and API definitions; live validation requires running the workflow in the actual Adobe app and checking the result.
+Percentages use each app’s documented feature count as the denominator. Tested means static checks: generated scripts run against a stubbed app and API definitions. Validated requires running the workflow in the actual Adobe app and checking the result.
 
 ### Support, step by step
 
-Each stage is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live InDesign session.
+Each stage is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live InDesign session.
 
 - Documented2,742100%features Adobe documents
 - Scriptable2,60995%reachable by object model or menu command
 - Implemented2,52492%claimed by our 423 MCP tools
-- Static checks2,52392%scripts pass automated checks with the app stubbed
-- Live validated00%run and checked in the actual app
+- Tested2,52392%scripts pass automated checks with the app stubbed
+- Validated00%run and checked in the actual app
 
 ### What kind of features
 
@@ -2019,7 +2027,7 @@ Object model 2,431Menu command 178Not automatable 125Not established 8
 
 ### By domain
 
-| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+| Domain | Features | How it can be automated | Implemented | Tested | Validated | Not established
 
 | TypographyCharacter and paragraph formatting, fonts, OpenType, special characters, lists, composers and non-Latin script features.  | 307  |
 
@@ -2224,13 +2232,13 @@ How many published scripts invoke each command. A command a script relies on has
 
 ### Support, step by step
 
-Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Illustrator session.
+Each step is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live Illustrator session.
 
 - Documented2,540100%features Adobe documents
 - Scriptable1,95177%reachable by object model, menu command or recorded Action
 - Implemented1,56261%claimed by our 308 MCP tools
-- Static checks1,56161%scripts pass automated checks with the app stubbed
-- Live validated00%run and checked in the actual app
+- Tested1,56161%scripts pass automated checks with the app stubbed
+- Validated00%run and checked in the actual app
 
 ### What kind of features
 
@@ -2244,7 +2252,7 @@ Illustrator's object model is a fifth the size of InDesign's, so far more of its
 
 ### By domain
 
-| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+| Domain | Features | How it can be automated | Implemented | Tested | Validated | Not established
 
 | Import and exportFile formats Illustrator opens, places, saves and exports, and the options each format offers.  | 298  |
 
@@ -2455,13 +2463,13 @@ How many published scripts invoke each command. A command a script relies on has
 
 ### Support, step by step
 
-Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Photoshop session.
+Each step is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live Photoshop session.
 
 - Documented2,609100%features Adobe documents
 - Scriptable1,72066%reachable by object model, menu command, Action Manager or recorded Action
 - Implemented1,58461%claimed by our 207 MCP tools
-- Static checks1,58161%scripts pass automated checks with the app stubbed
-- Live validated00%run and checked in the actual app
+- Tested1,58161%scripts pass automated checks with the app stubbed
+- Validated00%run and checked in the actual app
 
 ### What kind of features
 
@@ -2475,7 +2483,7 @@ Photoshop's object model leaves out most adjustments, filters and settings, so m
 
 ### By domain
 
-| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+| Domain | Features | How it can be automated | Implemented | Tested | Validated | Not established
 
 | FiltersThe Filter menu: blur, sharpen, noise, distort, render, stylize, pixelate, other, Filter Gallery, Liquify, Lens Correction, Adaptive Wide Angle, Vanishing Point and Camera Raw as a filter.  | 395  |
 
@@ -2668,13 +2676,13 @@ How many published scripts invoke each command. A command a script relies on has
 
 ### Support, step by step
 
-Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live After Effects session.
+Each step is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live After Effects session.
 
 - Documented3,198100%features Adobe documents
 - Scriptable2,59581%reachable by object model or menu command
 - Implemented2,55580%claimed by our 164 MCP tools
-- Static checks2,55380%scripts pass automated checks with the app stubbed
-- Live validated00%run and checked in the actual app
+- Tested2,55380%scripts pass automated checks with the app stubbed
+- Validated00%run and checked in the actual app
 
 ### What kind of features
 
@@ -2686,7 +2694,7 @@ Object model 2,409Menu command 186C++ SDK only 2Not automatable 410Not establish
 
 ### By domain
 
-| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+| Domain | Features | How it can be automated | Implemented | Tested | Validated | Not established
 
 | EffectsThe Effect menu and the Effects & Presets panel: every effect category and animation presets.  | 1,490  |
 
@@ -2812,13 +2820,13 @@ Other automation surfaces for After Effects have not been researched yet.
 
 ### Support, step by step
 
-Each step is separate evidence. Static checks exercise scripts with the app stubbed; they do not prove the feature works in a live Premiere Pro session.
+Each step is separate evidence. Tested means static checks that exercise scripts with the app stubbed; they do not prove the feature works in a live Premiere Pro session.
 
 - Documented925100%features Adobe documents
 - Scriptable49453%reachable by object model or UXP API
 - Implemented41345%claimed by our 96 MCP tools
-- Static checks41345%scripts pass automated checks with the app stubbed
-- Live validated00%run and checked in the actual app
+- Tested41345%scripts pass automated checks with the app stubbed
+- Validated00%run and checked in the actual app
 
 ### What kind of features
 
@@ -2832,7 +2840,7 @@ Premiere Pro is reached through a UXP plugin running inside the application; it 
 
 ### By domain
 
-| Domain | Features | How it can be automated | Implemented | Static checks | Live validated | Not established
+| Domain | Features | How it can be automated | Implemented | Tested | Validated | Not established
 
 | Effects and transitionsVideo and audio effects and transitions, the Effect Controls panel, keyframes and presets.  | 133  |
 
