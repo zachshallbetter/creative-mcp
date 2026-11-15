@@ -8,6 +8,7 @@
 .apps-grid-page h2 { margin: 0 0 10px; font-size: 21px; letter-spacing: -.04em; }
 .apps-grid-page p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
 .apps-grid-page .pkg { margin-top: auto; padding-top: 20px; color: var(--ink-3); font: 11px var(--mono); overflow-wrap: anywhere; }
+.apps-grid-page .stat { display: block; margin-top: 6px; color: var(--ink-2); font: 12px var(--mono); }
 .apps-grid-page .guide { display: block; margin-top: 10px; color: color-mix(in srgb, var(--tone), var(--ink) 35%); font-size: 12px; font-weight: 650; }
 .apps-handoffs { margin-top: 54px; padding-top: 32px; border-top: 1px solid var(--line); }
 .apps-handoffs h2 { margin: 12px 0; font-size: clamp(28px, 3vw, 40px); letter-spacing: -.055em; }
