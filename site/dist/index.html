@@ -178,21 +178,11 @@
     .paint-speck { position: absolute; left: var(--speck-x); top: var(--speck-y); width: var(--speck-size); height: var(--speck-height); border-radius: var(--speck-shape); background: var(--speck-color); opacity: .82; rotate: var(--speck-rotation); translate: 0 0; animation: speck-drift var(--speck-speed) ease-in-out infinite; animation-delay: var(--speck-delay); }
     .paint-speck:nth-child(2n) { filter: blur(.45px); }
     @keyframes speck-drift { 0%,100% { translate: 0 0; scale: 1; } 50% { translate: var(--speck-drift) -8px; scale: 1.18; } }
-    .paint-canvas { position: absolute; z-index: 0; top: 0; bottom: 0; left: 50%; width: 130vw; transform: translateX(-50%); pointer-events: none; }
     .paint-stroke { position: absolute; width: 20%; height: 34%; object-fit: contain; opacity: 0; clip-path: inset(0 100% 0 0 round 0 50% 50% 0); mix-blend-mode: multiply; filter: saturate(1.28); }
-    .paint-stroke:nth-child(1) { left: 46%; top: 0; }
-    .paint-stroke:nth-child(2) { left: 70%; top: 0; }
-    .paint-stroke:nth-child(3) { left: 42%; top: 28%; }
-    .paint-stroke:nth-child(4) { left: 72%; top: 30%; width: 19%; height: 34%; }
-    .paint-stroke:nth-child(5) { left: 46%; top: 61%; width: 19%; height: 34%; }
-    .paint-stroke:nth-child(6) { left: 68%; top: 61%; }
-    .paint-stroke:nth-child(7) { left: 56%; top: 13%; width: 19%; height: 34%; }
-    .paint-stroke:nth-child(8) { left: 56%; top: 48%; width: 19%; height: 34%; }
     .paint-stroke.is-painting { opacity: .74; animation: brush-paint var(--paint-duration, 4.5s) cubic-bezier(.42,0,.28,1) forwards; }
     .paint-stroke.is-painted { opacity: .74; clip-path: none; }
     @keyframes brush-paint { from { clip-path: inset(0 100% 0 0 round 0 50% 50% 0); } to { clip-path: inset(0 round 0 50% 50% 0); } }
     :root[data-theme="dark"] .paint-stroke { mix-blend-mode: screen; opacity: .68; }
-    @media (prefers-reduced-motion: reduce) { .paint-stroke:first-child { opacity: .74; clip-path: none; } :root[data-theme="dark"] .paint-stroke:first-child { opacity: .68; } }
     .art-grid { position: absolute; z-index: -1; inset: 5% 3%; border: 1px solid rgba(23,23,23,.13); border-radius: 24px; transform: rotate(-4deg); background-image: linear-gradient(rgba(23,23,23,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(23,23,23,.045) 1px, transparent 1px); background-size: 28px 28px; }
     .studio { position: relative; z-index: 2; width: min(470px, 94%); padding: 18px; border: 1px solid rgba(23,23,23,.18); border-radius: 18px; background: rgba(255,253,248,.92); box-shadow: 0 22px 60px rgba(39,31,22,.15); transform: rotate(2deg); transform-origin: 50% 55%; animation: studio-drift 8s ease-in-out infinite; will-change: transform; }
     .studio-head { display: flex; justify-content: space-between; align-items: center; padding: 2px 3px 15px; color: #77736c; font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
@@ -347,7 +337,6 @@
       .hero { padding: 52px 0 58px; }
       .hero-copy { font-size: 16px; }
       .hero-art { min-height: 580px; }
-      .paint-canvas { left: 50%; width: 150vw; }
       .floating-label { padding: 9px 10px; font-size: 9px; }
       .floating-label.handwritten { font-size: 13px; }
       .section { padding: 58px 0; }
@@ -511,16 +500,6 @@
 
   <main id="top" tabindex="-1">
     <section class="wrap hero" aria-labelledby="hero-title">
-      <div class="paint-canvas" aria-hidden="true">
-        <img class="paint-stroke" src="/assets/brushes/brand-violet.webp" alt="">
-        <img class="paint-stroke" src="/assets/brushes/brand-magenta.webp" alt="">
-        <img class="paint-stroke" src="/assets/brushes/brand-coral.webp" alt="">
-        <img class="paint-stroke" src="/assets/brushes/indesign.webp" alt="">
-        <img class="paint-stroke" src="/assets/brushes/illustrator.webp" alt="">
-        <img class="paint-stroke" src="/assets/brushes/photoshop.webp" alt="">
-        <img class="paint-stroke" src="/assets/brushes/after-effects.webp" alt="">
-        <img class="paint-stroke" src="/assets/brushes/premiere-pro.webp" alt="">
-      </div>
       <div class="hero-copy-block">
         <div class="eyebrow">Creative tools, connected</div>
         <h1 id="hero-title">Make more with the tools you <span class="accent">already use.</span></h1>
