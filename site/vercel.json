@@ -57,5 +57,6 @@
       "source": "/site.webmanifest",
       "headers": [{ "key": "Content-Type", "value": "application/manifest+json" }]
     }
-  ]
+  ],
+  "git": { "deploymentEnabled": { "**": false, "main": true } }
 }
