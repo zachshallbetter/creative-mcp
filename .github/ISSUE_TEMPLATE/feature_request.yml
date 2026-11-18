@@ -1,0 +1,25 @@
+name: Feature request
+description: Propose an installer capability, a site or docs change, or a new tool for the series.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        To propose a new tool for the series, describe the application and its MCP server. A tool lives in its own
+        repository (see docs/ARCHITECTURE.md, "Adding a tool to the series").
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem or workflow
+      description: What are you trying to do, and what is in the way?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: How you imagine it
+      description: A command, an option, a catalogue entry, a page.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
