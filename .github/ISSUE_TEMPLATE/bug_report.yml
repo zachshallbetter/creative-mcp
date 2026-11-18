@@ -1,0 +1,50 @@
+name: Bug report
+description: The installer, the catalogue or creativemcp.com isn't behaving as documented.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Thanks for the report. For a problem in a tool's own code, use that tool's repository (adobe-mcp or
+        blender-mcp-rs). Report a security problem privately, see SECURITY.md.
+  - type: dropdown
+    id: part
+    attributes:
+      label: Part
+      options:
+        - Installer (creative-mcp)
+        - Catalogue (registry/registry.json)
+        - Website or docs (creativemcp.com)
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Installer version
+      description: Output of `creative-mcp --version`. Leave blank for the website.
+      placeholder: creative-mcp 0.2.3
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: What should have happened. Quote the docs section if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: The command or page, and the output of `creative-mcp doctor` for an installer problem.
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: OS and version, app and version, MCP client, installed through Homebrew, npm or Cargo

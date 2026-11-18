@@ -55,6 +55,27 @@ python3 site/scripts/generate-discovery.py      # sitemap, llms.txt, llms-full.t
 python3 site/scripts/check-site.py              # every page, card, JSON-LD and CSP hash agrees
 ```
 
+## Verification
+
+Each part has its own check, and CI runs them when the matching paths change:
+
+```sh
+python3 registry/validate.py                                                   # catalogue schema and cross-references (needs jsonschema)
+python3 site/scripts/check-site.py                                             # site pages, cards, JSON-LD and discovery files agree
+cd cli && cargo fmt --check && cargo clippy --all-targets -- -D warnings && cargo test   # the installer
+```
+
+These are structural checks and unit tests. Whether a tool works in a real application is stated per claim with the
+status vocabulary below.
+
+## Status and limitations
+
+The installer's tested platforms, manual testing and gaps are listed in [`cli/README.md`](cli/README.md#status): macOS is
+fully supported, Windows detection has not been checked on a real Windows machine, and Linux detects only Blender.
+Open work is tracked in [GitHub issues](https://github.com/zachshallbetter/creative-mcp/issues) and in
+[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md#7-tracked-work). The tools themselves live in their own repositories and
+carry their own status.
+
 ## Status vocabulary
 
 Every capability claim uses one of **Documented**, **Implemented**, **Tested** or **Validated**. Planned work is labelled **Planned**. A lower level never implies a higher one.
