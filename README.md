@@ -82,6 +82,4 @@ Every capability claim uses one of **Documented**, **Implemented**, **Tested** o
 
 ## Licence
 
-Code (scripts, site JavaScript and CSS, the catalogue, the installer) is [MIT](LICENSE). Written content, the Creative MCP name and symbol, the brush artwork and the portrait are not licensed for reuse; see [NOTICE](NOTICE.md).
-
-[![M8ven Score](https://m8ven.ai/badge/mcp/zachshallbetter-creative-mcp-uqcr85)](https://m8ven.ai/mcp/zachshallbetter-creative-mcp-uqcr85?s=readme)
+[![M8ven Score](https://m8ven.ai/badge/mcp/zachshallbetter-creative-mcp-uqcr85?v=fe216d203501d964cb91617d1ced51b3)](https://m8ven.ai/mcp/zachshallbetter-creative-mcp-uqcr85?s=readme)
